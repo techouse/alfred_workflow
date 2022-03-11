@@ -1,8 +1,12 @@
-import 'abstract/serializable_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+
 import 'alfred_item_icon.dart';
 import 'alfred_item_text.dart';
 
-class AlfredItem implements SerializableModel {
+part 'alfred_item.g.dart';
+
+@JsonSerializable(explicitToJson: true)
+class AlfredItem {
   const AlfredItem({
     required this.title,
     this.type = 'default',
@@ -24,23 +28,24 @@ class AlfredItem implements SerializableModel {
   final String? arg;
   final String? autocomplete;
   final String? uid;
+  @JsonKey(fromJson: _iconFromJson)
   final AlfredItemIcon? icon;
+  @JsonKey(fromJson: _textFromJson)
   final AlfredItemText? text;
+  @JsonKey(name: 'quicklookurl')
   final String? quickLookUrl;
   final String? match;
 
-  @override
-  Map<String, dynamic> toJson() => {
-        'type': type,
-        'title': title,
-        'valid': valid,
-        if (uid != null) 'uid': uid,
-        if (subtitle != null) 'subtitle': subtitle,
-        if (arg != null) 'arg': arg,
-        if (icon != null) 'icon': icon!.toJson(),
-        if (match != null) 'match': match,
-        if (autocomplete != null) 'autocomplete': autocomplete,
-        if (text != null) 'text': text!.toJson(),
-        if (quickLookUrl != null) 'quicklookurl': quickLookUrl,
-      };
+  static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
+      ? null
+      : AlfredItemIcon.fromJson(Map<String, dynamic>.from(icon));
+
+  static AlfredItemText? _textFromJson(dynamic text) => text == null
+      ? null
+      : AlfredItemText.fromJson(Map<String, dynamic>.from(text));
+
+  factory AlfredItem.fromJson(Map<String, dynamic> json) =>
+      _$AlfredItemFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
 }

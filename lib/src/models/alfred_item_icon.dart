@@ -1,11 +1,16 @@
-import 'abstract/serializable_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'alfred_item_icon.g.dart';
 
 enum AlfredItemIconType {
+  @JsonValue('fileicon')
   fileicon,
+  @JsonValue('filetype')
   filetype,
 }
 
-class AlfredItemIcon implements SerializableModel {
+@JsonSerializable()
+class AlfredItemIcon {
   const AlfredItemIcon({
     required this.path,
     this.type,
@@ -14,9 +19,8 @@ class AlfredItemIcon implements SerializableModel {
   final String path;
   final AlfredItemIconType? type;
 
-  @override
-  Map<String, dynamic> toJson() => {
-        if (type != null) 'type': type!.name,
-        'path': path,
-      };
+  factory AlfredItemIcon.fromJson(Map<String, dynamic> json) =>
+      _$AlfredItemIconFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AlfredItemIconToJson(this);
 }
