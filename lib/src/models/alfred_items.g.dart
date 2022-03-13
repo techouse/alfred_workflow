@@ -7,7 +7,7 @@ part of 'alfred_items.dart';
 // **************************************************************************
 
 AlfredItems _$AlfredItemsFromJson(Map<String, dynamic> json) => AlfredItems(
-      items: AlfredItems._itemsFromJson(json['items'] as List),
+      AlfredItems._itemsFromJson(json['items'] as List),
     );
 
 Map<String, dynamic> _$AlfredItemsToJson(AlfredItems instance) =>

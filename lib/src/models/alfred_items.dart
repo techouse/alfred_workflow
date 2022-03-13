@@ -6,9 +6,7 @@ part 'alfred_items.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class AlfredItems {
-  AlfredItems({
-    required this.items,
-  });
+  AlfredItems(this.items);
 
   @JsonKey(fromJson: _itemsFromJson)
   List<AlfredItem> items;

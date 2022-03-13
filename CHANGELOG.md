@@ -1,3 +1,8 @@
+## 0.0.3
+
+- Add basic file caching
+- BREAKING: AlfredItems now accepts only a single positional item
+
 ## 0.0.2
 
 - Use json_serializable to automate json serialization
