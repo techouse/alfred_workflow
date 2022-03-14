@@ -1,3 +1,7 @@
+## 0.0.4
+
+- Do not JSON serialize nullable null fields
+
 ## 0.0.3
 
 - Add basic file caching

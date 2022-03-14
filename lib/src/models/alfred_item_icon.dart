@@ -16,7 +16,9 @@ class AlfredItemIcon {
     this.type,
   });
 
+  @JsonKey(required: true)
   final String path;
+  @JsonKey(includeIfNull: false)
   final AlfredItemIconType? type;
 
   factory AlfredItemIcon.fromJson(Map<String, dynamic> json) =>

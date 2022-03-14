@@ -9,8 +9,9 @@ class AlfredItemText {
     this.largeType,
   });
 
+  @JsonKey(required: true)
   final String copy;
-  @JsonKey(name: 'largetype')
+  @JsonKey(name: 'largetype', includeIfNull: false)
   final String? largeType;
 
   factory AlfredItemText.fromJson(Map<String, dynamic> json) =>

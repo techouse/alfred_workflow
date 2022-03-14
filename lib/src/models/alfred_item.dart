@@ -21,19 +21,25 @@ class AlfredItem {
     this.match,
   });
 
+  @JsonKey(required: true)
   final String title;
   final String type;
   final bool valid;
+  @JsonKey(includeIfNull: false)
   final String? subtitle;
+  @JsonKey(includeIfNull: false)
   final String? arg;
+  @JsonKey(includeIfNull: false)
   final String? autocomplete;
+  @JsonKey(includeIfNull: false)
   final String? uid;
-  @JsonKey(fromJson: _iconFromJson)
+  @JsonKey(fromJson: _iconFromJson, includeIfNull: false)
   final AlfredItemIcon? icon;
-  @JsonKey(fromJson: _textFromJson)
+  @JsonKey(fromJson: _textFromJson, includeIfNull: false)
   final AlfredItemText? text;
-  @JsonKey(name: 'quicklookurl')
+  @JsonKey(name: 'quicklookurl', includeIfNull: false)
   final String? quickLookUrl;
+  @JsonKey(includeIfNull: false)
   final String? match;
 
   static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
