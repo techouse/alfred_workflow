@@ -1,3 +1,7 @@
+## 0.0.5
+
+- Add updater
+
 ## 0.0.4
 
 - Do not JSON serialize nullable null fields

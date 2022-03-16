@@ -218,6 +218,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.0"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.4"
   http_multi_server:
     dependency: transitive
     description:
@@ -315,7 +322,7 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.4.0"
+    version: "5.0.0"
   pool:
     dependency: transitive
     description:
@@ -324,7 +331,7 @@ packages:
     source: hosted
     version: "1.5.0"
   pub_semver:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: pub_semver
       url: "https://pub.dartlang.org"
@@ -462,7 +469,7 @@ packages:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.3.1"
+    version: "5.4.1"
   yaml:
     dependency: transitive
     description:

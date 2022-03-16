@@ -18,10 +18,9 @@ import 'package:stash/stash_api.dart'
 import 'package:stash_file/stash_file.dart'
     show FileCacheStore, newFileLocalCacheStore;
 
-import '../models/alfred_items.dart';
-
-class AlfredCache {
+class AlfredCache<T> {
   AlfredCache({
+    required T Function(Map<String, dynamic>) fromEncodable,
     String? path,
     int maxEntries = 10,
     String name = 'query_cache',
@@ -30,7 +29,8 @@ class AlfredCache {
       Duration(minutes: 1),
     ),
     bool verbose = false,
-  })  : _path = path,
+  })  : _fromEncodable = fromEncodable,
+        _path = path,
         _name = name,
         assert(maxEntries > 0, 'maxEntries must be positive number'),
         _maxEntries = maxEntries,
@@ -44,32 +44,33 @@ class AlfredCache {
   final EvictionPolicy _evictionPolicy;
   final ExpiryPolicy _expiryPolicy;
   final bool _verbose;
+  final T Function(Map<String, dynamic>) _fromEncodable;
 
   late final FileCacheStore _store = newFileLocalCacheStore(
     path: _path ?? dirname(Platform.script.toFilePath()),
-    fromEncodable: (Map<String, dynamic> json) => AlfredItems.fromJson(json),
+    fromEncodable: _fromEncodable,
   );
 
-  late final Cache cache = _store.cache<AlfredItems>(
+  late final Cache<T> cache = _store.cache<T>(
     name: _name,
     maxEntries: _maxEntries,
     eventListenerMode: EventListenerMode.synchronous,
     evictionPolicy: _evictionPolicy,
     expiryPolicy: _expiryPolicy,
   )
-    ..on<CacheEntryCreatedEvent<AlfredItems>>().listen(
+    ..on<CacheEntryCreatedEvent<T>>().listen(
       _verbose ? (event) => print('Key "${event.entry.key}" added') : null,
     )
-    ..on<CacheEntryUpdatedEvent<AlfredItems>>().listen(
+    ..on<CacheEntryUpdatedEvent<T>>().listen(
       _verbose ? (event) => print('Key "${event.newEntry.key}" updated') : null,
     )
-    ..on<CacheEntryRemovedEvent<AlfredItems>>().listen(
+    ..on<CacheEntryRemovedEvent<T>>().listen(
       _verbose ? (event) => print('Key "${event.entry.key}" removed') : null,
     )
-    ..on<CacheEntryExpiredEvent<AlfredItems>>().listen(
+    ..on<CacheEntryExpiredEvent<T>>().listen(
       _verbose ? (event) => print('Key "${event.entry.key}" expired') : null,
     )
-    ..on<CacheEntryEvictedEvent<AlfredItems>>().listen(
+    ..on<CacheEntryEvictedEvent<T>>().listen(
       _verbose ? (event) => print('Key "${event.entry.key}" evicted') : null,
     );
 }
