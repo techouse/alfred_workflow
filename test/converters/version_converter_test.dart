@@ -35,7 +35,7 @@ void main() {
     );
     expect(
       () => VersionConverter.instance
-          .fromJson('${faker.randomGenerator.string(1)}$major.$minor.$patch'),
+          .fromJson('x$major.$minor.$patch'),
       throwsA(TypeMatcher<FormatException>()),
     );
   });
