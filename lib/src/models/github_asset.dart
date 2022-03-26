@@ -1,4 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'github_user.dart';
@@ -7,7 +8,7 @@ part 'github_asset.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 @CopyWith()
-class GithubAsset {
+class GithubAsset with EquatableMixin {
   const GithubAsset({
     required this.url,
     required this.id,
@@ -46,4 +47,21 @@ class GithubAsset {
       _$GithubAssetFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubAssetToJson(this);
+
+  @override
+  List<Object?> get props => [
+    url,
+    id,
+    nodeId,
+    name,
+    label,
+    uploader,
+    contentType,
+    state,
+    size,
+    downloadCount,
+    createdAt,
+    updatedAt,
+    browserDownloadUrl,
+  ];
 }

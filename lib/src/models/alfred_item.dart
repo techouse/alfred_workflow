@@ -1,4 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'alfred_item_icon.dart';
@@ -8,7 +9,7 @@ part 'alfred_item.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 @CopyWith()
-class AlfredItem {
+class AlfredItem with EquatableMixin {
   const AlfredItem({
     required this.title,
     this.type = 'default',
@@ -56,4 +57,19 @@ class AlfredItem {
       _$AlfredItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
+
+  @override
+  List<Object?> get props => [
+        title,
+        type,
+        valid,
+        subtitle,
+        arg,
+        autocomplete,
+        uid,
+        icon,
+        text,
+        quickLookUrl,
+        match,
+      ];
 }

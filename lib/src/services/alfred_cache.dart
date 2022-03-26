@@ -20,57 +20,50 @@ import 'package:stash_file/stash_file.dart'
 
 class AlfredCache<T> {
   AlfredCache({
-    required T Function(Map<String, dynamic>) fromEncodable,
-    String? path,
-    int maxEntries = 10,
-    String name = 'query_cache',
-    EvictionPolicy evictionPolicy = const LruEvictionPolicy(),
-    ExpiryPolicy expiryPolicy = const CreatedExpiryPolicy(
+    required this.fromEncodable,
+    this.path,
+    this.maxEntries = 10,
+    this.name = 'query_cache',
+    this.evictionPolicy = const LruEvictionPolicy(),
+    this.expiryPolicy = const CreatedExpiryPolicy(
       Duration(minutes: 1),
     ),
-    bool verbose = false,
-  })  : _fromEncodable = fromEncodable,
-        _path = path,
-        _name = name,
-        assert(maxEntries > 0, 'maxEntries must be positive number'),
-        _maxEntries = maxEntries,
-        _evictionPolicy = evictionPolicy,
-        _expiryPolicy = expiryPolicy,
-        _verbose = verbose;
+    this.verbose = false,
+  }) : assert(maxEntries > 0, 'maxEntries must be positive number');
 
-  final String? _path;
-  final String _name;
-  final int _maxEntries;
-  final EvictionPolicy _evictionPolicy;
-  final ExpiryPolicy _expiryPolicy;
-  final bool _verbose;
-  final T Function(Map<String, dynamic>) _fromEncodable;
+  final T Function(Map<String, dynamic>) fromEncodable;
+  final String? path;
+  final int maxEntries;
+  final String name;
+  final EvictionPolicy evictionPolicy;
+  final ExpiryPolicy expiryPolicy;
+  final bool verbose;
 
-  late final FileCacheStore _store = newFileLocalCacheStore(
-    path: _path ?? dirname(Platform.script.toFilePath()),
-    fromEncodable: _fromEncodable,
+  late final FileCacheStore store = newFileLocalCacheStore(
+    path: path ?? dirname(Platform.script.toFilePath()),
+    fromEncodable: fromEncodable,
   );
 
-  late final Cache<T> cache = _store.cache<T>(
-    name: _name,
-    maxEntries: _maxEntries,
+  late final Cache<T> cache = store.cache<T>(
+    name: name,
+    maxEntries: maxEntries,
     eventListenerMode: EventListenerMode.synchronous,
-    evictionPolicy: _evictionPolicy,
-    expiryPolicy: _expiryPolicy,
+    evictionPolicy: evictionPolicy,
+    expiryPolicy: expiryPolicy,
   )
     ..on<CacheEntryCreatedEvent<T>>().listen(
-      _verbose ? (event) => print('Key "${event.entry.key}" added') : null,
+      verbose ? (event) => print('Key "${event.entry.key}" added') : null,
     )
     ..on<CacheEntryUpdatedEvent<T>>().listen(
-      _verbose ? (event) => print('Key "${event.newEntry.key}" updated') : null,
+      verbose ? (event) => print('Key "${event.newEntry.key}" updated') : null,
     )
     ..on<CacheEntryRemovedEvent<T>>().listen(
-      _verbose ? (event) => print('Key "${event.entry.key}" removed') : null,
+      verbose ? (event) => print('Key "${event.entry.key}" removed') : null,
     )
     ..on<CacheEntryExpiredEvent<T>>().listen(
-      _verbose ? (event) => print('Key "${event.entry.key}" expired') : null,
+      verbose ? (event) => print('Key "${event.entry.key}" expired') : null,
     )
     ..on<CacheEntryEvictedEvent<T>>().listen(
-      _verbose ? (event) => print('Key "${event.entry.key}" evicted') : null,
+      verbose ? (event) => print('Key "${event.entry.key}" evicted') : null,
     );
 }

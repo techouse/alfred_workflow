@@ -1,11 +1,12 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'github_user.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 @CopyWith()
-class GithubUser {
+class GithubUser with EquatableMixin {
   const GithubUser({
     required this.login,
     required this.id,
@@ -34,4 +35,18 @@ class GithubUser {
       _$GithubUserFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubUserToJson(this);
+
+  @override
+  List<Object?> get props => [
+        login,
+        id,
+        nodeId,
+        avatarUrl,
+        gravatarId,
+        url,
+        htmlUrl,
+        reposUrl,
+        type,
+        siteAdmin,
+      ];
 }

@@ -1,4 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_icon.g.dart';
@@ -12,7 +13,7 @@ enum AlfredItemIconType {
 
 @JsonSerializable()
 @CopyWith()
-class AlfredItemIcon {
+class AlfredItemIcon with EquatableMixin {
   const AlfredItemIcon({
     required this.path,
     this.type,
@@ -27,4 +28,10 @@ class AlfredItemIcon {
       _$AlfredItemIconFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemIconToJson(this);
+
+  @override
+  List<Object?> get props => [
+        path,
+        type,
+      ];
 }

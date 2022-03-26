@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'alfred_item.dart';
@@ -5,7 +6,7 @@ import 'alfred_item.dart';
 part 'alfred_items.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class AlfredItems {
+class AlfredItems with EquatableMixin {
   AlfredItems(this.items);
 
   @JsonKey(fromJson: _itemsFromJson)
@@ -19,4 +20,9 @@ class AlfredItems {
       _$AlfredItemsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemsToJson(this);
+
+  @override
+  List<Object?> get props => [
+        items,
+      ];
 }

@@ -44,14 +44,14 @@ class AlfredWorkflow {
   Future<AlfredItems?> getItems() async =>
       cacheKey != null ? await _cache.get(cacheKey!.md5hex) : _items;
 
-  void addItems(List<AlfredItem> items) async {
+  Future<void> addItems(List<AlfredItem> items) async {
     _items.items..addAll(items);
     if (cacheKey != null) {
       await _cache.put(cacheKey!.md5hex, AlfredItems(items));
     }
   }
 
-  void addItem(AlfredItem item, {bool toBeginning = false}) async {
+  Future<void> addItem(AlfredItem item, {bool toBeginning = false}) async {
     if (toBeginning) {
       _items.items.insert(0, item);
     } else {
@@ -63,7 +63,9 @@ class AlfredWorkflow {
       if (cachedItems != null) {
         await _cache.put(
           cacheKey!.md5hex,
-          AlfredItems([...cachedItems.items, item]),
+          toBeginning
+              ? AlfredItems([item, ...cachedItems.items])
+              : AlfredItems([...cachedItems.items, item]),
         );
       } else {
         await _cache.put(
@@ -81,7 +83,7 @@ class AlfredWorkflow {
     }
   }
 
-  Future<void> run({
+  Future<String> toJsonString({
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
   }) async {
@@ -92,6 +94,19 @@ class AlfredWorkflow {
     if (addToEnd != null) {
       items.items.add(addToEnd);
     }
-    stdout.write(jsonEncode(items.toJson()));
+
+    return jsonEncode(items.toJson());
+  }
+
+  Future<void> run({
+    AlfredItem? addToBeginning,
+    AlfredItem? addToEnd,
+  }) async {
+    stdout.write(
+      await toJsonString(
+        addToBeginning: addToBeginning,
+        addToEnd: addToEnd,
+      ),
+    );
   }
 }
