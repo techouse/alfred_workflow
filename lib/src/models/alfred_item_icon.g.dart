@@ -3,6 +3,69 @@
 part of 'alfred_item_icon.dart';
 
 // **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$AlfredItemIconCWProxy {
+  AlfredItemIcon path(String path);
+
+  AlfredItemIcon type(AlfredItemIconType? type);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemIcon(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// AlfredItemIcon(...).copyWith(id: 12, name: "My name")
+  /// ````
+  AlfredItemIcon call({
+    String? path,
+    AlfredItemIconType? type,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemIcon.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemIcon.copyWith.fieldName(...)`
+class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
+  final AlfredItemIcon _value;
+
+  const _$AlfredItemIconCWProxyImpl(this._value);
+
+  @override
+  AlfredItemIcon path(String path) => this(path: path);
+
+  @override
+  AlfredItemIcon type(AlfredItemIconType? type) => this(type: type);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemIcon(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// AlfredItemIcon(...).copyWith(id: 12, name: "My name")
+  /// ````
+  AlfredItemIcon call({
+    Object? path = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+  }) {
+    return AlfredItemIcon(
+      path: path == const $CopyWithPlaceholder() || path == null
+          ? _value.path
+          // ignore: cast_nullable_to_non_nullable
+          : path as String,
+      type: type == const $CopyWithPlaceholder()
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as AlfredItemIconType?,
+    );
+  }
+}
+
+extension $AlfredItemIconCopyWith on AlfredItemIcon {
+  /// Returns a callable class that can be used as follows: `instanceOfclass AlfredItemIcon.name.copyWith(...)` or like so:`instanceOfclass AlfredItemIcon.name.copyWith.fieldName(...)`.
+  _$AlfredItemIconCWProxy get copyWith => _$AlfredItemIconCWProxyImpl(this);
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

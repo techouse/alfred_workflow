@@ -1,8 +1,10 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'github_user.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
+@CopyWith()
 class GithubUser {
   const GithubUser({
     required this.login,

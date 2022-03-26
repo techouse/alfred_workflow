@@ -1,3 +1,4 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'github_user.dart';
@@ -5,6 +6,7 @@ import 'github_user.dart';
 part 'github_asset.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@CopyWith()
 class GithubAsset {
   const GithubAsset({
     required this.url,

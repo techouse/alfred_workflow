@@ -1,3 +1,4 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pub_semver/pub_semver.dart';
 
@@ -9,6 +10,7 @@ part 'github_release.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 @VersionConverter.instance
+@CopyWith()
 class GithubRelease {
   const GithubRelease({
     required this.url,

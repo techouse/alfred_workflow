@@ -1,3 +1,4 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_icon.g.dart';
@@ -10,6 +11,7 @@ enum AlfredItemIconType {
 }
 
 @JsonSerializable()
+@CopyWith()
 class AlfredItemIcon {
   const AlfredItemIcon({
     required this.path,

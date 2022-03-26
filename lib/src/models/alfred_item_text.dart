@@ -1,8 +1,10 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_text.g.dart';
 
 @JsonSerializable()
+@CopyWith()
 class AlfredItemText {
   const AlfredItemText({
     required this.copy,

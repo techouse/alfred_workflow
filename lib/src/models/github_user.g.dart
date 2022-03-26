@@ -3,6 +3,158 @@
 part of 'github_user.dart';
 
 // **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$GithubUserCWProxy {
+  GithubUser avatarUrl(Uri avatarUrl);
+
+  GithubUser gravatarId(String gravatarId);
+
+  GithubUser htmlUrl(Uri htmlUrl);
+
+  GithubUser id(int id);
+
+  GithubUser login(String login);
+
+  GithubUser nodeId(String nodeId);
+
+  GithubUser reposUrl(Uri reposUrl);
+
+  GithubUser siteAdmin(bool siteAdmin);
+
+  GithubUser type(String type);
+
+  GithubUser url(Uri url);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubUser(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GithubUser(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GithubUser call({
+    Uri? avatarUrl,
+    String? gravatarId,
+    Uri? htmlUrl,
+    int? id,
+    String? login,
+    String? nodeId,
+    Uri? reposUrl,
+    bool? siteAdmin,
+    String? type,
+    Uri? url,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGithubUser.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGithubUser.copyWith.fieldName(...)`
+class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
+  final GithubUser _value;
+
+  const _$GithubUserCWProxyImpl(this._value);
+
+  @override
+  GithubUser avatarUrl(Uri avatarUrl) => this(avatarUrl: avatarUrl);
+
+  @override
+  GithubUser gravatarId(String gravatarId) => this(gravatarId: gravatarId);
+
+  @override
+  GithubUser htmlUrl(Uri htmlUrl) => this(htmlUrl: htmlUrl);
+
+  @override
+  GithubUser id(int id) => this(id: id);
+
+  @override
+  GithubUser login(String login) => this(login: login);
+
+  @override
+  GithubUser nodeId(String nodeId) => this(nodeId: nodeId);
+
+  @override
+  GithubUser reposUrl(Uri reposUrl) => this(reposUrl: reposUrl);
+
+  @override
+  GithubUser siteAdmin(bool siteAdmin) => this(siteAdmin: siteAdmin);
+
+  @override
+  GithubUser type(String type) => this(type: type);
+
+  @override
+  GithubUser url(Uri url) => this(url: url);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubUser(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// GithubUser(...).copyWith(id: 12, name: "My name")
+  /// ````
+  GithubUser call({
+    Object? avatarUrl = const $CopyWithPlaceholder(),
+    Object? gravatarId = const $CopyWithPlaceholder(),
+    Object? htmlUrl = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? login = const $CopyWithPlaceholder(),
+    Object? nodeId = const $CopyWithPlaceholder(),
+    Object? reposUrl = const $CopyWithPlaceholder(),
+    Object? siteAdmin = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
+  }) {
+    return GithubUser(
+      avatarUrl: avatarUrl == const $CopyWithPlaceholder() || avatarUrl == null
+          ? _value.avatarUrl
+          // ignore: cast_nullable_to_non_nullable
+          : avatarUrl as Uri,
+      gravatarId:
+          gravatarId == const $CopyWithPlaceholder() || gravatarId == null
+              ? _value.gravatarId
+              // ignore: cast_nullable_to_non_nullable
+              : gravatarId as String,
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
+          ? _value.htmlUrl
+          // ignore: cast_nullable_to_non_nullable
+          : htmlUrl as Uri,
+      id: id == const $CopyWithPlaceholder() || id == null
+          ? _value.id
+          // ignore: cast_nullable_to_non_nullable
+          : id as int,
+      login: login == const $CopyWithPlaceholder() || login == null
+          ? _value.login
+          // ignore: cast_nullable_to_non_nullable
+          : login as String,
+      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
+          ? _value.nodeId
+          // ignore: cast_nullable_to_non_nullable
+          : nodeId as String,
+      reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
+          ? _value.reposUrl
+          // ignore: cast_nullable_to_non_nullable
+          : reposUrl as Uri,
+      siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
+          ? _value.siteAdmin
+          // ignore: cast_nullable_to_non_nullable
+          : siteAdmin as bool,
+      type: type == const $CopyWithPlaceholder() || type == null
+          ? _value.type
+          // ignore: cast_nullable_to_non_nullable
+          : type as String,
+      url: url == const $CopyWithPlaceholder() || url == null
+          ? _value.url
+          // ignore: cast_nullable_to_non_nullable
+          : url as Uri,
+    );
+  }
+}
+
+extension $GithubUserCopyWith on GithubUser {
+  /// Returns a callable class that can be used as follows: `instanceOfclass GithubUser.name.copyWith(...)` or like so:`instanceOfclass GithubUser.name.copyWith.fieldName(...)`.
+  _$GithubUserCWProxy get copyWith => _$GithubUserCWProxyImpl(this);
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

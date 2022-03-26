@@ -17,6 +17,8 @@ dependencies:
   crypto: ^3.0.1
   pub_semver: ^2.1.1
   http: ^0.13.4
+  copy_with_extension: ^4.0.0
+  equatable: ^2.0.3
 
 dev_dependencies:
   lints: ^1.0.0
@@ -26,3 +28,8 @@ dev_dependencies:
   test: ^1.20.2
   mockito: ^5.1.0
   faker: ^2.0.0
+  copy_with_extension_gen: ^4.0.0
+  data_fixture_dart:
+    git:
+      url: git@github.com:techouse/data_fixture_dart.git
+      ref: main

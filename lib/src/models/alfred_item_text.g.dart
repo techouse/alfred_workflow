@@ -3,6 +3,69 @@
 part of 'alfred_item_text.dart';
 
 // **************************************************************************
+// CopyWithGenerator
+// **************************************************************************
+
+abstract class _$AlfredItemTextCWProxy {
+  AlfredItemText copy(String copy);
+
+  AlfredItemText largeType(String? largeType);
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemText(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// AlfredItemText(...).copyWith(id: 12, name: "My name")
+  /// ````
+  AlfredItemText call({
+    String? copy,
+    String? largeType,
+  });
+}
+
+/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemText.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemText.copyWith.fieldName(...)`
+class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
+  final AlfredItemText _value;
+
+  const _$AlfredItemTextCWProxyImpl(this._value);
+
+  @override
+  AlfredItemText copy(String copy) => this(copy: copy);
+
+  @override
+  AlfredItemText largeType(String? largeType) => this(largeType: largeType);
+
+  @override
+
+  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemText(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  ///
+  /// Usage
+  /// ```dart
+  /// AlfredItemText(...).copyWith(id: 12, name: "My name")
+  /// ````
+  AlfredItemText call({
+    Object? copy = const $CopyWithPlaceholder(),
+    Object? largeType = const $CopyWithPlaceholder(),
+  }) {
+    return AlfredItemText(
+      copy: copy == const $CopyWithPlaceholder() || copy == null
+          ? _value.copy
+          // ignore: cast_nullable_to_non_nullable
+          : copy as String,
+      largeType: largeType == const $CopyWithPlaceholder()
+          ? _value.largeType
+          // ignore: cast_nullable_to_non_nullable
+          : largeType as String?,
+    );
+  }
+}
+
+extension $AlfredItemTextCopyWith on AlfredItemText {
+  /// Returns a callable class that can be used as follows: `instanceOfclass AlfredItemText.name.copyWith(...)` or like so:`instanceOfclass AlfredItemText.name.copyWith.fieldName(...)`.
+  _$AlfredItemTextCWProxy get copyWith => _$AlfredItemTextCWProxyImpl(this);
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
