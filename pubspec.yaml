@@ -29,6 +29,7 @@ dev_dependencies:
   mockito: ^5.1.0
   faker: ^2.0.0
   copy_with_extension_gen: ^4.0.0
+  stash_test: ^4.0.1
   data_fixture_dart:
     git:
       url: https://github.com/techouse/data_fixture_dart
