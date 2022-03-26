@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest, macos-latest ]
-        sdk: [ 2.16.0, dev ]
+        sdk: [ stable, dev ]
     steps:
       - uses: actions/checkout@v2
       - uses: dart-lang/setup-dart@v1.0
