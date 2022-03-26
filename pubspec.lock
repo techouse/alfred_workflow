@@ -203,7 +203,7 @@ packages:
       path: "."
       ref: main
       resolved-ref: "4ac9425c893a0d00247d04c9225f7fce66a0adf8"
-      url: "git@github.com:techouse/data_fixture_dart.git"
+      url: "https://github.com/techouse/data_fixture_dart"
     source: git
     version: "2.2.0"
   equatable:
