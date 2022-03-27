@@ -1,3 +1,8 @@
+## 0.0.6
+
+- Add unit tests
+- Fix some minor bugs
+
 ## 0.0.5
 
 - Add updater
