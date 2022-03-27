@@ -1,6 +1,7 @@
 library alfred_workflow;
 
 import 'dart:convert' show jsonEncode;
+import 'dart:io' show stdout;
 
 import 'package:stash/stash_api.dart' show Cache;
 
@@ -95,5 +96,16 @@ class AlfredWorkflow {
     }
 
     return jsonEncode(items.toJson());
+  }
+
+  Future<void> run({
+    AlfredItem? addToBeginning,
+    AlfredItem? addToEnd,
+  }) async {
+    final String json = await toJsonString(
+      addToBeginning: addToBeginning,
+      addToEnd: addToEnd,
+    );
+    stdout.write(json);
   }
 }

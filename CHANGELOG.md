@@ -1,7 +1,6 @@
 ## 0.0.7
 
 - Add more unit tests
-- Removed run from AlfredWorkflow. Use the more verbose `stdout.write(await workflow.toJsonString())` instead.
 
 ## 0.0.6
 
