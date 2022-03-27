@@ -9,9 +9,9 @@ This library is heavily inspired by the excellent Python 2 library [deanishe/alf
 
 In its current state it is very basic and only implements the [Alfred Script Filter JSON API](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/).
 
-## Usage
+## :children_crossing: Usage
 
-### Basic example
+### :technologist: Basic example
 
 The example below uses [args](https://pub.dev/packages/args) for argument parsing.
 
@@ -88,7 +88,7 @@ To search for the string "hello" simply execute this on the commandline:
 dart run example.dart --query 'hello'
 ```
 
-### Speed it up using caching
+### :zap: Speed it up using caching
 
 The library uses [stash_file](https://pub.dev/packages/stash_file) to cache results in the form of `AlfredItems`.
 All you need to do to enable it is to define a `cacheKey`.
@@ -158,7 +158,7 @@ void main(List<String> arguments) async {
 }
 ```
 
-### Auto-Update your workflows via GitHub releases
+### :arrow_up: Auto-Update your workflows via GitHub releases
 
 Setting up Auto-Updating will require that you provide your workflow's Github repository URL and version.
 Optionally you can set an interval how frequently the workflow should check for updates.
@@ -272,3 +272,38 @@ void main(List<String> arguments) async {
   }
 }
 ```
+
+To update the workflow simply run this from the commandline:
+
+```bash
+dart run example.dart --update
+```
+
+## :rocket: Building the workflow for production
+
+Dart scripts can be [easily compiled to standalone executables](https://dart.dev/tools/dart-compile) eliminating the need for any external prerequisites.
+
+To compile the script above simply run this from the commandline:
+
+```bash
+dart compile exe example.dart --output example
+```
+
+You can then invoke the executable from the commandline:
+
+```bash
+./example -q 'hello'
+```
+
+## A couple of my Alfred Workflows built using this library
+
+- [alfred-flutter-docs](https://github.com/techouse/alfred-flutter-docs)
+- [alfred-react-docs](https://github.com/techouse/alfred-react-docs)
+- [alfred-vue-docs](https://github.com/techouse/alfred-vue-docs)
+- [alfred-tailwindcss-docs](https://github.com/techouse/alfred-tailwindcss-docs)
+- [alfred-django-docs](https://github.com/techouse/alfred-django-docs)
+- [alfred-flask-docs](https://github.com/techouse/alfred-flask-docs)
+- [alfred-laravel-docs](https://github.com/techouse/alfred-laravel-docs)
+- [alfred-nova-docs](https://github.com/techouse/alfred-nova-docs)
+- [alfred-cakephp-docs](https://github.com/techouse/alfred-cakephp-docs)
+- [alfred-gitmoji](https://github.com/techouse/alfred-gitmoji)
