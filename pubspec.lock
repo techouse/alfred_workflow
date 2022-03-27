@@ -486,13 +486,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
-  stash_test:
-    dependency: "direct dev"
-    description:
-      name: stash_test
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   stream_channel:
     dependency: transitive
     description:
@@ -542,20 +535,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.11"
-  test_process:
-    dependency: "direct dev"
-    description:
-      name: test_process
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.0.2"
-  time:
-    dependency: transitive
-    description:
-      name: time
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.0"
   timing:
     dependency: transitive
     description:
