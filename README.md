@@ -295,7 +295,7 @@ You can then invoke the executable from the commandline:
 ./example -q 'hello'
 ```
 
-## A couple of my Alfred Workflows built using this library
+## :seedling: A couple of my Alfred Workflows built using this library
 
 - [alfred-flutter-docs](https://github.com/techouse/alfred-flutter-docs)
 - [alfred-react-docs](https://github.com/techouse/alfred-react-docs)
