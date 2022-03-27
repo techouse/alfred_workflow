@@ -97,7 +97,7 @@ void main() async {
 
     test('toJsonString addToEnd adds item to end', () async {
       final AlfredWorkflow workflow =
-      AlfredWorkflowFixture.factory.makeSingle();
+          AlfredWorkflowFixture.factory.makeSingle();
       final AlfredItems items = AlfredItemsFixture.factory.makeSingle();
       final AlfredItem item = AlfredItemFixture.factory.makeSingle();
 
@@ -182,8 +182,8 @@ void main() async {
     });
 
     test('toJsonString addToBeginning adds item to beginning', () async {
-      final AlfredWorkflow workflow =
-      AlfredWorkflowFixture.factory.makeSingle()..cacheKey = faker.guid.guid();
+      final AlfredWorkflow workflow = AlfredWorkflowFixture.factory.makeSingle()
+        ..cacheKey = faker.guid.guid();
       final AlfredItems items = AlfredItemsFixture.factory.makeSingle();
       final AlfredItem item = AlfredItemFixture.factory.makeSingle();
 
@@ -194,8 +194,7 @@ void main() async {
     });
 
     test('toJsonString addToEnd adds item to end', () async {
-      final AlfredWorkflow workflow =
-      AlfredWorkflowFixture.factory.makeSingle()
+      final AlfredWorkflow workflow = AlfredWorkflowFixture.factory.makeSingle()
         ..cacheKey = faker.guid.guid();
       final AlfredItems items = AlfredItemsFixture.factory.makeSingle();
       final AlfredItem item = AlfredItemFixture.factory.makeSingle();

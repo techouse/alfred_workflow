@@ -50,18 +50,18 @@ class GithubAsset with EquatableMixin {
 
   @override
   List<Object?> get props => [
-    url,
-    id,
-    nodeId,
-    name,
-    label,
-    uploader,
-    contentType,
-    state,
-    size,
-    downloadCount,
-    createdAt,
-    updatedAt,
-    browserDownloadUrl,
-  ];
+        url,
+        id,
+        nodeId,
+        name,
+        label,
+        uploader,
+        contentType,
+        state,
+        size,
+        downloadCount,
+        createdAt,
+        updatedAt,
+        browserDownloadUrl,
+      ];
 }

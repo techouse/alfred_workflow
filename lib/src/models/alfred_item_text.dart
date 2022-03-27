@@ -24,7 +24,7 @@ class AlfredItemText with EquatableMixin {
 
   @override
   List<Object?> get props => [
-    copy,
-    largeType,
-  ];
+        copy,
+        largeType,
+      ];
 }

@@ -34,8 +34,7 @@ void main() {
       throwsA(TypeMatcher<FormatException>()),
     );
     expect(
-      () => VersionConverter.instance
-          .fromJson('x$major.$minor.$patch'),
+      () => VersionConverter.instance.fromJson('x$major.$minor.$patch'),
       throwsA(TypeMatcher<FormatException>()),
     );
   });
