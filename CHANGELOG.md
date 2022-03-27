@@ -1,3 +1,7 @@
+## 0.0.7
+
+- Add more unit tests
+
 ## 0.0.6
 
 - Add unit tests
