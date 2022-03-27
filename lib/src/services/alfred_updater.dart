@@ -4,7 +4,7 @@ import 'dart:io' show Process, stderr, stdout;
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:file/file.dart' show Directory, File, FileSystem;
 import 'package:file/local.dart' show LocalFileSystem;
-import 'package:http/http.dart' show Client, Response;
+import 'package:http/http.dart' show Client, Response, get;
 import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:pub_semver/pub_semver.dart' show Version;
 import 'package:stash/stash_api.dart'
@@ -24,18 +24,16 @@ class AlfredUpdater {
     required String currentVersion,
     this.updateInterval = Duration.zero,
     AlfredCache<GithubRelease>? this.cache,
-    Client? client,
+    this.client,
   })  : assert(githubRepositoryUrl.host == 'github.com'),
-        _currentVersion = Version.parse(currentVersion),
-        _client = client ?? Client();
+        _currentVersion = Version.parse(currentVersion);
 
   static const String updateKey = 'update';
-
-  late final Client _client;
 
   final Uri githubRepositoryUrl;
   final Duration updateInterval;
   final AlfredCache<GithubRelease>? cache;
+  final Client? client;
   late final Cache<GithubRelease> _cache = (cache ??
           AlfredCache<GithubRelease>(
             fromEncodable: (Map<String, dynamic> json) =>
@@ -49,8 +47,6 @@ class AlfredUpdater {
   late final Version _currentVersion;
 
   String get currentVersion => _currentVersion.toString();
-
-  Client get client => _client;
 
   Future<bool> updateAvailable() async {
     final GithubRelease? cachedRelease = await _cache.get(updateKey.md5hex);
@@ -90,12 +86,12 @@ class AlfredUpdater {
 
   @visibleForTesting
   Future<GithubRelease?> fetchLatestRelease() async {
-    final Response response = await _client.get(
-      Uri.https(
-        'api.github.com',
-        '/repos/${githubRepositoryUrl.path.substring(1)}/releases/latest',
-      ),
+    final Uri url = Uri.https(
+      'api.github.com',
+      '/repos/${githubRepositoryUrl.path.substring(1)}/releases/latest',
     );
+    final Response response =
+        client != null ? await client!.get(url) : await get(url);
 
     if (response.statusCode < 400) {
       return GithubRelease.fromJson(jsonDecode(response.body));
@@ -121,7 +117,9 @@ class AlfredUpdater {
     FileSystem? fileSystem,
     Directory? directory,
   }) async {
-    final Response response = await _client.get(asset.browserDownloadUrl);
+    final Response response = client != null
+        ? await client!.get(asset.browserDownloadUrl)
+        : await get(asset.browserDownloadUrl);
 
     if (response.statusCode < 400) {
       fileSystem ??= LocalFileSystem();
