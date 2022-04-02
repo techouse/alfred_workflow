@@ -1,13 +1,13 @@
 # Alfred Workflow
 
-A helper library in Dart for authors of workflows for Alfred 3 and 4.
+A helper library in Dart for authors of workflows for [Alfred](https://www.alfredapp.com).
 
 [![Pub Version](https://img.shields.io/pub/v/alfred_workflow)](https://pub.dev/packages/alfred_workflow)
 [![Dart CI](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml/badge.svg)](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/techouse/alfred_workflow/branch/master/graph/badge.svg?token=SkypLLzvM3)](https://codecov.io/gh/techouse/alfred_workflow)
 ![GitHub](https://img.shields.io/github/license/techouse/alfred_workflow)
 
-This library is heavily inspired by the excellent Python 2 library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
+This library is heavily inspired by the excellent Python library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
 
 In its current state it is very basic and only implements the [Alfred Script Filter JSON API](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/).
 
