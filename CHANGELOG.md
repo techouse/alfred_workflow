@@ -1,3 +1,7 @@
+## 0.1.0
+
+- Add coverage
+
 ## 0.0.8
 
 - Bug fixes
