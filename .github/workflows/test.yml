@@ -74,7 +74,7 @@ jobs:
         run: |
           dart --disable-service-auth-codes test --platform vm --coverage=./coverage
           dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov_full.info --packages=.packages --report-on=lib
-          lcov --remove ./coverage/lcov_full.info 'lib/models/*.g.dart' -o ./coverage/lcov.info
+          lcov --remove ./coverage/lcov_full.info 'lib/src/models/*.g.dart' -o ./coverage/lcov.info
       - name: Upload coverage
         uses: codecov/codecov-action@v2
         with:
