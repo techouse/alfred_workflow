@@ -11,25 +11,25 @@ environment:
   sdk: '>=2.16.0 <3.0.0'
 
 dependencies:
-  json_annotation: ^4.4.0
-  stash_file: ^4.0.1
-  path: ^1.8.1
-  crypto: ^3.0.1
-  pub_semver: ^2.1.1
-  http: ^0.13.4
   copy_with_extension: ^4.0.0
+  crypto: ^3.0.1
   equatable: ^2.0.3
+  http: ^0.13.4
+  json_annotation: ^4.4.0
   meta: ^1.7.0
+  path: ^1.8.1
+  pub_semver: ^2.1.1
+  stash_file: ^4.0.1
 
 dev_dependencies:
-  lints: ^1.0.0
-  dart_code_metrics: ^4.8.1
   build_runner: ^2.1.7
-  json_serializable: ^6.1.5
-  test: ^1.20.2
-  mockito: ^5.1.0
-  faker: ^2.0.0
   copy_with_extension_gen: ^4.0.0
+  dart_code_metrics: ^4.8.1
+  faker: ^2.0.0
+  json_serializable: ^6.1.5
+  lints: ^1.0.0
+  mockito: ^5.1.0
+  test: ^1.20.2
   data_fixture_dart:
     git:
       url: https://github.com/techouse/data_fixture_dart
