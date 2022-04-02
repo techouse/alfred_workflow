@@ -67,12 +67,15 @@ jobs:
       - id: install
         name: Install dependencies
         run: |
+          apt update
+          apt install lcov
           dart pub get
           dart pub global activate coverage
       - name: Collect and report coverage
         run: |
           dart --disable-service-auth-codes test --platform vm --coverage=./coverage
-          dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
+          dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov_full.info --packages=.packages --report-on=lib
+          lcov --remove ./coverage/lcov_full.info 'lib/models/*.g.dart' -o ./coverage/lcov.info
       - name: Upload coverage
         uses: codecov/codecov-action@v2
         with:

@@ -1,4 +1,7 @@
 analyzer:
+  exclude:
+    - "**.g.dart"
+    - "**.mocks.dart"
   plugins:
     - dart_code_metrics
 
