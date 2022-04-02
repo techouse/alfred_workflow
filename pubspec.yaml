@@ -11,11 +11,13 @@ dependencies:
   copy_with_extension: ^4.0.0
   crypto: ^3.0.1
   equatable: ^2.0.3
+  file: ^6.1.2
   http: ^0.13.4
   json_annotation: ^4.4.0
   meta: ^1.7.0
   path: ^1.8.1
   pub_semver: ^2.1.1
+  stash: ^4.0.1
   stash_file: ^4.0.1
 
 dev_dependencies:
