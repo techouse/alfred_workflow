@@ -83,7 +83,7 @@ To search for the string "hello" simply execute this on the commandline:
 dart run example.dart --query 'hello'
 ```
 
-Check out the full [example here](example/basic.dart).
+Check out the [basic example here](example/alfred_workflow_example.dart).
 
 ### :zap: Speed it up using caching
 
@@ -119,7 +119,7 @@ if (cachedItems == null) {
 }
 ```
 
-Check out the full [example here](example/caching.dart).
+Check out the [caching example here](example/alfred_workflow_caching_example.dart).
 
 ### :arrow_up: Auto-Update your workflows via GitHub releases
 
@@ -151,7 +151,7 @@ To update the workflow simply run this from the commandline:
 dart run example.dart --update
 ```
 
-Check out the full [example here](example/auto_update.dart).
+Check out the [auto-update example here](example/alfred_workflow_auto_update_example.dart).
 
 ## :rocket: Building the workflow for production
 
