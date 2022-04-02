@@ -3,6 +3,7 @@
 A helper library in Dart for authors of workflows for Alfred 3 and 4.
 
 [![Dart CI](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml/badge.svg)](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/techouse/alfred_workflow/branch/master/graph/badge.svg?token=SkypLLzvM3)](https://codecov.io/gh/techouse/alfred_workflow)
 ![GitHub](https://img.shields.io/github/license/techouse/alfred_workflow)
 
 This library is heavily inspired by the excellent Python 2 library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
