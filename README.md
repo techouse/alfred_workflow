@@ -13,7 +13,7 @@ In its current state it is very basic and only implements the [Alfred Script Fil
 
 ## :children_crossing: Usage
 
-### :technologist: Basic example
+### :tada: Basic example
 
 ```dart
 void main(List<String> arguments) async {
