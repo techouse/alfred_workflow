@@ -4,3 +4,6 @@
 
 # IDE specific
 .idea/
+
+# Coverage
+coverage/
