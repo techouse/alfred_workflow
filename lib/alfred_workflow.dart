@@ -58,8 +58,7 @@ class AlfredWorkflow {
 
   /// Add single [item]
   ///
-  /// Optionally you can add the [AlfredItem] to the beginning by setting
-  /// [toBeginning] to true.
+  /// Optionally you can add the [AlfredItem] to the beginning by setting [toBeginning] to true.
   /// If the [cacheKey] is set that [item] will be cached.
   Future<void> addItem(AlfredItem item, {bool toBeginning = false}) async {
     if (toBeginning) {
@@ -96,8 +95,7 @@ class AlfredWorkflow {
 
   /// Returns a JSON [String] representation of the [AlfredItem] items.
   ///
-  /// Optionally you can add an [AlfredItem] to the beginning by using
-  /// [addToBeginning] or to the end by using [addToEnd].
+  /// Optionally you can add an [AlfredItem] to the beginning by using [addToBeginning] or to the end by using [addToEnd].
   /// Either item will never be cached!
   Future<String> toJsonString({
     AlfredItem? addToBeginning,
@@ -114,8 +112,7 @@ class AlfredWorkflow {
     return jsonEncode(items.toJson());
   }
 
-  /// Use this convenience method to print the AlfredItems in JSON format to
-  /// stdout.
+  /// Use this convenience method to print the AlfredItems in JSON format to stdout.
   Future<void> run({
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
