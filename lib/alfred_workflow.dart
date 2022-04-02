@@ -36,14 +36,19 @@ class AlfredWorkflow {
 
   String? _cacheKey;
 
+  /// Get the cacheKey
   String? get cacheKey => _cacheKey;
 
-  /// To cache the results set a cache key
+  /// To cache the results set a [String] cache key
   set cacheKey(String? value) => _cacheKey = value;
 
+  /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
       cacheKey != null ? await _cache.get(cacheKey!.md5hex) : _items;
 
+  /// Add multiple [items]
+  ///
+  /// If the [cacheKey] is set those [items] will be cached.
   Future<void> addItems(List<AlfredItem> items) async {
     _items.items..addAll(items);
     if (cacheKey != null) {
@@ -51,6 +56,11 @@ class AlfredWorkflow {
     }
   }
 
+  /// Add single [item]
+  ///
+  /// Optionally you can add the [AlfredItem] to the beginning by setting
+  /// [toBeginning] to true.
+  /// If the [cacheKey] is set that [item] will be cached.
   Future<void> addItem(AlfredItem item, {bool toBeginning = false}) async {
     if (toBeginning) {
       _items.items.insert(0, item);
@@ -76,6 +86,7 @@ class AlfredWorkflow {
     }
   }
 
+  /// Delete all [AlfredItem].
   Future<void> clearItems() async {
     _items.items..clear();
     if (cacheKey != null) {
@@ -83,6 +94,11 @@ class AlfredWorkflow {
     }
   }
 
+  /// Returns a JSON [String] representation of the [AlfredItem] items.
+  ///
+  /// Optionally you can add an [AlfredItem] to the beginning by using
+  /// [addToBeginning] or to the end by using [addToEnd].
+  /// Either item will never be cached!
   Future<String> toJsonString({
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
@@ -98,6 +114,8 @@ class AlfredWorkflow {
     return jsonEncode(items.toJson());
   }
 
+  /// Use this convenience method to print the AlfredItems in JSON format to
+  /// stdout.
   Future<void> run({
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,

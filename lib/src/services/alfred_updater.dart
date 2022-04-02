@@ -46,8 +46,12 @@ class AlfredUpdater {
       .cache;
   late final Version _currentVersion;
 
+  /// Get a [String] representation of the [_currentVersion].
   String get currentVersion => _currentVersion.toString();
 
+  /// Check if an update is available .
+  ///
+  /// Checking the workflow's Github repository URL and version.
   Future<bool> updateAvailable() async {
     final GithubRelease? cachedRelease = await _cache.get(updateKey.md5hex);
 
@@ -66,6 +70,12 @@ class AlfredUpdater {
     return false;
   }
 
+  /// Convenience method to update the workflow.
+  ///
+  /// - First, check if [updateAvailable] returns true.
+  /// - Second, check if any [GithubRelease] is cached; if not [fetchLatestRelease] from Github.
+  /// - Third, compare the [_currentVersion] and the [GithubRelease] version; if it's greater than the current version.
+  /// - Lastly, [findAlfredWorkflowAsset] in the [GithubRelease] and [downloadAsset] and [openAssetFile].
   Future<void> update() async {
     if (!await updateAvailable()) return;
 
@@ -84,6 +94,7 @@ class AlfredUpdater {
     }
   }
 
+  /// Fetch latest release from the Github API.
   @visibleForTesting
   Future<GithubRelease?> fetchLatestRelease() async {
     final Uri url = Uri.https(
@@ -100,6 +111,7 @@ class AlfredUpdater {
     return null;
   }
 
+  /// Find the first [GithubAsset] ending in '.alfredworkflow' file in the [GithubRelease] assets list.
   @visibleForTesting
   GithubAsset? findAlfredWorkflowAsset(GithubRelease release) {
     for (final GithubAsset asset in release.assets) {
@@ -111,6 +123,7 @@ class AlfredUpdater {
     return null;
   }
 
+  /// Download the '*.alfredworkflow' [GithubAsset] to the system temp and return a [File]
   @visibleForTesting
   Future<File?> downloadAsset(
     GithubAsset asset, {
@@ -136,6 +149,7 @@ class AlfredUpdater {
     return null;
   }
 
+  /// Execute the downloaded '*.alfredworkflow' [GithubAsset] using the macOS open Command
   @visibleForTesting
   Future<void> openAssetFile(File assetFile) async {
     final result = await Process.run('open', [assetFile.absolute.path]);
