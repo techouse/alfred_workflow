@@ -1,9 +1,9 @@
 import 'dart:convert' show jsonEncode, utf8;
 import 'dart:typed_data';
 
-import 'package:alfred_workflow/alfred_workflow.dart';
 import 'package:alfred_workflow/src/models/github_asset.dart';
 import 'package:alfred_workflow/src/models/github_release.dart';
+import 'package:alfred_workflow/src/services/alfred_updater.dart';
 import 'package:faker/faker.dart';
 import 'package:file/file.dart';
 import 'package:file/memory.dart';
