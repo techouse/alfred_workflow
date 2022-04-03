@@ -4,6 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'github_user.g.dart';
 
+/// [GithubUser] implements all the properties of the [Github Users API](https://docs.github.com/en/rest/reference/users)
 @JsonSerializable(fieldRename: FieldRename.snake)
 @CopyWith()
 class GithubUser with EquatableMixin {

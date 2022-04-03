@@ -1,4 +1,5 @@
 import 'dart:io' show Platform;
+import 'dart:developer' show log;
 
 import 'package:path/path.dart' show dirname;
 import 'package:stash/stash_api.dart'
@@ -14,10 +15,12 @@ import 'package:stash/stash_api.dart'
         EventListenerMode,
         EvictionPolicy,
         ExpiryPolicy,
-        LruEvictionPolicy;
+        LruEvictionPolicy,
+        Store;
 import 'package:stash_file/stash_file.dart'
     show FileCacheStore, newFileLocalCacheStore;
 
+/// [AlfredCache] provides a [Cache] backed by a [Store]
 class AlfredCache<T> {
   AlfredCache({
     required this.fromEncodable,
@@ -31,19 +34,38 @@ class AlfredCache<T> {
     this.verbose = false,
   }) : assert(maxEntries > 0, 'maxEntries must be positive number');
 
+  /// A custom function the converts to the object from a `Map<String, dynamic>` representation
   final T Function(Map<String, dynamic>) fromEncodable;
+
+  /// The base storage location for this store
   final String? path;
+
+  /// The max number of entries this cache can hold if provided. To trigger the eviction policy this value should be provided
   final int maxEntries;
+
+  /// The name of the cache
   final String name;
+
+  /// Defines the eviction policy contract that every cache eviction algorithm should implement
   final EvictionPolicy evictionPolicy;
+
+  /// Defines functions to determine when cache entries will expire based on
+  /// creation, access and modification operations.
+  ///
+  /// Each of the functions return a new [Duration] that specifies the
+  /// amount of time that must pass before a cache entry is considered expired.
   final ExpiryPolicy expiryPolicy;
+
+  /// If [verbose] = true then listeners will print events to the developer log
   final bool verbose;
 
+  /// The local [FileCacheStore]
   late final FileCacheStore store = newFileLocalCacheStore(
     path: path ?? dirname(Platform.script.toFilePath()),
     fromEncodable: fromEncodable,
   );
 
+  /// The [Cache] backed by a [Store]
   late final Cache<T> cache = store.cache<T>(
     name: name,
     maxEntries: maxEntries,
@@ -52,18 +74,18 @@ class AlfredCache<T> {
     expiryPolicy: expiryPolicy,
   )
     ..on<CacheEntryCreatedEvent<T>>().listen(
-      verbose ? (event) => print('Key "${event.entry.key}" added') : null,
+      verbose ? (event) => log('Key "${event.entry.key}" added') : null,
     )
     ..on<CacheEntryUpdatedEvent<T>>().listen(
-      verbose ? (event) => print('Key "${event.newEntry.key}" updated') : null,
+      verbose ? (event) => log('Key "${event.newEntry.key}" updated') : null,
     )
     ..on<CacheEntryRemovedEvent<T>>().listen(
-      verbose ? (event) => print('Key "${event.entry.key}" removed') : null,
+      verbose ? (event) => log('Key "${event.entry.key}" removed') : null,
     )
     ..on<CacheEntryExpiredEvent<T>>().listen(
-      verbose ? (event) => print('Key "${event.entry.key}" expired') : null,
+      verbose ? (event) => log('Key "${event.entry.key}" expired') : null,
     )
     ..on<CacheEntryEvictedEvent<T>>().listen(
-      verbose ? (event) => print('Key "${event.entry.key}" evicted') : null,
+      verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
     );
 }

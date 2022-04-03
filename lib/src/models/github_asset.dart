@@ -6,6 +6,7 @@ import 'github_user.dart';
 
 part 'github_asset.g.dart';
 
+/// [GithubAsset] implements all the properties of the [Github Release Asset API](https://docs.github.com/en/rest/reference/releases#release-assets)
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 @CopyWith()
 class GithubAsset with EquatableMixin {

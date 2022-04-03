@@ -9,6 +9,7 @@ import 'github_user.dart';
 
 part 'github_release.g.dart';
 
+/// [GithubRelease] implements all the properties of the [Github Releases API](https://docs.github.com/en/rest/reference/releases)
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 @VersionConverter.instance
 @CopyWith()

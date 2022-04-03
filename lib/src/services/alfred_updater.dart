@@ -8,7 +8,7 @@ import 'package:http/http.dart' show Client, Response, get;
 import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:pub_semver/pub_semver.dart' show Version;
 import 'package:stash/stash_api.dart'
-    show Cache, CreatedExpiryPolicy, FifoEvictionPolicy;
+    show Cache, CreatedExpiryPolicy, FifoEvictionPolicy, Store;
 
 import '../extensions/string_helpers.dart';
 import '../models/github_asset.dart';
@@ -30,10 +30,19 @@ class AlfredUpdater {
 
   static const String updateKey = 'update';
 
+  /// The [Uri] of the workflow's Github repository
   final Uri githubRepositoryUrl;
+
+  /// How often to automatically check for updates
   final Duration updateInterval;
+
+  /// Optionally customize the [AlfredCache] providing a [Cache]
   final AlfredCache<GithubRelease>? cache;
+
+  /// Optionally customize the [Client]
   final Client? client;
+
+  /// The [Cache] backed by a [Store]
   late final Cache<GithubRelease> _cache = (cache ??
           AlfredCache<GithubRelease>(
             fromEncodable: (Map<String, dynamic> json) =>
@@ -44,6 +53,8 @@ class AlfredUpdater {
             expiryPolicy: CreatedExpiryPolicy(updateInterval),
           ))
       .cache;
+
+  /// The workflow's semver [Version]
   late final Version _currentVersion;
 
   /// Get a [String] representation of the [_currentVersion].
@@ -94,7 +105,7 @@ class AlfredUpdater {
     }
   }
 
-  /// Fetch latest release from the Github API.
+  /// Fetch latest release from the [Github Releases API](https://docs.github.com/en/rest/reference/releases#get-the-latest-release).
   @visibleForTesting
   Future<GithubRelease?> fetchLatestRelease() async {
     final Uri url = Uri.https(
