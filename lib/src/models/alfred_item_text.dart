@@ -4,6 +4,9 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_text.g.dart';
 
+/// The text element defines the text the user will get when copying the selected result row with ⌘C or displaying large type with ⌘L.
+///
+/// If these are not defined, you will inherit Alfred's standard behaviour where the arg is copied to the Clipboard or used for Large Type.
 @JsonSerializable()
 @CopyWith()
 class AlfredItemText with EquatableMixin {
@@ -12,8 +15,11 @@ class AlfredItemText with EquatableMixin {
     this.largeType,
   });
 
+  /// The text to copy
   @JsonKey(required: true)
   final String copy;
+
+  /// The text for large type
   @JsonKey(name: 'largetype', includeIfNull: false)
   final String? largeType;
 

@@ -11,6 +11,9 @@ enum AlfredItemIconType {
   filetype,
 }
 
+/// The icon displayed in the result row.
+///
+/// Workflows are run from their workflow folder, so you can reference icons stored in your workflow relatively.
 @JsonSerializable()
 @CopyWith()
 class AlfredItemIcon with EquatableMixin {
@@ -19,8 +22,16 @@ class AlfredItemIcon with EquatableMixin {
     this.type,
   });
 
+  /// The local file path of the icon file.
+  ///
+  /// Alfred will not display an icon with a URL [path].
   @JsonKey(required: true)
   final String path;
+
+  /// By omitting the [type], Alfred will load the file path itself, for example a png.
+  ///
+  /// By using [type] = "fileicon", Alfred will get the icon for the specified path.
+  /// Finally, by using [type] = "filetype", you can get the icon of a specific file, for example [path] = "public.png"
   @JsonKey(includeIfNull: false)
   final AlfredItemIconType? type;
 

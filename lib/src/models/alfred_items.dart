@@ -9,6 +9,9 @@ part 'alfred_items.g.dart';
 class AlfredItems with EquatableMixin {
   AlfredItems(this.items);
 
+  /// A list of zero or more [AlfredItem]s.
+  ///
+  /// Each [AlfredItem] describes a result row displayed in Alfred.
   @JsonKey(fromJson: _itemsFromJson)
   List<AlfredItem> items;
 
