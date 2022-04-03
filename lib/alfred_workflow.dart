@@ -10,13 +10,8 @@ import 'src/models/alfred_item.dart' show AlfredItem;
 import 'src/models/alfred_items.dart' show AlfredItems;
 import 'src/services/alfred_cache.dart' show AlfredCache;
 
-export 'src/models/alfred_item.dart' show AlfredItem;
-export 'src/models/alfred_item_icon.dart'
-    show AlfredItemIcon, AlfredItemIconType;
-export 'src/models/alfred_item_text.dart' show AlfredItemText;
-export 'src/models/alfred_items.dart' show AlfredItems;
-export 'src/services/alfred_cache.dart' show AlfredCache;
-export 'src/services/alfred_updater.dart' show AlfredUpdater;
+export 'src/models/index.dart';
+export 'src/services/index.dart';
 
 class AlfredWorkflow {
   AlfredWorkflow({

@@ -1,7 +1,7 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
-import 'package:pub_semver/pub_semver.dart';
+import 'package:pub_semver/pub_semver.dart' show Version;
 
 import '../converters/version_converter.dart';
 import 'github_asset.dart';

@@ -1,5 +1,6 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:json_annotation/json_annotation.dart'
+    show JsonSerializable, JsonKey;
 
 import 'alfred_item.dart';
 
