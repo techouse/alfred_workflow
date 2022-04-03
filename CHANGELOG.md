@@ -1,3 +1,8 @@
+## 0.1.3
+
+- Add more documentation
+- Refactor exports
+
 ## 0.1.2
 
 - Limit library to macOS only as Alfred is a macOS only app.
