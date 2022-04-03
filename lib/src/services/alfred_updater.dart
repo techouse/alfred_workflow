@@ -19,6 +19,13 @@ part 'alfred_updater.g.dart';
 
 @CopyWith()
 class AlfredUpdater {
+  /// Builds an [AlfredUpdater]
+  ///
+  /// * [githubRepositoryUrl] : The [Uri] of the workflow's Github repository
+  /// * [currentVersion] : The workflow's semver version
+  /// * [updateInterval] : Optionally customize how often to automatically check for updates
+  /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
+  /// * [client] : Optionally customize the http [Client]
   AlfredUpdater({
     required this.githubRepositoryUrl,
     required String currentVersion,
@@ -28,6 +35,7 @@ class AlfredUpdater {
   })  : assert(githubRepositoryUrl.host == 'github.com'),
         _currentVersion = Version.parse(currentVersion);
 
+  /// The cache key under which the cached [GithubRelease] is stored
   static const String updateKey = 'update';
 
   /// The [Uri] of the workflow's Github repository
@@ -42,7 +50,6 @@ class AlfredUpdater {
   /// Optionally customize the [Client]
   final Client? client;
 
-  /// The [Cache] backed by a [Store]
   late final Cache<GithubRelease> _cache = (cache ??
           AlfredCache<GithubRelease>(
             fromEncodable: (Map<String, dynamic> json) =>

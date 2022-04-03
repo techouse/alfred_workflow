@@ -20,8 +20,16 @@ import 'package:stash/stash_api.dart'
 import 'package:stash_file/stash_file.dart'
     show FileCacheStore, newFileLocalCacheStore;
 
-/// [AlfredCache] provides a [Cache] backed by a [Store]
 class AlfredCache<T> {
+  /// Builds an [AlfredCache] providing a [Cache] backed by a [Store]
+  ///
+  /// * [fromEncodable] : A custom function the converts to the object from a `Map<String, dynamic>` representation
+  /// * [path] : Optionally customize the base storage location for this store
+  /// * [maxEntries] : The max number of entries this cache can hold if provided. Defaults to 10.
+  /// * [name] : The name of the cache. Defaults to "query_cache".
+  /// * [evictionPolicy] : Optionally customize the [EvictionPolicy]. Defaults to [LruEvictionPolicy]
+  /// * [expiryPolicy] : Optionally customize the [ExpiryPolicy]. Defaults to [CreatedExpiryPolicy] with a [Duration] of 1 minute.
+  /// * [verbose] : If set to true then listeners will print events to the developer log. Defaults to false.
   AlfredCache({
     required this.fromEncodable,
     this.path,

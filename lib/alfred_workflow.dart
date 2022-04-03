@@ -3,7 +3,7 @@ library alfred_workflow;
 import 'dart:convert' show jsonEncode;
 import 'dart:io' show stdout;
 
-import 'package:stash/stash_api.dart' show Cache;
+import 'package:stash/stash_api.dart' show Cache, Store;
 
 import 'src/extensions/string_helpers.dart' show StringHelpers;
 import 'src/models/alfred_item.dart' show AlfredItem;
@@ -14,6 +14,9 @@ export 'src/models/index.dart';
 export 'src/services/index.dart';
 
 class AlfredWorkflow {
+  /// Builds an [AlfredWorkflow]
+  ///
+  /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
   AlfredWorkflow({
     AlfredCache<AlfredItems>? cache,
   }) : _alfredCache = cache;
