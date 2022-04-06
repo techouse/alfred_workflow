@@ -20,12 +20,18 @@ import 'alfred_updater_test.mocks.dart';
 @GenerateMocks([http.Client])
 void main() async {
   final Faker faker = Faker();
+  late MockClient client;
+  late String repoName;
+  late String login;
+
+  setUp(() {
+    client = MockClient();
+    repoName = faker.lorem.words(3).join('-').toLowerCase();
+    login = faker.lorem.word().toLowerCase();
+  });
 
   group('updateAvailable', () {
     test('returns true when the local version is outdated', () async {
-      final MockClient client = MockClient();
-      final String repoName = faker.lorem.words(3).join('-').toLowerCase();
-      final String login = faker.lorem.word().toLowerCase();
       final String currentVersion = '1.0.0';
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
@@ -59,9 +65,6 @@ void main() async {
     });
 
     test('returns false when the local version is up to date', () async {
-      final MockClient client = MockClient();
-      final String repoName = faker.lorem.words(3).join('-').toLowerCase();
-      final String login = faker.lorem.word().toLowerCase();
       final String currentVersion = '1.0.0';
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
@@ -95,9 +98,6 @@ void main() async {
     });
 
     test('returns false when the local version from the future', () async {
-      final MockClient client = MockClient();
-      final String repoName = faker.lorem.words(3).join('-').toLowerCase();
-      final String login = faker.lorem.word().toLowerCase();
       final String currentVersion = '2.0.0';
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
@@ -132,28 +132,32 @@ void main() async {
   });
 
   group('update', () {
-    final MockClient client = MockClient();
-    final String repoName = faker.lorem.words(3).join('-').toLowerCase();
-    final String login = faker.lorem.word().toLowerCase();
-    final String currentVersion = '1.0.0';
+    late String currentVersion;
+    late AlfredUpdater updater;
+    late GithubRelease githubRelease;
+    late GithubAsset asset;
 
-    final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
-      AlfredUpdaterFixture.factory.githubRepositoryUrl(
-        Uri.https('github.com', '/${login}/${repoName}'),
-      ),
-      AlfredUpdaterFixture.factory.currentVersion(currentVersion),
-      AlfredUpdaterFixture.factory.client(client),
-    ]).makeSingle();
+    setUp(() {
+      currentVersion = '1.0.0';
 
-    final GithubRelease githubRelease = GithubReleaseFixture.factory
-        .redefine(GithubReleaseFixture.factory.withDetails(
-          repoName: repoName,
-          login: login,
-          tagName: 'v2.0.0',
-        ))
-        .makeSingle();
+      updater = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/${login}/${repoName}'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
 
-    final GithubAsset asset = githubRelease.assets.first;
+      githubRelease = GithubReleaseFixture.factory
+          .redefine(GithubReleaseFixture.factory.withDetails(
+            repoName: repoName,
+            login: login,
+            tagName: 'v2.0.0',
+          ))
+          .makeSingle();
+
+      asset = githubRelease.assets.first;
+    });
 
     test('fetchLatestRelease', () async {
       when(

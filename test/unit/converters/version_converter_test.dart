@@ -5,12 +5,17 @@ import 'package:test/test.dart';
 
 void main() {
   final Faker faker = Faker();
+  late int major;
+  late int minor;
+  late int patch;
+
+  setUp(() {
+    major = faker.randomGenerator.integer(99, min: 0);
+    minor = faker.randomGenerator.integer(99, min: 0);
+    patch = faker.randomGenerator.integer(99, min: 1);
+  });
 
   test('fromJson', () {
-    final int major = faker.randomGenerator.integer(99, min: 0);
-    final int minor = faker.randomGenerator.integer(99, min: 0);
-    final int patch = faker.randomGenerator.integer(99, min: 1);
-
     expect(
       VersionConverter.instance.fromJson('$major.$minor.$patch'),
       Version(major, minor, patch),
