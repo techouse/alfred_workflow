@@ -173,6 +173,7 @@ You can then invoke the executable from the commandline:
 ## :seedling: A couple of my Alfred Workflows built using this library
 
 - [alfred-flutter-docs](https://github.com/techouse/alfred-flutter-docs)
+- [alfred-dart-docs](https://github.com/techouse/alfred-dart-docs)
 - [alfred-react-docs](https://github.com/techouse/alfred-react-docs)
 - [alfred-vue-docs](https://github.com/techouse/alfred-vue-docs)
 - [alfred-tailwindcss-docs](https://github.com/techouse/alfred-tailwindcss-docs)
