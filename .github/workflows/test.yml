@@ -19,8 +19,8 @@ jobs:
       matrix:
         sdk: [ dev ]
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
       - id: install
@@ -45,8 +45,8 @@ jobs:
         os: [ macos-latest ]
         sdk: [ stable, dev ]
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: ${{ matrix.sdk }}
       - id: install
@@ -60,8 +60,8 @@ jobs:
     needs: test
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: dart-lang/setup-dart@v1.0
+      - uses: actions/checkout@v3
+      - uses: dart-lang/setup-dart@v1
         with:
           sdk: dev
       - id: install
@@ -69,14 +69,12 @@ jobs:
         run: |
           dart pub get
           dart pub global activate coverage
-          dart pub global activate remove_from_coverage
       - name: Collect and report coverage
         run: |
-          dart --disable-service-auth-codes test --platform vm --coverage=./coverage
-          dart pub global run coverage:format_coverage --lcov --in=coverage --out=coverage/lcov.info --packages=.packages --report-on=lib
-          dart pub global run remove_from_coverage:remove_from_coverage -f coverage/lcov.info -r '\.g\.dart$'
+          dart pub global run coverage:test_with_coverage
+          lcov --remove coverage/lcov.info '**.g.dart' '**.mock.dart' -o coverage/lcov_without_generated_code.info
       - name: Upload coverage
         uses: codecov/codecov-action@v2
         with:
-          file: ./coverage/lcov.info
+          file: ./coverage/lcov_without_generated_code.info
           verbose: true
