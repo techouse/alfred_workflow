@@ -69,12 +69,13 @@ jobs:
         run: |
           dart pub get
           dart pub global activate coverage
+          dart pub global activate remove_from_coverage
       - name: Collect and report coverage
         run: |
           dart pub global run coverage:test_with_coverage
-          lcov --remove coverage/lcov.info '**.g.dart' '**.mock.dart' -o coverage/lcov_without_generated_code.info
+          dart pub global run remove_from_coverage:remove_from_coverage -f coverage/lcov.info -r '\.g\.dart$'
       - name: Upload coverage
         uses: codecov/codecov-action@v2
         with:
-          file: ./coverage/lcov_without_generated_code.info
+          file: ./coverage/lcov.info
           verbose: true
