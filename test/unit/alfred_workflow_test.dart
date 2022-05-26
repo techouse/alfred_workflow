@@ -32,6 +32,11 @@ void main() async {
       expect(await workflow.getItems(), AlfredItems([]));
     });
 
+    test('addItem adds single item', () async {
+      await workflow.addItem(item);
+      expect(await workflow.getItems(), AlfredItems([item]));
+    });
+
     test('addItems adds multiple items', () async {
       await workflow.addItems(itemsList);
       expect(await workflow.getItems(), AlfredItems(itemsList));
@@ -100,6 +105,11 @@ void main() async {
 
     test('getItems without adding anything is null', () async {
       expect(await workflow.getItems(), null);
+    });
+
+    test('addItem adds single item', () async {
+      await workflow.addItem(item);
+      expect(await workflow.getItems(), AlfredItems([item]));
     });
 
     test('addItems adds multiple items', () async {
