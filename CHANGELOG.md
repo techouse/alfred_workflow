@@ -1,4 +1,8 @@
-# 0.1.4
+## 0.1.5
+
+- Fix typo in changelog
+
+## 0.1.4
 
 - Use a copy of AlfredItems when adding to beginning or end of JSON string
 - Update dependencies
