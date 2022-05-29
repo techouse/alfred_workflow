@@ -101,6 +101,6 @@ class _$AlfredUpdaterCWProxyImpl implements _$AlfredUpdaterCWProxy {
 }
 
 extension $AlfredUpdaterCopyWith on AlfredUpdater {
-  /// Returns a callable class that can be used as follows: `instanceOfclass AlfredUpdater.name.copyWith(...)` or like so:`instanceOfclass AlfredUpdater.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfAlfredUpdater.copyWith(...)` or like so:`instanceOfAlfredUpdater.copyWith.fieldName(...)`.
   _$AlfredUpdaterCWProxy get copyWith => _$AlfredUpdaterCWProxyImpl(this);
 }

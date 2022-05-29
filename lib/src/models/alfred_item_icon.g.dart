@@ -61,7 +61,7 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
 }
 
 extension $AlfredItemIconCopyWith on AlfredItemIcon {
-  /// Returns a callable class that can be used as follows: `instanceOfclass AlfredItemIcon with EquatableMixin.name.copyWith(...)` or like so:`instanceOfclass AlfredItemIcon with EquatableMixin.name.copyWith.fieldName(...)`.
+  /// Returns a callable class that can be used as follows: `instanceOfAlfredItemIcon.copyWith(...)` or like so:`instanceOfAlfredItemIcon.copyWith.fieldName(...)`.
   _$AlfredItemIconCWProxy get copyWith => _$AlfredItemIconCWProxyImpl(this);
 }
 
