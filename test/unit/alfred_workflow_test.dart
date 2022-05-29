@@ -169,4 +169,61 @@ void main() async {
       expect(json, containsSubstring(item.title));
     });
   });
+
+  group('AlfredWorkflow stdout', () {
+    late AlfredWorkflow workflow;
+
+    late AlfredItem itemBefore;
+    late AlfredItem itemAfter;
+
+    setUp(() {
+      workflow = AlfredWorkflowFixture.factory.makeSingle();
+      itemBefore = AlfredItemFixture.factory
+          .redefine(AlfredItemFixture.factory.title('the one before'))
+          .makeSingle();
+      itemAfter = AlfredItemFixture.factory
+          .redefine(AlfredItemFixture.factory.title('the one after'))
+          .makeSingle();
+    });
+
+    test('single item gets printed to stdout', () async {
+      await workflow.addItem(item);
+      final String json = await workflow.toJsonString();
+      expect(
+        () async => await workflow.run(toStdout: false),
+        prints('$json\n'),
+      );
+    });
+
+    test(
+      'run with addToBeginning adds single item to beginning of items',
+      () async {
+        await workflow.addItem(item);
+        final String json = await workflow.toJsonString(
+          addToBeginning: itemBefore,
+        );
+        expect(
+          () async => await workflow.run(
+            addToBeginning: itemBefore,
+            toStdout: false,
+          ),
+          prints('$json\n'),
+        );
+      },
+    );
+
+    test('run with addToEnd adds single item to end of items', () async {
+      await workflow.addItem(item);
+      final String json = await workflow.toJsonString(
+        addToEnd: itemAfter,
+      );
+      expect(
+        () async => await workflow.run(
+          addToEnd: itemAfter,
+          toStdout: false,
+        ),
+        prints('$json\n'),
+      );
+    });
+  });
 }
