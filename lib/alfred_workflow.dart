@@ -100,11 +100,19 @@ class AlfredWorkflow {
     AlfredItem? addToEnd,
   }) async {
     final AlfredItems items = await getItems() ?? _items;
-    if (addToBeginning != null) {
-      items.items.insert(0, addToBeginning);
-    }
-    if (addToEnd != null) {
-      items.items.add(addToEnd);
+
+    if (addToBeginning != null || addToEnd != null) {
+      final AlfredItems copy = AlfredItems([...items.items]);
+
+      if (addToBeginning != null) {
+        copy.items.insert(0, addToBeginning);
+      }
+
+      if (addToEnd != null) {
+        copy.items.add(addToEnd);
+      }
+
+      return jsonEncode(copy.toJson());
     }
 
     return jsonEncode(items.toJson());
@@ -114,11 +122,17 @@ class AlfredWorkflow {
   Future<void> run({
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
+    bool toStdout = true,
   }) async {
     final String json = await toJsonString(
       addToBeginning: addToBeginning,
       addToEnd: addToEnd,
     );
-    stdout.write(json);
+
+    if (toStdout) {
+      stdout.write(json);
+    } else {
+      print(json);
+    }
   }
 }
