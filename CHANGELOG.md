@@ -1,3 +1,10 @@
+# 0.1.4
+
+- Use a copy of AlfredItems when adding to beginning or end of JSON string
+- Update dependencies
+- Rebuild generated files
+- Add more tests
+
 ## 0.1.3
 
 - Add more documentation
