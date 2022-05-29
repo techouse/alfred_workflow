@@ -29,7 +29,7 @@ dev_dependencies:
   dart_code_metrics: ^4.8.1
   faker: ^2.0.0
   json_serializable: ^6.1.5
-  lints: ^1.0.0
+  lints: ^2.0.0
   mockito: ^5.1.0
   test: ^1.20.2
   data_fixture_dart:
