@@ -1,3 +1,7 @@
+## 0.1.6
+
+- Pin stash to 4.0.x
+
 ## 0.1.5
 
 - Fix typo in changelog

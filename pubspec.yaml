@@ -2,7 +2,7 @@ name: alfred_workflow
 description: A helper library in Dart for authors of workflows for Alfred.
 homepage: https://github.com/techouse/alfred_workflow
 
-version: 0.1.5
+version: 0.1.6
 
 platforms:
   macos:
@@ -20,8 +20,8 @@ dependencies:
   meta: ^1.7.0
   path: ^1.8.1
   pub_semver: ^2.1.1
-  stash: ^4.0.1
-  stash_file: ^4.0.1
+  stash: '>=4.0.0 <4.1.0'
+  stash_file: '>=4.0.0 <4.1.0'
 
 dev_dependencies:
   build_runner: ^2.1.7
