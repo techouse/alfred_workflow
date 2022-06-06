@@ -25,7 +25,7 @@ class AlfredWorkflow {
 
   final AlfredCache<AlfredItems>? _alfredCache;
 
-  late final Cache<AlfredItems> _cache = (_alfredCache ??
+  late final Future<Cache<AlfredItems>> _cache = (_alfredCache ??
           AlfredCache<AlfredItems>(
             fromEncodable: (Map<String, dynamic> json) =>
                 AlfredItems.fromJson(json),
@@ -42,7 +42,7 @@ class AlfredWorkflow {
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
-      cacheKey != null ? await _cache.get(cacheKey!.md5hex) : _items;
+      cacheKey != null ? await (await _cache).get(cacheKey!.md5hex) : _items;
 
   /// Add multiple [items]
   ///
@@ -50,7 +50,7 @@ class AlfredWorkflow {
   Future<void> addItems(List<AlfredItem> items) async {
     _items.items..addAll(items);
     if (cacheKey != null) {
-      await _cache.put(cacheKey!.md5hex, AlfredItems(items));
+      await (await _cache).put(cacheKey!.md5hex, AlfredItems(items));
     }
   }
 
@@ -66,16 +66,19 @@ class AlfredWorkflow {
     }
 
     if (cacheKey != null) {
-      AlfredItems? cachedItems = await _cache.get(cacheKey!.md5hex);
+      final Cache<AlfredItems> cache = await _cache;
+
+      AlfredItems? cachedItems = await cache.get(cacheKey!.md5hex);
+
       if (cachedItems != null) {
-        await _cache.put(
+        await cache.put(
           cacheKey!.md5hex,
           toBeginning
               ? AlfredItems([item, ...cachedItems.items])
               : AlfredItems([...cachedItems.items, item]),
         );
       } else {
-        await _cache.put(
+        await cache.put(
           cacheKey!.md5hex,
           AlfredItems([item]),
         );
@@ -87,7 +90,7 @@ class AlfredWorkflow {
   Future<void> clearItems() async {
     _items.items..clear();
     if (cacheKey != null) {
-      await _cache.remove(cacheKey!.md5hex);
+      await (await _cache).remove(cacheKey!.md5hex);
     }
   }
 

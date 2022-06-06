@@ -50,7 +50,8 @@ class AlfredUpdater {
   /// Optionally customize the [Client]
   final Client? client;
 
-  late final Cache<GithubRelease> _cache = (cache ??
+  late final Future<Cache<GithubRelease>> _cache = (cache ??
+          // coverage:ignore-start
           AlfredCache<GithubRelease>(
             fromEncodable: (Map<String, dynamic> json) =>
                 GithubRelease.fromJson(json),
@@ -58,7 +59,8 @@ class AlfredUpdater {
             name: 'update_cache',
             evictionPolicy: const FifoEvictionPolicy(),
             expiryPolicy: CreatedExpiryPolicy(updateInterval),
-          ))
+          ) // coverage:ignore-end
+      )
       .cache;
 
   /// The workflow's semver [Version]
@@ -71,7 +73,9 @@ class AlfredUpdater {
   ///
   /// Checking the workflow's Github repository URL and version.
   Future<bool> updateAvailable() async {
-    final GithubRelease? cachedRelease = await _cache.get(updateKey.md5hex);
+    final Cache<GithubRelease> cache = await _cache;
+
+    final GithubRelease? cachedRelease = await cache.get(updateKey.md5hex);
 
     if (cachedRelease != null) {
       return cachedRelease.tagName > _currentVersion;
@@ -79,7 +83,7 @@ class AlfredUpdater {
       final GithubRelease? release = await fetchLatestRelease();
 
       if (release != null) {
-        await _cache.put(updateKey.md5hex, release);
+        await cache.put(updateKey.md5hex, release);
 
         return release.tagName > _currentVersion;
       }
@@ -94,11 +98,12 @@ class AlfredUpdater {
   /// - Second, check if any [GithubRelease] is cached; if not [fetchLatestRelease] from Github.
   /// - Third, compare the [_currentVersion] and the [GithubRelease] version; if it's greater than the current version.
   /// - Lastly, [findAlfredWorkflowAsset] in the [GithubRelease] and [downloadAsset] and [openAssetFile].
+  // coverage:ignore-start
   Future<void> update() async {
     if (!await updateAvailable()) return;
 
-    final GithubRelease? release =
-        await _cache.get(updateKey.md5hex) ?? await fetchLatestRelease();
+    final GithubRelease? release = await (await _cache).get(updateKey.md5hex) ??
+        await fetchLatestRelease();
     if (release != null) {
       if (release.tagName > _currentVersion) {
         final GithubAsset? asset = findAlfredWorkflowAsset(release);
@@ -110,7 +115,7 @@ class AlfredUpdater {
         }
       }
     }
-  }
+  } // coverage:ignore-end
 
   /// Fetch latest release from the [Github Releases API](https://docs.github.com/en/rest/reference/releases#get-the-latest-release).
   @visibleForTesting
@@ -150,13 +155,15 @@ class AlfredUpdater {
   }) async {
     final Response response = client != null
         ? await client!.get(asset.browserDownloadUrl)
-        : await get(asset.browserDownloadUrl);
+        : await get(asset.browserDownloadUrl); // coverage:ignore-line
 
     if (response.statusCode < 400) {
+      // coverage:ignore-start
       fileSystem ??= LocalFileSystem();
       directory ??= await fileSystem.systemTempDirectory.createTemp(
         'alfred_workflow_update',
       );
+      // coverage:ignore-end
       final File file =
           await fileSystem.file('${directory.path}/${asset.name}').create();
       file.writeAsBytes(response.bodyBytes);
@@ -168,10 +175,11 @@ class AlfredUpdater {
   }
 
   /// Execute the downloaded '*.alfredworkflow' [GithubAsset] using the macOS open Command
+  // coverage:ignore-start
   @visibleForTesting
   Future<void> openAssetFile(File assetFile) async {
     final result = await Process.run('open', [assetFile.absolute.path]);
     stdout.write(result.stdout);
     stderr.write(result.stderr);
-  }
+  } // coverage:ignore-end
 }

@@ -23,7 +23,7 @@ class MockAlfredCache<T> extends AlfredCache<T> {
           verbose: verbose,
         );
 
-  late final FileCacheStore store = newFileMemoryCacheStore(
+  late final Future<FileCacheStore> store = newFileMemoryCacheStore(
     fromEncodable: fromEncodable,
   );
 }

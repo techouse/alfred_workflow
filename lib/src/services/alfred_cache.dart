@@ -1,5 +1,5 @@
-import 'dart:io' show Platform;
 import 'dart:developer' show log;
+import 'dart:io' show Platform;
 
 import 'package:path/path.dart' show dirname;
 import 'package:stash/stash_api.dart'
@@ -68,32 +68,34 @@ class AlfredCache<T> {
   final bool verbose;
 
   /// The local [FileCacheStore]
-  late final FileCacheStore store = newFileLocalCacheStore(
+  late final Future<FileCacheStore> store = newFileLocalCacheStore(
     path: path ?? dirname(Platform.script.toFilePath()),
     fromEncodable: fromEncodable,
   );
 
   /// The [Cache] backed by a [Store]
-  late final Cache<T> cache = store.cache<T>(
-    name: name,
-    maxEntries: maxEntries,
-    eventListenerMode: EventListenerMode.synchronous,
-    evictionPolicy: evictionPolicy,
-    expiryPolicy: expiryPolicy,
-  )
-    ..on<CacheEntryCreatedEvent<T>>().listen(
-      verbose ? (event) => log('Key "${event.entry.key}" added') : null,
+  late final Future<Cache<T>> cache = store.then(
+    (FileCacheStore cacheStore) async => await cacheStore.cache<T>(
+      name: name,
+      maxEntries: maxEntries,
+      eventListenerMode: EventListenerMode.synchronous,
+      evictionPolicy: evictionPolicy,
+      expiryPolicy: expiryPolicy,
     )
-    ..on<CacheEntryUpdatedEvent<T>>().listen(
-      verbose ? (event) => log('Key "${event.newEntry.key}" updated') : null,
-    )
-    ..on<CacheEntryRemovedEvent<T>>().listen(
-      verbose ? (event) => log('Key "${event.entry.key}" removed') : null,
-    )
-    ..on<CacheEntryExpiredEvent<T>>().listen(
-      verbose ? (event) => log('Key "${event.entry.key}" expired') : null,
-    )
-    ..on<CacheEntryEvictedEvent<T>>().listen(
-      verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
-    );
+      ..on<CacheEntryCreatedEvent<T>>().listen(
+        verbose ? (event) => log('Key "${event.entry.key}" added') : null,
+      )
+      ..on<CacheEntryUpdatedEvent<T>>().listen(
+        verbose ? (event) => log('Key "${event.newEntry.key}" updated') : null,
+      )
+      ..on<CacheEntryRemovedEvent<T>>().listen(
+        verbose ? (event) => log('Key "${event.entry.key}" removed') : null,
+      )
+      ..on<CacheEntryExpiredEvent<T>>().listen(
+        verbose ? (event) => log('Key "${event.entry.key}" expired') : null,
+      )
+      ..on<CacheEntryEvictedEvent<T>>().listen(
+        verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
+      ),
+  );
 }
