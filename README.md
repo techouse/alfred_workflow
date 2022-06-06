@@ -10,7 +10,7 @@ A helper library in Dart for authors of workflows for [Alfred](https://www.alfre
 
 This library is heavily inspired by the excellent Python library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
 
-In its current state it is very basic and only implements the [Alfred Script Filter JSON API](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/).
+In its current state, it is very basic and only implements the [Alfred Script Filter JSON API](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/).
 
 ## :children_crossing: Usage
 
