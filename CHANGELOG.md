@@ -1,3 +1,8 @@
+## 0.2.0
+
+- Upgraded stash to 4.1.0
+- BREAKING: Changed minimum SDK version to 2.17.0
+
 ## 0.1.6
 
 - Pin stash to 4.0.x
