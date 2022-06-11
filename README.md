@@ -170,7 +170,7 @@ You can then invoke the executable from the commandline:
 ./example --query 'hello'
 ```
 
-## :page_facing_up: Signing and notarizing the compiled binary before distribution
+### :page_facing_up: Signing and notarizing the compiled binary before distribution
 
 [Signing on macOS](https://dart.dev/tools/dart-compile#signing) became available with [Dart 2.17](https://dart.dev/guides/whats-new#may-11-2022-217-release).
 
