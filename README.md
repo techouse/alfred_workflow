@@ -170,6 +170,64 @@ You can then invoke the executable from the commandline:
 ./example --query 'hello'
 ```
 
+## :page_facing_up: Signing and notarizing the compiled binary before distribution
+
+[Signing on macOS](https://dart.dev/tools/dart-compile#signing) became available with [Dart 2.17](https://dart.dev/guides/whats-new#may-11-2022-217-release).
+
+If you want to distribute your compiled Mach-O binary you should **sign** and **notarize** it with Apple.
+
+Use the bash script below as a template to help you with this process.
+
+```bash
+#!/usr/bin/env bash
+
+# This script should be a starting point to help you sign and notarise a Mach-O binary app.
+# Read it carefully and replace any placeholders with actual data.
+
+# Sign the compiled binary
+codesign \
+  --sign="XXXX" \                        # replace with hash of "Developer ID Application: Your name (Your Team)"
+  --identifier="com.example.test" \      # replace with app's bundle id
+  --deep \
+  --force \
+  --options=runtime \
+  --entitlement="./entitlements.plist" \ # must allow com.apple.security.cs.allow-unsigned-executable-memory
+  --timestamp \
+  --verbose=4 \
+  ./path/to/compiled/exe
+
+# Verify the signed binary
+codesign -dv --verbose=4 ./path/to/compiled/exe
+
+# ZIP the binary because altool won't accept a raw Mach-O binary
+zip -j ./path/to/compiled/exe.zip ./path/to/compiled/exe
+
+# Notarize the binary in ZIP form
+xcrun altool \
+  --notarize-app \
+  --primary-bundle-id="com.example.test" \  # replace with app's bundle id
+  --username="john.appleseed@apple.com" \   # Apple ID username 
+  --password="@keychain:Developer-altool" \ # create an app-specific password; https://support.apple.com/en-us/HT204397
+  --asc-provider="XXXXXX" \                 # your team
+  --file="./path/to/compiled/exe.zip"
+
+# Delete zip file as it's no longer needed at this point
+# Apple will notarize the Mach-O binary inside the ZIP
+rm ./path/to/compiled/exe.zip
+
+# Wait a while then verify your Mach-O binary
+spctl -a -vvv -t install ./path/to/compiled/exe
+
+# In case you encountered an error run and check the output
+xcrun altool \
+  --notarization-info "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" \  # the UUID altool gave you
+  --username "john.appleseed@apple.com" \                       # Apple ID username
+  --password "@keychain:Developer-altool"                       # same app-specific password
+```
+
+Fore more info please refer to [the Apple Code Signing guide](https://developer.apple.com/support/code-signing/) as well 
+as to [this exhaustive StackOverflow answer](https://stackoverflow.com/questions/64652704/how-to-notarize-an-macos-command-line-tool-created-outside-of-xcode#answer-64733472).
+
 ## :seedling: A couple of my Alfred Workflows built using this library
 
 - [alfred-flutter-docs](https://github.com/techouse/alfred-flutter-docs)
