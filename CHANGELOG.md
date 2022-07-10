@@ -1,3 +1,6 @@
+## 0.2.1
+- Upgraded stash to 4.3.0
+
 ## 0.2.0
 
 - Upgraded stash to 4.1.0

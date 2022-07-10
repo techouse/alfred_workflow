@@ -70,13 +70,13 @@ class AlfredCache<T> {
   /// The local [FileCacheStore]
   late final Future<FileCacheStore> store = newFileLocalCacheStore(
     path: path ?? dirname(Platform.script.toFilePath()),
-    fromEncodable: fromEncodable,
   );
 
   /// The [Cache] backed by a [Store]
   late final Future<Cache<T>> cache = store.then(
     (FileCacheStore cacheStore) async => await cacheStore.cache<T>(
       name: name,
+      fromEncodable: fromEncodable,
       maxEntries: maxEntries,
       eventListenerMode: EventListenerMode.synchronous,
       evictionPolicy: evictionPolicy,
