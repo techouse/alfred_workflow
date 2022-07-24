@@ -129,6 +129,7 @@ class AlfredWorkflow {
     if (toStdout) {
       stdout.write(json);
     } else {
+      // ignore: avoid_print
       print(json);
     }
   }
