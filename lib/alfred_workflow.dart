@@ -32,13 +32,7 @@ class AlfredWorkflow {
           ))
       .cache;
 
-  String? _cacheKey;
-
-  /// Get the cacheKey
-  String? get cacheKey => _cacheKey;
-
-  /// To cache the results set a [String] cache key
-  set cacheKey(String? value) => _cacheKey = value;
+  String? cacheKey;
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
@@ -48,7 +42,7 @@ class AlfredWorkflow {
   ///
   /// If the [cacheKey] is set those [items] will be cached.
   Future<void> addItems(List<AlfredItem> items) async {
-    _items.items..addAll(items);
+    _items.items.addAll(items);
     if (cacheKey != null) {
       await (await _cache).put(cacheKey!.md5hex, AlfredItems(items));
     }
@@ -88,7 +82,7 @@ class AlfredWorkflow {
 
   /// Delete all [AlfredItem].
   Future<void> clearItems() async {
-    _items.items..clear();
+    _items.items.clear();
     if (cacheKey != null) {
       await (await _cache).remove(cacheKey!.md5hex);
     }

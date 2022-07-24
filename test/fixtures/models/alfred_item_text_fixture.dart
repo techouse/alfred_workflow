@@ -1,11 +1,13 @@
 import 'package:alfred_workflow/src/models/alfred_item_text.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 
 extension AlfredItemTextFixture on AlfredItemText {
-  static _AlfredItemTextFactory get factory => _AlfredItemTextFactory();
+  static AlfredItemTextFactory get factory => AlfredItemTextFactory();
 }
 
-class _AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
+@internal
+class AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
   @override
   FixtureDefinition<AlfredItemText> definition() => define(
         (Faker faker) => AlfredItemText(

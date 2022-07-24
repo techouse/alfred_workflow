@@ -2,15 +2,17 @@ import 'package:alfred_workflow/src/models/github_release.dart';
 import 'package:alfred_workflow/src/services/alfred_updater.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
 import 'package:http/http.dart' show Client;
+import 'package:meta/meta.dart';
 import 'package:stash/stash_api.dart';
 
 import '../../helpers/mock_alfred_cache.dart';
 
 extension AlfredUpdaterFixture on AlfredUpdater {
-  static _AlfredUpdaterFactory get factory => _AlfredUpdaterFactory();
+  static AlfredUpdaterFactory get factory => AlfredUpdaterFactory();
 }
 
-class _AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
+@internal
+class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
   @override
   FixtureDefinition<AlfredUpdater> definition() => define(
         (Faker faker) {
@@ -20,8 +22,7 @@ class _AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
               '${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9, min: 1)}';
 
           return AlfredUpdater(
-            githubRepositoryUrl:
-                Uri.https('github.com', '/${login}/${repoName}'),
+            githubRepositoryUrl: Uri.https('github.com', '/$login/$repoName'),
             currentVersion: currentVersion,
             cache: MockAlfredCache<GithubRelease>(
               fromEncodable: (Map<String, dynamic> json) =>

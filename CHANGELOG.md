@@ -1,3 +1,6 @@
+## 0.2.2
+- Stricter code linting
+
 ## 0.2.1
 - Upgraded stash to 4.3.0
 

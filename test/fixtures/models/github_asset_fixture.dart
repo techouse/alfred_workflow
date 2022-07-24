@@ -1,14 +1,16 @@
 import 'package:alfred_workflow/src/models/github_asset.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 
 import '../extensions/fixture_factory_extension.dart';
 import 'github_user_fixture.dart';
 
 extension GithubAssetFixture on GithubAsset {
-  static _GithubAssetFactory get factory => _GithubAssetFactory();
+  static GithubAssetFactory get factory => GithubAssetFactory();
 }
 
-class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
+@internal
+class GithubAssetFactory extends FixtureFactory<GithubAsset> {
   final DateTime _now = DateTime.now();
 
   @override
@@ -23,7 +25,7 @@ class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
           final String assetTag =
               'v${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9, min: 1)}';
           final String assetName =
-              '${faker.lorem.words(3).join('-').toLowerCase()}-${assetTag}.alfredworkflow';
+              '${faker.lorem.words(3).join('-').toLowerCase()}-$assetTag.alfredworkflow';
           final DateTime createdAt = faker.date
               .dateTime(
                 maxYear: _now.year,
@@ -33,7 +35,7 @@ class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
 
           return GithubAsset(
             url: Uri.parse(
-              'https://api.github.com/repos/${login}/${repoName}/releases/assets/${assetId}',
+              'https://api.github.com/repos/$login/$repoName/releases/assets/$assetId',
             ),
             id: assetId,
             nodeId: faker.randomGenerator.string(19),
@@ -50,7 +52,7 @@ class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
             createdAt: createdAt,
             updatedAt: createdAt,
             browserDownloadUrl: Uri.parse(
-              'https://github.com/${login}/${repoName}/releases/download/${assetTag}/${assetName}',
+              'https://github.com/$login/$repoName/releases/download/$assetTag/$assetName',
             ),
           );
         },
@@ -65,11 +67,11 @@ class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
   }) {
     final int assetId = faker.randomGenerator.integer(9999999, min: 1000000);
     final String assetName =
-        '${faker.lorem.words(3).join('-').toLowerCase()}-${assetTag}.alfredworkflow';
+        '${faker.lorem.words(3).join('-').toLowerCase()}-$assetTag.alfredworkflow';
 
     return (GithubAsset asset) => asset.copyWith(
           url: Uri.parse(
-            'https://api.github.com/repos/${login}/${repoName}/releases/assets/${assetId}',
+            'https://api.github.com/repos/$login/$repoName/releases/assets/$assetId',
           ),
           id: assetId,
           name: assetName,
@@ -80,7 +82,7 @@ class _GithubAssetFactory extends FixtureFactory<GithubAsset> {
           createdAt: createdAt,
           updatedAt: createdAt,
           browserDownloadUrl: Uri.parse(
-            'https://github.com/${login}/${repoName}/releases/download/${assetTag}/${assetName}',
+            'https://github.com/$login/$repoName/releases/download/$assetTag/$assetName',
           ),
         );
   }

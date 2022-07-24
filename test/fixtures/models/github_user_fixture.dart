@@ -2,12 +2,14 @@ import 'dart:convert';
 
 import 'package:alfred_workflow/src/models/github_user.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 
 extension GithubUserFixture on GithubUser {
-  static _GithubUserFactory get factory => _GithubUserFactory();
+  static GithubUserFactory get factory => GithubUserFactory();
 }
 
-class _GithubUserFactory extends FixtureFactory<GithubUser> {
+@internal
+class GithubUserFactory extends FixtureFactory<GithubUser> {
   @override
   FixtureDefinition<GithubUser> definition() => define(
         (Faker faker) {
@@ -23,11 +25,11 @@ class _GithubUserFactory extends FixtureFactory<GithubUser> {
               ),
             ),
             avatarUrl:
-                Uri.parse('https://avatars.githubusercontent.com/u/${id}?v=4'),
+                Uri.parse('https://avatars.githubusercontent.com/u/$id?v=4'),
             gravatarId: '',
             url: Uri.parse('https://api.github.com/users/$login'),
             htmlUrl: Uri.parse('https://github.com/$login'),
-            reposUrl: Uri.parse('https://api.github.com/users/${login}/repos'),
+            reposUrl: Uri.parse('https://api.github.com/users/$login/repos'),
             type: 'User',
             siteAdmin: false,
           );
@@ -43,7 +45,7 @@ class _GithubUserFactory extends FixtureFactory<GithubUser> {
               ),
             ),
             avatarUrl:
-                Uri.parse('https://avatars.githubusercontent.com/u/${id}?v=4'),
+                Uri.parse('https://avatars.githubusercontent.com/u/$id?v=4'),
           );
 
   FixtureRedefinitionBuilder<GithubUser> login(String login) =>
@@ -51,6 +53,6 @@ class _GithubUserFactory extends FixtureFactory<GithubUser> {
             login: login,
             url: Uri.parse('https://api.github.com/users/$login'),
             htmlUrl: Uri.parse('https://github.com/$login'),
-            reposUrl: Uri.parse('https://api.github.com/users/${login}/repos'),
+            reposUrl: Uri.parse('https://api.github.com/users/$login/repos'),
           );
 }

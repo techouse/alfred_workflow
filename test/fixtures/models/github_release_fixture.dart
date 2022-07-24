@@ -1,5 +1,6 @@
 import 'package:alfred_workflow/src/models/github_release.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 import 'package:pub_semver/pub_semver.dart';
 
 import '../extensions/fixture_factory_extension.dart';
@@ -7,10 +8,11 @@ import 'github_asset_fixture.dart';
 import 'github_user_fixture.dart';
 
 extension GithubReleaseFixture on GithubRelease {
-  static _GithubReleaseFactory get factory => _GithubReleaseFactory();
+  static GithubReleaseFactory get factory => GithubReleaseFactory();
 }
 
-class _GithubReleaseFactory extends FixtureFactory<GithubRelease> {
+@internal
+class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
   final DateTime _now = DateTime.now();
 
   @override
@@ -33,16 +35,16 @@ class _GithubReleaseFactory extends FixtureFactory<GithubRelease> {
 
           return GithubRelease(
             url: Uri.parse(
-              'https://api.github.com/repos/${login}/${repoName}/releases/${releaseId}',
+              'https://api.github.com/repos/$login/$repoName/releases/$releaseId',
             ),
             assetsUrl: Uri.parse(
-              'https://api.github.com/repos/${login}/${repoName}/releases/${releaseId}/assets',
+              'https://api.github.com/repos/$login/$repoName/releases/$releaseId/assets',
             ),
             uploadUrl: Uri.parse(
-              'https://upload.github.com/repos/${login}/${repoName}/releases/${releaseId}/assets{?name,label}',
+              'https://upload.github.com/repos/$login/$repoName/releases/$releaseId/assets{?name,label}',
             ),
             htmlUrl: Uri.parse(
-              'https://github.com/${login}/${repoName}/releases/tag/${tagName}',
+              'https://github.com/$login/$repoName/releases/tag/$tagName',
             ),
             id: releaseId,
             author: GithubUserFixture.factory.states([
@@ -67,10 +69,10 @@ class _GithubReleaseFactory extends FixtureFactory<GithubRelease> {
                 ))
                 .makeMany(1),
             tarballUrl: Uri.parse(
-              'https://api.github.com/repos/${login}/${repoName}/tarball/${tagName}',
+              'https://api.github.com/repos/$login/$repoName/tarball/$tagName',
             ),
             zipballUrl: Uri.parse(
-              'https://api.github.com/repos/${login}/${repoName}/zipball/${tagName}',
+              'https://api.github.com/repos/$login/$repoName/zipball/$tagName',
             ),
             body: faker.lorem.sentence(),
           );
@@ -100,16 +102,16 @@ class _GithubReleaseFactory extends FixtureFactory<GithubRelease> {
 
     return (GithubRelease githubRelease) => githubRelease.copyWith(
           url: Uri.parse(
-            'https://api.github.com/repos/${login}/${repoName}/releases/${releaseId}',
+            'https://api.github.com/repos/$login/$repoName/releases/$releaseId',
           ),
           assetsUrl: Uri.parse(
-            'https://api.github.com/repos/${login}/${repoName}/releases/${releaseId}/assets',
+            'https://api.github.com/repos/$login/$repoName/releases/$releaseId/assets',
           ),
           uploadUrl: Uri.parse(
-            'https://upload.github.com/repos/${login}/${repoName}/releases/${releaseId}/assets{?name,label}',
+            'https://upload.github.com/repos/$login/$repoName/releases/$releaseId/assets{?name,label}',
           ),
           htmlUrl: Uri.parse(
-            'https://github.com/${login}/${repoName}/releases/tag/${tagName}',
+            'https://github.com/$login/$repoName/releases/tag/$tagName',
           ),
           id: releaseId,
           author: GithubUserFixture.factory.states([
@@ -134,10 +136,10 @@ class _GithubReleaseFactory extends FixtureFactory<GithubRelease> {
               ))
               .makeMany(1),
           tarballUrl: Uri.parse(
-            'https://api.github.com/repos/${login}/${repoName}/tarball/${tagName}',
+            'https://api.github.com/repos/$login/$repoName/tarball/$tagName',
           ),
           zipballUrl: Uri.parse(
-            'https://api.github.com/repos/${login}/${repoName}/zipball/${tagName}',
+            'https://api.github.com/repos/$login/$repoName/zipball/$tagName',
           ),
           body: faker.lorem.sentence(),
         );

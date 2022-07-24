@@ -23,5 +23,6 @@ class MockAlfredCache<T> extends AlfredCache<T> {
           verbose: verbose,
         );
 
-  late final Future<FileCacheStore> store = newFileMemoryCacheStore();
+  @override
+  Future<FileCacheStore> get store => newFileMemoryCacheStore();
 }

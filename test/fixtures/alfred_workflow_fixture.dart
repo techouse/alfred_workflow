@@ -1,13 +1,15 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 
 import '../helpers/mock_alfred_cache.dart';
 
 extension AlfredWorkflowFixture on AlfredWorkflow {
-  static _AlfredWorkflowFactory get factory => _AlfredWorkflowFactory();
+  static AlfredWorkflowFactory get factory => AlfredWorkflowFactory();
 }
 
-class _AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
+@internal
+class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
   @override
   FixtureDefinition<AlfredWorkflow> definition() => define(
         (Faker faker) => AlfredWorkflow(

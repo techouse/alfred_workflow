@@ -36,7 +36,7 @@ void main() async {
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
         AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/${login}/${repoName}'),
+          Uri.https('github.com', '/$login/$repoName'),
         ),
         AlfredUpdaterFixture.factory.currentVersion(currentVersion),
         AlfredUpdaterFixture.factory.client(client),
@@ -54,7 +54,7 @@ void main() async {
         client.get(
           Uri.https(
             'api.github.com',
-            '/repos/${login}/${repoName}/releases/latest',
+            '/repos/$login/$repoName/releases/latest',
           ),
         ),
       ).thenAnswer(
@@ -69,7 +69,7 @@ void main() async {
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
         AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/${login}/${repoName}'),
+          Uri.https('github.com', '/$login/$repoName'),
         ),
         AlfredUpdaterFixture.factory.currentVersion(currentVersion),
         AlfredUpdaterFixture.factory.client(client),
@@ -87,7 +87,7 @@ void main() async {
         client.get(
           Uri.https(
             'api.github.com',
-            '/repos/${login}/${repoName}/releases/latest',
+            '/repos/$login/$repoName/releases/latest',
           ),
         ),
       ).thenAnswer(
@@ -102,7 +102,7 @@ void main() async {
 
       final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
         AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/${login}/${repoName}'),
+          Uri.https('github.com', '/$login/$repoName'),
         ),
         AlfredUpdaterFixture.factory.currentVersion(currentVersion),
         AlfredUpdaterFixture.factory.client(client),
@@ -120,7 +120,7 @@ void main() async {
         client.get(
           Uri.https(
             'api.github.com',
-            '/repos/${login}/${repoName}/releases/latest',
+            '/repos/$login/$repoName/releases/latest',
           ),
         ),
       ).thenAnswer(
@@ -142,7 +142,7 @@ void main() async {
 
       updater = AlfredUpdaterFixture.factory.states([
         AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/${login}/${repoName}'),
+          Uri.https('github.com', '/$login/$repoName'),
         ),
         AlfredUpdaterFixture.factory.currentVersion(currentVersion),
         AlfredUpdaterFixture.factory.client(client),
@@ -164,7 +164,7 @@ void main() async {
         client.get(
           Uri.https(
             'api.github.com',
-            '/repos/${login}/${repoName}/releases/latest',
+            '/repos/$login/$repoName/releases/latest',
           ),
         ),
       ).thenAnswer(

@@ -30,7 +30,7 @@ class AlfredUpdater {
     required this.githubRepositoryUrl,
     required String currentVersion,
     this.updateInterval = Duration.zero,
-    AlfredCache<GithubRelease>? this.cache,
+    this.cache,
     this.client,
   })  : assert(githubRepositoryUrl.host == 'github.com'),
         _currentVersion = Version.parse(currentVersion);

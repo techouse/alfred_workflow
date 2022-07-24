@@ -1,18 +1,20 @@
 import 'package:alfred_workflow/src/models/alfred_item_icon.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
+import 'package:meta/meta.dart';
 
 extension AlfredItemIconFixture on AlfredItemIcon {
-  static _AlfredItemIconFactory get factory => _AlfredItemIconFactory();
+  static AlfredItemIconFactory get factory => AlfredItemIconFactory();
 }
 
-class _AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
+@internal
+class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
   @override
   FixtureDefinition<AlfredItemIcon> definition() => define(
         (Faker faker) => AlfredItemIcon(
           path: <String>[
-            '/' + faker.randomGenerator.string(16),
+            '/${faker.randomGenerator.string(16)}',
             faker.randomGenerator.string(16),
-            faker.randomGenerator.string(16) + '.png',
+            '${faker.randomGenerator.string(16)}.png',
           ].join('/'),
           type: faker.randomGenerator.boolean()
               ? faker.randomGenerator.element(AlfredItemIconType.values)
