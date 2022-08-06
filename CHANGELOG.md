@@ -1,7 +1,13 @@
+## 0.2.3
+
+- Updated dependencies and rebuilt generated files
+
 ## 0.2.2
+
 - Stricter code linting
 
 ## 0.2.1
+
 - Upgraded stash to 4.3.0
 
 ## 0.2.0
