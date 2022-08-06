@@ -245,6 +245,7 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
 
 extension $GithubReleaseCopyWith on GithubRelease {
   /// Returns a callable class that can be used as follows: `instanceOfGithubRelease.copyWith(...)` or like so:`instanceOfGithubRelease.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$GithubReleaseCWProxy get copyWith => _$GithubReleaseCWProxyImpl(this);
 }
 

@@ -62,6 +62,7 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
 
 extension $AlfredItemTextCopyWith on AlfredItemText {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredItemText.copyWith(...)` or like so:`instanceOfAlfredItemText.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$AlfredItemTextCWProxy get copyWith => _$AlfredItemTextCWProxyImpl(this);
 }
 

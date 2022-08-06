@@ -188,6 +188,7 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
 
 extension $GithubAssetCopyWith on GithubAsset {
   /// Returns a callable class that can be used as follows: `instanceOfGithubAsset.copyWith(...)` or like so:`instanceOfGithubAsset.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$GithubAssetCWProxy get copyWith => _$GithubAssetCWProxyImpl(this);
 }
 

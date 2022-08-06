@@ -151,6 +151,7 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
 
 extension $GithubUserCopyWith on GithubUser {
   /// Returns a callable class that can be used as follows: `instanceOfGithubUser.copyWith(...)` or like so:`instanceOfGithubUser.copyWith.fieldName(...)`.
+  // ignore: library_private_types_in_public_api
   _$GithubUserCWProxy get copyWith => _$GithubUserCWProxyImpl(this);
 }
 
