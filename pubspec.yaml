@@ -2,7 +2,7 @@ name: alfred_workflow
 description: A helper library in Dart for authors of workflows for Alfred.
 homepage: https://github.com/techouse/alfred_workflow
 
-version: 0.2.3
+version: 0.2.4
 
 platforms:
   macos:
@@ -32,7 +32,5 @@ dev_dependencies:
   lints: ^2.0.0
   mockito: ^5.1.0
   test: ^1.21.3
-  data_fixture_dart:
-    git:
-      url: https://github.com/techouse/data_fixture_dart
-      ref: main
+  data_fixture_dart: ^2.2.0
+
