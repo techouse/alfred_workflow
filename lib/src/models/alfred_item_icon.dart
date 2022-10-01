@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -14,9 +15,10 @@ enum AlfredItemIconType {
 /// The icon displayed in the result row.
 ///
 /// Workflows are run from their workflow folder, so you can reference icons stored in your workflow relatively.
-@JsonSerializable()
+@Autoequal(mixin: true)
 @CopyWith()
-class AlfredItemIcon with EquatableMixin {
+@JsonSerializable()
+class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
   const AlfredItemIcon({
     required this.path,
     this.type,
@@ -39,10 +41,4 @@ class AlfredItemIcon with EquatableMixin {
       _$AlfredItemIconFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemIconToJson(this);
-
-  @override
-  List<Object?> get props => [
-        path,
-        type,
-      ];
 }

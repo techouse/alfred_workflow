@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -11,9 +12,10 @@ part 'alfred_item.g.dart';
 ///
 /// Each [AlfredItem] describes a result row displayed in Alfred.
 /// The three obvious elements are the ones you see in an Alfred result row - [title], [subtitle] and [icon].
-@JsonSerializable(explicitToJson: true)
+@Autoequal(mixin: true)
 @CopyWith()
-class AlfredItem with EquatableMixin {
+@JsonSerializable(explicitToJson: true)
+class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   const AlfredItem({
     required this.title,
     this.type = 'default',
@@ -113,19 +115,4 @@ class AlfredItem with EquatableMixin {
       _$AlfredItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
-
-  @override
-  List<Object?> get props => [
-        title,
-        type,
-        valid,
-        subtitle,
-        arg,
-        autocomplete,
-        uid,
-        icon,
-        text,
-        quickLookUrl,
-        match,
-      ];
 }

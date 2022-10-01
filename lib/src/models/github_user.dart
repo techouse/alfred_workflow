@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -5,9 +6,10 @@ import 'package:json_annotation/json_annotation.dart';
 part 'github_user.g.dart';
 
 /// [GithubUser] implements all the properties of the [Github Users API](https://docs.github.com/en/rest/reference/users)
-@JsonSerializable(fieldRename: FieldRename.snake)
+@Autoequal(mixin: true)
 @CopyWith()
-class GithubUser with EquatableMixin {
+@JsonSerializable()
+class GithubUser with EquatableMixin, _$GithubUserAutoequalMixin {
   const GithubUser({
     required this.login,
     required this.id,
@@ -36,18 +38,4 @@ class GithubUser with EquatableMixin {
       _$GithubUserFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubUserToJson(this);
-
-  @override
-  List<Object?> get props => [
-        login,
-        id,
-        nodeId,
-        avatarUrl,
-        gravatarId,
-        url,
-        htmlUrl,
-        reposUrl,
-        type,
-        siteAdmin,
-      ];
 }

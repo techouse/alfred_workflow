@@ -3,6 +3,20 @@
 part of 'alfred_items.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$AlfredItemsAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$AlfredItemsAutoequal(this as AlfredItems)._autoequalProps;
+}
+
+extension _$AlfredItemsAutoequal on AlfredItems {
+  List<Object?> get _autoequalProps => [items];
+}
+
+// **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 

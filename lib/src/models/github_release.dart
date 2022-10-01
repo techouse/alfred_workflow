@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -10,10 +11,11 @@ import 'github_user.dart';
 part 'github_release.g.dart';
 
 /// [GithubRelease] implements all the properties of the [Github Releases API](https://docs.github.com/en/rest/reference/releases)
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-@VersionConverter.instance
+@Autoequal(mixin: true)
 @CopyWith()
-class GithubRelease with EquatableMixin {
+@JsonSerializable(explicitToJson: true)
+@VersionConverter.instance
+class GithubRelease with EquatableMixin, _$GithubReleaseAutoequalMixin {
   const GithubRelease({
     required this.url,
     required this.assetsUrl,
@@ -67,26 +69,4 @@ class GithubRelease with EquatableMixin {
       _$GithubReleaseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubReleaseToJson(this);
-
-  @override
-  List<Object?> get props => [
-        url,
-        assetsUrl,
-        uploadUrl,
-        htmlUrl,
-        id,
-        author,
-        nodeId,
-        tagName,
-        targetCommitish,
-        name,
-        draft,
-        prerelease,
-        createdAt,
-        publishedAt,
-        assets,
-        tarballUrl,
-        zipballUrl,
-        body,
-      ];
 }

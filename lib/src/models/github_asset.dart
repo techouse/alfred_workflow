@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -7,9 +8,10 @@ import 'github_user.dart';
 part 'github_asset.g.dart';
 
 /// [GithubAsset] implements all the properties of the [Github Release Asset API](https://docs.github.com/en/rest/reference/releases#release-assets)
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@Autoequal(mixin: true)
 @CopyWith()
-class GithubAsset with EquatableMixin {
+@JsonSerializable(explicitToJson: true)
+class GithubAsset with EquatableMixin, _$GithubAssetAutoequalMixin {
   const GithubAsset({
     required this.url,
     required this.id,
@@ -48,21 +50,4 @@ class GithubAsset with EquatableMixin {
       _$GithubAssetFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubAssetToJson(this);
-
-  @override
-  List<Object?> get props => [
-        url,
-        id,
-        nodeId,
-        name,
-        label,
-        uploader,
-        contentType,
-        state,
-        size,
-        downloadCount,
-        createdAt,
-        updatedAt,
-        browserDownloadUrl,
-      ];
 }

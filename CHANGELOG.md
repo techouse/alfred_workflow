@@ -1,3 +1,7 @@
+## 0.2.6
+
+- Now using autoequal to auto-generate Equatable props
+
 ## 0.2.5
 
 - Updated development dependencies

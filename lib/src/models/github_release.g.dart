@@ -3,6 +3,39 @@
 part of 'github_release.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$GithubReleaseAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$GithubReleaseAutoequal(this as GithubRelease)._autoequalProps;
+}
+
+extension _$GithubReleaseAutoequal on GithubRelease {
+  List<Object?> get _autoequalProps => [
+        url,
+        assetsUrl,
+        uploadUrl,
+        htmlUrl,
+        id,
+        author,
+        nodeId,
+        tagName,
+        targetCommitish,
+        name,
+        draft,
+        prerelease,
+        createdAt,
+        publishedAt,
+        assets,
+        tarballUrl,
+        zipballUrl,
+        body
+      ];
+}
+
+// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

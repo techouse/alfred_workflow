@@ -3,6 +3,34 @@
 part of 'github_asset.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$GithubAssetAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$GithubAssetAutoequal(this as GithubAsset)._autoequalProps;
+}
+
+extension _$GithubAssetAutoequal on GithubAsset {
+  List<Object?> get _autoequalProps => [
+        url,
+        id,
+        nodeId,
+        name,
+        label,
+        uploader,
+        contentType,
+        state,
+        size,
+        downloadCount,
+        createdAt,
+        updatedAt,
+        browserDownloadUrl
+      ];
+}
+
+// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

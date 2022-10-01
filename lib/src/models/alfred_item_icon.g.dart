@@ -3,6 +3,20 @@
 part of 'alfred_item_icon.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$AlfredItemIconAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$AlfredItemIconAutoequal(this as AlfredItemIcon)._autoequalProps;
+}
+
+extension _$AlfredItemIconAutoequal on AlfredItemIcon {
+  List<Object?> get _autoequalProps => [path, type];
+}
+
+// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

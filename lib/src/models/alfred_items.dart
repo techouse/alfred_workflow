@@ -1,3 +1,4 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart'
     show JsonSerializable, JsonKey;
@@ -6,8 +7,9 @@ import 'alfred_item.dart';
 
 part 'alfred_items.g.dart';
 
+@Autoequal(mixin: true)
 @JsonSerializable(explicitToJson: true)
-class AlfredItems with EquatableMixin {
+class AlfredItems with EquatableMixin, _$AlfredItemsAutoequalMixin {
   AlfredItems(this.items);
 
   /// A list of zero or more [AlfredItem]s.
@@ -24,9 +26,4 @@ class AlfredItems with EquatableMixin {
       _$AlfredItemsFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemsToJson(this);
-
-  @override
-  List<Object?> get props => [
-        items,
-      ];
 }

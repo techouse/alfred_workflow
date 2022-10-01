@@ -3,6 +3,32 @@
 part of 'alfred_item.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$AlfredItemAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$AlfredItemAutoequal(this as AlfredItem)._autoequalProps;
+}
+
+extension _$AlfredItemAutoequal on AlfredItem {
+  List<Object?> get _autoequalProps => [
+        title,
+        type,
+        valid,
+        subtitle,
+        arg,
+        autocomplete,
+        uid,
+        icon,
+        text,
+        quickLookUrl,
+        match
+      ];
+}
+
+// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
