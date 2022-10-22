@@ -6,17 +6,34 @@ on:
   pull_request:
     branches: [ master ]
 
+defaults:
+  run:
+    shell: bash
+
 env:
   PUB_ENVIRONMENT: bot.github
 
+permissions: read-all
+
 jobs:
   analyze:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ macos-latest ]
         sdk: [ stable ]
     steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-format-analyze"
+          restore-keys: |
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
+            os:${{ matrix.os }};pub-cache-hosted
+            os:${{ matrix.os }}
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
@@ -45,6 +62,16 @@ jobs:
         os: [ macos-latest ]
         sdk: [ stable, dev ]
     steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-test"
+          restore-keys: |
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
+            os:${{ matrix.os }};pub-cache-hosted
+            os:${{ matrix.os }}
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
@@ -63,12 +90,27 @@ jobs:
 
   coverage:
     needs: test
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ macos-latest ]
+        sdk: [ stable ]
     steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v3
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:${{ runner.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-coverage"
+          restore-keys: |
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
+            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
+            os:${{ matrix.os }};pub-cache-hosted
+            os:${{ matrix.os }}
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: stable
+          sdk: ${{ matrix.sdk }}
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@v3
