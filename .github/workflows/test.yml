@@ -68,7 +68,7 @@ jobs:
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ matrix.sdk }}
+          sdk: stable
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@v3
