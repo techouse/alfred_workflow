@@ -7,21 +7,21 @@ packages:
       name: _fe_analyzer_shared
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "47.0.0"
+    version: "49.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.7.0"
+    version: "5.1.0"
   analyzer_plugin:
     dependency: transitive
     description:
       name: analyzer_plugin
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.10.0"
+    version: "0.11.2"
   ansicolor:
     dependency: transitive
     description:
@@ -49,14 +49,14 @@ packages:
       name: autoequal
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.1"
   autoequal_gen:
     dependency: "direct dev"
     description:
       name: autoequal_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -168,7 +168,7 @@ packages:
       name: copy_with_extension_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.3"
+    version: "4.0.4"
   coverage:
     dependency: transitive
     description:
@@ -196,7 +196,7 @@ packages:
       name: dart_code_metrics
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.19.1"
+    version: "4.21.2"
   dart_style:
     dependency: transitive
     description:
@@ -386,6 +386,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.0.0"
+  platform:
+    dependency: transitive
+    description:
+      name: platform
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.1.0"
   pool:
     dependency: transitive
     description:
@@ -393,6 +400,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.5.1"
+  process:
+    dependency: transitive
+    description:
+      name: process
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.4"
   pub_semver:
     dependency: "direct main"
     description:
@@ -400,6 +414,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  pub_updater:
+    dependency: transitive
+    description:
+      name: pub_updater
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.2"
   pubspec_parse:
     dependency: transitive
     description:
