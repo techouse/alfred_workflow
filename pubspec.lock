@@ -49,7 +49,7 @@ packages:
       name: autoequal
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.1"
   autoequal_gen:
     dependency: "direct dev"
     description:
