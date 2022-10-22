@@ -53,8 +53,8 @@ show_test_coverage:
 	source ./scripts/makefile_scripts.sh && open_link "coverage/html/index.html"
 
 tests:
-	@# Help: Run Dart unit and widget tests for the current project.
-	dart test
+	@# Help: Run VM tests
+	dart test --platform vm
 
 upgrade:
 	@# Help: Upgrade all the project's packages.
