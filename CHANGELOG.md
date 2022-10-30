@@ -1,3 +1,9 @@
+## 0.2.7
+- AlfredItems now has a const constructor
+- Added build_verify test to ensure all generated files get pushed correctly
+- Added EquatableMixin to AlfredCache and AlfredUpdater
+- Updated dependencies
+
 ## 0.2.6
 
 - Now using autoequal to auto-generate Equatable props
