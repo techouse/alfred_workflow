@@ -27,6 +27,7 @@ dependencies:
 dev_dependencies:
   autoequal_gen: ^0.4.0
   build_runner: ^2.1.7
+  build_verify: ^3.0.0
   copy_with_extension_gen: ^4.0.0
   dart_code_metrics: ^4.8.1
   faker: ^2.0.0

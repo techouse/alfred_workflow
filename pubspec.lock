@@ -106,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.2.7"
+  build_verify:
+    dependency: "direct dev"
+    description:
+      name: build_verify
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   built_collection:
     dependency: transitive
     description:
