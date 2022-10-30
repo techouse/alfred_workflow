@@ -3,6 +3,21 @@
 part of 'alfred_updater.dart';
 
 // **************************************************************************
+// AutoequalGenerator
+// **************************************************************************
+
+mixin _$AlfredUpdaterAutoequalMixin on EquatableMixin {
+  @override
+  List<Object?> get props =>
+      _$AlfredUpdaterAutoequal(this as AlfredUpdater)._autoequalProps;
+}
+
+extension _$AlfredUpdaterAutoequal on AlfredUpdater {
+  List<Object?> get _autoequalProps =>
+      [githubRepositoryUrl, updateInterval, cache, client, _currentVersion];
+}
+
+// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

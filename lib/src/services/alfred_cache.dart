@@ -1,6 +1,8 @@
 import 'dart:developer' show log;
 import 'dart:io' show Platform;
 
+import 'package:autoequal/autoequal.dart';
+import 'package:equatable/equatable.dart';
 import 'package:path/path.dart' show dirname;
 import 'package:stash/stash_api.dart'
     show
@@ -20,7 +22,10 @@ import 'package:stash/stash_api.dart'
 import 'package:stash_file/stash_file.dart'
     show FileCacheStore, newFileLocalCacheStore;
 
-class AlfredCache<T> {
+part 'alfred_cache.g.dart';
+
+@autoequalMixin
+class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
   /// Builds an [AlfredCache] providing a [Cache] backed by a [Store]
   ///
   /// * [fromEncodable] : A custom function the converts to the object from a `Map<String, dynamic>` representation
@@ -68,11 +73,13 @@ class AlfredCache<T> {
   final bool verbose;
 
   /// The local [FileCacheStore]
+  @ignoreAutoequal
   late final Future<FileCacheStore> store = newFileLocalCacheStore(
     path: path ?? dirname(Platform.script.toFilePath()),
   );
 
   /// The [Cache] backed by a [Store]
+  @ignoreAutoequal
   late final Future<Cache<T>> cache = store.then(
     (FileCacheStore cacheStore) async => await cacheStore.cache<T>(
       name: name,

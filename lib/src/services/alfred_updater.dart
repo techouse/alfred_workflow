@@ -1,7 +1,9 @@
 import 'dart:convert' show jsonDecode;
 import 'dart:io' show Process, stderr, stdout;
 
+import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
+import 'package:equatable/equatable.dart';
 import 'package:file/file.dart' show Directory, File, FileSystem;
 import 'package:file/local.dart' show LocalFileSystem;
 import 'package:http/http.dart' show Client, Response, get;
@@ -17,8 +19,9 @@ import 'alfred_cache.dart';
 
 part 'alfred_updater.g.dart';
 
+@autoequalMixin
 @CopyWith()
-class AlfredUpdater {
+class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
   /// Builds an [AlfredUpdater]
   ///
   /// * [githubRepositoryUrl] : The [Uri] of the workflow's Github repository
@@ -36,6 +39,7 @@ class AlfredUpdater {
         _currentVersion = Version.parse(currentVersion);
 
   /// The cache key under which the cached [GithubRelease] is stored
+  @ignoreAutoequal
   static const String updateKey = 'update';
 
   /// The [Uri] of the workflow's Github repository
@@ -50,6 +54,7 @@ class AlfredUpdater {
   /// Optionally customize the [Client]
   final Client? client;
 
+  @ignoreAutoequal
   late final Future<Cache<GithubRelease>> _cache = (cache ??
           // coverage:ignore-start
           AlfredCache<GithubRelease>(
@@ -67,6 +72,7 @@ class AlfredUpdater {
   late final Version _currentVersion;
 
   /// Get a [String] representation of the [_currentVersion].
+  @ignoreAutoequal
   String get currentVersion => _currentVersion.toString();
 
   /// Check if an update is available .
