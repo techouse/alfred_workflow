@@ -60,7 +60,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ macos-latest ]
-        sdk: [ stable, dev ]
+        sdk: [ stable ]
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v3
