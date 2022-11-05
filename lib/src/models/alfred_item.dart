@@ -12,7 +12,7 @@ part 'alfred_item.g.dart';
 ///
 /// Each [AlfredItem] describes a result row displayed in Alfred.
 /// The three obvious elements are the ones you see in an Alfred result row - [title], [subtitle] and [icon].
-@Autoequal(mixin: true)
+@autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {

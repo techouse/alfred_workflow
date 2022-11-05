@@ -11,7 +11,7 @@ environment:
   sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  autoequal: ^0.4.0
+  autoequal: ^0.5.1
   copy_with_extension: ^4.0.0
   crypto: ^3.0.1
   equatable: ^2.0.3
@@ -25,7 +25,7 @@ dependencies:
   stash_file: ^4.3.0
 
 dev_dependencies:
-  autoequal_gen: ^0.4.0
+  autoequal_gen: ^0.5.1
   build_runner: ^2.1.7
   build_verify: ^3.0.0
   copy_with_extension_gen: ^4.0.0

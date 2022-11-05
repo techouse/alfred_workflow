@@ -8,12 +8,11 @@ part of 'alfred_item.dart';
 
 mixin _$AlfredItemAutoequalMixin on EquatableMixin {
   @override
-  List<Object?> get props =>
-      _$AlfredItemAutoequal(this as AlfredItem)._autoequalProps;
+  List<Object?> get props => _$AlfredItemAutoequal(this as AlfredItem)._$props;
 }
 
 extension _$AlfredItemAutoequal on AlfredItem {
-  List<Object?> get _autoequalProps => [
+  List<Object?> get _$props => [
         title,
         type,
         valid,

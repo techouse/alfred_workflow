@@ -9,11 +9,11 @@ part of 'github_release.dart';
 mixin _$GithubReleaseAutoequalMixin on EquatableMixin {
   @override
   List<Object?> get props =>
-      _$GithubReleaseAutoequal(this as GithubRelease)._autoequalProps;
+      _$GithubReleaseAutoequal(this as GithubRelease)._$props;
 }
 
 extension _$GithubReleaseAutoequal on GithubRelease {
-  List<Object?> get _autoequalProps => [
+  List<Object?> get _$props => [
         url,
         assetsUrl,
         uploadUrl,

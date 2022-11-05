@@ -11,7 +11,7 @@ import 'github_user.dart';
 part 'github_release.g.dart';
 
 /// [GithubRelease] implements all the properties of the [Github Releases API](https://docs.github.com/en/rest/reference/releases)
-@Autoequal(mixin: true)
+@autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 @VersionConverter.instance

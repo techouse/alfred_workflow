@@ -9,11 +9,11 @@ part of 'alfred_cache.dart';
 mixin _$AlfredCacheAutoequalMixin on EquatableMixin {
   @override
   List<Object?> get props =>
-      _$AlfredCacheAutoequal(this as AlfredCache)._autoequalProps;
+      _$AlfredCacheAutoequal(this as AlfredCache)._$props;
 }
 
 extension _$AlfredCacheAutoequal on AlfredCache {
-  List<Object?> get _autoequalProps => [
+  List<Object?> get _$props => [
         fromEncodable,
         path,
         maxEntries,

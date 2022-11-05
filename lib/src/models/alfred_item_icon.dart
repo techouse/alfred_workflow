@@ -15,7 +15,7 @@ enum AlfredItemIconType {
 /// The icon displayed in the result row.
 ///
 /// Workflows are run from their workflow folder, so you can reference icons stored in your workflow relatively.
-@Autoequal(mixin: true)
+@autoequalMixin
 @CopyWith()
 @JsonSerializable()
 class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
