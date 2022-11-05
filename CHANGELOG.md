@@ -1,3 +1,7 @@
+## 0.2.8
+- Updated dependencies
+- Rebuilt generated files
+
 ## 0.2.7
 - AlfredItems now has a const constructor
 - Added build_verify test to ensure all generated files get pushed correctly
