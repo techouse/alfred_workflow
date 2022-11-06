@@ -17,64 +17,75 @@ In its current state, it is very basic and only implements the [Alfred Script Fi
 ### :tada: Basic example
 
 ```dart
-void main(List<String> arguments) async {
-  /// Instantiate an AlfredWorkflow
-  final workflow = AlfredWorkflow();
+import 'dart:io' show exitCode;
 
-  try {
-    exitCode = 0;
+import 'package:alfred_workflow/alfred_workflow.dart';
+import 'package:args/args.dart';
+import 'package:cli_script/cli_script.dart';
 
-    /// Define an ArgParser that uses -q/--query to listen to search queries
-    final ArgParser parser = ArgParser()
-      ..addOption('query', abbr: 'q', defaultsTo: '');
+void main(List<String> arguments) {
+  /// It's recommended that all scripts wrap their main() methods in wrapMain.
+  /// It gracefully exits when an error is unhandled, and (if chainStackTraces is true) 
+  /// tracks stack traces across asynchronous calls to produce better error stacks.
+  wrapMain(() async {
+    /// Instantiate an AlfredWorkflow
+    final workflow = AlfredWorkflow();
 
-    /// Parse the args
-    final ArgResults args = parser.parse(arguments);
+    try {
+      exitCode = 0;
 
-    /// Sanitize the query string obtained from the args
-    final String query = args['query'].replaceAll(RegExp(r'\s+'), ' ').trim();
+      /// Define an ArgParser that uses -q/--query to listen to search queries
+      final ArgParser parser = ArgParser()
+        ..addOption('query', abbr: 'q', defaultsTo: '');
 
-    if (query.isEmpty) {
-      /// In case of an empty query display a placeholder in the Alfred feedback
-      workflow.addItem(
-        const AlfredItem(
-          title: 'Search for some particular stuff ...',
-          icon: AlfredItemIcon(path: 'icon.png'),
-        ),
-      );
-    } else {
-      /// When there is a query do something fancy
+      /// Parse the args
+      final ArgResults args = parser.parse(arguments);
 
-      /// In this case we'll search Google with our query.
-      final Uri url = Uri.https('www.google.com', '/search', {'q': query});
+      /// Sanitize the query string obtained from the args
+      final String query = args['query'].replaceAll(RegExp(r'\s+'), ' ').trim();
 
-      /// Add an item to the Alfred feedback
-      workflow.addItem(
-        AlfredItem(
-          title: 'Sorry I can\'t help you with that query.',
-          subtitle: 'Shall I try and search Google?',
-          arg: url.toString(),
-          text: AlfredItemText(
-            copy: url.toString(),
+      if (query.isEmpty) {
+        /// In case of an empty query display a placeholder in the Alfred feedback
+        workflow.addItem(
+          const AlfredItem(
+            title: 'Search for some particular stuff ...',
+            icon: AlfredItemIcon(path: 'icon.png'),
           ),
-          quickLookUrl: url.toString(),
-          icon: AlfredItemIcon(path: 'google.png'),
-          valid: true,
-        ),
-      );
-    }
-  } catch (err) {
-    /// Set exit code to a non-zero number
-    exitCode = 1;
+        );
+      } else {
+        /// When there is a query do something fancy
 
-    /// In case of errors you can simply output the message in the Alfred feedback
-    workflow.addItem(
-      AlfredItem(title: err.toString()),
-    );
-  } finally {
-    /// This will always print JSON to the stdout and send that to Alfred.
-    workflow.run();
-  }
+        /// In this case we'll search Google with our query.
+        final Uri url = Uri.https('www.google.com', '/search', {'q': query});
+
+        /// Add an item to the Alfred feedback
+        workflow.addItem(
+          AlfredItem(
+            title: 'Sorry I can\'t help you with that query.',
+            subtitle: 'Shall I try and search Google?',
+            arg: url.toString(),
+            text: AlfredItemText(
+              copy: url.toString(),
+            ),
+            quickLookUrl: url.toString(),
+            icon: AlfredItemIcon(path: 'google.png'),
+            valid: true,
+          ),
+        );
+      }
+    } catch (err) {
+      /// Set exit code to a non-zero number
+      exitCode = 1;
+
+      /// In case of errors you can simply output the message in the Alfred feedback
+      workflow.addItem(
+        AlfredItem(title: err.toString()),
+      );
+    } finally {
+      /// This will always print JSON to the stdout and send that to Alfred.
+      workflow.run();
+    }
+  });
 }
 ```
 
@@ -241,3 +252,5 @@ as to [this exhaustive StackOverflow answer](https://stackoverflow.com/questions
 - [alfred-nova-docs](https://github.com/techouse/alfred-nova-docs)
 - [alfred-cakephp-docs](https://github.com/techouse/alfred-cakephp-docs)
 - [alfred-gitmoji](https://github.com/techouse/alfred-gitmoji)
+- [alfred-stackoverflow](https://github.com/techouse/alfred-stackoverflow)
+- [alfred-convert](https://github.com/techouse/alfred-convert)
