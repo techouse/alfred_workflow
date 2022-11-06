@@ -8,7 +8,6 @@ void main(List<String> arguments) {
   wrapMain(() async {
     /// Instantiate the updater
     final AlfredUpdater updater = AlfredUpdater(
-
       /// Declare your workflow's Github repository URL
       githubRepositoryUrl: Uri.parse('https://github.com/your/repo'),
 
@@ -30,7 +29,7 @@ void main(List<String> arguments) {
       final ArgParser parser = ArgParser()
         ..addOption('query', abbr: 'q', defaultsTo: '')
 
-      /// Add another option to the arg parser
+        /// Add another option to the arg parser
         ..addFlag('update', abbr: 'u', defaultsTo: false);
 
       final ArgResults args = parser.parse(arguments);
@@ -94,10 +93,10 @@ void main(List<String> arguments) {
             addToBeginning: AlfredItem(
               title: 'Auto-Update available!',
               subtitle:
-              'Press <enter> to auto-update to a new version of this workflow.',
+                  'Press <enter> to auto-update to a new version of this workflow.',
               arg: 'update:workflow',
               match:
-              'Auto-Update available! Press <enter> to auto-update to a new version of this workflow.',
+                  'Auto-Update available! Press <enter> to auto-update to a new version of this workflow.',
               icon: AlfredItemIcon(path: 'alfredhatcog.png'),
               valid: true,
             ),
