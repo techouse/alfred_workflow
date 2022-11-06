@@ -8,11 +8,13 @@ void main() {
   late int major;
   late int minor;
   late int patch;
+  late String name;
 
   setUp(() {
-    major = faker.randomGenerator.integer(99, min: 0);
-    minor = faker.randomGenerator.integer(99, min: 0);
-    patch = faker.randomGenerator.integer(99, min: 1);
+    major = faker.randomGenerator.integer(9999, min: 0);
+    minor = faker.randomGenerator.integer(9999, min: 0);
+    patch = faker.randomGenerator.integer(9999, min: 1);
+    name = faker.internet.userName();
   });
 
   test('fromJson', () {
@@ -29,6 +31,32 @@ void main() {
       Version(major, minor, patch),
     );
 
+    // custom versioning
+    expect(
+      VersionConverter.instance.fromJson('x$major.$minor.$patch'),
+      Version(major, minor, patch),
+    );
+    expect(
+      VersionConverter.instance.fromJson('$name-$major.$minor.$patch'),
+      Version(major, minor, patch),
+    );
+    expect(
+      VersionConverter.instance.fromJson('$name-v$major.$minor.$patch'),
+      Version(major, minor, patch),
+    );
+    expect(
+      VersionConverter.instance.fromJson('$major.$minor.$patch-$name'),
+      Version(major, minor, patch),
+    );
+    expect(
+      VersionConverter.instance.fromJson('v$major.$minor.$patch-$name'),
+      Version(major, minor, patch),
+    );
+    expect(
+      VersionConverter.instance.fromJson('$name-$major.$minor.$patch-$name'),
+      Version(major, minor, patch),
+    );
+
     // exceptions
     expect(
       () => VersionConverter.instance.fromJson('$major'),
@@ -36,10 +64,6 @@ void main() {
     );
     expect(
       () => VersionConverter.instance.fromJson('$major.$minor'),
-      throwsA(TypeMatcher<FormatException>()),
-    );
-    expect(
-      () => VersionConverter.instance.fromJson('x$major.$minor.$patch'),
       throwsA(TypeMatcher<FormatException>()),
     );
   });
