@@ -1,3 +1,6 @@
+## 0.2.10
+- Add support custom version tags
+
 ## 0.2.9
 - Updated examples
 - Updated dependencies
