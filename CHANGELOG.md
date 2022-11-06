@@ -1,3 +1,7 @@
+## 0.2.9
+- Updated examples
+- Updated dependencies
+
 ## 0.2.8
 - Updated dependencies
 - Rebuilt generated files
