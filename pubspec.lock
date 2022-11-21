@@ -511,7 +511,7 @@ packages:
       name: stash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.3.4"
+    version: "4.4.1"
   stash_file:
     dependency: "direct main"
     description:
@@ -588,7 +588,7 @@ packages:
       name: uuid
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.6"
+    version: "3.0.7"
   vm_service:
     dependency: transitive
     description:
