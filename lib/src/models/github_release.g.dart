@@ -40,41 +40,41 @@ extension _$GithubReleaseAutoequal on GithubRelease {
 // **************************************************************************
 
 abstract class _$GithubReleaseCWProxy {
-  GithubRelease assets(List<GithubAsset> assets);
+  GithubRelease url(Uri url);
 
   GithubRelease assetsUrl(Uri assetsUrl);
 
-  GithubRelease author(GithubUser author);
-
-  GithubRelease body(String body);
-
-  GithubRelease createdAt(DateTime createdAt);
-
-  GithubRelease draft(bool draft);
+  GithubRelease uploadUrl(Uri uploadUrl);
 
   GithubRelease htmlUrl(Uri htmlUrl);
 
   GithubRelease id(int id);
 
-  GithubRelease name(String name);
+  GithubRelease author(GithubUser author);
 
   GithubRelease nodeId(String nodeId);
 
-  GithubRelease prerelease(bool prerelease);
-
-  GithubRelease publishedAt(DateTime publishedAt);
-
   GithubRelease tagName(Version tagName);
-
-  GithubRelease tarballUrl(Uri tarballUrl);
 
   GithubRelease targetCommitish(String targetCommitish);
 
-  GithubRelease uploadUrl(Uri uploadUrl);
+  GithubRelease name(String name);
 
-  GithubRelease url(Uri url);
+  GithubRelease draft(bool draft);
+
+  GithubRelease prerelease(bool prerelease);
+
+  GithubRelease createdAt(DateTime createdAt);
+
+  GithubRelease publishedAt(DateTime publishedAt);
+
+  GithubRelease assets(List<GithubAsset> assets);
+
+  GithubRelease tarballUrl(Uri tarballUrl);
 
   GithubRelease zipballUrl(Uri zipballUrl);
+
+  GithubRelease body(String body);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubRelease(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -83,50 +83,41 @@ abstract class _$GithubReleaseCWProxy {
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubRelease call({
-    List<GithubAsset>? assets,
+    Uri? url,
     Uri? assetsUrl,
-    GithubUser? author,
-    String? body,
-    DateTime? createdAt,
-    bool? draft,
+    Uri? uploadUrl,
     Uri? htmlUrl,
     int? id,
-    String? name,
+    GithubUser? author,
     String? nodeId,
-    bool? prerelease,
-    DateTime? publishedAt,
     Version? tagName,
-    Uri? tarballUrl,
     String? targetCommitish,
-    Uri? uploadUrl,
-    Uri? url,
+    String? name,
+    bool? draft,
+    bool? prerelease,
+    DateTime? createdAt,
+    DateTime? publishedAt,
+    List<GithubAsset>? assets,
+    Uri? tarballUrl,
     Uri? zipballUrl,
+    String? body,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGithubRelease.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGithubRelease.copyWith.fieldName(...)`
 class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
-  final GithubRelease _value;
-
   const _$GithubReleaseCWProxyImpl(this._value);
 
+  final GithubRelease _value;
+
   @override
-  GithubRelease assets(List<GithubAsset> assets) => this(assets: assets);
+  GithubRelease url(Uri url) => this(url: url);
 
   @override
   GithubRelease assetsUrl(Uri assetsUrl) => this(assetsUrl: assetsUrl);
 
   @override
-  GithubRelease author(GithubUser author) => this(author: author);
-
-  @override
-  GithubRelease body(String body) => this(body: body);
-
-  @override
-  GithubRelease createdAt(DateTime createdAt) => this(createdAt: createdAt);
-
-  @override
-  GithubRelease draft(bool draft) => this(draft: draft);
+  GithubRelease uploadUrl(Uri uploadUrl) => this(uploadUrl: uploadUrl);
 
   @override
   GithubRelease htmlUrl(Uri htmlUrl) => this(htmlUrl: htmlUrl);
@@ -135,36 +126,45 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   GithubRelease id(int id) => this(id: id);
 
   @override
-  GithubRelease name(String name) => this(name: name);
+  GithubRelease author(GithubUser author) => this(author: author);
 
   @override
   GithubRelease nodeId(String nodeId) => this(nodeId: nodeId);
 
   @override
-  GithubRelease prerelease(bool prerelease) => this(prerelease: prerelease);
-
-  @override
-  GithubRelease publishedAt(DateTime publishedAt) =>
-      this(publishedAt: publishedAt);
-
-  @override
   GithubRelease tagName(Version tagName) => this(tagName: tagName);
-
-  @override
-  GithubRelease tarballUrl(Uri tarballUrl) => this(tarballUrl: tarballUrl);
 
   @override
   GithubRelease targetCommitish(String targetCommitish) =>
       this(targetCommitish: targetCommitish);
 
   @override
-  GithubRelease uploadUrl(Uri uploadUrl) => this(uploadUrl: uploadUrl);
+  GithubRelease name(String name) => this(name: name);
 
   @override
-  GithubRelease url(Uri url) => this(url: url);
+  GithubRelease draft(bool draft) => this(draft: draft);
+
+  @override
+  GithubRelease prerelease(bool prerelease) => this(prerelease: prerelease);
+
+  @override
+  GithubRelease createdAt(DateTime createdAt) => this(createdAt: createdAt);
+
+  @override
+  GithubRelease publishedAt(DateTime publishedAt) =>
+      this(publishedAt: publishedAt);
+
+  @override
+  GithubRelease assets(List<GithubAsset> assets) => this(assets: assets);
+
+  @override
+  GithubRelease tarballUrl(Uri tarballUrl) => this(tarballUrl: tarballUrl);
 
   @override
   GithubRelease zipballUrl(Uri zipballUrl) => this(zipballUrl: zipballUrl);
+
+  @override
+  GithubRelease body(String body) => this(body: body);
 
   @override
 
@@ -175,103 +175,121 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubRelease call({
-    Object? assets = const $CopyWithPlaceholder(),
+    Object? url = const $CopyWithPlaceholder(),
     Object? assetsUrl = const $CopyWithPlaceholder(),
-    Object? author = const $CopyWithPlaceholder(),
-    Object? body = const $CopyWithPlaceholder(),
-    Object? createdAt = const $CopyWithPlaceholder(),
-    Object? draft = const $CopyWithPlaceholder(),
+    Object? uploadUrl = const $CopyWithPlaceholder(),
     Object? htmlUrl = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
-    Object? name = const $CopyWithPlaceholder(),
+    Object? author = const $CopyWithPlaceholder(),
     Object? nodeId = const $CopyWithPlaceholder(),
-    Object? prerelease = const $CopyWithPlaceholder(),
-    Object? publishedAt = const $CopyWithPlaceholder(),
     Object? tagName = const $CopyWithPlaceholder(),
-    Object? tarballUrl = const $CopyWithPlaceholder(),
     Object? targetCommitish = const $CopyWithPlaceholder(),
-    Object? uploadUrl = const $CopyWithPlaceholder(),
-    Object? url = const $CopyWithPlaceholder(),
+    Object? name = const $CopyWithPlaceholder(),
+    Object? draft = const $CopyWithPlaceholder(),
+    Object? prerelease = const $CopyWithPlaceholder(),
+    Object? createdAt = const $CopyWithPlaceholder(),
+    Object? publishedAt = const $CopyWithPlaceholder(),
+    Object? assets = const $CopyWithPlaceholder(),
+    Object? tarballUrl = const $CopyWithPlaceholder(),
     Object? zipballUrl = const $CopyWithPlaceholder(),
+    Object? body = const $CopyWithPlaceholder(),
   }) {
     return GithubRelease(
-      assets: assets == const $CopyWithPlaceholder() || assets == null
-          ? _value.assets
+      url: url == const $CopyWithPlaceholder() || url == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.url!
           // ignore: cast_nullable_to_non_nullable
-          : assets as List<GithubAsset>,
+          : url as Uri,
       assetsUrl: assetsUrl == const $CopyWithPlaceholder() || assetsUrl == null
-          ? _value.assetsUrl
+          // ignore: unnecessary_non_null_assertion
+          ? _value.assetsUrl!
           // ignore: cast_nullable_to_non_nullable
           : assetsUrl as Uri,
-      author: author == const $CopyWithPlaceholder() || author == null
-          ? _value.author
+      uploadUrl: uploadUrl == const $CopyWithPlaceholder() || uploadUrl == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.uploadUrl!
           // ignore: cast_nullable_to_non_nullable
-          : author as GithubUser,
-      body: body == const $CopyWithPlaceholder() || body == null
-          ? _value.body
-          // ignore: cast_nullable_to_non_nullable
-          : body as String,
-      createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
-          ? _value.createdAt
-          // ignore: cast_nullable_to_non_nullable
-          : createdAt as DateTime,
-      draft: draft == const $CopyWithPlaceholder() || draft == null
-          ? _value.draft
-          // ignore: cast_nullable_to_non_nullable
-          : draft as bool,
+          : uploadUrl as Uri,
       htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
-          ? _value.htmlUrl
+          // ignore: unnecessary_non_null_assertion
+          ? _value.htmlUrl!
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
       id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
+          // ignore: unnecessary_non_null_assertion
+          ? _value.id!
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      name: name == const $CopyWithPlaceholder() || name == null
-          ? _value.name
+      author: author == const $CopyWithPlaceholder() || author == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.author!
           // ignore: cast_nullable_to_non_nullable
-          : name as String,
+          : author as GithubUser,
       nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
-          ? _value.nodeId
+          // ignore: unnecessary_non_null_assertion
+          ? _value.nodeId!
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      prerelease:
-          prerelease == const $CopyWithPlaceholder() || prerelease == null
-              ? _value.prerelease
-              // ignore: cast_nullable_to_non_nullable
-              : prerelease as bool,
-      publishedAt:
-          publishedAt == const $CopyWithPlaceholder() || publishedAt == null
-              ? _value.publishedAt
-              // ignore: cast_nullable_to_non_nullable
-              : publishedAt as DateTime,
       tagName: tagName == const $CopyWithPlaceholder() || tagName == null
-          ? _value.tagName
+          // ignore: unnecessary_non_null_assertion
+          ? _value.tagName!
           // ignore: cast_nullable_to_non_nullable
           : tagName as Version,
-      tarballUrl:
-          tarballUrl == const $CopyWithPlaceholder() || tarballUrl == null
-              ? _value.tarballUrl
-              // ignore: cast_nullable_to_non_nullable
-              : tarballUrl as Uri,
       targetCommitish: targetCommitish == const $CopyWithPlaceholder() ||
               targetCommitish == null
-          ? _value.targetCommitish
+          // ignore: unnecessary_non_null_assertion
+          ? _value.targetCommitish!
           // ignore: cast_nullable_to_non_nullable
           : targetCommitish as String,
-      uploadUrl: uploadUrl == const $CopyWithPlaceholder() || uploadUrl == null
-          ? _value.uploadUrl
+      name: name == const $CopyWithPlaceholder() || name == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.name!
           // ignore: cast_nullable_to_non_nullable
-          : uploadUrl as Uri,
-      url: url == const $CopyWithPlaceholder() || url == null
-          ? _value.url
+          : name as String,
+      draft: draft == const $CopyWithPlaceholder() || draft == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.draft!
           // ignore: cast_nullable_to_non_nullable
-          : url as Uri,
+          : draft as bool,
+      prerelease:
+          prerelease == const $CopyWithPlaceholder() || prerelease == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.prerelease!
+              // ignore: cast_nullable_to_non_nullable
+              : prerelease as bool,
+      createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.createdAt!
+          // ignore: cast_nullable_to_non_nullable
+          : createdAt as DateTime,
+      publishedAt:
+          publishedAt == const $CopyWithPlaceholder() || publishedAt == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.publishedAt!
+              // ignore: cast_nullable_to_non_nullable
+              : publishedAt as DateTime,
+      assets: assets == const $CopyWithPlaceholder() || assets == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.assets!
+          // ignore: cast_nullable_to_non_nullable
+          : assets as List<GithubAsset>,
+      tarballUrl:
+          tarballUrl == const $CopyWithPlaceholder() || tarballUrl == null
+              // ignore: unnecessary_non_null_assertion
+              ? _value.tarballUrl!
+              // ignore: cast_nullable_to_non_nullable
+              : tarballUrl as Uri,
       zipballUrl:
           zipballUrl == const $CopyWithPlaceholder() || zipballUrl == null
-              ? _value.zipballUrl
+              // ignore: unnecessary_non_null_assertion
+              ? _value.zipballUrl!
               // ignore: cast_nullable_to_non_nullable
               : zipballUrl as Uri,
+      body: body == const $CopyWithPlaceholder() || body == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.body!
+          // ignore: cast_nullable_to_non_nullable
+          : body as String,
     );
   }
 }

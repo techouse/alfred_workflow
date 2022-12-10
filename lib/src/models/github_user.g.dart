@@ -31,25 +31,25 @@ extension _$GithubUserAutoequal on GithubUser {
 // **************************************************************************
 
 abstract class _$GithubUserCWProxy {
+  GithubUser login(String login);
+
+  GithubUser id(int id);
+
+  GithubUser nodeId(String nodeId);
+
   GithubUser avatarUrl(Uri avatarUrl);
 
   GithubUser gravatarId(String gravatarId);
 
+  GithubUser url(Uri url);
+
   GithubUser htmlUrl(Uri htmlUrl);
-
-  GithubUser id(int id);
-
-  GithubUser login(String login);
-
-  GithubUser nodeId(String nodeId);
 
   GithubUser reposUrl(Uri reposUrl);
 
-  GithubUser siteAdmin(bool siteAdmin);
-
   GithubUser type(String type);
 
-  GithubUser url(Uri url);
+  GithubUser siteAdmin(bool siteAdmin);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubUser(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -58,24 +58,33 @@ abstract class _$GithubUserCWProxy {
   /// GithubUser(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubUser call({
+    String? login,
+    int? id,
+    String? nodeId,
     Uri? avatarUrl,
     String? gravatarId,
-    Uri? htmlUrl,
-    int? id,
-    String? login,
-    String? nodeId,
-    Uri? reposUrl,
-    bool? siteAdmin,
-    String? type,
     Uri? url,
+    Uri? htmlUrl,
+    Uri? reposUrl,
+    String? type,
+    bool? siteAdmin,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGithubUser.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGithubUser.copyWith.fieldName(...)`
 class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
+  const _$GithubUserCWProxyImpl(this._value);
+
   final GithubUser _value;
 
-  const _$GithubUserCWProxyImpl(this._value);
+  @override
+  GithubUser login(String login) => this(login: login);
+
+  @override
+  GithubUser id(int id) => this(id: id);
+
+  @override
+  GithubUser nodeId(String nodeId) => this(nodeId: nodeId);
 
   @override
   GithubUser avatarUrl(Uri avatarUrl) => this(avatarUrl: avatarUrl);
@@ -84,28 +93,19 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   GithubUser gravatarId(String gravatarId) => this(gravatarId: gravatarId);
 
   @override
+  GithubUser url(Uri url) => this(url: url);
+
+  @override
   GithubUser htmlUrl(Uri htmlUrl) => this(htmlUrl: htmlUrl);
-
-  @override
-  GithubUser id(int id) => this(id: id);
-
-  @override
-  GithubUser login(String login) => this(login: login);
-
-  @override
-  GithubUser nodeId(String nodeId) => this(nodeId: nodeId);
 
   @override
   GithubUser reposUrl(Uri reposUrl) => this(reposUrl: reposUrl);
 
   @override
-  GithubUser siteAdmin(bool siteAdmin) => this(siteAdmin: siteAdmin);
-
-  @override
   GithubUser type(String type) => this(type: type);
 
   @override
-  GithubUser url(Uri url) => this(url: url);
+  GithubUser siteAdmin(bool siteAdmin) => this(siteAdmin: siteAdmin);
 
   @override
 
@@ -116,59 +116,69 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   /// GithubUser(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubUser call({
+    Object? login = const $CopyWithPlaceholder(),
+    Object? id = const $CopyWithPlaceholder(),
+    Object? nodeId = const $CopyWithPlaceholder(),
     Object? avatarUrl = const $CopyWithPlaceholder(),
     Object? gravatarId = const $CopyWithPlaceholder(),
-    Object? htmlUrl = const $CopyWithPlaceholder(),
-    Object? id = const $CopyWithPlaceholder(),
-    Object? login = const $CopyWithPlaceholder(),
-    Object? nodeId = const $CopyWithPlaceholder(),
-    Object? reposUrl = const $CopyWithPlaceholder(),
-    Object? siteAdmin = const $CopyWithPlaceholder(),
-    Object? type = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
+    Object? htmlUrl = const $CopyWithPlaceholder(),
+    Object? reposUrl = const $CopyWithPlaceholder(),
+    Object? type = const $CopyWithPlaceholder(),
+    Object? siteAdmin = const $CopyWithPlaceholder(),
   }) {
     return GithubUser(
+      login: login == const $CopyWithPlaceholder() || login == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.login!
+          // ignore: cast_nullable_to_non_nullable
+          : login as String,
+      id: id == const $CopyWithPlaceholder() || id == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.id!
+          // ignore: cast_nullable_to_non_nullable
+          : id as int,
+      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.nodeId!
+          // ignore: cast_nullable_to_non_nullable
+          : nodeId as String,
       avatarUrl: avatarUrl == const $CopyWithPlaceholder() || avatarUrl == null
-          ? _value.avatarUrl
+          // ignore: unnecessary_non_null_assertion
+          ? _value.avatarUrl!
           // ignore: cast_nullable_to_non_nullable
           : avatarUrl as Uri,
       gravatarId:
           gravatarId == const $CopyWithPlaceholder() || gravatarId == null
-              ? _value.gravatarId
+              // ignore: unnecessary_non_null_assertion
+              ? _value.gravatarId!
               // ignore: cast_nullable_to_non_nullable
               : gravatarId as String,
-      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
-          ? _value.htmlUrl
-          // ignore: cast_nullable_to_non_nullable
-          : htmlUrl as Uri,
-      id: id == const $CopyWithPlaceholder() || id == null
-          ? _value.id
-          // ignore: cast_nullable_to_non_nullable
-          : id as int,
-      login: login == const $CopyWithPlaceholder() || login == null
-          ? _value.login
-          // ignore: cast_nullable_to_non_nullable
-          : login as String,
-      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
-          ? _value.nodeId
-          // ignore: cast_nullable_to_non_nullable
-          : nodeId as String,
-      reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
-          ? _value.reposUrl
-          // ignore: cast_nullable_to_non_nullable
-          : reposUrl as Uri,
-      siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
-          ? _value.siteAdmin
-          // ignore: cast_nullable_to_non_nullable
-          : siteAdmin as bool,
-      type: type == const $CopyWithPlaceholder() || type == null
-          ? _value.type
-          // ignore: cast_nullable_to_non_nullable
-          : type as String,
       url: url == const $CopyWithPlaceholder() || url == null
-          ? _value.url
+          // ignore: unnecessary_non_null_assertion
+          ? _value.url!
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.htmlUrl!
+          // ignore: cast_nullable_to_non_nullable
+          : htmlUrl as Uri,
+      reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.reposUrl!
+          // ignore: cast_nullable_to_non_nullable
+          : reposUrl as Uri,
+      type: type == const $CopyWithPlaceholder() || type == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.type!
+          // ignore: cast_nullable_to_non_nullable
+          : type as String,
+      siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.siteAdmin!
+          // ignore: cast_nullable_to_non_nullable
+          : siteAdmin as bool,
     );
   }
 }

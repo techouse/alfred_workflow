@@ -32,27 +32,27 @@ extension _$AlfredItemAutoequal on AlfredItem {
 // **************************************************************************
 
 abstract class _$AlfredItemCWProxy {
-  AlfredItem arg(String? arg);
-
-  AlfredItem autocomplete(String? autocomplete);
-
-  AlfredItem icon(AlfredItemIcon? icon);
-
-  AlfredItem match(String? match);
-
-  AlfredItem quickLookUrl(String? quickLookUrl);
-
-  AlfredItem subtitle(String? subtitle);
-
-  AlfredItem text(AlfredItemText? text);
-
   AlfredItem title(String title);
 
   AlfredItem type(String type);
 
+  AlfredItem valid(bool valid);
+
+  AlfredItem subtitle(String? subtitle);
+
+  AlfredItem arg(String? arg);
+
+  AlfredItem autocomplete(String? autocomplete);
+
   AlfredItem uid(String? uid);
 
-  AlfredItem valid(bool valid);
+  AlfredItem icon(AlfredItemIcon? icon);
+
+  AlfredItem text(AlfredItemText? text);
+
+  AlfredItem quickLookUrl(String? quickLookUrl);
+
+  AlfredItem match(String? match);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -61,25 +61,37 @@ abstract class _$AlfredItemCWProxy {
   /// AlfredItem(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredItem call({
-    String? arg,
-    String? autocomplete,
-    AlfredItemIcon? icon,
-    String? match,
-    String? quickLookUrl,
-    String? subtitle,
-    AlfredItemText? text,
     String? title,
     String? type,
-    String? uid,
     bool? valid,
+    String? subtitle,
+    String? arg,
+    String? autocomplete,
+    String? uid,
+    AlfredItemIcon? icon,
+    AlfredItemText? text,
+    String? quickLookUrl,
+    String? match,
   });
 }
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItem.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItem.copyWith.fieldName(...)`
 class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
+  const _$AlfredItemCWProxyImpl(this._value);
+
   final AlfredItem _value;
 
-  const _$AlfredItemCWProxyImpl(this._value);
+  @override
+  AlfredItem title(String title) => this(title: title);
+
+  @override
+  AlfredItem type(String type) => this(type: type);
+
+  @override
+  AlfredItem valid(bool valid) => this(valid: valid);
+
+  @override
+  AlfredItem subtitle(String? subtitle) => this(subtitle: subtitle);
 
   @override
   AlfredItem arg(String? arg) => this(arg: arg);
@@ -89,32 +101,20 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
       this(autocomplete: autocomplete);
 
   @override
+  AlfredItem uid(String? uid) => this(uid: uid);
+
+  @override
   AlfredItem icon(AlfredItemIcon? icon) => this(icon: icon);
 
   @override
-  AlfredItem match(String? match) => this(match: match);
+  AlfredItem text(AlfredItemText? text) => this(text: text);
 
   @override
   AlfredItem quickLookUrl(String? quickLookUrl) =>
       this(quickLookUrl: quickLookUrl);
 
   @override
-  AlfredItem subtitle(String? subtitle) => this(subtitle: subtitle);
-
-  @override
-  AlfredItem text(AlfredItemText? text) => this(text: text);
-
-  @override
-  AlfredItem title(String title) => this(title: title);
-
-  @override
-  AlfredItem type(String type) => this(type: type);
-
-  @override
-  AlfredItem uid(String? uid) => this(uid: uid);
-
-  @override
-  AlfredItem valid(bool valid) => this(valid: valid);
+  AlfredItem match(String? match) => this(match: match);
 
   @override
 
@@ -125,19 +125,38 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
   /// AlfredItem(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredItem call({
-    Object? arg = const $CopyWithPlaceholder(),
-    Object? autocomplete = const $CopyWithPlaceholder(),
-    Object? icon = const $CopyWithPlaceholder(),
-    Object? match = const $CopyWithPlaceholder(),
-    Object? quickLookUrl = const $CopyWithPlaceholder(),
-    Object? subtitle = const $CopyWithPlaceholder(),
-    Object? text = const $CopyWithPlaceholder(),
     Object? title = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
-    Object? uid = const $CopyWithPlaceholder(),
     Object? valid = const $CopyWithPlaceholder(),
+    Object? subtitle = const $CopyWithPlaceholder(),
+    Object? arg = const $CopyWithPlaceholder(),
+    Object? autocomplete = const $CopyWithPlaceholder(),
+    Object? uid = const $CopyWithPlaceholder(),
+    Object? icon = const $CopyWithPlaceholder(),
+    Object? text = const $CopyWithPlaceholder(),
+    Object? quickLookUrl = const $CopyWithPlaceholder(),
+    Object? match = const $CopyWithPlaceholder(),
   }) {
     return AlfredItem(
+      title: title == const $CopyWithPlaceholder() || title == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.title!
+          // ignore: cast_nullable_to_non_nullable
+          : title as String,
+      type: type == const $CopyWithPlaceholder() || type == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.type!
+          // ignore: cast_nullable_to_non_nullable
+          : type as String,
+      valid: valid == const $CopyWithPlaceholder() || valid == null
+          // ignore: unnecessary_non_null_assertion
+          ? _value.valid!
+          // ignore: cast_nullable_to_non_nullable
+          : valid as bool,
+      subtitle: subtitle == const $CopyWithPlaceholder()
+          ? _value.subtitle
+          // ignore: cast_nullable_to_non_nullable
+          : subtitle as String?,
       arg: arg == const $CopyWithPlaceholder()
           ? _value.arg
           // ignore: cast_nullable_to_non_nullable
@@ -146,42 +165,26 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           ? _value.autocomplete
           // ignore: cast_nullable_to_non_nullable
           : autocomplete as String?,
-      icon: icon == const $CopyWithPlaceholder()
-          ? _value.icon
-          // ignore: cast_nullable_to_non_nullable
-          : icon as AlfredItemIcon?,
-      match: match == const $CopyWithPlaceholder()
-          ? _value.match
-          // ignore: cast_nullable_to_non_nullable
-          : match as String?,
-      quickLookUrl: quickLookUrl == const $CopyWithPlaceholder()
-          ? _value.quickLookUrl
-          // ignore: cast_nullable_to_non_nullable
-          : quickLookUrl as String?,
-      subtitle: subtitle == const $CopyWithPlaceholder()
-          ? _value.subtitle
-          // ignore: cast_nullable_to_non_nullable
-          : subtitle as String?,
-      text: text == const $CopyWithPlaceholder()
-          ? _value.text
-          // ignore: cast_nullable_to_non_nullable
-          : text as AlfredItemText?,
-      title: title == const $CopyWithPlaceholder() || title == null
-          ? _value.title
-          // ignore: cast_nullable_to_non_nullable
-          : title as String,
-      type: type == const $CopyWithPlaceholder() || type == null
-          ? _value.type
-          // ignore: cast_nullable_to_non_nullable
-          : type as String,
       uid: uid == const $CopyWithPlaceholder()
           ? _value.uid
           // ignore: cast_nullable_to_non_nullable
           : uid as String?,
-      valid: valid == const $CopyWithPlaceholder() || valid == null
-          ? _value.valid
+      icon: icon == const $CopyWithPlaceholder()
+          ? _value.icon
           // ignore: cast_nullable_to_non_nullable
-          : valid as bool,
+          : icon as AlfredItemIcon?,
+      text: text == const $CopyWithPlaceholder()
+          ? _value.text
+          // ignore: cast_nullable_to_non_nullable
+          : text as AlfredItemText?,
+      quickLookUrl: quickLookUrl == const $CopyWithPlaceholder()
+          ? _value.quickLookUrl
+          // ignore: cast_nullable_to_non_nullable
+          : quickLookUrl as String?,
+      match: match == const $CopyWithPlaceholder()
+          ? _value.match
+          // ignore: cast_nullable_to_non_nullable
+          : match as String?,
     );
   }
 }

@@ -39,9 +39,9 @@ abstract class _$AlfredItemIconCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemIcon.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemIcon.copyWith.fieldName(...)`
 class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
-  final AlfredItemIcon _value;
-
   const _$AlfredItemIconCWProxyImpl(this._value);
+
+  final AlfredItemIcon _value;
 
   @override
   AlfredItemIcon path(String path) => this(path: path);
@@ -63,7 +63,8 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
   }) {
     return AlfredItemIcon(
       path: path == const $CopyWithPlaceholder() || path == null
-          ? _value.path
+          // ignore: unnecessary_non_null_assertion
+          ? _value.path!
           // ignore: cast_nullable_to_non_nullable
           : path as String,
       type: type == const $CopyWithPlaceholder()

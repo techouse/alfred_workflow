@@ -39,9 +39,9 @@ abstract class _$AlfredItemTextCWProxy {
 
 /// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemText.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemText.copyWith.fieldName(...)`
 class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
-  final AlfredItemText _value;
-
   const _$AlfredItemTextCWProxyImpl(this._value);
+
+  final AlfredItemText _value;
 
   @override
   AlfredItemText copy(String copy) => this(copy: copy);
@@ -63,7 +63,8 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
   }) {
     return AlfredItemText(
       copy: copy == const $CopyWithPlaceholder() || copy == null
-          ? _value.copy
+          // ignore: unnecessary_non_null_assertion
+          ? _value.copy!
           // ignore: cast_nullable_to_non_nullable
           : copy as String,
       largeType: largeType == const $CopyWithPlaceholder()
