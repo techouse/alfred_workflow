@@ -1,3 +1,7 @@
+## 0.2.11
+- Updated dependencies
+- Rebuilt generated files
+
 ## 0.2.10
 - Add support custom version tags
 
