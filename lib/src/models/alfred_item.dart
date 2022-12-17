@@ -1,3 +1,4 @@
+import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
@@ -28,6 +29,7 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
     this.text,
     this.quickLookUrl,
     this.match,
+    this.mods,
   });
 
   /// The [title] displayed in the result row. There are no options for this element and it is essential that this element is populated.
@@ -103,6 +105,12 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   @JsonKey(includeIfNull: false)
   final String? match;
 
+  /// The [mods] give you control over how the modifier keys react.
+  ///
+  /// It can alter the looks of a result (e.g. subtitle, icon) and output a different arg or session variables.
+  @JsonKey(includeIfNull: false, toJson: _modsToJson, fromJson: _modsFromJson)
+  final Map<Set<AlfredItemModKey>, AlfredItemMod>? mods;
+
   static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
       ? null
       : AlfredItemIcon.fromJson(Map<String, dynamic>.from(icon));
@@ -110,6 +118,30 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   static AlfredItemText? _textFromJson(dynamic text) => text == null
       ? null
       : AlfredItemText.fromJson(Map<String, dynamic>.from(text));
+
+  static Map<String, Map<String, dynamic>>? _modsToJson(
+    Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
+  ) =>
+      mods?.map(
+        (Set<AlfredItemModKey> key, AlfredItemMod value) => MapEntry(
+          key.map((AlfredItemModKey k) => k.name).join('+'),
+          value.toJson(),
+        ),
+      );
+
+  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? mods) {
+    if (mods == null) return null;
+
+    return Map<String, dynamic>.from(mods).map(
+      (String key, dynamic value) => MapEntry(
+        key
+            .split('+')
+            .map((String k) => AlfredItemModKey.values.byName(k))
+            .toSet(),
+        AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
+      ),
+    );
+  }
 
   factory AlfredItem.fromJson(Map<String, dynamic> json) =>
       _$AlfredItemFromJson(json);

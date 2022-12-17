@@ -23,7 +23,8 @@ extension _$AlfredItemAutoequal on AlfredItem {
         icon,
         text,
         quickLookUrl,
-        match
+        match,
+        mods
       ];
 }
 
@@ -54,6 +55,8 @@ abstract class _$AlfredItemCWProxy {
 
   AlfredItem match(String? match);
 
+  AlfredItem mods(Map<Set<AlfredItemModKey>, AlfredItemMod>? mods);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -72,6 +75,7 @@ abstract class _$AlfredItemCWProxy {
     AlfredItemText? text,
     String? quickLookUrl,
     String? match,
+    Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
   });
 }
 
@@ -117,6 +121,10 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
   AlfredItem match(String? match) => this(match: match);
 
   @override
+  AlfredItem mods(Map<Set<AlfredItemModKey>, AlfredItemMod>? mods) =>
+      this(mods: mods);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -136,6 +144,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
     Object? text = const $CopyWithPlaceholder(),
     Object? quickLookUrl = const $CopyWithPlaceholder(),
     Object? match = const $CopyWithPlaceholder(),
+    Object? mods = const $CopyWithPlaceholder(),
   }) {
     return AlfredItem(
       title: title == const $CopyWithPlaceholder() || title == null
@@ -185,6 +194,10 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           ? _value.match
           // ignore: cast_nullable_to_non_nullable
           : match as String?,
+      mods: mods == const $CopyWithPlaceholder()
+          ? _value.mods
+          // ignore: cast_nullable_to_non_nullable
+          : mods as Map<Set<AlfredItemModKey>, AlfredItemMod>?,
     );
   }
 }
@@ -216,6 +229,7 @@ AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
     text: AlfredItem._textFromJson(json['text']),
     quickLookUrl: json['quicklookurl'] as String?,
     match: json['match'] as String?,
+    mods: AlfredItem._modsFromJson(json['mods'] as Map?),
   );
 }
 
@@ -240,5 +254,6 @@ Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) {
   writeNotNull('text', instance.text?.toJson());
   writeNotNull('quicklookurl', instance.quickLookUrl);
   writeNotNull('match', instance.match);
+  writeNotNull('mods', AlfredItem._modsToJson(instance.mods));
   return val;
 }
