@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
 import 'package:alfred_workflow/src/models/alfred_item.dart';
-import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
 import 'package:meta/meta.dart';
 
