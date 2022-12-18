@@ -4,6 +4,7 @@ import 'package:data_fixture_dart/data_fixture_dart.dart';
 import 'package:meta/meta.dart';
 
 import 'alfred_item_icon_fixture.dart';
+import 'alfred_item_mod_fixture.dart';
 import 'alfred_item_text_fixture.dart';
 
 extension AlfredItemFixture on AlfredItem {
@@ -31,6 +32,19 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
               : null,
           match:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
+          mods: faker.randomGenerator.boolean()
+              ? {
+                  {AlfredItemModKey.cmd}:
+                      AlfredItemModFixture.factory.makeSingle(),
+                  {AlfredItemModKey.ctrl, AlfredItemModKey.alt}:
+                      AlfredItemModFixture.factory.makeSingle(),
+                  {
+                    AlfredItemModKey.cmd,
+                    AlfredItemModKey.shift,
+                    AlfredItemModKey.alt,
+                  }: AlfredItemModFixture.factory.makeSingle(),
+                }
+              : null,
         ),
       );
 
@@ -66,4 +80,9 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
 
   FixtureRedefinitionBuilder<AlfredItem> match(String? value) =>
       (AlfredItem item) => item.copyWith(match: value);
+
+  FixtureRedefinitionBuilder<AlfredItem> mods(
+    Map<Set<AlfredItemModKey>, AlfredItemMod>? value,
+  ) =>
+      (AlfredItem item) => item.copyWith(mods: value);
 }
