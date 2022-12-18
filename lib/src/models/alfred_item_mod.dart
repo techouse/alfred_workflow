@@ -30,7 +30,7 @@ class AlfredItemMod with EquatableMixin, _$AlfredItemModAutoequalMixin {
     this.arg,
     this.subtitle,
     this.icon,
-    this.valid = false,
+    this.valid = true,
   });
 
   /// The argument which is passed through the workflow to the connected output action.

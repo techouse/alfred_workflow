@@ -112,7 +112,7 @@ AlfredItemMod _$AlfredItemModFromJson(Map<String, dynamic> json) =>
       arg: json['arg'] as String?,
       subtitle: json['subtitle'] as String?,
       icon: AlfredItemMod._iconFromJson(json['icon']),
-      valid: json['valid'] as bool? ?? false,
+      valid: json['valid'] as bool? ?? true,
     );
 
 Map<String, dynamic> _$AlfredItemModToJson(AlfredItemMod instance) {
