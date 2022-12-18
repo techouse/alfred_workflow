@@ -1,3 +1,6 @@
+## 0.2.12
+- Add support for mods field in AlfredItem
+
 ## 0.2.11
 - Updated dependencies
 - Rebuilt generated files
