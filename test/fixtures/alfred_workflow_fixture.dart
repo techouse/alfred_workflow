@@ -17,17 +17,10 @@ class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
             fromEncodable: (Map<String, dynamic> json) =>
                 AlfredItems.fromJson(json),
           ),
-          disableAlfredSmartResultOrdering: false,
         ),
       );
 
   FixtureRedefinitionBuilder<AlfredWorkflow>
-      withoutAlfredSmartResultOrdering() =>
-          (AlfredWorkflow workflow) => AlfredWorkflow(
-                cache: MockAlfredCache<AlfredItems>(
-                  fromEncodable: (Map<String, dynamic> json) =>
-                      AlfredItems.fromJson(json),
-                ),
-                disableAlfredSmartResultOrdering: true,
-              );
+      withoutAlfredSmartResultOrdering() => (AlfredWorkflow workflow) =>
+          workflow..disableAlfredSmartResultOrdering = true;
 }

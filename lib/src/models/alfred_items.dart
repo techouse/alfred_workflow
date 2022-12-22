@@ -3,7 +3,11 @@ import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'alfred_item.dart';
 
 class AlfredItems with EquatableMixin {
-  const AlfredItems(this.items, {this.skipKnowledge, this.exactOrder});
+  const AlfredItems(
+    this.items, {
+    this.exactOrder,
+    this.skipKnowledge,
+  });
 
   /// A list of zero or more [AlfredItem]s.
   ///
@@ -40,4 +44,16 @@ class AlfredItems with EquatableMixin {
 
   @override
   List<Object?> get props => [items];
+
+  /// Copy this [AlfredItems] with the given [items], [exactOrder], or [skipKnowledge]
+  AlfredItems copyWith({
+    List<AlfredItem>? items,
+    bool? exactOrder,
+    bool? skipKnowledge,
+  }) =>
+      AlfredItems(
+        items ?? [...this.items],
+        skipKnowledge: skipKnowledge ?? this.skipKnowledge,
+        exactOrder: exactOrder ?? this.exactOrder,
+      );
 }

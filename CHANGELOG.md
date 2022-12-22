@@ -1,3 +1,6 @@
+## 0.3.0+1
+- Fix result ordering
+
 ## 0.3.0
 - **BREAKING:** Change AlfredItem.type from String to AlfredItemType enum
 - Add support for Universal Action

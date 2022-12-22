@@ -19,7 +19,6 @@ class AlfredWorkflow {
   /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
   AlfredWorkflow({
     AlfredCache<AlfredItems>? cache,
-    this.disableAlfredSmartResultOrdering = false,
   }) : _alfredCache = cache;
 
   /// Alfred learns to prioritise item results like he learns any other, meaning
@@ -29,12 +28,9 @@ class AlfredWorkflow {
   ///
   /// To have Alfred present the items in the exact sequence you define, set
   /// [disableAlfredSmartResultOrdering] to true.
-  final bool disableAlfredSmartResultOrdering;
+  bool disableAlfredSmartResultOrdering = false;
 
-  late final AlfredItems _items = AlfredItems(
-    [],
-    exactOrder: disableAlfredSmartResultOrdering,
-  );
+  late final AlfredItems _items = AlfredItems([]);
 
   final AlfredCache<AlfredItems>? _alfredCache;
 
@@ -109,23 +105,26 @@ class AlfredWorkflow {
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
   }) async {
-    final AlfredItems items = await getItems() ?? _items;
+    final List<AlfredItem> items = [...(await getItems() ?? _items).items];
 
     if (addToBeginning != null || addToEnd != null) {
-      final AlfredItems copy = AlfredItems([...items.items]);
-
       if (addToBeginning != null) {
-        copy.items.insert(0, addToBeginning);
+        items.insert(0, addToBeginning);
       }
 
       if (addToEnd != null) {
-        copy.items.add(addToEnd);
+        items.add(addToEnd);
       }
 
-      return jsonEncode(copy.toJson());
+      return jsonEncode(
+        AlfredItems(items, exactOrder: disableAlfredSmartResultOrdering)
+            .toJson(),
+      );
     }
 
-    return jsonEncode(items.toJson());
+    return jsonEncode(
+      AlfredItems(items, exactOrder: disableAlfredSmartResultOrdering).toJson(),
+    );
   }
 
   /// Use this convenience method to print the AlfredItems in JSON format to stdout.
