@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
@@ -9,6 +11,15 @@ import 'alfred_item_text.dart';
 
 part 'alfred_item.g.dart';
 
+enum AlfredItemType {
+  @JsonValue('default')
+  Default,
+  @JsonValue('file')
+  File,
+  @JsonValue('file:skipcheck')
+  FileSkipcheck,
+}
+
 /// [AlfredItem] implements all the properties [Alfred's Script Filter JSON Format](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/)
 ///
 /// Each [AlfredItem] describes a result row displayed in Alfred.
@@ -19,7 +30,7 @@ part 'alfred_item.g.dart';
 class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   const AlfredItem({
     required this.title,
-    this.type = 'default',
+    this.type = AlfredItemType.Default,
     this.valid = false,
     this.subtitle,
     this.arg,
@@ -36,14 +47,14 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   @JsonKey(required: true)
   final String title;
 
-  /// [type] : "default" | "file" | "file:skipcheck" (optional, default = "default")
+  /// [type] : [AlfredItemType.Default] | [AlfredItemType.File] | [AlfredItemType.FileSkipcheck] (optional, default = [AlfredItemType.Default])
   ///
-  /// By specifying [type] = "file", this makes Alfred treat your result as a file on your system.
+  /// By specifying [type] = [AlfredItemType.File], this makes Alfred treat your result as a file on your system.
   /// This allows the user to perform actions on the file like they can with Alfred's standard file filters.
   /// When returning files, Alfred will check if the file exists before presenting that result to the user.
   /// This has a very small performance implication but makes the results as predictable as possible.
-  /// If you would like Alfred to skip this check as you are certain that the files you are returning exist, you can use "type": "file:skipcheck".
-  final String type;
+  /// If you would like Alfred to skip this check as you are certain that the files you are returning exist, you can use [type]: [AlfredItemType.Default].
+  final AlfredItemType type;
 
   /// [valid] : true | false (optional, default = false)
   ///
@@ -107,7 +118,7 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
 
   /// The [mods] give you control over how the modifier keys react.
   ///
-  /// It can alter the looks of a result (e.g. subtitle, icon) and output a different arg or session variables.
+  /// It can alter the looks of a result (e.g. [subtitle], [icon]) and output a different arg or session variables.
   @JsonKey(includeIfNull: false, toJson: _modsToJson, fromJson: _modsFromJson)
   final Map<Set<AlfredItemModKey>, AlfredItemMod>? mods;
 

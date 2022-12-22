@@ -17,7 +17,7 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
   FixtureDefinition<AlfredItem> definition() => define(
         (Faker faker) => AlfredItem(
           title: faker.lorem.sentence(),
-          type: 'default',
+          type: AlfredItemType.Default,
           valid: faker.randomGenerator.boolean(),
           subtitle:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
@@ -51,7 +51,7 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
   FixtureRedefinitionBuilder<AlfredItem> title(String value) =>
       (AlfredItem item) => item.copyWith(title: value);
 
-  FixtureRedefinitionBuilder<AlfredItem> type(String value) =>
+  FixtureRedefinitionBuilder<AlfredItem> type(AlfredItemType value) =>
       (AlfredItem item) => item.copyWith(type: value);
 
   FixtureRedefinitionBuilder<AlfredItem> valid(bool value) =>

@@ -35,7 +35,7 @@ extension _$AlfredItemAutoequal on AlfredItem {
 abstract class _$AlfredItemCWProxy {
   AlfredItem title(String title);
 
-  AlfredItem type(String type);
+  AlfredItem type(AlfredItemType type);
 
   AlfredItem valid(bool valid);
 
@@ -65,7 +65,7 @@ abstract class _$AlfredItemCWProxy {
   /// ````
   AlfredItem call({
     String? title,
-    String? type,
+    AlfredItemType? type,
     bool? valid,
     String? subtitle,
     String? arg,
@@ -89,7 +89,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
   AlfredItem title(String title) => this(title: title);
 
   @override
-  AlfredItem type(String type) => this(type: type);
+  AlfredItem type(AlfredItemType type) => this(type: type);
 
   @override
   AlfredItem valid(bool valid) => this(valid: valid);
@@ -156,7 +156,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           // ignore: unnecessary_non_null_assertion
           ? _value.type!
           // ignore: cast_nullable_to_non_nullable
-          : type as String,
+          : type as AlfredItemType,
       valid: valid == const $CopyWithPlaceholder() || valid == null
           // ignore: unnecessary_non_null_assertion
           ? _value.valid!
@@ -219,7 +219,8 @@ AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
   );
   return AlfredItem(
     title: json['title'] as String,
-    type: json['type'] as String? ?? 'default',
+    type: $enumDecodeNullable(_$AlfredItemTypeEnumMap, json['type']) ??
+        AlfredItemType.Default,
     valid: json['valid'] as bool? ?? false,
     subtitle: json['subtitle'] as String?,
     arg: json['arg'] as String?,
@@ -236,7 +237,7 @@ AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) {
   final val = <String, dynamic>{
     'title': instance.title,
-    'type': instance.type,
+    'type': _$AlfredItemTypeEnumMap[instance.type]!,
     'valid': instance.valid,
   };
 
@@ -257,3 +258,9 @@ Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) {
   writeNotNull('mods', AlfredItem._modsToJson(instance.mods));
   return val;
 }
+
+const _$AlfredItemTypeEnumMap = {
+  AlfredItemType.Default: 'default',
+  AlfredItemType.File: 'file',
+  AlfredItemType.FileSkipcheck: 'file:skipcheck',
+};
