@@ -19,9 +19,22 @@ class AlfredWorkflow {
   /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
   AlfredWorkflow({
     AlfredCache<AlfredItems>? cache,
+    this.disableAlfredSmartResultOrdering = false,
   }) : _alfredCache = cache;
 
-  final AlfredItems _items = AlfredItems([]);
+  /// Alfred learns to prioritise item results like he learns any other, meaning
+  /// the order in which your workflow results are presented will be based on
+  /// Alfred's knowledge (using the item UID) and not the order your script
+  /// returns the items.
+  ///
+  /// To have Alfred present the items in the exact sequence you define, set
+  /// [disableAlfredSmartResultOrdering] to true.
+  final bool disableAlfredSmartResultOrdering;
+
+  late final AlfredItems _items = AlfredItems(
+    [],
+    exactOrder: disableAlfredSmartResultOrdering,
+  );
 
   final AlfredCache<AlfredItems>? _alfredCache;
 

@@ -226,4 +226,21 @@ void main() async {
       );
     });
   });
+
+  group('AlfredWorkflow with disableAlfredSmartResultOrdering', () {
+    late AlfredWorkflow workflow;
+
+    setUp(() {
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory.withoutAlfredSmartResultOrdering(),
+          )
+          .makeSingle();
+    });
+
+    test('toJsonString returns a JSON string', () async {
+      await workflow.addItems(items.items);
+      expect(await workflow.toJsonString(), isNot(containsSubstring('uid')));
+    });
+  });
 }
