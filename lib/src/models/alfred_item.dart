@@ -41,7 +41,16 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
     this.quickLookUrl,
     this.match,
     this.mods,
-  });
+    this.action,
+  })  : assert(
+          (arg == null && action == null) || ((arg != null) ^ (action != null)),
+          'Either arg or action must be provided, but not both.',
+        ),
+        assert(
+          action == null ||
+              (action is String || action is Iterable || action is Map),
+          'Action must be a String, Iterable or Map.',
+        );
 
   /// The [title] displayed in the result row. There are no options for this element and it is essential that this element is populated.
   @JsonKey(required: true)
@@ -122,6 +131,33 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   @JsonKey(includeIfNull: false, toJson: _modsToJson, fromJson: _modsFromJson)
   final Map<Set<AlfredItemModKey>, AlfredItemMod>? mods;
 
+  /// [action] : [Map<String, dynamic>] | [List<String>] | [String] (optional)
+  ///
+  /// This element defines the [Universal Action](https://www.alfredapp.com/help/features/universal-actions/)
+  /// items used when actioning the result, and overrides the [arg] being used for actioning.
+  /// The [action] key can take a [String] or [List<String>] for simple types, and the content
+  /// type will automatically be derived by Alfred to file, url, or text.
+  ///
+  /// Single Item:
+  ///   [action]: "Alfred is Great"
+  ///
+  /// Multiple Items:
+  ///   [action]: <String>["Alfred is Great", "I use him all day long"]
+  ///
+  /// For control over the content type of the action, you can use an object with typed keys:
+  ///   [action]: <String, dynamic>{
+  ///     "text": <String>["one", "two", "three"],
+  ///     "url": "https://www.alfredapp.com",
+  ///     "file": "~/Desktop",
+  ///     "auto": "~/Pictures"
+  ///   }
+  @JsonKey(
+    includeIfNull: false,
+    toJson: _actionToJson,
+    fromJson: _actionFromJson,
+  )
+  final Object? action;
+
   static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
       ? null
       : AlfredItemIcon.fromJson(Map<String, dynamic>.from(icon));
@@ -151,6 +187,26 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
             .toSet(),
         AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
       ),
+    );
+  }
+
+  static dynamic _actionToJson(Object? action) {
+    if (action == null) return null;
+    if (action is String) return action;
+    if (action is Iterable) return action.map(_actionToJson).toList();
+    if (action is Map) return Map<String, dynamic>.from(action);
+  }
+
+  static dynamic _actionFromJson(dynamic action) {
+    if (action == null) return null;
+    if (action is String) return action;
+    if (action is Iterable) return action.map(_actionFromJson).toList();
+    if (action is Map) return Map<String, dynamic>.from(action);
+
+    throw ArgumentError.value(
+      action,
+      'action',
+      'Invalid action. Must be a String, Iterable, or Map.',
     );
   }
 

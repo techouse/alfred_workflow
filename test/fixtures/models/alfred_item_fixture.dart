@@ -13,6 +13,8 @@ extension AlfredItemFixture on AlfredItem {
 
 @internal
 class AlfredItemFactory extends FixtureFactory<AlfredItem> {
+  final bool useAction = faker.randomGenerator.boolean();
+
   @override
   FixtureDefinition<AlfredItem> definition() => define(
         (Faker faker) => AlfredItem(
@@ -21,7 +23,7 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
           valid: faker.randomGenerator.boolean(),
           subtitle:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
-          arg: faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
+          arg: !useAction ? faker.lorem.sentence() : null,
           autocomplete:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
           uid: faker.randomGenerator.boolean() ? faker.guid.guid() : null,
@@ -45,8 +47,32 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
                   }: AlfredItemModFixture.factory.makeSingle(),
                 }
               : null,
+          action: useAction ? _fakeAction() : null,
         ),
       );
+
+  Object _fakeAction() {
+    final Type type = faker.randomGenerator.element([
+      String,
+      List,
+      Map,
+    ]);
+
+    switch (type) {
+      case List:
+        return List<String>.from(faker.lorem.sentences(2));
+      case Map:
+        return <String, dynamic>{
+          'text': faker.lorem.sentences(2),
+          'url': faker.internet.uri('https'),
+          'file': '/${faker.lorem.words(3).join('/')}.txt',
+          'auto': '/${faker.lorem.words(3).join('/')}.txt',
+        };
+      case String:
+      default:
+        return faker.lorem.sentence();
+    }
+  }
 
   FixtureRedefinitionBuilder<AlfredItem> title(String value) =>
       (AlfredItem item) => item.copyWith(title: value);
@@ -85,4 +111,9 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
     Map<Set<AlfredItemModKey>, AlfredItemMod>? value,
   ) =>
       (AlfredItem item) => item.copyWith(mods: value);
+
+  FixtureRedefinitionBuilder<AlfredItem> action(Object? value) =>
+      (AlfredItem item) => value is String || value is Iterable || value is Map
+          ? item.copyWith(action: value)
+          : item;
 }

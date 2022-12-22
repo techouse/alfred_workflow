@@ -24,7 +24,8 @@ extension _$AlfredItemAutoequal on AlfredItem {
         text,
         quickLookUrl,
         match,
-        mods
+        mods,
+        action
       ];
 }
 
@@ -57,6 +58,8 @@ abstract class _$AlfredItemCWProxy {
 
   AlfredItem mods(Map<Set<AlfredItemModKey>, AlfredItemMod>? mods);
 
+  AlfredItem action(Object? action);
+
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
   /// Usage
@@ -76,6 +79,7 @@ abstract class _$AlfredItemCWProxy {
     String? quickLookUrl,
     String? match,
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
+    Object? action,
   });
 }
 
@@ -125,6 +129,9 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
       this(mods: mods);
 
   @override
+  AlfredItem action(Object? action) => this(action: action);
+
+  @override
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -145,6 +152,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
     Object? quickLookUrl = const $CopyWithPlaceholder(),
     Object? match = const $CopyWithPlaceholder(),
     Object? mods = const $CopyWithPlaceholder(),
+    Object? action = const $CopyWithPlaceholder(),
   }) {
     return AlfredItem(
       title: title == const $CopyWithPlaceholder() || title == null
@@ -198,6 +206,10 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           ? _value.mods
           // ignore: cast_nullable_to_non_nullable
           : mods as Map<Set<AlfredItemModKey>, AlfredItemMod>?,
+      action: action == const $CopyWithPlaceholder()
+          ? _value.action
+          // ignore: cast_nullable_to_non_nullable
+          : action as Object?,
     );
   }
 }
@@ -231,6 +243,7 @@ AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
     quickLookUrl: json['quicklookurl'] as String?,
     match: json['match'] as String?,
     mods: AlfredItem._modsFromJson(json['mods'] as Map?),
+    action: AlfredItem._actionFromJson(json['action']),
   );
 }
 
@@ -256,6 +269,7 @@ Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) {
   writeNotNull('quicklookurl', instance.quickLookUrl);
   writeNotNull('match', instance.match);
   writeNotNull('mods', AlfredItem._modsToJson(instance.mods));
+  writeNotNull('action', AlfredItem._actionToJson(instance.action));
   return val;
 }
 
