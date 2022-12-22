@@ -10,16 +10,18 @@ class AlfredItems with EquatableMixin {
   /// Each [AlfredItem] describes a result row displayed in Alfred.
   final List<AlfredItem> items;
 
-  /// This preserves the given item order while allowing Alfred to retain
-  /// knowledge of your items, like your current selection during a re-run.
-  final bool? skipKnowledge;
-
   /// Alfred learns to prioritise item results like he learns any other, meaning
   /// the order in which your workflow results are presented will be based on Alfred's
   /// knowledge (using the item UID) and not the order your script returns the items.
   ///
   /// To have Alfred present the items in the exact sequence you define, exclude the UID attribute.
   final bool? exactOrder;
+
+  /// This preserves the given item order while allowing Alfred to retain
+  /// knowledge of your items, like your current selection during a re-run.
+  ///
+  /// Only available in Alfred 5
+  final bool? skipKnowledge;
 
   factory AlfredItems.fromJson(Map<String, dynamic> json) => AlfredItems(
         (json['items'] as List)
