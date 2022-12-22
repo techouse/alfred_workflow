@@ -1,5 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
+import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
@@ -48,8 +49,10 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
         ),
         assert(
           action == null ||
-              (action is String || action is Iterable || action is Map),
-          'Action must be a String, Iterable or Map.',
+              (action is String ||
+                  action is Iterable ||
+                  action is AlfredAction),
+          'Action must be a String, Iterable or AlfredAction.',
         );
 
   /// The [title] displayed in the result row. There are no options for this element and it is essential that this element is populated.
@@ -191,17 +194,33 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   }
 
   static dynamic _actionToJson(Object? action) {
-    if (action == null) return null;
-    if (action is String) return action;
-    if (action is Iterable) return action.map(_actionToJson).toList();
-    if (action is Map) return Map<String, dynamic>.from(action);
+    if (action == null) {
+      return null;
+    }
+    if (action is String) {
+      return action;
+    }
+    if (action is Iterable) {
+      return action.map(_actionToJson).toList();
+    }
+    if (action is AlfredAction) {
+      return action.toJson();
+    }
   }
 
   static Object? _actionFromJson(dynamic action) {
-    if (action == null) return null;
-    if (action is String) return action;
-    if (action is Iterable) return action.map(_actionFromJson).toList();
-    if (action is Map) return Map<String, dynamic>.from(action);
+    if (action == null) {
+      return null;
+    }
+    if (action is String) {
+      return action;
+    }
+    if (action is Iterable) {
+      return action.map(_actionFromJson).toList();
+    }
+    if (action is Map) {
+      return AlfredAction.fromJson(Map<String, dynamic>.from(action));
+    }
 
     throw ArgumentError.value(
       action,

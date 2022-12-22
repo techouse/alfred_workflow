@@ -1,8 +1,10 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
+import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
 import 'package:meta/meta.dart';
 
+import 'alfred_action_fixture.dart';
 import 'alfred_item_icon_fixture.dart';
 import 'alfred_item_mod_fixture.dart';
 import 'alfred_item_text_fixture.dart';
@@ -55,19 +57,14 @@ class AlfredItemFactory extends FixtureFactory<AlfredItem> {
     final Type type = faker.randomGenerator.element([
       String,
       List,
-      Map,
+      AlfredAction,
     ]);
 
     switch (type) {
       case List:
         return List<String>.from(faker.lorem.sentences(2));
-      case Map:
-        return <String, dynamic>{
-          'text': faker.lorem.sentences(2),
-          'url': faker.internet.uri('https'),
-          'file': '/${faker.lorem.words(3).join('/')}.txt',
-          'auto': '/${faker.lorem.words(3).join('/')}.txt',
-        };
+      case AlfredAction:
+        return AlfredActionFixture.factory.makeSingle();
       case String:
       default:
         return faker.lorem.sentence();
