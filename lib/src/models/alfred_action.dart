@@ -5,6 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_action.g.dart';
 
+/// https://www.alfredapp.com/help/features/universal-actions/
 @autoequalMixin
 @CopyWith()
 @JsonSerializable()
