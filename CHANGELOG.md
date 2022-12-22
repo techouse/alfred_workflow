@@ -1,3 +1,8 @@
+## 0.3.0
+- **BREAKING:** Change AlfredItem.type from String to AlfredItemType enum
+- Add support for Universal Action
+- Add support result ordering
+
 ## 0.2.12
 - Add support for mods field in AlfredItem
 
