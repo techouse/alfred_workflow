@@ -94,4 +94,73 @@ void main() {
       },
     );
   });
+
+  group('copyWith', () {
+    test('copyWith returns copy', () {
+      items = AlfredItems(itemsList);
+      final AlfredItems copy = items.copyWith();
+
+      expect(copy, equals(items));
+    });
+
+    test('copyWith copies all items', () {
+      items = AlfredItems(itemsList);
+      final AlfredItems copy = items.copyWith();
+
+      expect(copy.items, equals(items.items));
+    });
+
+    test('copyWith copies skipKnowledge', () {
+      items = AlfredItems(itemsList, skipKnowledge: true);
+      final AlfredItems copy = items.copyWith();
+
+      expect(copy.skipKnowledge, equals(items.skipKnowledge));
+    });
+
+    test('copyWith copies exactOrder', () {
+      items = AlfredItems(itemsList, exactOrder: true);
+      final AlfredItems copy = items.copyWith();
+
+      expect(copy.exactOrder, equals(items.exactOrder));
+    });
+
+    test('change skipKnowledge', () {
+      items = AlfredItems(itemsList, skipKnowledge: true);
+      final AlfredItems copy = items.copyWith(skipKnowledge: false);
+
+      expect(copy.skipKnowledge, isFalse);
+    });
+
+    test('change exactOrder', () {
+      items = AlfredItems(itemsList, exactOrder: true);
+      final AlfredItems copy = items.copyWith(exactOrder: false);
+
+      expect(copy.exactOrder, isFalse);
+    });
+
+    test('change items', () {
+      items = AlfredItems(itemsList);
+      final AlfredItems copy = items.copyWith(items: []);
+
+      expect(copy.items, isEmpty);
+    });
+
+    test('assign new items', () {
+      items = AlfredItems(itemsList);
+      final newItems = AlfredItemFixture.factory.makeMany(10);
+      final AlfredItems copy = items.copyWith(items: newItems);
+
+      expect(copy.items, equals(newItems));
+    });
+
+    test('changing copy.items does not change items.items', () {
+      items = AlfredItems(itemsList);
+      final AlfredItems copy = items.copyWith();
+      final newItem = AlfredItemFixture.factory.makeSingle();
+      copy.items.add(newItem);
+
+      expect(items.items, isNot(contains(newItem)));
+      expect(items.items, isNot(equals(copy.items)));
+    });
+  });
 }
