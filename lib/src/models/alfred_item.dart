@@ -197,7 +197,7 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
     if (action is Map) return Map<String, dynamic>.from(action);
   }
 
-  static dynamic _actionFromJson(dynamic action) {
+  static Object? _actionFromJson(dynamic action) {
     if (action == null) return null;
     if (action is String) return action;
     if (action is Iterable) return action.map(_actionFromJson).toList();
