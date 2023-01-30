@@ -518,7 +518,7 @@ packages:
       name: stash
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.4.1"
+    version: "4.5.0"
   stash_file:
     dependency: "direct main"
     description:
@@ -639,4 +639,4 @@ packages:
     source: hosted
     version: "3.1.1"
 sdks:
-  dart: ">=2.18.0 <3.0.0"
+  dart: ">=2.19.0 <3.0.0"
