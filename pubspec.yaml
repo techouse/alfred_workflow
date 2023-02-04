@@ -13,27 +13,27 @@ environment:
 dependencies:
   autoequal: ^0.5.1
   copy_with_extension: ^5.0.0
-  crypto: ^3.0.1
-  equatable: ^2.0.3
-  file: ^6.1.2
-  http: ^0.13.4
-  json_annotation: ^4.7.0
-  meta: ^1.7.0
-  path: ^1.8.2
-  pub_semver: ^2.1.1
-  stash: ^4.3.0
-  stash_file: ^4.3.0
+  crypto: ^3.0.2
+  equatable: ^2.0.5
+  file: ^6.1.4
+  http: ^0.13.5
+  json_annotation: ^4.8.0
+  meta: ^1.9.0
+  path: ^1.8.3
+  pub_semver: ^2.1.3
+  stash: ^4.5.0
+  stash_file: ^4.5.0
 
 dev_dependencies:
   autoequal_gen: ^0.5.1
-  build_runner: ^2.1.7
-  build_verify: ^3.0.0
+  build_runner: ^2.3.3
+  build_verify: ^3.1.0
   copy_with_extension_gen: ^5.0.0
   dart_code_metrics: '>=4.8.1 <6.0.0'
-  faker: ^2.0.0
-  json_serializable: ^6.1.5
-  lints: ^2.0.0
-  mockito: ^5.1.0
-  test: ^1.21.3
+  faker: ^2.1.0
+  json_serializable: ^6.6.1
+  lints: ^2.0.1
+  mockito: ^5.3.2
+  test: ^1.22.2
   data_fixture_dart: ^2.2.0
 
