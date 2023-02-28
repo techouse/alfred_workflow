@@ -1,3 +1,7 @@
+## 0.3.1
+- Chore: Update copy_with_extension to 5.0.2
+- Chore: Replace all Object? with dynamic in models
+
 ## 0.3.0+1
 - Fix result ordering
 
