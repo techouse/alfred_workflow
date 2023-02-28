@@ -21,7 +21,7 @@ extension _$AlfredActionAutoequal on AlfredAction {
 // **************************************************************************
 
 abstract class _$AlfredActionCWProxy {
-  AlfredAction text(Object? text);
+  AlfredAction text(dynamic text);
 
   AlfredAction url(Uri? url);
 
@@ -36,7 +36,7 @@ abstract class _$AlfredActionCWProxy {
   /// AlfredAction(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredAction call({
-    Object? text,
+    dynamic text,
     Uri? url,
     String? file,
     String? auto,
@@ -50,7 +50,7 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
   final AlfredAction _value;
 
   @override
-  AlfredAction text(Object? text) => this(text: text);
+  AlfredAction text(dynamic text) => this(text: text);
 
   @override
   AlfredAction url(Uri? url) => this(url: url);
@@ -76,10 +76,10 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
     Object? auto = const $CopyWithPlaceholder(),
   }) {
     return AlfredAction(
-      text: text == const $CopyWithPlaceholder()
+      text: text == const $CopyWithPlaceholder() || text == null
           ? _value.text
           // ignore: cast_nullable_to_non_nullable
-          : text as Object?,
+          : text as dynamic,
       url: url == const $CopyWithPlaceholder()
           ? _value.url
           // ignore: cast_nullable_to_non_nullable

@@ -63,8 +63,7 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
   }) {
     return AlfredItemText(
       copy: copy == const $CopyWithPlaceholder() || copy == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.copy!
+          ? _value.copy
           // ignore: cast_nullable_to_non_nullable
           : copy as String,
       largeType: largeType == const $CopyWithPlaceholder()

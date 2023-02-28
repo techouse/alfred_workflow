@@ -159,7 +159,7 @@ class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
     toJson: _actionToJson,
     fromJson: _actionFromJson,
   )
-  final Object? action;
+  final dynamic action;
 
   static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
       ? null

@@ -129,54 +129,44 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   }) {
     return GithubUser(
       login: login == const $CopyWithPlaceholder() || login == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.login!
+          ? _value.login
           // ignore: cast_nullable_to_non_nullable
           : login as String,
       id: id == const $CopyWithPlaceholder() || id == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.id!
+          ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
       nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.nodeId!
+          ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
       avatarUrl: avatarUrl == const $CopyWithPlaceholder() || avatarUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.avatarUrl!
+          ? _value.avatarUrl
           // ignore: cast_nullable_to_non_nullable
           : avatarUrl as Uri,
       gravatarId:
           gravatarId == const $CopyWithPlaceholder() || gravatarId == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.gravatarId!
+              ? _value.gravatarId
               // ignore: cast_nullable_to_non_nullable
               : gravatarId as String,
       url: url == const $CopyWithPlaceholder() || url == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.url!
+          ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
       htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.htmlUrl!
+          ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
       reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.reposUrl!
+          ? _value.reposUrl
           // ignore: cast_nullable_to_non_nullable
           : reposUrl as Uri,
       type: type == const $CopyWithPlaceholder() || type == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.type!
+          ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as String,
       siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.siteAdmin!
+          ? _value.siteAdmin
           // ignore: cast_nullable_to_non_nullable
           : siteAdmin as bool,
     );

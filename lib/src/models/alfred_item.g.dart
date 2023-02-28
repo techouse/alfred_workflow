@@ -58,7 +58,7 @@ abstract class _$AlfredItemCWProxy {
 
   AlfredItem mods(Map<Set<AlfredItemModKey>, AlfredItemMod>? mods);
 
-  AlfredItem action(Object? action);
+  AlfredItem action(dynamic action);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -79,7 +79,7 @@ abstract class _$AlfredItemCWProxy {
     String? quickLookUrl,
     String? match,
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
-    Object? action,
+    dynamic action,
   });
 }
 
@@ -129,7 +129,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
       this(mods: mods);
 
   @override
-  AlfredItem action(Object? action) => this(action: action);
+  AlfredItem action(dynamic action) => this(action: action);
 
   @override
 
@@ -156,18 +156,15 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
   }) {
     return AlfredItem(
       title: title == const $CopyWithPlaceholder() || title == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.title!
+          ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
       type: type == const $CopyWithPlaceholder() || type == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.type!
+          ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredItemType,
       valid: valid == const $CopyWithPlaceholder() || valid == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.valid!
+          ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
       subtitle: subtitle == const $CopyWithPlaceholder()
@@ -206,10 +203,10 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           ? _value.mods
           // ignore: cast_nullable_to_non_nullable
           : mods as Map<Set<AlfredItemModKey>, AlfredItemMod>?,
-      action: action == const $CopyWithPlaceholder()
+      action: action == const $CopyWithPlaceholder() || action == null
           ? _value.action
           // ignore: cast_nullable_to_non_nullable
-          : action as Object?,
+          : action as dynamic,
     );
   }
 }

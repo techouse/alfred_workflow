@@ -196,98 +196,80 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   }) {
     return GithubRelease(
       url: url == const $CopyWithPlaceholder() || url == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.url!
+          ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
       assetsUrl: assetsUrl == const $CopyWithPlaceholder() || assetsUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.assetsUrl!
+          ? _value.assetsUrl
           // ignore: cast_nullable_to_non_nullable
           : assetsUrl as Uri,
       uploadUrl: uploadUrl == const $CopyWithPlaceholder() || uploadUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.uploadUrl!
+          ? _value.uploadUrl
           // ignore: cast_nullable_to_non_nullable
           : uploadUrl as Uri,
       htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.htmlUrl!
+          ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
       id: id == const $CopyWithPlaceholder() || id == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.id!
+          ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
       author: author == const $CopyWithPlaceholder() || author == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.author!
+          ? _value.author
           // ignore: cast_nullable_to_non_nullable
           : author as GithubUser,
       nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.nodeId!
+          ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
       tagName: tagName == const $CopyWithPlaceholder() || tagName == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.tagName!
+          ? _value.tagName
           // ignore: cast_nullable_to_non_nullable
           : tagName as Version,
       targetCommitish: targetCommitish == const $CopyWithPlaceholder() ||
               targetCommitish == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.targetCommitish!
+          ? _value.targetCommitish
           // ignore: cast_nullable_to_non_nullable
           : targetCommitish as String,
       name: name == const $CopyWithPlaceholder() || name == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.name!
+          ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
       draft: draft == const $CopyWithPlaceholder() || draft == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.draft!
+          ? _value.draft
           // ignore: cast_nullable_to_non_nullable
           : draft as bool,
       prerelease:
           prerelease == const $CopyWithPlaceholder() || prerelease == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.prerelease!
+              ? _value.prerelease
               // ignore: cast_nullable_to_non_nullable
               : prerelease as bool,
       createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.createdAt!
+          ? _value.createdAt
           // ignore: cast_nullable_to_non_nullable
           : createdAt as DateTime,
       publishedAt:
           publishedAt == const $CopyWithPlaceholder() || publishedAt == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.publishedAt!
+              ? _value.publishedAt
               // ignore: cast_nullable_to_non_nullable
               : publishedAt as DateTime,
       assets: assets == const $CopyWithPlaceholder() || assets == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.assets!
+          ? _value.assets
           // ignore: cast_nullable_to_non_nullable
           : assets as List<GithubAsset>,
       tarballUrl:
           tarballUrl == const $CopyWithPlaceholder() || tarballUrl == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.tarballUrl!
+              ? _value.tarballUrl
               // ignore: cast_nullable_to_non_nullable
               : tarballUrl as Uri,
       zipballUrl:
           zipballUrl == const $CopyWithPlaceholder() || zipballUrl == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.zipballUrl!
+              ? _value.zipballUrl
               // ignore: cast_nullable_to_non_nullable
               : zipballUrl as Uri,
       body: body == const $CopyWithPlaceholder() || body == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.body!
+          ? _value.body
           // ignore: cast_nullable_to_non_nullable
           : body as String,
     );

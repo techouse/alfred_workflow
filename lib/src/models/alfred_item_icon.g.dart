@@ -63,8 +63,7 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
   }) {
     return AlfredItemIcon(
       path: path == const $CopyWithPlaceholder() || path == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.path!
+          ? _value.path
           // ignore: cast_nullable_to_non_nullable
           : path as String,
       type: type == const $CopyWithPlaceholder()

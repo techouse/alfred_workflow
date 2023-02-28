@@ -89,8 +89,7 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
           // ignore: cast_nullable_to_non_nullable
           : icon as AlfredItemIcon?,
       valid: valid == const $CopyWithPlaceholder() || valid == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.valid!
+          ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
     );

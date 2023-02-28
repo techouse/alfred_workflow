@@ -90,20 +90,17 @@ class _$AlfredUpdaterCWProxyImpl implements _$AlfredUpdaterCWProxy {
       githubRepositoryUrl:
           githubRepositoryUrl == const $CopyWithPlaceholder() ||
                   githubRepositoryUrl == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.githubRepositoryUrl!
+              ? _value.githubRepositoryUrl
               // ignore: cast_nullable_to_non_nullable
               : githubRepositoryUrl as Uri,
       currentVersion: currentVersion == const $CopyWithPlaceholder() ||
               currentVersion == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.currentVersion!
+          ? _value.currentVersion
           // ignore: cast_nullable_to_non_nullable
           : currentVersion as String,
       updateInterval: updateInterval == const $CopyWithPlaceholder() ||
               updateInterval == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.updateInterval!
+          ? _value.updateInterval
           // ignore: cast_nullable_to_non_nullable
           : updateInterval as Duration,
       cache: cache == const $CopyWithPlaceholder()

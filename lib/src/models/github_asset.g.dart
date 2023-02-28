@@ -156,23 +156,19 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
   }) {
     return GithubAsset(
       url: url == const $CopyWithPlaceholder() || url == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.url!
+          ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
       id: id == const $CopyWithPlaceholder() || id == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.id!
+          ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
       nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.nodeId!
+          ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
       name: name == const $CopyWithPlaceholder() || name == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.name!
+          ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
       label: label == const $CopyWithPlaceholder()
@@ -180,46 +176,38 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
           // ignore: cast_nullable_to_non_nullable
           : label as String?,
       uploader: uploader == const $CopyWithPlaceholder() || uploader == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.uploader!
+          ? _value.uploader
           // ignore: cast_nullable_to_non_nullable
           : uploader as GithubUser,
       contentType:
           contentType == const $CopyWithPlaceholder() || contentType == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.contentType!
+              ? _value.contentType
               // ignore: cast_nullable_to_non_nullable
               : contentType as String,
       state: state == const $CopyWithPlaceholder() || state == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.state!
+          ? _value.state
           // ignore: cast_nullable_to_non_nullable
           : state as String,
       size: size == const $CopyWithPlaceholder() || size == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.size!
+          ? _value.size
           // ignore: cast_nullable_to_non_nullable
           : size as int,
       downloadCount:
           downloadCount == const $CopyWithPlaceholder() || downloadCount == null
-              // ignore: unnecessary_non_null_assertion
-              ? _value.downloadCount!
+              ? _value.downloadCount
               // ignore: cast_nullable_to_non_nullable
               : downloadCount as int,
       createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.createdAt!
+          ? _value.createdAt
           // ignore: cast_nullable_to_non_nullable
           : createdAt as DateTime,
       updatedAt: updatedAt == const $CopyWithPlaceholder() || updatedAt == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.updatedAt!
+          ? _value.updatedAt
           // ignore: cast_nullable_to_non_nullable
           : updatedAt as DateTime,
       browserDownloadUrl: browserDownloadUrl == const $CopyWithPlaceholder() ||
               browserDownloadUrl == null
-          // ignore: unnecessary_non_null_assertion
-          ? _value.browserDownloadUrl!
+          ? _value.browserDownloadUrl
           // ignore: cast_nullable_to_non_nullable
           : browserDownloadUrl as Uri,
     );

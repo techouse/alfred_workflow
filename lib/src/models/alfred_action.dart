@@ -24,7 +24,7 @@ class AlfredAction with EquatableMixin, _$AlfredActionAutoequalMixin {
           'Text must be a String or Iterable.',
         );
 
-  final Object? text;
+  final dynamic text;
   final Uri? url;
   final String? file;
   final String? auto;
