@@ -1,3 +1,6 @@
+## 0.3.2
+- Chore: Update Dart SDK to '>=2.17.0 <4.0.0'
+
 ## 0.3.1
 - Chore: Update copy_with_extension to 5.0.2
 - Chore: Replace all Object? with dynamic in models
