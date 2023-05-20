@@ -1,3 +1,6 @@
+## 0.3.2+3
+- Fix: Fix automatic publishing via GitHub Actions
+
 ## 0.3.2+2
 - Chore: Automate publishing via GitHub Actions
 
