@@ -1,4 +1,4 @@
-name: Publish packages (dry run)
+name: Publish package (dry run)
 
 on:
   pull_request:
