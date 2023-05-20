@@ -1,3 +1,7 @@
+## 0.3.2+1
+- Chore: Update dependencies
+- Chore: Automate publishing via GitHub Actions
+
 ## 0.3.2
 - Chore: Update Dart SDK to '>=2.17.0 <4.0.0'
 
