@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 2
-        run: git checkout HEAD^
+      - run: git checkout HEAD^
       - name: Load base version
         id: load_base_version
         run: |
