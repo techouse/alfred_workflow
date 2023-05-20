@@ -32,10 +32,9 @@ jobs:
           sdk: stable
       - id: checkout
         uses: actions/checkout@v3
-      - name: Go back 1 commit
-        id: go_back_1_commit
-        run: |
-          git checkout HEAD^ -- pubspec.yaml
+        with:
+          fetch-depth: 2
+        run: git checkout HEAD^
       - name: Load base version
         id: load_base_version
         run: |
