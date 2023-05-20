@@ -37,6 +37,7 @@ jobs:
     steps:
       - uses: dart-lang/setup-dart@v1
         with:
+          environment: pub.dev
           sdk: stable
       - id: checkout
         uses: actions/checkout@v3
