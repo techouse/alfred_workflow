@@ -11,11 +11,11 @@ help:
 
 analyze:
 	@# Help: Analyze the project's Dart code.
-	dart analyze --fatal-infos
+	dart analyze lib test --fatal-infos
 
 check_format:
 	@# Help: Check the formatting of one or more Dart files.
-	dart format --output=none --set-exit-if-changed .
+	dart format lib test --output=none --set-exit-if-changed .
 
 check_outdated:
 	@# Help: Check which of the project's packages are outdated.
