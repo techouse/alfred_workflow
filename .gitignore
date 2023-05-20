@@ -7,3 +7,6 @@
 
 # Coverage
 coverage/
+
+# Tooling
+scripts/pubspec.lock
