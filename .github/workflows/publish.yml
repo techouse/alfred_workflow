@@ -24,6 +24,16 @@ jobs:
           sdk: stable
       - id: checkout
         uses: actions/checkout@v3
+      - name: Compare version with ref/tag
+        id: compare_version_with_tag
+        run: |
+          set -e
+          VERSION=$(awk '/^version: / {print $2}' pubspec.yaml)
+          TAG=${GITHUB_REF_NAME#v}
+          if [[ "$VERSION" != "$TAG" ]]; then
+            echo "Version in pubspec.yaml ($VERSION) does not match tag ($TAG)"
+            exit 1
+          fi
       - name: Install dependencies
         run: dart pub get
       - name: Publish
