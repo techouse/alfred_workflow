@@ -1,3 +1,6 @@
+## 0.3.3
+- Chore: Update dependencies
+
 ## 0.3.2+1
 - Chore: Update dependencies
 - Chore: Automate publishing via GitHub Actions
