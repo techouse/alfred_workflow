@@ -1,10 +1,12 @@
-name: Dart CI
+name: Test
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
 
 defaults:
   run:
@@ -16,112 +18,40 @@ env:
 permissions: read-all
 
 jobs:
-  analyze:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ macos-latest ]
-        sdk: [ stable ]
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-format-analyze"
-          restore-keys: |
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
-            os:${{ matrix.os }};pub-cache-hosted
-            os:${{ matrix.os }}
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: ${{ matrix.sdk }}
-      - id: checkout
-        name: Checkout repository
-        uses: actions/checkout@v3
-      - id: install
-        name: Install dependencies
-        run: make install
-      - name: Run the build system for Dart code generation and modular compilation
-        run: make code_gen
-      - name: Check the formatting of one or more Dart files
-        run: make check_format
-        if: always() && steps.install.outcome == 'success'
-      - name: Analyze the project's Dart code
-        run: make analyze
-        if: always() && steps.install.outcome == 'success'
-
   test:
-    needs: analyze
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ macos-latest ]
-        sdk: [ stable ]
+    name: "Test"
+    runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v3
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-test"
+          key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:alfred_workflow;commands:codegen-test"
           restore-keys: |
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
-            os:${{ matrix.os }};pub-cache-hosted
-            os:${{ matrix.os }}
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:alfred_workflow
+            os:ubuntu-latest;pub-cache-hosted;sdk:stable
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
       - name: Setup Dart SDK
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: ${{ matrix.sdk }}
+          sdk: stable
       - id: checkout
         name: Checkout repository
         uses: actions/checkout@v3
       - id: install
         name: Install dependencies
-        run: make install
+        run: dart pub get
       - name: Run the build system for Dart code generation and modular compilation
-        run: make code_gen
-      - name: Run VM tests
-        run: make tests
-        if: always() && steps.install.outcome == 'success'
-
-  coverage:
-    needs: test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ macos-latest ]
-        sdk: [ stable ]
-    steps:
-      - name: Cache Pub hosted dependencies
-        uses: actions/cache@v3
-        with:
-          path: "~/.pub-cache/hosted"
-          key: "os:${{ runner.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow;commands:codegen-coverage"
-          restore-keys: |
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }};packages:alfred_workflow
-            os:${{ matrix.os }};pub-cache-hosted;sdk:${{ matrix.sdk }}
-            os:${{ matrix.os }};pub-cache-hosted
-            os:${{ matrix.os }}
-      - name: Setup Dart SDK
-        uses: dart-lang/setup-dart@v1
-        with:
-          sdk: ${{ matrix.sdk }}
-      - id: checkout
-        name: Checkout repository
-        uses: actions/checkout@v3
-      - id: install
-        name: Install dependencies
+        run: dart run build_runner build --delete-conflicting-outputs
+      - name: Check the formatting of one or more Dart files
+        run: dart format lib test --output=none --set-exit-if-changed .
+      - name: Analyze the project's Dart code
+        run: dart analyze lib test --fatal-infos
+      - name: Install coverage dependencies
         run: |
-          make install
           dart pub global activate coverage
           dart pub global activate remove_from_coverage
-      - name: Run the build system for Dart code generation and modular compilation
-        run: make code_gen
       - name: Collect and report coverage
         run: |
           dart pub global run coverage:test_with_coverage
