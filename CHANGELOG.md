@@ -1,3 +1,8 @@
+## 0.4.0
+- Chore: Update Dart SDK to '>=3.0.5 <4.0.0'
+- Chore: Update dependencies
+- Chore: Remove Dart Code Metrics because it's being deprecated https://dcm.dev/blog/2023/06/06/announcing-dcm-free-version-sunset/
+
 ## 0.3.3
 - Chore: Update dependencies
 
