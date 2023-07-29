@@ -10,7 +10,7 @@ extension AlfredItemModFixture on AlfredItemMod {
 }
 
 @internal
-class AlfredItemModFactory extends FixtureFactory<AlfredItemMod> {
+final class AlfredItemModFactory extends FixtureFactory<AlfredItemMod> {
   @override
   FixtureDefinition<AlfredItemMod> definition() => define(
         (Faker faker) => AlfredItemMod(

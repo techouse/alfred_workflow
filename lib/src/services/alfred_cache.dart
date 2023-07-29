@@ -25,7 +25,7 @@ import 'package:stash_file/stash_file.dart'
 part 'alfred_cache.g.dart';
 
 @autoequalMixin
-class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
+base class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
   /// Builds an [AlfredCache] providing a [Cache] backed by a [Store]
   ///
   /// * [fromEncodable] : A custom function the converts to the object from a `Map<String, dynamic>` representation

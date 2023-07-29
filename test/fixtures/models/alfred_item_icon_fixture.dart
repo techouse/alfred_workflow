@@ -7,7 +7,7 @@ extension AlfredItemIconFixture on AlfredItemIcon {
 }
 
 @internal
-class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
+final class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
   @override
   FixtureDefinition<AlfredItemIcon> definition() => define(
         (Faker faker) => AlfredItemIcon(

@@ -7,7 +7,7 @@ extension AlfredItemTextFixture on AlfredItemText {
 }
 
 @internal
-class AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
+final class AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
   @override
   FixtureDefinition<AlfredItemText> definition() => define(
         (Faker faker) => AlfredItemText(

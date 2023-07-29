@@ -9,7 +9,7 @@ part 'alfred_action.g.dart';
 @autoequalMixin
 @CopyWith()
 @JsonSerializable()
-class AlfredAction with EquatableMixin, _$AlfredActionAutoequalMixin {
+final class AlfredAction with EquatableMixin, _$AlfredActionAutoequalMixin {
   const AlfredAction({
     this.text,
     this.url,

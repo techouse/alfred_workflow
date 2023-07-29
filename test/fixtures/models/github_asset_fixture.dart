@@ -10,7 +10,7 @@ extension GithubAssetFixture on GithubAsset {
 }
 
 @internal
-class GithubAssetFactory extends FixtureFactory<GithubAsset> {
+final class GithubAssetFactory extends FixtureFactory<GithubAsset> {
   final DateTime _now = DateTime.now();
 
   @override

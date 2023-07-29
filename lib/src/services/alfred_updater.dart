@@ -21,7 +21,7 @@ part 'alfred_updater.g.dart';
 
 @autoequalMixin
 @CopyWith()
-class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
+final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
   /// Builds an [AlfredUpdater]
   ///
   /// * [githubRepositoryUrl] : The [Uri] of the workflow's Github repository

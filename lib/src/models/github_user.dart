@@ -9,7 +9,7 @@ part 'github_user.g.dart';
 @autoequalMixin
 @CopyWith()
 @JsonSerializable()
-class GithubUser with EquatableMixin, _$GithubUserAutoequalMixin {
+final class GithubUser with EquatableMixin, _$GithubUserAutoequalMixin {
   const GithubUser({
     required this.login,
     required this.id,

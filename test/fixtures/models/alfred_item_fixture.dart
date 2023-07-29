@@ -14,7 +14,7 @@ extension AlfredItemFixture on AlfredItem {
 }
 
 @internal
-class AlfredItemFactory extends FixtureFactory<AlfredItem> {
+final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
   final bool useAction = faker.randomGenerator.boolean();
 
   @override

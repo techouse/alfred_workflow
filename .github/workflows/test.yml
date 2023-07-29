@@ -7,14 +7,12 @@ on:
   pull_request:
     branches:
       - master
-
+  workflow_call:
 defaults:
   run:
     shell: bash
-
 env:
   PUB_ENVIRONMENT: bot.github
-
 permissions: read-all
 
 jobs:

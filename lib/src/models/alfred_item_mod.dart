@@ -25,7 +25,7 @@ enum AlfredItemModKey {
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-class AlfredItemMod with EquatableMixin, _$AlfredItemModAutoequalMixin {
+final class AlfredItemMod with EquatableMixin, _$AlfredItemModAutoequalMixin {
   const AlfredItemMod({
     this.arg,
     this.subtitle,

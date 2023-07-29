@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart' show JsonConverter;
 import 'package:pub_semver/pub_semver.dart' show Version;
 
-class VersionConverter implements JsonConverter<Version, String> {
+final class VersionConverter implements JsonConverter<Version, String> {
   const VersionConverter();
 
   static const instance = VersionConverter();

@@ -7,7 +7,7 @@ extension AlfredActionFixture on AlfredAction {
 }
 
 @internal
-class AlfredActionFactory extends FixtureFactory<AlfredAction> {
+final class AlfredActionFactory extends FixtureFactory<AlfredAction> {
   @override
   FixtureDefinition<AlfredAction> definition() => define(
         (Faker faker) => AlfredAction(

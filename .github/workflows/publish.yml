@@ -12,7 +12,10 @@ env:
 permissions: read-all
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
   publish:
+    needs: test
     name: "Publish"
     permissions:
       id-token: write
@@ -34,8 +37,52 @@ jobs:
             echo "Version in pubspec.yaml ($VERSION) does not match tag ($TAG)"
             exit 1
           fi
+      - name: Check CHANGELOG.md
+        id: check_changelog
+        run: |
+          set -e
+          if ! grep -q "## $VERSION" CHANGELOG.md; then
+            echo "CHANGELOG.md does not contain a section for $VERSION"
+            exit 1
+          fi
       - name: Install dependencies
         run: dart pub get
       - name: Publish
         id: publish
         run: dart pub publish --force
+  release:
+    needs: [ test, publish ]
+    name: "Release"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get version from pubspec.yaml
+        id: get_version_and_name
+        run: |
+          set -e
+          VERSION=$(awk '/^version: / {print $2}' pubspec.yaml)
+          NAME=$(awk '/^name: / {print $2}' pubspec.yaml)
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "NAME=$NAME" >> $GITHUB_ENV
+      - name: Create tag-specific CHANGELOG
+        id: create_changelog
+        run: |
+          set -e
+          CHANGELOG_PATH=$RUNNER_TEMP/CHANGELOG.md
+          awk '/^##[[:space:]].*/ { if (count == 1) exit; count++; print } count == 1 && !/^##[[:space:]].*/ { print }' CHANGELOG.md | sed -e :a -e '/^\n*$/{$d;N;ba' -e '}' > $CHANGELOG_PATH
+          echo -n "\n[https://pub.dev/packages/$NAME/versions/$VERSION](https://pub.dev/packages/$NAME/versions/$VERSION)" >> $CHANGELOG_PATH
+          echo "CHANGELOG_PATH=$CHANGELOG_PATH" >> $GITHUB_ENV
+      - name: Create release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ env.VERSION }}
+          tag_name: v${{ env.VERSION }}
+          body_path: ${{ env.CHANGELOG_PATH }}
+      - name: Clean up
+        id: clean_up
+        if: ${{ always() }}
+        run: |
+          rm -rf $CHANGELOG_PATH

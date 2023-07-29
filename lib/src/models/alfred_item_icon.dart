@@ -18,7 +18,7 @@ enum AlfredItemIconType {
 @autoequalMixin
 @CopyWith()
 @JsonSerializable()
-class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
+final class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
   const AlfredItemIcon({
     required this.path,
     this.type,

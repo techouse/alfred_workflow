@@ -12,7 +12,7 @@ extension GithubReleaseFixture on GithubRelease {
 }
 
 @internal
-class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
+final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
   final DateTime _now = DateTime.now();
 
   @override

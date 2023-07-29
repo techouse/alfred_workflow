@@ -12,7 +12,7 @@ extension AlfredUpdaterFixture on AlfredUpdater {
 }
 
 @internal
-class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
+final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
   @override
   FixtureDefinition<AlfredUpdater> definition() => define(
         (Faker faker) {
