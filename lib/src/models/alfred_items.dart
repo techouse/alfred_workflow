@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart' show EquatableMixin;
 
 import 'alfred_item.dart';
 
-class AlfredItems with EquatableMixin {
+final class AlfredItems with EquatableMixin {
   const AlfredItems(
     this.items, {
     this.exactOrder,

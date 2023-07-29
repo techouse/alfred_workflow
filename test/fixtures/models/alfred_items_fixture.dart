@@ -9,7 +9,7 @@ extension AlfredItemsFixture on AlfredItems {
 }
 
 @internal
-class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
+final class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
   @override
   FixtureDefinition<AlfredItems> definition() => define(
         (Faker faker) => AlfredItems(

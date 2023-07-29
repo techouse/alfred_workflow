@@ -13,7 +13,7 @@ import 'src/services/alfred_cache.dart' show AlfredCache;
 export 'src/models/index.dart';
 export 'src/services/index.dart';
 
-class AlfredWorkflow {
+final class AlfredWorkflow {
   /// Builds an [AlfredWorkflow]
   ///
   /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]

@@ -9,7 +9,7 @@ extension AlfredWorkflowFixture on AlfredWorkflow {
 }
 
 @internal
-class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
+final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
   @override
   FixtureDefinition<AlfredWorkflow> definition() => define(
         (Faker faker) => AlfredWorkflow(

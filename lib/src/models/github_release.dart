@@ -15,7 +15,7 @@ part 'github_release.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 @VersionConverter.instance
-class GithubRelease with EquatableMixin, _$GithubReleaseAutoequalMixin {
+final class GithubRelease with EquatableMixin, _$GithubReleaseAutoequalMixin {
   const GithubRelease({
     required this.url,
     required this.assetsUrl,

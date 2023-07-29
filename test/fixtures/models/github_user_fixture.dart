@@ -9,7 +9,7 @@ extension GithubUserFixture on GithubUser {
 }
 
 @internal
-class GithubUserFactory extends FixtureFactory<GithubUser> {
+final class GithubUserFactory extends FixtureFactory<GithubUser> {
   @override
   FixtureDefinition<GithubUser> definition() => define(
         (Faker faker) {

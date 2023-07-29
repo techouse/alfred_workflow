@@ -11,7 +11,7 @@ part 'github_asset.g.dart';
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-class GithubAsset with EquatableMixin, _$GithubAssetAutoequalMixin {
+final class GithubAsset with EquatableMixin, _$GithubAssetAutoequalMixin {
   const GithubAsset({
     required this.url,
     required this.id,

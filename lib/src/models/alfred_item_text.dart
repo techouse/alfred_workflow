@@ -11,7 +11,7 @@ part 'alfred_item_text.g.dart';
 @autoequalMixin
 @CopyWith()
 @JsonSerializable()
-class AlfredItemText with EquatableMixin, _$AlfredItemTextAutoequalMixin {
+final class AlfredItemText with EquatableMixin, _$AlfredItemTextAutoequalMixin {
   const AlfredItemText({
     required this.copy,
     this.largeType,

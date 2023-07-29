@@ -28,7 +28,7 @@ enum AlfredItemType {
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
+final class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
   const AlfredItem({
     required this.title,
     this.type = AlfredItemType.Default,
