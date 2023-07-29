@@ -1,49 +1,68 @@
+## 0.4.1
+
+- Chore: Add Dart 3 class modifiers
+- Chore: Add GitHub Release step to publishing GitHub Action
+
 ## 0.4.0
+
 - Chore: Update Dart SDK to '>=3.0.5 <4.0.0'
 - Chore: Update dependencies
-- Chore: Remove Dart Code Metrics because it's being deprecated https://dcm.dev/blog/2023/06/06/announcing-dcm-free-version-sunset/
+- Chore: Remove Dart Code Metrics because it's being
+  deprecated https://dcm.dev/blog/2023/06/06/announcing-dcm-free-version-sunset/
 
 ## 0.3.3
+
 - Chore: Update dependencies
 
 ## 0.3.2+1
+
 - Chore: Update dependencies
 - Chore: Automate publishing via GitHub Actions
 
 ## 0.3.2
+
 - Chore: Update Dart SDK to '>=2.17.0 <4.0.0'
 
 ## 0.3.1
+
 - Chore: Update copy_with_extension to 5.0.2
 - Chore: Replace all Object? with dynamic in models
 
 ## 0.3.0+1
+
 - Fix result ordering
 
 ## 0.3.0
+
 - **BREAKING:** Change AlfredItem.type from String to AlfredItemType enum
 - Add support for Universal Action
 - Add support result ordering
 
 ## 0.2.12
+
 - Add support for mods field in AlfredItem
 
 ## 0.2.11
+
 - Updated dependencies
 - Rebuilt generated files
 
 ## 0.2.10
+
 - Add support custom version tags
 
 ## 0.2.9
+
 - Updated examples
 - Updated dependencies
 
 ## 0.2.8
+
 - Updated dependencies
 - Rebuilt generated files
 
 ## 0.2.7
+
 - AlfredItems now has a const constructor
 - Added build_verify test to ensure all generated files get pushed correctly
 - Added EquatableMixin to AlfredCache and AlfredUpdater
