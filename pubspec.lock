@@ -517,10 +517,10 @@ packages:
     dependency: "direct main"
     description:
       name: stash_file
-      sha256: f82784bf8beffbc9a7b0950a0ec4b8b325da9121c1fbd2030ff7cc7d947e7eb4
+      sha256: "465ab8fb2d02cf6ebe3cdd75193af9da55af1dcf398dcf6be7663d13707aa561"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.1"
   stream_channel:
     dependency: transitive
     description:
