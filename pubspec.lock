@@ -509,10 +509,10 @@ packages:
     dependency: "direct main"
     description:
       name: stash
-      sha256: "7d6ac4f82feaa45b51b74431dcd93c1c818d61ec23edaf5c912279146f6844e5"
+      sha256: "01566ce6773fddbd7cb839d0514770159919253de518ef1031c29a28919b20e6"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.0"
+    version: "5.0.1"
   stash_file:
     dependency: "direct main"
     description:
