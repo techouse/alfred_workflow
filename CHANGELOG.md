@@ -1,3 +1,8 @@
+## 0.4.2
+
+- Chore: Add pub topics to package metadata
+- Chore: Update dependencies
+
 ## 0.4.1
 
 - Chore: Add Dart 3 class modifiers
