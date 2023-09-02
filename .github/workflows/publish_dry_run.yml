@@ -73,6 +73,17 @@ jobs:
           dart pub get
           echo "IS_VERSION_GREATER=$(dart run compare_versions.dart $THIS_VERSION $BASE_VERSION)" >> $GITHUB_ENV
           popd || exit
+      - name: Validate pub.dev topics
+        id: validate_pub_dev_topics
+        run: |
+          set -e
+          pattern="^[a-z][a-z0-9-]*[a-z0-9]$"
+          for topic in $(yq -r '.topics[]' pubspec.yaml); do
+            if [[ ! $topic =~ $pattern ]]; then
+              echo "Invalid topic: $topic"
+              exit 1
+            fi
+          done
       - name: Publish (dry run)
         id: publish_dry_run
         if: ${{ env.IS_VERSION_GREATER == 1 }}
