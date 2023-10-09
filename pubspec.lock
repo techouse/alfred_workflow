@@ -497,6 +497,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  sprintf:
+    dependency: transitive
+    description:
+      name: sprintf
+      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -509,18 +517,18 @@ packages:
     dependency: "direct main"
     description:
       name: stash
-      sha256: "01566ce6773fddbd7cb839d0514770159919253de518ef1031c29a28919b20e6"
+      sha256: "70a516b6d791fa760a9e58c4f01ac0230ca3be8d71d57fcec637996c7d4e463f"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "5.0.2"
   stash_file:
     dependency: "direct main"
     description:
       name: stash_file
-      sha256: "465ab8fb2d02cf6ebe3cdd75193af9da55af1dcf398dcf6be7663d13707aa561"
+      sha256: dc90f076cef14d486e473e0156d6e256503e9193e8681b650d0e4e70c33210bd
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.1"
+    version: "5.0.2"
   stream_channel:
     dependency: transitive
     description:
@@ -597,10 +605,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
+      sha256: b715b8d3858b6fa9f68f87d20d98830283628014750c2b09b6f516c1da4af2a7
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.7"
+    version: "4.1.0"
   vm_service:
     dependency: transitive
     description:
