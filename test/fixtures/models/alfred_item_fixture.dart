@@ -61,11 +61,11 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
     ]);
 
     switch (type) {
-      case List:
+      case const (List):
         return List<String>.from(faker.lorem.sentences(2));
-      case AlfredAction:
+      case const (AlfredAction):
         return AlfredActionFixture.factory.makeSingle();
-      case String:
+      case const (String):
       default:
         return faker.lorem.sentence();
     }
