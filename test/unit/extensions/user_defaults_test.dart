@@ -23,6 +23,12 @@ void main() {
       expect(userDefaults?['dolor'], equals('sit'));
     });
 
+    test('not existing getUserDefaults', () async {
+      final Map? userDefaults = await workflow.getUserDefaults('foo.plist');
+      expect(userDefaults, isNot(isA<Map>()));
+      expect(userDefaults, isNull);
+    });
+
     test('getUserDefaultsSync', () {
       final Map? userDefaults = workflow.getUserDefaultsSync(
         'test/fixtures/data/prefs.plist',
@@ -33,6 +39,12 @@ void main() {
       expect(userDefaults?['lorem'], equals('ipsum'));
       expect(userDefaults, contains('dolor'));
       expect(userDefaults?['dolor'], equals('sit'));
+    });
+
+    test('not existing getUserDefaultsSync', () {
+      final Map? userDefaults = workflow.getUserDefaultsSync('foo.plist');
+      expect(userDefaults, isNot(isA<Map>()));
+      expect(userDefaults, isNull);
     });
   });
 }
