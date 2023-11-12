@@ -1,3 +1,8 @@
+## 0.5.0
+
+- Feat: Add ability to read User Defaults from prefs.plist
+- Chore: Update dependencies
+
 ## 0.4.2
 
 - Chore: Add pub topics to package metadata
