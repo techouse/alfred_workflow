@@ -413,10 +413,10 @@ packages:
     dependency: "direct main"
     description:
       name: plist_parser
-      sha256: fc1c84565315bd774cc6b53955865cadd228967735595b8cc612ac132df6191d
+      sha256: e2a6f9abfa0c45c0253656b7360abb0dfb84af9937bace74605b93d2aad2bf0c
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.10"
+    version: "0.0.11"
   pool:
     dependency: transitive
     description:
