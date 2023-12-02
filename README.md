@@ -7,6 +7,7 @@ A helper library in Dart for authors of workflows for [Alfred](https://www.alfre
 [![codecov](https://codecov.io/gh/techouse/alfred_workflow/branch/master/graph/badge.svg?token=SkypLLzvM3)](https://codecov.io/gh/techouse/alfred_workflow)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f4453a193c94f6eb4239f95718d1cea)](https://www.codacy.com/gh/techouse/alfred_workflow/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=techouse/alfred_workflow&amp;utm_campaign=Badge_Grade)
 [![GitHub](https://img.shields.io/github/license/techouse/alfred_workflow)](LICENSE)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/techouse)](https://github.com/sponsors/techouse)
 
 This library is heavily inspired by the excellent Python library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
 
