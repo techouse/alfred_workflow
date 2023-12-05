@@ -9,10 +9,11 @@ part of 'github_asset.dart';
 mixin _$GithubAssetAutoequalMixin on EquatableMixin {
   @override
   List<Object?> get props =>
-      _$GithubAssetAutoequal(this as GithubAsset)._$props;
+      _$GithubAssetAutoequal((this as GithubAsset))._$props;
 }
 
 extension _$GithubAssetAutoequal on GithubAsset {
+  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         url,
         id,
@@ -26,7 +27,7 @@ extension _$GithubAssetAutoequal on GithubAsset {
         downloadCount,
         createdAt,
         updatedAt,
-        browserDownloadUrl
+        browserDownloadUrl,
       ];
 }
 

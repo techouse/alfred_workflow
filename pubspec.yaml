@@ -2,38 +2,38 @@ name: alfred_workflow
 description: A helper library in Dart for authors of workflows for Alfred.
 homepage: https://github.com/techouse/alfred_workflow
 
-version: 0.5.0
+version: 0.5.1
 
 platforms:
   macos:
 
 environment:
-  sdk: '>=3.1.0 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
-  autoequal: ^0.5.1
+  autoequal: ^0.7.1
   copy_with_extension: ^5.0.4
   crypto: ^3.0.3
   equatable: ^2.0.5
   file: ^7.0.0
-  http: ^1.1.0
+  http: ^1.1.2
   json_annotation: ^4.8.1
-  meta: ^1.9.1
+  meta: ^1.11.0
   path: ^1.8.3
-  plist_parser: ^0.0.10
+  plist_parser: ^0.0.11
   pub_semver: ^2.1.4
   stash: ^5.0.2
   stash_file: ^5.0.2
 
 dev_dependencies:
-  autoequal_gen: ^0.5.1
-  build_runner: ^2.4.6
+  autoequal_gen: ^0.7.1
+  build_runner: ^2.4.7
   build_verify: ^3.1.0
   copy_with_extension_gen: ^5.0.4
   faker: ^2.1.0
   json_serializable: ^6.7.1
   lints: ^3.0.0
-  mockito: ^5.4.2
+  mockito: ^5.4.3
   test: ^1.24.9
   data_fixture_dart: ^2.2.0
 

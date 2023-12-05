@@ -1,3 +1,8 @@
+## 0.5.1
+
+- Chore: Update dependencies
+- Chore: Update Dart SDK to '>=3.2.0 <4.0.0'
+
 ## 0.5.0
 
 - Feat: Add ability to read User Defaults from prefs.plist
