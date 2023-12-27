@@ -23,7 +23,7 @@ final class AlfredUserConfigurationConfigCheckBox
   final String? text;
 
   @override
-  AlfredUserConfigurationConfig<bool> copyWithValue(bool value) =>
+  AlfredUserConfigurationConfig<bool> copyWithValue(bool? value) =>
       copyWith(value: value);
 
   factory AlfredUserConfigurationConfigCheckBox.fromJson(Map json) =>

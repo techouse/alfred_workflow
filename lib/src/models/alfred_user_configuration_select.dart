@@ -28,7 +28,7 @@ final class AlfredUserConfigurationSelect
 
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigSelect> copyWithConfig(
-          AlfredUserConfigurationConfigSelect config) =>
+          AlfredUserConfigurationConfigSelect? config) =>
       copyWith(config: config);
 
   static AlfredUserConfigurationConfigSelect _configFromJson(Map json) {

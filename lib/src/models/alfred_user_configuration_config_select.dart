@@ -27,7 +27,7 @@ final class AlfredUserConfigurationConfigSelect
   final List<AlfredUserConfigurationConfigSelectPair> pairs;
 
   @override
-  AlfredUserConfigurationConfig<String> copyWithValue(String value) =>
+  AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
       copyWith(value: value);
 
   static List<AlfredUserConfigurationConfigSelectPair> _pairsFromJson(

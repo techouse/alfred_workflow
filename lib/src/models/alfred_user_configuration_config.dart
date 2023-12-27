@@ -17,5 +17,5 @@ abstract class AlfredUserConfigurationConfig<T>
   @JsonKey(includeFromJson: false, includeToJson: false)
   final T value;
 
-  AlfredUserConfigurationConfig<T> copyWithValue(T value);
+  AlfredUserConfigurationConfig<T> copyWithValue(T? value);
 }

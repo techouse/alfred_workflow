@@ -28,7 +28,7 @@ final class AlfredUserConfigurationConfigFilePicker
   final int filterMode;
 
   @override
-  AlfredUserConfigurationConfig<String> copyWithValue(String value) =>
+  AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
       copyWith(value: value);
 
   factory AlfredUserConfigurationConfigFilePicker.fromJson(Map json) =>

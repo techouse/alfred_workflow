@@ -21,5 +21,5 @@ abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
   final String? label;
   abstract final T config;
 
-  AlfredUserConfiguration<T> copyWithConfig(T config);
+  AlfredUserConfiguration<T> copyWithConfig(T? config);
 }

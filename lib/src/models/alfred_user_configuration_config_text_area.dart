@@ -26,7 +26,7 @@ final class AlfredUserConfigurationConfigTextArea
   final int verticalSize;
 
   @override
-  AlfredUserConfigurationConfig<String> copyWithValue(String value) =>
+  AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
       copyWith(value: value);
 
   factory AlfredUserConfigurationConfigTextArea.fromJson(Map json) =>

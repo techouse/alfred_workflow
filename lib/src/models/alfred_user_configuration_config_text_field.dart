@@ -27,7 +27,7 @@ final class AlfredUserConfigurationConfigTextField
   final bool trim;
 
   @override
-  AlfredUserConfigurationConfig<String> copyWithValue(String value) =>
+  AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
       copyWith(value: value);
 
   factory AlfredUserConfigurationConfigTextField.fromJson(Map json) =>
