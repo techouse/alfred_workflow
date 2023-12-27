@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>baz value</string>
+				<key>pairs</key>
+				<array>
+					<array>
+						<string>foo label</string>
+						<string>foo value</string>
+					</array>
+					<array>
+						<string>bar label</string>
+						<string>bar value</string>
+					</array>
+					<array>
+						<string>baz label</string>
+						<string>baz value</string>
+					</array>
+					<array>
+						<string>qux label</string>
+						<string>qux value</string>
+					</array>
+				</array>
+			</dict>
+			<key>description</key>
+			<string>popupbutton description</string>
+			<key>label</key>
+			<string>popupbutton label</string>
+			<key>type</key>
+			<string>popupbutton</string>
+			<key>variable</key>
+			<string>popupbutton_variable</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>textfield default</string>
+				<key>placeholder</key>
+				<string>textfield placeholder</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<false/>
+			</dict>
+			<key>description</key>
+			<string>textfield description</string>
+			<key>label</key>
+			<string>textfield label</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>textfield_variable</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>textarea default</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<false/>
+				<key>verticalsize</key>
+				<integer>3</integer>
+			</dict>
+			<key>description</key>
+			<string>textarea description</string>
+			<key>label</key>
+			<string>textarea label</string>
+			<key>type</key>
+			<string>textarea</string>
+			<key>variable</key>
+			<string>textarea_variable</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<true/>
+				<key>text</key>
+				<string>checkbox text</string>
+			</dict>
+			<key>description</key>
+			<string>checkbox description</string>
+			<key>label</key>
+			<string>checkbox label</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>checkbox_variable</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>filtermode</key>
+				<integer>0</integer>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>filepicker description</string>
+			<key>label</key>
+			<string>filepicker label</string>
+			<key>type</key>
+			<string>filepicker</string>
+			<key>variable</key>
+			<string>filepicker_variable</string>
+		</dict>
+	</array>
+</dict>
+</plist>

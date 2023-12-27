@@ -2,9 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>lorem</key>
-	<string>ipsum</string>
-    <key>dolor</key>
-	<string>sit</string>
+	<key>popupbutton_variable</key>
+	<string>foo value</string>
+	<key>checkbox_variable</key>
+	<true/>
+	<key>filepicker_variable</key>
+	<string>/home/user/Desktop/document.pdf</string>
+	<key>textfield_variable</key>
+	<string>lorem ipsum dolor</string>
+	<key>New item</key>
+	<string></string>
+	<key>textarea_variable</key>
+	<string>lorem ipsum dolor sit amet</string>
 </dict>
 </plist>
