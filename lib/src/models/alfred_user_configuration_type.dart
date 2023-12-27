@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+/// The type of user configuration
 enum AlfredUserConfigurationType {
   @JsonValue('textfield')
   textField('textfield'),
@@ -14,6 +15,7 @@ enum AlfredUserConfigurationType {
 
   const AlfredUserConfigurationType(this.jsonValue);
 
+  /// The JSON value of the type
   final String jsonValue;
 
   @override

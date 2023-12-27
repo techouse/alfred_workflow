@@ -3,6 +3,7 @@ import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_config_text_field.g.dart';
 
@@ -22,10 +23,16 @@ final class AlfredUserConfigurationConfigTextField
     this.placeholder,
   });
 
+  /// Whether the text field is required
   final String? placeholder;
+
+  /// Whether to trim the text
   final bool required;
+
+  /// Whether to trim the text
   final bool trim;
 
+  @internal
   @override
   AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
       copyWith(value: value);

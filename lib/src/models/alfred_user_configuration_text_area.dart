@@ -5,9 +5,11 @@ import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_text_area.g.dart';
 
+/// Alfred text area user configuration
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
@@ -22,10 +24,12 @@ final class AlfredUserConfigurationTextArea
     super.label,
   });
 
+  /// The configuration for the text area
   @override
   @JsonKey(fromJson: _configFromJson)
   final AlfredUserConfigurationConfigTextArea config;
 
+  @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigTextArea> copyWithConfig(
           AlfredUserConfigurationConfigTextArea? config) =>

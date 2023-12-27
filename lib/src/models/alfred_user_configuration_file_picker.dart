@@ -5,9 +5,11 @@ import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_file_picker.g.dart';
 
+/// A file picker configuration
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
@@ -22,10 +24,12 @@ final class AlfredUserConfigurationFilePicker
     super.label,
   });
 
+  /// The configuration for the file picker
   @override
   @JsonKey(fromJson: _configFromJson)
   final AlfredUserConfigurationConfigFilePicker config;
 
+  @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigFilePicker>
       copyWithConfig(AlfredUserConfigurationConfigFilePicker? config) =>

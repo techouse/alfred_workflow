@@ -5,9 +5,11 @@ import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_check_box.g.dart';
 
+/// Alfred check box user configuration
 @autoequalMixin
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
@@ -22,10 +24,12 @@ final class AlfredUserConfigurationCheckBox
     super.label,
   });
 
+  /// The configuration for the check box
   @override
   @JsonKey(fromJson: _configFromJson)
   final AlfredUserConfigurationConfigCheckBox config;
 
+  @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigCheckBox> copyWithConfig(
           AlfredUserConfigurationConfigCheckBox? config) =>
