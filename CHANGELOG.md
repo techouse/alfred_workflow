@@ -1,3 +1,10 @@
+## 0.6.0
+
+- **BREAKING:** User Defaults are now combined with the default prefs.plist
+  file. This means that if you have a prefs.plist file in your workflow, it will
+  be merged with the User Defaults when you call `AlfredWorkflow.run()`.
+  This is to ensure that the workflow is always in a consistent state.
+
 ## 0.5.1
 
 - Chore: Update dependencies
