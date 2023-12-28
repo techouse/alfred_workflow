@@ -35,11 +35,10 @@ final class AlfredUserConfigurationCheckBox
           AlfredUserConfigurationConfigCheckBox? config) =>
       copyWith(config: config);
 
-  static AlfredUserConfigurationConfigCheckBox _configFromJson(Map json) {
-    return AlfredUserConfigurationConfigCheckBox.fromJson(
-      json.map((k, v) => MapEntry(k.toString(), v)),
-    );
-  }
+  static AlfredUserConfigurationConfigCheckBox _configFromJson(Map json) =>
+      AlfredUserConfigurationConfigCheckBox.fromJson(
+        json.map((k, v) => MapEntry(k.toString(), v)),
+      );
 
   factory AlfredUserConfigurationCheckBox.fromJson(Map json) =>
       _$AlfredUserConfigurationCheckBoxFromJson(

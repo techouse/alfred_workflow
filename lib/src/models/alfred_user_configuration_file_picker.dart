@@ -35,11 +35,10 @@ final class AlfredUserConfigurationFilePicker
       copyWithConfig(AlfredUserConfigurationConfigFilePicker? config) =>
           copyWith(config: config);
 
-  static AlfredUserConfigurationConfigFilePicker _configFromJson(Map json) {
-    return AlfredUserConfigurationConfigFilePicker.fromJson(
-      json.map((k, v) => MapEntry(k.toString(), v)),
-    );
-  }
+  static AlfredUserConfigurationConfigFilePicker _configFromJson(Map json) =>
+      AlfredUserConfigurationConfigFilePicker.fromJson(
+        json.map((k, v) => MapEntry(k.toString(), v)),
+      );
 
   factory AlfredUserConfigurationFilePicker.fromJson(Map json) =>
       _$AlfredUserConfigurationFilePickerFromJson(

@@ -35,11 +35,10 @@ final class AlfredUserConfigurationTextField
       copyWithConfig(AlfredUserConfigurationConfigTextField? config) =>
           copyWith(config: config);
 
-  static AlfredUserConfigurationConfigTextField _configFromJson(Map json) {
-    return AlfredUserConfigurationConfigTextField.fromJson(
-      json.map((k, v) => MapEntry(k.toString(), v)),
-    );
-  }
+  static AlfredUserConfigurationConfigTextField _configFromJson(Map json) =>
+      AlfredUserConfigurationConfigTextField.fromJson(
+        json.map((k, v) => MapEntry(k.toString(), v)),
+      );
 
   factory AlfredUserConfigurationTextField.fromJson(Map json) {
     return _$AlfredUserConfigurationTextFieldFromJson(

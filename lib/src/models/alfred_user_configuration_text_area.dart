@@ -35,11 +35,10 @@ final class AlfredUserConfigurationTextArea
           AlfredUserConfigurationConfigTextArea? config) =>
       copyWith(config: config);
 
-  static AlfredUserConfigurationConfigTextArea _configFromJson(Map json) {
-    return AlfredUserConfigurationConfigTextArea.fromJson(
-      json.map((k, v) => MapEntry(k.toString(), v)),
-    );
-  }
+  static AlfredUserConfigurationConfigTextArea _configFromJson(Map json) =>
+      AlfredUserConfigurationConfigTextArea.fromJson(
+        json.map((k, v) => MapEntry(k.toString(), v)),
+      );
 
   factory AlfredUserConfigurationTextArea.fromJson(Map json) =>
       _$AlfredUserConfigurationTextAreaFromJson(

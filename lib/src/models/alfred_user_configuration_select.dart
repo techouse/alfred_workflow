@@ -35,11 +35,10 @@ final class AlfredUserConfigurationSelect
           AlfredUserConfigurationConfigSelect? config) =>
       copyWith(config: config);
 
-  static AlfredUserConfigurationConfigSelect _configFromJson(Map json) {
-    return AlfredUserConfigurationConfigSelect.fromJson(
-      json.map((k, v) => MapEntry(k.toString(), v)),
-    );
-  }
+  static AlfredUserConfigurationConfigSelect _configFromJson(Map json) =>
+      AlfredUserConfigurationConfigSelect.fromJson(
+        json.map((k, v) => MapEntry(k.toString(), v)),
+      );
 
   factory AlfredUserConfigurationSelect.fromJson(Map json) =>
       _$AlfredUserConfigurationSelectFromJson(
