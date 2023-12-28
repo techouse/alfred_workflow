@@ -215,13 +215,11 @@ codesign -dv --verbose=4 ./path/to/compiled/exe
 zip -j ./path/to/compiled/exe.zip ./path/to/compiled/exe
 
 # Notarize the binary in ZIP form
-xcrun altool \
-  --notarize-app \
-  --primary-bundle-id="com.example.test" \  # replace with app's bundle id
-  --username="john.appleseed@apple.com" \   # Apple ID username 
-  --password="@keychain:Developer-altool" \ # create an app-specific password; https://support.apple.com/en-us/HT204397
-  --asc-provider="XXXXXX" \                 # your team
-  --file="./path/to/compiled/exe.zip"
+# For more info refer to https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow#3087734
+xcrun notarytool \
+  submit path/to/compiled/exe.zip \
+  --keychain-profile "notarytool-password" \  # replace with an app specific password https://support.apple.com/en-us/HT204397
+  --wait
 
 # Delete zip file as it's no longer needed at this point
 # Apple will notarize the Mach-O binary inside the ZIP
