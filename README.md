@@ -3,15 +3,18 @@
 A helper library in Dart for authors of workflows for [Alfred](https://www.alfredapp.com).
 
 [![Pub Version](https://img.shields.io/pub/v/alfred_workflow)](https://pub.dev/packages/alfred_workflow)
+[![Pub Publisher](https://img.shields.io/pub/publisher/alfred_workflow)](https://pub.dev/publishers/tusar.dev/packages)
+[![Pub Likes](https://img.shields.io/pub/likes/alfred_workflow)](https://pub.dev/packages/alfred_workflow/score)
+[![Pub Points](https://img.shields.io/pub/points/alfred_workflow)](https://pub.dev/packages/alfred_workflow/score)
+[![Pub Popularity](https://img.shields.io/pub/popularity/alfred_workflow)](https://pub.dev/packages/alfred_workflow/score)
 [![Dart CI](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml/badge.svg)](https://github.com/techouse/alfred_workflow/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/techouse/alfred_workflow/branch/master/graph/badge.svg?token=SkypLLzvM3)](https://codecov.io/gh/techouse/alfred_workflow)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f4453a193c94f6eb4239f95718d1cea)](https://www.codacy.com/gh/techouse/alfred_workflow/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=techouse/alfred_workflow&amp;utm_campaign=Badge_Grade)
 [![GitHub](https://img.shields.io/github/license/techouse/alfred_workflow)](LICENSE)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/techouse)](https://github.com/sponsors/techouse)
+[![GitHub Repo stars](https://img.shields.io/github/stars/techouse/alfred_workflow)](https://github.com/techouse/alfred_workflow/stargazers)
 
 This library is heavily inspired by the excellent Python library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
-
-In its current state, it is very basic and only implements the [Alfred Script Filter JSON API](https://www.alfredapp.com/help/workflows/inputs/script-filter/json/).
 
 ## :children_crossing: Usage
 
