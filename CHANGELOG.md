@@ -1,3 +1,7 @@
+## 0.6.1
+
+- Chore: Update dependencies
+
 ## 0.6.0
 
 - **BREAKING:** User Defaults are now combined with the default prefs.plist
