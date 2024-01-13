@@ -10,12 +10,12 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_select.g.dart';
 
 /// Alfred select user configuration
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationSelect
     extends AlfredUserConfiguration<AlfredUserConfigurationConfigSelect>
-    with EquatableMixin, _$AlfredUserConfigurationSelectAutoequalMixin {
+    with EquatableMixin {
   const AlfredUserConfigurationSelect({
     required super.type,
     required super.variable,

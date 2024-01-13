@@ -14,12 +14,11 @@ typedef AlfredUserConfigurationConfigSelectPair = ({
 });
 
 /// Alfred user configuration select class
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigSelect
-    extends AlfredUserConfigurationConfig<String>
-    with EquatableMixin, _$AlfredUserConfigurationConfigSelectAutoequalMixin {
+    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
   const AlfredUserConfigurationConfigSelect({
     required super.defaultValue,
     required this.pairs,

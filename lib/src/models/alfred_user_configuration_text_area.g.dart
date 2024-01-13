@@ -3,26 +3,6 @@
 part of 'alfred_user_configuration_text_area.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-mixin _$AlfredUserConfigurationTextAreaAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        ..._$AlfredUserConfigurationTextAreaAutoequal(
-                (this as AlfredUserConfigurationTextArea))
-            ._$props,
-      ];
-}
-
-extension _$AlfredUserConfigurationTextAreaAutoequal
-    on AlfredUserConfigurationTextArea {
-  List<Object?> get _autoequalProps => _$props;
-  List<Object?> get _$props => [config];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

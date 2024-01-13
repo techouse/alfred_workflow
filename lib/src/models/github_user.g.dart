@@ -6,14 +6,7 @@ part of 'github_user.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$GithubUserAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$GithubUserAutoequal((this as GithubUser))._$props;
-}
-
 extension _$GithubUserAutoequal on GithubUser {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         login,
         id,

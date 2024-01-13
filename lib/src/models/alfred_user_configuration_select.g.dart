@@ -3,26 +3,6 @@
 part of 'alfred_user_configuration_select.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-mixin _$AlfredUserConfigurationSelectAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        ..._$AlfredUserConfigurationSelectAutoequal(
-                (this as AlfredUserConfigurationSelect))
-            ._$props,
-      ];
-}
-
-extension _$AlfredUserConfigurationSelectAutoequal
-    on AlfredUserConfigurationSelect {
-  List<Object?> get _autoequalProps => _$props;
-  List<Object?> get _$props => [config];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

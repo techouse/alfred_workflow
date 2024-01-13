@@ -7,14 +7,11 @@ import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_config_text_field.g.dart';
 
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextField
-    extends AlfredUserConfigurationConfig<String>
-    with
-        EquatableMixin,
-        _$AlfredUserConfigurationConfigTextFieldAutoequalMixin {
+    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
   const AlfredUserConfigurationConfigTextField({
     required super.defaultValue,
     required this.required,

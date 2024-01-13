@@ -8,14 +8,11 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_config_file_picker.g.dart';
 
 /// Alfred file picker user configuration config
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigFilePicker
-    extends AlfredUserConfigurationConfig<String>
-    with
-        EquatableMixin,
-        _$AlfredUserConfigurationConfigFilePickerAutoequalMixin {
+    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
   const AlfredUserConfigurationConfigFilePicker({
     required super.defaultValue,
     required this.required,

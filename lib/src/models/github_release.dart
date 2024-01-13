@@ -11,11 +11,11 @@ import 'github_user.dart';
 part 'github_release.g.dart';
 
 /// [GithubRelease] implements all the properties of the [Github Releases API](https://docs.github.com/en/rest/reference/releases)
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 @VersionConverter.instance
-final class GithubRelease with EquatableMixin, _$GithubReleaseAutoequalMixin {
+final class GithubRelease with EquatableMixin {
   const GithubRelease({
     required this.url,
     required this.assetsUrl,
@@ -69,4 +69,7 @@ final class GithubRelease with EquatableMixin, _$GithubReleaseAutoequalMixin {
       _$GithubReleaseFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubReleaseToJson(this);
+
+  @override
+  List<Object?> get props => _$props;
 }

@@ -22,10 +22,10 @@ enum AlfredItemModKey {
 /// The [AlfredItemMod] gives you control over how the modifier keys react.
 ///
 /// It can alter the looks of a result (e.g. [subtitle], [icon]) and output a different [arg].
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class AlfredItemMod with EquatableMixin, _$AlfredItemModAutoequalMixin {
+final class AlfredItemMod with EquatableMixin {
   const AlfredItemMod({
     this.arg,
     this.subtitle,
@@ -56,4 +56,7 @@ final class AlfredItemMod with EquatableMixin, _$AlfredItemModAutoequalMixin {
   static AlfredItemIcon? _iconFromJson(dynamic icon) => icon == null
       ? null
       : AlfredItemIcon.fromJson(Map<String, dynamic>.from(icon));
+
+  @override
+  List<Object?> get props => _$props;
 }

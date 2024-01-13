@@ -3,26 +3,6 @@
 part of 'alfred_user_configuration_text_field.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-mixin _$AlfredUserConfigurationTextFieldAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        ..._$AlfredUserConfigurationTextFieldAutoequal(
-                (this as AlfredUserConfigurationTextField))
-            ._$props,
-      ];
-}
-
-extension _$AlfredUserConfigurationTextFieldAutoequal
-    on AlfredUserConfigurationTextField {
-  List<Object?> get _autoequalProps => _$props;
-  List<Object?> get _$props => [config];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

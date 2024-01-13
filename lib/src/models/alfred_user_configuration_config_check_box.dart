@@ -8,12 +8,11 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_config_check_box.g.dart';
 
 /// Alfred check box user configuration config
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigCheckBox
-    extends AlfredUserConfigurationConfig<bool>
-    with EquatableMixin, _$AlfredUserConfigurationConfigCheckBoxAutoequalMixin {
+    extends AlfredUserConfigurationConfig<bool> with EquatableMixin {
   const AlfredUserConfigurationConfigCheckBox({
     required super.defaultValue,
     required this.required,

@@ -3,29 +3,6 @@
 part of 'alfred_user_configuration_config_check_box.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-mixin _$AlfredUserConfigurationConfigCheckBoxAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        ..._$AlfredUserConfigurationConfigCheckBoxAutoequal(
-                (this as AlfredUserConfigurationConfigCheckBox))
-            ._$props,
-      ];
-}
-
-extension _$AlfredUserConfigurationConfigCheckBoxAutoequal
-    on AlfredUserConfigurationConfigCheckBox {
-  List<Object?> get _autoequalProps => _$props;
-  List<Object?> get _$props => [
-        required,
-        text,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

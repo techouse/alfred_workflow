@@ -6,14 +6,7 @@ part of 'github_asset.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$GithubAssetAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$GithubAssetAutoequal((this as GithubAsset))._$props;
-}
-
 extension _$GithubAssetAutoequal on GithubAsset {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         url,
         id,

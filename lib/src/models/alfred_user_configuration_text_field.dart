@@ -10,12 +10,12 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_text_field.g.dart';
 
 /// Alfred text field user configuration
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationTextField
     extends AlfredUserConfiguration<AlfredUserConfigurationConfigTextField>
-    with EquatableMixin, _$AlfredUserConfigurationTextFieldAutoequalMixin {
+    with EquatableMixin {
   const AlfredUserConfigurationTextField({
     required super.type,
     required super.variable,

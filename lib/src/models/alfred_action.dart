@@ -6,10 +6,10 @@ import 'package:json_annotation/json_annotation.dart';
 part 'alfred_action.g.dart';
 
 /// https://www.alfredapp.com/help/features/universal-actions/
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable()
-final class AlfredAction with EquatableMixin, _$AlfredActionAutoequalMixin {
+final class AlfredAction with EquatableMixin {
   const AlfredAction({
     this.text,
     this.url,
@@ -33,4 +33,7 @@ final class AlfredAction with EquatableMixin, _$AlfredActionAutoequalMixin {
       _$AlfredActionFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredActionToJson(this);
+
+  @override
+  List<Object?> get props => _$props;
 }

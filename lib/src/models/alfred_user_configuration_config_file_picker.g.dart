@@ -3,31 +3,6 @@
 part of 'alfred_user_configuration_config_file_picker.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-mixin _$AlfredUserConfigurationConfigFilePickerAutoequalMixin
-    on EquatableMixin {
-  @override
-  List<Object?> get props => [
-        ...super.props,
-        ..._$AlfredUserConfigurationConfigFilePickerAutoequal(
-                (this as AlfredUserConfigurationConfigFilePicker))
-            ._$props,
-      ];
-}
-
-extension _$AlfredUserConfigurationConfigFilePickerAutoequal
-    on AlfredUserConfigurationConfigFilePicker {
-  List<Object?> get _autoequalProps => _$props;
-  List<Object?> get _$props => [
-        required,
-        placeholder,
-        filterMode,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 

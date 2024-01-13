@@ -6,14 +6,7 @@ part of 'alfred_action.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$AlfredActionAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$AlfredActionAutoequal((this as AlfredAction))._$props;
-}
-
 extension _$AlfredActionAutoequal on AlfredAction {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         text,
         url,

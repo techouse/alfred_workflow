@@ -6,14 +6,7 @@ part of 'alfred_item_text.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$AlfredItemTextAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$AlfredItemTextAutoequal((this as AlfredItemText))._$props;
-}
-
 extension _$AlfredItemTextAutoequal on AlfredItemText {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         copy,
         largeType,

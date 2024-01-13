@@ -6,14 +6,7 @@ part of 'alfred_item_icon.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$AlfredItemIconAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$AlfredItemIconAutoequal((this as AlfredItemIcon))._$props;
-}
-
 extension _$AlfredItemIconAutoequal on AlfredItemIcon {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         path,
         type,

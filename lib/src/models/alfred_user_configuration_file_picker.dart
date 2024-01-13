@@ -10,12 +10,12 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_file_picker.g.dart';
 
 /// A file picker configuration
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationFilePicker
     extends AlfredUserConfiguration<AlfredUserConfigurationConfigFilePicker>
-    with EquatableMixin, _$AlfredUserConfigurationFilePickerAutoequalMixin {
+    with EquatableMixin {
   const AlfredUserConfigurationFilePicker({
     required super.type,
     required super.variable,

@@ -19,9 +19,9 @@ import 'alfred_cache.dart';
 
 part 'alfred_updater.g.dart';
 
-@autoequalMixin
+@autoequal
 @CopyWith()
-final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
+final class AlfredUpdater with EquatableMixin {
   /// Builds an [AlfredUpdater]
   ///
   /// * [githubRepositoryUrl] : The [Uri] of the workflow's Github repository
@@ -39,7 +39,6 @@ final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
         _currentVersion = Version.parse(currentVersion);
 
   /// The cache key under which the cached [GithubRelease] is stored
-  @ignoreAutoequal
   static const String updateKey = 'update';
 
   /// The [Uri] of the workflow's Github repository
@@ -54,7 +53,7 @@ final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
   /// Optionally customize the [Client]
   final Client? client;
 
-  @ignoreAutoequal
+  @ignore
   late final Future<Cache<GithubRelease>> _cache = (cache ??
           // coverage:ignore-start
           AlfredCache<GithubRelease>(
@@ -72,7 +71,7 @@ final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
   late final Version _currentVersion;
 
   /// Get a [String] representation of the [_currentVersion].
-  @ignoreAutoequal
+  @ignore
   String get currentVersion => _currentVersion.toString();
 
   /// Check if an update is available .
@@ -188,4 +187,7 @@ final class AlfredUpdater with EquatableMixin, _$AlfredUpdaterAutoequalMixin {
     stdout.write(result.stdout);
     stderr.write(result.stderr);
   } // coverage:ignore-end
+
+  @override
+  List<Object?> get props => _$props;
 }

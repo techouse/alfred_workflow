@@ -8,12 +8,11 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_config_text_area.g.dart';
 
 /// A configuration for a text area
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextArea
-    extends AlfredUserConfigurationConfig<String>
-    with EquatableMixin, _$AlfredUserConfigurationConfigTextAreaAutoequalMixin {
+    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
   const AlfredUserConfigurationConfigTextArea({
     required super.defaultValue,
     required this.required,

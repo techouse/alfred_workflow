@@ -25,10 +25,10 @@ enum AlfredItemType {
 ///
 /// Each [AlfredItem] describes a result row displayed in Alfred.
 /// The three obvious elements are the ones you see in an Alfred result row - [title], [subtitle] and [icon].
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
+final class AlfredItem with EquatableMixin {
   const AlfredItem({
     required this.title,
     this.type = AlfredItemType.Default,
@@ -233,4 +233,7 @@ final class AlfredItem with EquatableMixin, _$AlfredItemAutoequalMixin {
       _$AlfredItemFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
+
+  @override
+  List<Object?> get props => _$props;
 }

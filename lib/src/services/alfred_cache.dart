@@ -24,8 +24,8 @@ import 'package:stash_file/stash_file.dart'
 
 part 'alfred_cache.g.dart';
 
-@autoequalMixin
-base class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
+@autoequal
+base class AlfredCache<T> with EquatableMixin {
   /// Builds an [AlfredCache] providing a [Cache] backed by a [Store]
   ///
   /// * [fromEncodable] : A custom function the converts to the object from a `Map<String, dynamic>` representation
@@ -73,13 +73,13 @@ base class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
   final bool verbose;
 
   /// The local [FileCacheStore]
-  @ignoreAutoequal
+  @ignore
   late final Future<FileCacheStore> store = newFileLocalCacheStore(
     path: path ?? dirname(Platform.script.toFilePath()),
   );
 
   /// The [Cache] backed by a [Store]
-  @ignoreAutoequal
+  @ignore
   late final Future<Cache<T>> cache = store.then(
     (FileCacheStore cacheStore) async => await cacheStore.cache<T>(
       name: name,
@@ -105,4 +105,7 @@ base class AlfredCache<T> with EquatableMixin, _$AlfredCacheAutoequalMixin {
         verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
       ),
   );
+
+  @override
+  List<Object?> get props => _$props;
 }

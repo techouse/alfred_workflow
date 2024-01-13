@@ -37,18 +37,18 @@ packages:
     dependency: "direct main"
     description:
       name: autoequal
-      sha256: "321091dcf5bf9492b67d2e7f98cfb5a789dfd63e28d041bd4fe34e319e424cfa"
+      sha256: bca5df6714add268a06de2b29044aa706a439f56c8be766c7d7adbe44bf42415
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.9.0"
   autoequal_gen:
     dependency: "direct dev"
     description:
       name: autoequal_gen
-      sha256: ac9740e584d876ab4f8f01b9f0b3bb5affb86cf94fe16380b3c22c45333c1334
+      sha256: af5aa418f4cf18dc2ae924fc5cb2615c9766408849d7522c119936b38ad815c5
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.1"
+    version: "0.9.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -93,10 +93,10 @@ packages:
     dependency: "direct dev"
     description:
       name: build_runner
-      sha256: "67d591d602906ef9201caf93452495ad1812bea2074f04e25dbd7c133785821b"
+      sha256: "581bacf68f89ec8792f5e5a0b2c4decd1c948e97ce659dc783688c8a88fbec21"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.7"
+    version: "2.4.8"
   build_runner_core:
     dependency: transitive
     description:
@@ -129,6 +129,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.8.1"
+  change_case:
+    dependency: transitive
+    description:
+      name: change_case
+      sha256: "47c48c36f95f20c6d0ba03efabceff261d05026cca322cc2c4c01c343371b5bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   checked_yaml:
     dependency: transitive
     description:
@@ -149,10 +157,10 @@ packages:
     dependency: transitive
     description:
       name: code_builder
-      sha256: feee43a5c05e7b3199bb375a86430b8ada1b04104f2923d0e03cc01ca87b6d84
+      sha256: f692079e25e7869c14132d39f223f8eec9830eb76131925143b2129c4bb01b37
       url: "https://pub.dev"
     source: hosted
-    version: "4.9.0"
+    version: "4.10.0"
   collection:
     dependency: transitive
     description:
@@ -309,10 +317,10 @@ packages:
     dependency: transitive
     description:
       name: js
-      sha256: f2c445dce49627136094980615a031419f7f3eb393237e4ecd97ac15dea343f3
+      sha256: "4186c61b32f99e60f011f7160e32c89a758ae9b1d0c6d28e2c02ef0382300e2b"
       url: "https://pub.dev"
     source: hosted
-    version: "0.6.7"
+    version: "0.7.0"
   json_annotation:
     dependency: "direct main"
     description:
@@ -581,10 +589,10 @@ packages:
     dependency: "direct dev"
     description:
       name: test
-      sha256: "3d028996109ad5c253674c7f347822fb994a087614d6f353e6039704b4661ff2"
+      sha256: "694c108e13c6b35b15fcb0f8f03eddf8373f93b044c9497b5e81ce09f7381bda"
       url: "https://pub.dev"
     source: hosted
-    version: "1.25.0"
+    version: "1.25.1"
   test_api:
     dependency: transitive
     description:
@@ -621,10 +629,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: bb55f38968b9427ce5dcdb8aaaa41049282195e0cfa4cf48593572fa3d1f36bc
+      sha256: cd210a09f7c18cbe5a02511718e0334de6559871052c90a90c0cca46a4aa81c8
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.1"
+    version: "4.3.3"
   vm_service:
     dependency: transitive
     description:
@@ -645,18 +653,18 @@ packages:
     dependency: transitive
     description:
       name: web
-      sha256: edc8a9573dd8c5a83a183dae1af2b6fd4131377404706ca4e5420474784906fa
+      sha256: "4188706108906f002b3a293509234588823c8c979dc83304e229ff400c996b05"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.0"
+    version: "0.4.2"
   web_socket_channel:
     dependency: transitive
     description:
       name: web_socket_channel
-      sha256: "045ec2137c27bf1a32e6ffa0e734d532a6677bf9016a0d1a406c54e499ff945b"
+      sha256: "939ab60734a4f8fa95feacb55804fa278de28bdeef38e616dc08e44a84adea23"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.1"
+    version: "2.4.3"
   webkit_inspection_protocol:
     dependency: transitive
     description:

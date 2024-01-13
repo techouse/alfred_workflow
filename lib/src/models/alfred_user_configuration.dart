@@ -7,9 +7,9 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration.g.dart';
 
 /// Alfred user configuration generic class
-@autoequalMixin
+@autoequal
 abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
-    with EquatableMixin, _$AlfredUserConfigurationAutoequalMixin {
+    with EquatableMixin {
   const AlfredUserConfiguration({
     required this.type,
     required this.variable,
@@ -34,4 +34,7 @@ abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
 
   @internal
   AlfredUserConfiguration<T> copyWithConfig(T? config);
+
+  @override
+  List<Object?> get props => _$props;
 }

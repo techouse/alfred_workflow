@@ -8,10 +8,10 @@ import 'github_user.dart';
 part 'github_asset.g.dart';
 
 /// [GithubAsset] implements all the properties of the [Github Release Asset API](https://docs.github.com/en/rest/reference/releases#release-assets)
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class GithubAsset with EquatableMixin, _$GithubAssetAutoequalMixin {
+final class GithubAsset with EquatableMixin {
   const GithubAsset({
     required this.url,
     required this.id,
@@ -50,4 +50,7 @@ final class GithubAsset with EquatableMixin, _$GithubAssetAutoequalMixin {
       _$GithubAssetFromJson(json);
 
   Map<String, dynamic> toJson() => _$GithubAssetToJson(this);
+
+  @override
+  List<Object?> get props => _$props;
 }

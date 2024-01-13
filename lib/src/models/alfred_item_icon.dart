@@ -15,10 +15,10 @@ enum AlfredItemIconType {
 /// The icon displayed in the result row.
 ///
 /// Workflows are run from their workflow folder, so you can reference icons stored in your workflow relatively.
-@autoequalMixin
+@autoequal
 @CopyWith()
 @JsonSerializable()
-final class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
+final class AlfredItemIcon with EquatableMixin {
   const AlfredItemIcon({
     required this.path,
     this.type,
@@ -41,4 +41,7 @@ final class AlfredItemIcon with EquatableMixin, _$AlfredItemIconAutoequalMixin {
       _$AlfredItemIconFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredItemIconToJson(this);
+
+  @override
+  List<Object?> get props => _$props;
 }

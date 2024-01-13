@@ -10,9 +10,9 @@ import 'src/models/alfred_item.dart' show AlfredItem;
 import 'src/models/alfred_items.dart' show AlfredItems;
 import 'src/services/alfred_cache.dart' show AlfredCache;
 
+export 'src/extensions/index.dart';
 export 'src/models/index.dart';
 export 'src/services/index.dart';
-export 'src/extensions/index.dart';
 
 final class AlfredWorkflow {
   /// Builds an [AlfredWorkflow]

@@ -6,14 +6,7 @@ part of 'alfred_item_mod.dart';
 // AutoequalGenerator
 // **************************************************************************
 
-mixin _$AlfredItemModAutoequalMixin on EquatableMixin {
-  @override
-  List<Object?> get props =>
-      _$AlfredItemModAutoequal((this as AlfredItemMod))._$props;
-}
-
 extension _$AlfredItemModAutoequal on AlfredItemMod {
-  List<Object?> get _autoequalProps => _$props;
   List<Object?> get _$props => [
         arg,
         subtitle,
