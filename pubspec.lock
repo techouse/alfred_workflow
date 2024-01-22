@@ -45,10 +45,10 @@ packages:
     dependency: "direct dev"
     description:
       name: autoequal_gen
-      sha256: af5aa418f4cf18dc2ae924fc5cb2615c9766408849d7522c119936b38ad815c5
+      sha256: dc58737eaec53da235281d95e2d1975dd898bb39d8466562ca4a67f77a9fbfe8
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.0"
+    version: "0.9.1"
   boolean_selector:
     dependency: transitive
     description:
