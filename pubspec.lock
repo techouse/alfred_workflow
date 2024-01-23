@@ -5,18 +5,18 @@ packages:
     dependency: transitive
     description:
       name: _fe_analyzer_shared
-      sha256: "36a321c3d2cbe01cbcb3540a87b8843846e0206df3e691fa7b23e19e78de6d49"
+      sha256: "0f7b1783ddb1e4600580b8c00d0ddae5b06ae7f0382bd4fcce5db4df97b618e1"
       url: "https://pub.dev"
     source: hosted
-    version: "65.0.0"
+    version: "66.0.0"
   analyzer:
     dependency: transitive
     description:
       name: analyzer
-      sha256: dfe03b90ec022450e22513b5e5ca1f01c0c01de9c3fba2f7fd233cb57a6b9a07
+      sha256: "5e8bdcda061d91da6b034d64d8e4026f355bcb8c3e7a0ac2da1523205a91a737"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.0"
+    version: "6.4.0"
   args:
     dependency: transitive
     description:
@@ -37,18 +37,18 @@ packages:
     dependency: "direct main"
     description:
       name: autoequal
-      sha256: bca5df6714add268a06de2b29044aa706a439f56c8be766c7d7adbe44bf42415
+      sha256: "186f99b614d8dd5b5756b26b6208d21ab948d7798ecfdf84669fff18eed7aab2"
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.0"
+    version: "0.9.1"
   autoequal_gen:
     dependency: "direct dev"
     description:
       name: autoequal_gen
-      sha256: af5aa418f4cf18dc2ae924fc5cb2615c9766408849d7522c119936b38ad815c5
+      sha256: dc58737eaec53da235281d95e2d1975dd898bb39d8466562ca4a67f77a9fbfe8
       url: "https://pub.dev"
     source: hosted
-    version: "0.9.0"
+    version: "0.9.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -285,10 +285,10 @@ packages:
     dependency: "direct main"
     description:
       name: http
-      sha256: d4872660c46d929f6b8a9ef4e7a7eff7e49bbf0c4ec3f385ee32df5119175139
+      sha256: a2bbf9d017fcced29139daa8ed2bba4ece450ab222871df93ca9eec6f80c34ba
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.2"
+    version: "1.2.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -541,18 +541,18 @@ packages:
     dependency: "direct main"
     description:
       name: stash
-      sha256: "4858c547ba49cfd9a1964ff19cc087c682f20537147bad59ec54932d01de6a49"
+      sha256: "5d42c73727336e9ea8cef3b028355fc4728b4cdad643444d74e432d0289cdb7d"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.3"
+    version: "5.1.0"
   stash_file:
     dependency: "direct main"
     description:
       name: stash_file
-      sha256: "883314e8881f577acd0997fdb2982ae80df487698f3d5325e2d793124083381a"
+      sha256: "207cf47bc13dd3a9fd4f2be7a2e6612ad89801c5674f429f50f5e8ecdcb23de0"
       url: "https://pub.dev"
     source: hosted
-    version: "5.0.3"
+    version: "5.1.0"
   stream_channel:
     dependency: transitive
     description:
