@@ -57,5 +57,7 @@ jobs:
       - name: Upload coverage
         uses: codecov/codecov-action@v4
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: techouse/alfred_workflow
           file: ./coverage/lcov.info
           verbose: true
