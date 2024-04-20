@@ -10,3 +10,6 @@ coverage/
 
 # Tooling
 scripts/pubspec.lock
+
+# Lock file
+pubspec.lock
