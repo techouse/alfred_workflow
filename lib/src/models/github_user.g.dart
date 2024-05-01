@@ -180,7 +180,7 @@ extension $GithubUserCopyWith on GithubUser {
 
 GithubUser _$GithubUserFromJson(Map<String, dynamic> json) => GithubUser(
       login: json['login'] as String,
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       nodeId: json['node_id'] as String,
       avatarUrl: Uri.parse(json['avatar_url'] as String),
       gravatarId: json['gravatar_id'] as String,

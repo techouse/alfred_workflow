@@ -220,15 +220,15 @@ extension $GithubAssetCopyWith on GithubAsset {
 
 GithubAsset _$GithubAssetFromJson(Map<String, dynamic> json) => GithubAsset(
       url: Uri.parse(json['url'] as String),
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       nodeId: json['node_id'] as String,
       name: json['name'] as String,
       label: json['label'] as String?,
       uploader: GithubAsset._githubUserFromJson(json['uploader']),
       contentType: json['content_type'] as String,
       state: json['state'] as String,
-      size: json['size'] as int,
-      downloadCount: json['download_count'] as int,
+      size: (json['size'] as num).toInt(),
+      downloadCount: (json['download_count'] as num).toInt(),
       createdAt: DateTime.parse(json['created_at'] as String),
       updatedAt: DateTime.parse(json['updated_at'] as String),
       browserDownloadUrl: Uri.parse(json['browser_download_url'] as String),

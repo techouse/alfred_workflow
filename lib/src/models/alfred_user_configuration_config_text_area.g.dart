@@ -119,5 +119,5 @@ AlfredUserConfigurationConfigTextArea
           defaultValue: json['default'] as String,
           required: json['required'] as bool,
           trim: json['trim'] as bool,
-          verticalSize: json['verticalsize'] as int,
+          verticalSize: (json['verticalsize'] as num).toInt(),
         );

@@ -286,7 +286,7 @@ GithubRelease _$GithubReleaseFromJson(Map<String, dynamic> json) =>
       assetsUrl: Uri.parse(json['assets_url'] as String),
       uploadUrl: Uri.parse(json['upload_url'] as String),
       htmlUrl: Uri.parse(json['html_url'] as String),
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       author: GithubRelease._githubUserFromJson(json['author']),
       nodeId: json['node_id'] as String,
       tagName: VersionConverter.instance.fromJson(json['tag_name'] as String),
