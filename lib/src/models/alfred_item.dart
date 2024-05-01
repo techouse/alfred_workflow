@@ -141,19 +141,21 @@ final class AlfredItem with EquatableMixin {
   /// The [action] key can take a [String] or [List<String>] for simple types, and the content
   /// type will automatically be derived by Alfred to file, url, or text.
   ///
-  /// Single Item:
-  ///   [action]: "Alfred is Great"
+  /// ```dart
+  ///   # Single Item:
+  ///   action: "Alfred is Great"
   ///
-  /// Multiple Items:
-  ///   [action]: <String>["Alfred is Great", "I use him all day long"]
+  ///   # Multiple Items:
+  ///   action: <String>["Alfred is Great", "I use him all day long"]
   ///
-  /// For control over the content type of the action, you can use an object with typed keys:
-  ///   [action]: <String, dynamic>{
+  ///   # For control over the content type of the action, you can use an object with typed keys:
+  ///   action: <String, dynamic>{
   ///     "text": <String>["one", "two", "three"],
   ///     "url": "https://www.alfredapp.com",
   ///     "file": "~/Desktop",
   ///     "auto": "~/Pictures"
   ///   }
+  /// ```
   @JsonKey(
     includeIfNull: false,
     toJson: _actionToJson,

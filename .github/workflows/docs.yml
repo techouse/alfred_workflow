@@ -1,0 +1,34 @@
+name: Docs
+
+on:
+  workflow_dispatch:
+    branches:
+      - master
+  workflow_call:
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Dart SDK
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: stable
+      - id: checkout
+        name: Checkout repository
+        uses: actions/checkout@v4
+      - id: install
+        name: Install dependencies
+        run: dart pub get
+      - name: Build documentation
+        run: dart doc .
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: doc/api/
+          force_orphan: true
