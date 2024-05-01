@@ -16,9 +16,9 @@ A helper library in Dart for authors of workflows for [Alfred](https://www.alfre
 
 This library is heavily inspired by the excellent Python library [deanishe/alfred-workflow](https://github.com/deanishe/alfred-workflow).
 
-## :children_crossing: Usage
+## 🚸 Usage
 
-### :tada: Basic example
+### 🎉 Basic example
 
 ```dart
 import 'dart:io' show exitCode;
@@ -101,7 +101,7 @@ dart run example.dart --query 'hello'
 
 Check out the [basic example here](example/alfred_workflow_example.dart).
 
-### :zap: Speed it up using caching
+### ⚡️ Speed it up using caching
 
 The library uses [stash_file](https://pub.dev/packages/stash_file) to cache results in the form of `AlfredItems`.
 All you need to do to enable it is to define a `cacheKey`.
@@ -137,7 +137,7 @@ if (cachedItems == null) {
 
 Check out the [caching example here](example/alfred_workflow_caching_example.dart).
 
-### :wrench: Workflow Configuration
+### 🔧 Workflow Configuration
 
 This library supports new [Workflow Configuration](https://www.alfredapp.com/help/workflows/workflow-configuration/) added in Alfred 5.
 
@@ -163,7 +163,7 @@ final AlfredUserConfigurationConfig? defaultCurrencyConfigurationConfig = defaul
 final String? defaultCurrency = defaultCurrencyConfigurationConfig?.value as String?;
 ```
 
-### :arrow_up: Auto-Update your workflows via GitHub releases
+### ⬆️ Auto-Update your workflows via GitHub releases
 
 Setting up Auto-Updating will require that you provide your workflow's Github repository URL and version.
 Optionally you can set an interval how frequently the workflow should check for updates.
@@ -195,7 +195,7 @@ dart run example.dart --update
 
 Check out the [auto-update example here](example/alfred_workflow_auto_update_example.dart).
 
-## :rocket: Building the workflow for production
+## 🚀 Building the workflow for production
 
 Dart scripts can be [easily compiled to standalone executables](https://dart.dev/tools/dart-compile) eliminating the need for any external prerequisites.
 
@@ -211,7 +211,7 @@ You can then invoke the executable from the commandline:
 ./example --query 'hello'
 ```
 
-### :page_facing_up: Signing and notarizing the compiled binary before distribution
+### 📄 Signing and notarizing the compiled binary before distribution
 
 [Signing on macOS](https://dart.dev/tools/dart-compile#signing) became available with [Dart 2.17](https://dart.dev/guides/whats-new#may-11-2022-217-release).
 
@@ -267,7 +267,7 @@ xcrun altool \
 Fore more info please refer to [the Apple Code Signing guide](https://developer.apple.com/support/code-signing/) as well 
 as to [this exhaustive StackOverflow answer](https://stackoverflow.com/questions/64652704/how-to-notarize-an-macos-command-line-tool-created-outside-of-xcode#answer-64733472).
 
-## :seedling: A couple of my Alfred Workflows built using this library
+## 🌱 A couple of my Alfred Workflows built using this library
 
 - [alfred-flutter-docs](https://github.com/techouse/alfred-flutter-docs)
 - [alfred-dart-docs](https://github.com/techouse/alfred-dart-docs)
