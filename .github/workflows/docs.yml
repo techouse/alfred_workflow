@@ -1,9 +1,6 @@
 name: Docs
 
 on:
-  workflow_dispatch:
-    branches:
-      - master
   workflow_call:
 
 permissions:
