@@ -33,7 +33,7 @@ dev_dependencies:
   copy_with_extension_gen: ^5.0.4
   faker: ^2.1.0
   json_serializable: ^6.8.0
-  lints: ">=3.0.0 <5.0.0"
+  lints: ">=3.0.0 <6.0.0"
   mockito: ^5.4.4
   test: ^1.25.4
   data_fixture_dart: ^2.2.0
