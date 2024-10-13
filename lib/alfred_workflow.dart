@@ -1,5 +1,5 @@
 /// Alfred Workflow library for Dart.
-library alfred_workflow;
+library;
 
 import 'dart:convert' show jsonEncode;
 import 'dart:io' show stdout;
