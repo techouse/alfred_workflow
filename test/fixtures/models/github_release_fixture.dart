@@ -113,7 +113,7 @@ final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
           htmlUrl: Uri.parse(
             'https://github.com/$login/$repoName/releases/tag/$tagName',
           ),
-          id: releaseId,
+          id: releaseId!,
           author: GithubUserFixture.factory.states([
             GithubUserFixture.factory.id(userId!),
             GithubUserFixture.factory.login(login!),
@@ -124,7 +124,7 @@ final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
           name: tagName,
           draft: false,
           prerelease: false,
-          createdAt: createdAt,
+          createdAt: createdAt!,
           publishedAt: createdAt,
           assets: GithubAssetFixture.factory
               .redefine(GithubAssetFixture.factory.withDetails(
@@ -132,7 +132,7 @@ final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
                 login: login,
                 userId: userId,
                 assetTag: tagName,
-                createdAt: createdAt!,
+                createdAt: createdAt,
               ))
               .makeMany(1),
           tarballUrl: Uri.parse(

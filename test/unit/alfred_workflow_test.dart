@@ -29,7 +29,7 @@ void main() async {
     });
 
     test('getItems without adding anything is empty', () async {
-      expect(await workflow.getItems(), AlfredItems([]));
+      expect(await workflow.getItems(), const AlfredItems([]));
     });
 
     test('addItem adds single item', () async {
@@ -72,7 +72,7 @@ void main() async {
       expect(await workflow.getItems(), AlfredItems(itemsList));
 
       await workflow.clearItems();
-      expect(await workflow.getItems(), AlfredItems([]));
+      expect(await workflow.getItems(), const AlfredItems([]));
     });
 
     test('toJsonString returns a JSON string', () async {

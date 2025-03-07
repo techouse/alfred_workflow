@@ -1,7 +1,11 @@
+import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
 import 'alfred_item.dart';
 
+part 'alfred_items.g.dart';
+
+@autoequal
 final class AlfredItems with EquatableMixin {
   const AlfredItems(
     this.items, {
@@ -43,7 +47,7 @@ final class AlfredItems with EquatableMixin {
       };
 
   @override
-  List<Object?> get props => [items];
+  List<Object?> get props => _$props;
 
   /// Copy this [AlfredItems] with the given [items], [exactOrder], or [skipKnowledge]
   AlfredItems copyWith({

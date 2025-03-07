@@ -32,15 +32,13 @@ final class AlfredWorkflow {
   /// [disableAlfredSmartResultOrdering] to true.
   bool disableAlfredSmartResultOrdering = false;
 
-  late final AlfredItems _items = AlfredItems([]);
+  // ignore: prefer_const_constructors
+  final AlfredItems _items = AlfredItems([]);
 
   final AlfredCache<AlfredItems>? _alfredCache;
 
   late final Future<Cache<AlfredItems>> _cache = (_alfredCache ??
-          AlfredCache<AlfredItems>(
-            fromEncodable: (Map<String, dynamic> json) =>
-                AlfredItems.fromJson(json),
-          ))
+          AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
   String? cacheKey;

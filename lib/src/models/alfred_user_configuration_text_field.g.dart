@@ -25,9 +25,9 @@ abstract class _$AlfredUserConfigurationTextFieldCWProxy {
   /// AlfredUserConfigurationTextField(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationTextField call({
-    AlfredUserConfigurationType? type,
-    String? variable,
-    AlfredUserConfigurationConfigTextField? config,
+    AlfredUserConfigurationType type,
+    String variable,
+    AlfredUserConfigurationConfigTextField config,
     String? description,
     String? label,
   });
@@ -76,15 +76,15 @@ class _$AlfredUserConfigurationTextFieldCWProxyImpl
     Object? label = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationTextField(
-      type: type == const $CopyWithPlaceholder() || type == null
+      type: type == const $CopyWithPlaceholder()
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredUserConfigurationType,
-      variable: variable == const $CopyWithPlaceholder() || variable == null
+      variable: variable == const $CopyWithPlaceholder()
           ? _value.variable
           // ignore: cast_nullable_to_non_nullable
           : variable as String,
-      config: config == const $CopyWithPlaceholder() || config == null
+      config: config == const $CopyWithPlaceholder()
           ? _value.config
           // ignore: cast_nullable_to_non_nullable
           : config as AlfredUserConfigurationConfigTextField,

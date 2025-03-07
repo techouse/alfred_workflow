@@ -57,8 +57,7 @@ final class AlfredUpdater with EquatableMixin {
   late final Future<Cache<GithubRelease>> _cache = (cache ??
           // coverage:ignore-start
           AlfredCache<GithubRelease>(
-            fromEncodable: (Map<String, dynamic> json) =>
-                GithubRelease.fromJson(json),
+            fromEncodable: GithubRelease.fromJson,
             maxEntries: 1,
             name: 'update_cache',
             evictionPolicy: const FifoEvictionPolicy(),
@@ -164,7 +163,7 @@ final class AlfredUpdater with EquatableMixin {
 
     if (response.statusCode < 400) {
       // coverage:ignore-start
-      fileSystem ??= LocalFileSystem();
+      fileSystem ??= const LocalFileSystem();
       directory ??= await fileSystem.systemTempDirectory.createTemp(
         'alfred_workflow_update',
       );

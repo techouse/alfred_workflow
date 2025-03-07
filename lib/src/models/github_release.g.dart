@@ -77,24 +77,24 @@ abstract class _$GithubReleaseCWProxy {
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubRelease call({
-    Uri? url,
-    Uri? assetsUrl,
-    Uri? uploadUrl,
-    Uri? htmlUrl,
-    int? id,
-    GithubUser? author,
-    String? nodeId,
-    Version? tagName,
-    String? targetCommitish,
-    String? name,
-    bool? draft,
-    bool? prerelease,
-    DateTime? createdAt,
-    DateTime? publishedAt,
-    List<GithubAsset>? assets,
-    Uri? tarballUrl,
-    Uri? zipballUrl,
-    String? body,
+    Uri url,
+    Uri assetsUrl,
+    Uri uploadUrl,
+    Uri htmlUrl,
+    int id,
+    GithubUser author,
+    String nodeId,
+    Version tagName,
+    String targetCommitish,
+    String name,
+    bool draft,
+    bool prerelease,
+    DateTime createdAt,
+    DateTime publishedAt,
+    List<GithubAsset> assets,
+    Uri tarballUrl,
+    Uri zipballUrl,
+    String body,
   });
 }
 
@@ -189,80 +189,75 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
     Object? body = const $CopyWithPlaceholder(),
   }) {
     return GithubRelease(
-      url: url == const $CopyWithPlaceholder() || url == null
+      url: url == const $CopyWithPlaceholder()
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
-      assetsUrl: assetsUrl == const $CopyWithPlaceholder() || assetsUrl == null
+      assetsUrl: assetsUrl == const $CopyWithPlaceholder()
           ? _value.assetsUrl
           // ignore: cast_nullable_to_non_nullable
           : assetsUrl as Uri,
-      uploadUrl: uploadUrl == const $CopyWithPlaceholder() || uploadUrl == null
+      uploadUrl: uploadUrl == const $CopyWithPlaceholder()
           ? _value.uploadUrl
           // ignore: cast_nullable_to_non_nullable
           : uploadUrl as Uri,
-      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder()
           ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
-      id: id == const $CopyWithPlaceholder() || id == null
+      id: id == const $CopyWithPlaceholder()
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      author: author == const $CopyWithPlaceholder() || author == null
+      author: author == const $CopyWithPlaceholder()
           ? _value.author
           // ignore: cast_nullable_to_non_nullable
           : author as GithubUser,
-      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
+      nodeId: nodeId == const $CopyWithPlaceholder()
           ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      tagName: tagName == const $CopyWithPlaceholder() || tagName == null
+      tagName: tagName == const $CopyWithPlaceholder()
           ? _value.tagName
           // ignore: cast_nullable_to_non_nullable
           : tagName as Version,
-      targetCommitish: targetCommitish == const $CopyWithPlaceholder() ||
-              targetCommitish == null
+      targetCommitish: targetCommitish == const $CopyWithPlaceholder()
           ? _value.targetCommitish
           // ignore: cast_nullable_to_non_nullable
           : targetCommitish as String,
-      name: name == const $CopyWithPlaceholder() || name == null
+      name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
-      draft: draft == const $CopyWithPlaceholder() || draft == null
+      draft: draft == const $CopyWithPlaceholder()
           ? _value.draft
           // ignore: cast_nullable_to_non_nullable
           : draft as bool,
-      prerelease:
-          prerelease == const $CopyWithPlaceholder() || prerelease == null
-              ? _value.prerelease
-              // ignore: cast_nullable_to_non_nullable
-              : prerelease as bool,
-      createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
+      prerelease: prerelease == const $CopyWithPlaceholder()
+          ? _value.prerelease
+          // ignore: cast_nullable_to_non_nullable
+          : prerelease as bool,
+      createdAt: createdAt == const $CopyWithPlaceholder()
           ? _value.createdAt
           // ignore: cast_nullable_to_non_nullable
           : createdAt as DateTime,
-      publishedAt:
-          publishedAt == const $CopyWithPlaceholder() || publishedAt == null
-              ? _value.publishedAt
-              // ignore: cast_nullable_to_non_nullable
-              : publishedAt as DateTime,
-      assets: assets == const $CopyWithPlaceholder() || assets == null
+      publishedAt: publishedAt == const $CopyWithPlaceholder()
+          ? _value.publishedAt
+          // ignore: cast_nullable_to_non_nullable
+          : publishedAt as DateTime,
+      assets: assets == const $CopyWithPlaceholder()
           ? _value.assets
           // ignore: cast_nullable_to_non_nullable
           : assets as List<GithubAsset>,
-      tarballUrl:
-          tarballUrl == const $CopyWithPlaceholder() || tarballUrl == null
-              ? _value.tarballUrl
-              // ignore: cast_nullable_to_non_nullable
-              : tarballUrl as Uri,
-      zipballUrl:
-          zipballUrl == const $CopyWithPlaceholder() || zipballUrl == null
-              ? _value.zipballUrl
-              // ignore: cast_nullable_to_non_nullable
-              : zipballUrl as Uri,
-      body: body == const $CopyWithPlaceholder() || body == null
+      tarballUrl: tarballUrl == const $CopyWithPlaceholder()
+          ? _value.tarballUrl
+          // ignore: cast_nullable_to_non_nullable
+          : tarballUrl as Uri,
+      zipballUrl: zipballUrl == const $CopyWithPlaceholder()
+          ? _value.zipballUrl
+          // ignore: cast_nullable_to_non_nullable
+          : zipballUrl as Uri,
+      body: body == const $CopyWithPlaceholder()
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
           : body as String,

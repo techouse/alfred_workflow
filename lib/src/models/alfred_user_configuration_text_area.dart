@@ -32,7 +32,7 @@ final class AlfredUserConfigurationTextArea
   @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigTextArea> copyWithConfig(
-          AlfredUserConfigurationConfigTextArea? config) =>
+          AlfredUserConfigurationConfigTextArea config) =>
       copyWith(config: config);
 
   static AlfredUserConfigurationConfigTextArea _configFromJson(Map json) =>

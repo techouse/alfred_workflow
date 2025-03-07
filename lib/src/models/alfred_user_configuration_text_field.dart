@@ -32,7 +32,7 @@ final class AlfredUserConfigurationTextField
   @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigTextField>
-      copyWithConfig(AlfredUserConfigurationConfigTextField? config) =>
+      copyWithConfig(AlfredUserConfigurationConfigTextField config) =>
           copyWith(config: config);
 
   static AlfredUserConfigurationConfigTextField _configFromJson(Map json) =>

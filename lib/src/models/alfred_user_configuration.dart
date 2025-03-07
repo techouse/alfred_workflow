@@ -33,7 +33,7 @@ abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
   abstract final T config;
 
   @internal
-  AlfredUserConfiguration<T> copyWithConfig(T? config);
+  AlfredUserConfiguration<T> copyWithConfig(T config);
 
   @override
   List<Object?> get props => _$props;

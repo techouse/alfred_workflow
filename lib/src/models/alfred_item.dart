@@ -195,41 +195,29 @@ final class AlfredItem with EquatableMixin {
     );
   }
 
-  static dynamic _actionToJson(Object? action) {
-    if (action == null) {
-      return null;
-    }
-    if (action is String) {
-      return action;
-    }
-    if (action is Iterable) {
-      return action.map(_actionToJson).toList();
-    }
-    if (action is AlfredAction) {
-      return action.toJson();
-    }
-  }
+  static dynamic _actionToJson(Object? action) => switch (action) {
+        null => null,
+        String _ => action,
+        Iterable _ => action.map(_actionToJson).toList(),
+        AlfredAction _ => action.toJson(),
+        _ => throw ArgumentError.value(
+            action,
+            'action',
+            'Invalid action. Must be a String, Iterable, or AlfredAction.',
+          ),
+      };
 
-  static Object? _actionFromJson(dynamic action) {
-    if (action == null) {
-      return null;
-    }
-    if (action is String) {
-      return action;
-    }
-    if (action is Iterable) {
-      return action.map(_actionFromJson).toList();
-    }
-    if (action is Map) {
-      return AlfredAction.fromJson(Map<String, dynamic>.from(action));
-    }
-
-    throw ArgumentError.value(
-      action,
-      'action',
-      'Invalid action. Must be a String, Iterable, or Map.',
-    );
-  }
+  static Object? _actionFromJson(dynamic action) => switch (action) {
+        null => null,
+        String _ => action,
+        Iterable _ => action.map(_actionFromJson).toList(),
+        Map _ => AlfredAction.fromJson(Map<String, dynamic>.from(action)),
+        _ => throw ArgumentError.value(
+            action,
+            'action',
+            'Invalid action. Must be a String, Iterable, or Map.',
+          ),
+      };
 
   factory AlfredItem.fromJson(Map<String, dynamic> json) =>
       _$AlfredItemFromJson(json);

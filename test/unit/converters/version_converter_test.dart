@@ -60,11 +60,11 @@ void main() {
     // exceptions
     expect(
       () => VersionConverter.instance.fromJson('$major'),
-      throwsA(TypeMatcher<FormatException>()),
+      throwsA(const TypeMatcher<FormatException>()),
     );
     expect(
       () => VersionConverter.instance.fromJson('$major.$minor'),
-      throwsA(TypeMatcher<FormatException>()),
+      throwsA(const TypeMatcher<FormatException>()),
     );
   });
 }
