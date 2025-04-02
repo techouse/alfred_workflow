@@ -43,7 +43,8 @@ jobs:
       - name: Run the build system for Dart code generation and modular compilation
         run: dart run build_runner build --delete-conflicting-outputs
       - name: Check the formatting of one or more Dart files
-        run: dart format lib test --output=none --set-exit-if-changed .
+        run: |
+          find lib test -name "*.dart" ! -name "*.mocks.dart" ! -name "*.g.dart" -print0 | xargs -0 dart format --output=none --set-exit-if-changed
       - name: Analyze the project's Dart code
         run: dart analyze lib test --fatal-infos
       - name: Install coverage dependencies
@@ -59,7 +60,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: techouse/alfred_workflow
-          file: ./coverage/lcov.info
+          files: ./coverage/lcov.info
           verbose: true
       - name: Upload coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
