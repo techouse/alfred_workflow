@@ -7,10 +7,7 @@ part of 'alfred_item_icon.dart';
 // **************************************************************************
 
 extension _$AlfredItemIconAutoequal on AlfredItemIcon {
-  List<Object?> get _$props => [
-        path,
-        type,
-      ];
+  List<Object?> get _$props => [path, type];
 }
 
 // **************************************************************************
@@ -29,7 +26,7 @@ abstract class _$AlfredItemIconCWProxy {
   /// AlfredItemIcon(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredItemIcon call({
-    String? path,
+    String path,
     AlfredItemIconType? type,
   });
 }
@@ -59,7 +56,7 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
     Object? type = const $CopyWithPlaceholder(),
   }) {
     return AlfredItemIcon(
-      path: path == const $CopyWithPlaceholder() || path == null
+      path: path == const $CopyWithPlaceholder()
           ? _value.path
           // ignore: cast_nullable_to_non_nullable
           : path as String,
@@ -92,20 +89,12 @@ AlfredItemIcon _$AlfredItemIconFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AlfredItemIconToJson(AlfredItemIcon instance) {
-  final val = <String, dynamic>{
-    'path': instance.path,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', _$AlfredItemIconTypeEnumMap[instance.type]);
-  return val;
-}
+Map<String, dynamic> _$AlfredItemIconToJson(AlfredItemIcon instance) =>
+    <String, dynamic>{
+      'path': instance.path,
+      if (_$AlfredItemIconTypeEnumMap[instance.type] case final value?)
+        'type': value,
+    };
 
 const _$AlfredItemIconTypeEnumMap = {
   AlfredItemIconType.fileicon: 'fileicon',

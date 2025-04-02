@@ -24,10 +24,10 @@ abstract class _$AlfredUserConfigurationConfigTextAreaCWProxy {
   /// AlfredUserConfigurationConfigTextArea(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationConfigTextArea call({
-    String? defaultValue,
-    bool? required,
-    bool? trim,
-    int? verticalSize,
+    String defaultValue,
+    bool required,
+    bool trim,
+    int verticalSize,
     String? value,
   });
 }
@@ -74,24 +74,22 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
     Object? value = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigTextArea(
-      defaultValue:
-          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
-              ? _value.defaultValue
-              // ignore: cast_nullable_to_non_nullable
-              : defaultValue as String,
-      required: required == const $CopyWithPlaceholder() || required == null
+      defaultValue: defaultValue == const $CopyWithPlaceholder()
+          ? _value.defaultValue
+          // ignore: cast_nullable_to_non_nullable
+          : defaultValue as String,
+      required: required == const $CopyWithPlaceholder()
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      trim: trim == const $CopyWithPlaceholder() || trim == null
+      trim: trim == const $CopyWithPlaceholder()
           ? _value.trim
           // ignore: cast_nullable_to_non_nullable
           : trim as bool,
-      verticalSize:
-          verticalSize == const $CopyWithPlaceholder() || verticalSize == null
-              ? _value.verticalSize
-              // ignore: cast_nullable_to_non_nullable
-              : verticalSize as int,
+      verticalSize: verticalSize == const $CopyWithPlaceholder()
+          ? _value.verticalSize
+          // ignore: cast_nullable_to_non_nullable
+          : verticalSize as int,
       value: value == const $CopyWithPlaceholder()
           ? _value.value
           // ignore: cast_nullable_to_non_nullable

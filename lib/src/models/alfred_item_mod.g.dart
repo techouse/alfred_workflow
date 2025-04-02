@@ -7,12 +7,7 @@ part of 'alfred_item_mod.dart';
 // **************************************************************************
 
 extension _$AlfredItemModAutoequal on AlfredItemMod {
-  List<Object?> get _$props => [
-        arg,
-        subtitle,
-        icon,
-        valid,
-      ];
+  List<Object?> get _$props => [arg, subtitle, icon, valid];
 }
 
 // **************************************************************************
@@ -38,7 +33,7 @@ abstract class _$AlfredItemModCWProxy {
     String? arg,
     String? subtitle,
     AlfredItemIcon? icon,
-    bool? valid,
+    bool valid,
   });
 }
 
@@ -87,7 +82,7 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
           ? _value.icon
           // ignore: cast_nullable_to_non_nullable
           : icon as AlfredItemIcon?,
-      valid: valid == const $CopyWithPlaceholder() || valid == null
+      valid: valid == const $CopyWithPlaceholder()
           ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
@@ -113,18 +108,10 @@ AlfredItemMod _$AlfredItemModFromJson(Map<String, dynamic> json) =>
       valid: json['valid'] as bool? ?? true,
     );
 
-Map<String, dynamic> _$AlfredItemModToJson(AlfredItemMod instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('arg', instance.arg);
-  writeNotNull('subtitle', instance.subtitle);
-  writeNotNull('icon', instance.icon?.toJson());
-  val['valid'] = instance.valid;
-  return val;
-}
+Map<String, dynamic> _$AlfredItemModToJson(AlfredItemMod instance) =>
+    <String, dynamic>{
+      if (instance.arg case final value?) 'arg': value,
+      if (instance.subtitle case final value?) 'subtitle': value,
+      if (instance.icon?.toJson() case final value?) 'icon': value,
+      'valid': instance.valid,
+    };

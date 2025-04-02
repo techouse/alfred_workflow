@@ -21,8 +21,8 @@ abstract class _$AlfredUserConfigurationConfigSelectCWProxy {
   /// AlfredUserConfigurationConfigSelect(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationConfigSelect call({
-    String? defaultValue,
-    List<({String label, String value})>? pairs,
+    String defaultValue,
+    List<({String label, String value})> pairs,
     String? value,
   });
 }
@@ -61,12 +61,11 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
     Object? value = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigSelect(
-      defaultValue:
-          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
-              ? _value.defaultValue
-              // ignore: cast_nullable_to_non_nullable
-              : defaultValue as String,
-      pairs: pairs == const $CopyWithPlaceholder() || pairs == null
+      defaultValue: defaultValue == const $CopyWithPlaceholder()
+          ? _value.defaultValue
+          // ignore: cast_nullable_to_non_nullable
+          : defaultValue as String,
+      pairs: pairs == const $CopyWithPlaceholder()
           ? _value.pairs
           // ignore: cast_nullable_to_non_nullable
           : pairs as List<({String label, String value})>,

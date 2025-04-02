@@ -53,16 +53,16 @@ abstract class _$GithubUserCWProxy {
   /// GithubUser(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubUser call({
-    String? login,
-    int? id,
-    String? nodeId,
-    Uri? avatarUrl,
-    String? gravatarId,
-    Uri? url,
-    Uri? htmlUrl,
-    Uri? reposUrl,
-    String? type,
-    bool? siteAdmin,
+    String login,
+    int id,
+    String nodeId,
+    Uri avatarUrl,
+    String gravatarId,
+    Uri url,
+    Uri htmlUrl,
+    Uri reposUrl,
+    String type,
+    bool siteAdmin,
   });
 }
 
@@ -123,44 +123,43 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
     Object? siteAdmin = const $CopyWithPlaceholder(),
   }) {
     return GithubUser(
-      login: login == const $CopyWithPlaceholder() || login == null
+      login: login == const $CopyWithPlaceholder()
           ? _value.login
           // ignore: cast_nullable_to_non_nullable
           : login as String,
-      id: id == const $CopyWithPlaceholder() || id == null
+      id: id == const $CopyWithPlaceholder()
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
+      nodeId: nodeId == const $CopyWithPlaceholder()
           ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      avatarUrl: avatarUrl == const $CopyWithPlaceholder() || avatarUrl == null
+      avatarUrl: avatarUrl == const $CopyWithPlaceholder()
           ? _value.avatarUrl
           // ignore: cast_nullable_to_non_nullable
           : avatarUrl as Uri,
-      gravatarId:
-          gravatarId == const $CopyWithPlaceholder() || gravatarId == null
-              ? _value.gravatarId
-              // ignore: cast_nullable_to_non_nullable
-              : gravatarId as String,
-      url: url == const $CopyWithPlaceholder() || url == null
+      gravatarId: gravatarId == const $CopyWithPlaceholder()
+          ? _value.gravatarId
+          // ignore: cast_nullable_to_non_nullable
+          : gravatarId as String,
+      url: url == const $CopyWithPlaceholder()
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
-      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder()
           ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
-      reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
+      reposUrl: reposUrl == const $CopyWithPlaceholder()
           ? _value.reposUrl
           // ignore: cast_nullable_to_non_nullable
           : reposUrl as Uri,
-      type: type == const $CopyWithPlaceholder() || type == null
+      type: type == const $CopyWithPlaceholder()
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as String,
-      siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
+      siteAdmin: siteAdmin == const $CopyWithPlaceholder()
           ? _value.siteAdmin
           // ignore: cast_nullable_to_non_nullable
           : siteAdmin as bool,

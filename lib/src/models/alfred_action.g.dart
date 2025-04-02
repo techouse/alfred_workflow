@@ -7,12 +7,7 @@ part of 'alfred_action.dart';
 // **************************************************************************
 
 extension _$AlfredActionAutoequal on AlfredAction {
-  List<Object?> get _$props => [
-        text,
-        url,
-        file,
-        auto,
-      ];
+  List<Object?> get _$props => [text, url, file, auto];
 }
 
 // **************************************************************************
@@ -75,7 +70,7 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
     Object? auto = const $CopyWithPlaceholder(),
   }) {
     return AlfredAction(
-      text: text == const $CopyWithPlaceholder() || text == null
+      text: text == const $CopyWithPlaceholder()
           ? _value.text
           // ignore: cast_nullable_to_non_nullable
           : text as dynamic,
