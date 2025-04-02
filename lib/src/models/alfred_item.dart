@@ -3,6 +3,7 @@
 import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:autoequal/autoequal.dart';
+import 'package:collection/collection.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -173,26 +174,25 @@ final class AlfredItem with EquatableMixin {
 
   static Map<String, Map<String, dynamic>>? _modsToJson(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
-  ) =>
-      mods?.map(
-        (Set<AlfredItemModKey> key, AlfredItemMod value) => MapEntry(
-          key.map((AlfredItemModKey k) => k.name).join('+'),
-          value.toJson(),
-        ),
-      );
-
-  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? mods) {
+  ) {
     if (mods == null) return null;
+    return mods.map((keySet, mod) {
+      // Sort the keys to ensure consistent ordering
+      final sortedKeys = keySet.toList()
+        ..sort((a, b) => a.name.compareTo(b.name));
+      final keyString = sortedKeys.map((k) => k.name).join('+');
+      return MapEntry(keyString, mod.toJson());
+    });
+  }
 
-    return Map<String, dynamic>.from(mods).map(
-      (String key, dynamic value) => MapEntry(
-        key
-            .split('+')
-            .map((String k) => AlfredItemModKey.values.byName(k))
-            .toSet(),
-        AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
-      ),
-    );
+  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? json) {
+    if (json == null) return null;
+    return Map<String, dynamic>.from(json).map((key, value) {
+      final keySet =
+          key.split('+').map((s) => AlfredItemModKey.values.byName(s)).toSet();
+      return MapEntry(
+          keySet, AlfredItemMod.fromJson(Map<String, dynamic>.from(value)));
+    });
   }
 
   static dynamic _actionToJson(Object? action) => switch (action) {
@@ -226,4 +226,40 @@ final class AlfredItem with EquatableMixin {
 
   @override
   List<Object?> get props => _$props;
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! AlfredItem) return false;
+    return other.title == title &&
+        other.type == type &&
+        other.valid == valid &&
+        other.subtitle == subtitle &&
+        other.arg == arg &&
+        other.autocomplete == autocomplete &&
+        other.uid == uid &&
+        other.icon == icon &&
+        other.text == text &&
+        other.quickLookUrl == quickLookUrl &&
+        other.match == match &&
+        const DeepCollectionEquality().equals(other.mods, mods) &&
+        other.action == action;
+  }
+
+  @override
+  int get hashCode => Object.hash(
+        title,
+        type,
+        valid,
+        subtitle,
+        arg,
+        autocomplete,
+        uid,
+        icon,
+        text,
+        quickLookUrl,
+        match,
+        const DeepCollectionEquality().hash(mods),
+        action,
+      );
 }

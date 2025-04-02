@@ -53,7 +53,7 @@ final class AlfredWorkflow {
   Future<void> addItems(List<AlfredItem> items) async {
     _items.items.addAll(items);
     if (cacheKey != null) {
-      await (await _cache).put(cacheKey!.md5hex, AlfredItems(items));
+      await (await _cache).put(cacheKey!.md5hex, _items);
     }
   }
 
@@ -76,9 +76,10 @@ final class AlfredWorkflow {
       if (cachedItems != null) {
         await cache.put(
           cacheKey!.md5hex,
-          toBeginning
-              ? AlfredItems([item, ...cachedItems.items])
-              : AlfredItems([...cachedItems.items, item]),
+          switch (toBeginning) {
+            true => cachedItems..insert(0, item),
+            false => cachedItems..add(item),
+          },
         );
       } else {
         await cache.put(
