@@ -4,6 +4,7 @@ library;
 import 'dart:convert' show jsonEncode;
 import 'dart:io' show stdout;
 
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:stash/stash_api.dart' show Cache, Store;
 
 import 'src/extensions/string_helpers.dart' show StringHelpers;
@@ -32,6 +33,12 @@ final class AlfredWorkflow {
   /// [disableAlfredSmartResultOrdering] to true.
   bool disableAlfredSmartResultOrdering = false;
 
+  /// This preserves the given item order while allowing Alfred to retain
+  /// knowledge of your items, like your current selection during a re-run.
+  ///
+  /// Only available in Alfred 5
+  bool? skipKnowledge;
+
   // ignore: prefer_const_constructors
   final AlfredItems _items = AlfredItems([]);
 
@@ -41,7 +48,25 @@ final class AlfredWorkflow {
           AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
+  @Deprecated('Use automaticCache')
   String? cacheKey;
+
+  /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
+  /// The Script Filter presents the results from the previous run when caching is active and hasn't expired.
+  /// Because the script won't execute when loading cached data, we recommend this option only be used with
+  /// "Alfred filters results".
+  ///
+  /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
+  AlfredAutomaticCache? _automaticCache;
+
+  set automaticCache(AlfredAutomaticCache? value) {
+    if (value != null) {
+      // Prevent double caching
+      cacheKey = null;
+    }
+
+    automaticCache = value;
+  }
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
@@ -51,7 +76,7 @@ final class AlfredWorkflow {
   ///
   /// If the [cacheKey] is set those [items] will be cached.
   Future<void> addItems(List<AlfredItem> items) async {
-    _items.items.addAll(items);
+    _items.addAll(items);
     if (cacheKey != null) {
       await (await _cache).put(cacheKey!.md5hex, _items);
     }
@@ -63,9 +88,9 @@ final class AlfredWorkflow {
   /// If the [cacheKey] is set that [item] will be cached.
   Future<void> addItem(AlfredItem item, {bool toBeginning = false}) async {
     if (toBeginning) {
-      _items.items.insert(0, item);
+      _items.insert(0, item);
     } else {
-      _items.items.add(item);
+      _items.add(item);
     }
 
     if (cacheKey != null) {
@@ -92,7 +117,7 @@ final class AlfredWorkflow {
 
   /// Delete all [AlfredItem].
   Future<void> clearItems() async {
-    _items.items.clear();
+    _items.clear();
     if (cacheKey != null) {
       await (await _cache).remove(cacheKey!.md5hex);
     }
@@ -106,7 +131,12 @@ final class AlfredWorkflow {
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
   }) async {
-    final List<AlfredItem> items = [...(await getItems() ?? _items).items];
+    final AlfredItems items = AlfredItems(
+      [...(await getItems() ?? _items).items],
+      exactOrder: disableAlfredSmartResultOrdering,
+      skipKnowledge: skipKnowledge,
+      cache: _automaticCache,
+    );
 
     if (addToBeginning != null || addToEnd != null) {
       if (addToBeginning != null) {
@@ -117,15 +147,10 @@ final class AlfredWorkflow {
         items.add(addToEnd);
       }
 
-      return jsonEncode(
-        AlfredItems(items, exactOrder: disableAlfredSmartResultOrdering)
-            .toJson(),
-      );
+      return jsonEncode(items.toJson());
     }
 
-    return jsonEncode(
-      AlfredItems(items, exactOrder: disableAlfredSmartResultOrdering).toJson(),
-    );
+    return jsonEncode(items.toJson());
   }
 
   /// Use this convenience method to print the AlfredItems in JSON format to stdout.
