@@ -59,6 +59,8 @@ final class AlfredWorkflow {
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
   AlfredAutomaticCache? _automaticCache;
 
+  AlfredAutomaticCache? get automaticCache => _automaticCache;
+
   set automaticCache(AlfredAutomaticCache? value) {
     if (value != null) {
       // Prevent double caching
@@ -135,7 +137,7 @@ final class AlfredWorkflow {
       [...(await getItems() ?? _items).items],
       exactOrder: disableAlfredSmartResultOrdering,
       skipKnowledge: skipKnowledge,
-      cache: _automaticCache,
+      cache: automaticCache,
     );
 
     if (addToBeginning != null || addToEnd != null) {
