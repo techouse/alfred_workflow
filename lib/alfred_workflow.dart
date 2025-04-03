@@ -48,6 +48,7 @@ final class AlfredWorkflow {
           AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
+  /// The cache key is used to identify the cached data.
   String? cacheKey;
 
   /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
@@ -56,18 +57,7 @@ final class AlfredWorkflow {
   /// "Alfred filters results".
   ///
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
-  AlfredAutomaticCache? _automaticCache;
-
-  AlfredAutomaticCache? get automaticCache => _automaticCache;
-
-  set automaticCache(AlfredAutomaticCache? value) {
-    if (value != null) {
-      // Prevent double caching
-      cacheKey = null;
-    }
-
-    automaticCache = value;
-  }
+  AlfredAutomaticCache? automaticCache;
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
