@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
 import 'package:autoequal/autoequal.dart';
-import 'package:collection/collection.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
 import 'alfred_item.dart';
@@ -54,22 +53,6 @@ final class AlfredItems
 
   @override
   List<Object?> get props => _$props;
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! AlfredItems) return false;
-    return const DeepCollectionEquality().equals(items, other.items) &&
-        exactOrder == other.exactOrder &&
-        skipKnowledge == other.skipKnowledge;
-  }
-
-  @override
-  int get hashCode => Object.hash(
-        const DeepCollectionEquality().hash(items),
-        exactOrder,
-        skipKnowledge,
-      );
 
   /// Copy this [AlfredItems] with the given [items], [exactOrder], or [skipKnowledge]
   AlfredItems copyWith({
