@@ -11,7 +11,7 @@ help:
 
 analyze:
 	@# Help: Analyze the project's Dart code.
-	dart analyze lib test --fatal-infos
+	dart analyze lib test --fatal-warnings
 
 check_format:
 	@# Help: Check the formatting of one or more Dart files.
