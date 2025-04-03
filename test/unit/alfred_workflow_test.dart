@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' show jsonEncode;
 
 import 'package:alfred_workflow/alfred_workflow.dart';
 import 'package:faker/faker.dart';

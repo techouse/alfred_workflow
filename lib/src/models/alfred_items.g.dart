@@ -7,5 +7,5 @@ part of 'alfred_items.dart';
 // **************************************************************************
 
 extension _$AlfredItemsAutoequal on AlfredItems {
-  List<Object?> get _$props => [items, exactOrder, skipKnowledge];
+  List<Object?> get _$props => [items, exactOrder, skipKnowledge, cache];
 }
