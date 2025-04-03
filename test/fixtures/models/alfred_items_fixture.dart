@@ -1,4 +1,4 @@
-import 'package:alfred_workflow/src/models/alfred_script_filter_cache.dart';
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:alfred_workflow/src/models/alfred_item.dart';
 import 'package:alfred_workflow/src/models/alfred_items.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
@@ -27,6 +27,6 @@ final class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
       (AlfredItems items) => items.copyWith(skipKnowledge: value);
 
   FixtureRedefinitionBuilder<AlfredItems> withCache(
-          AlfredScriptFilterCache? value) =>
+          AlfredAutomaticCache? value) =>
       (AlfredItems items) => items.copyWith(cache: value);
 }

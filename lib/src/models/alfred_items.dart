@@ -1,5 +1,5 @@
 import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
-import 'package:alfred_workflow/src/models/alfred_script_filter_cache.dart';
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
@@ -42,7 +42,7 @@ final class AlfredItems
   /// "Alfred filters results".
   ///
   /// Only available in Alfred 5.5
-  final AlfredScriptFilterCache? cache;
+  final AlfredAutomaticCache? cache;
 
   factory AlfredItems.fromJson(Map<String, dynamic> json) => AlfredItems(
         (json['items'] as List)
@@ -70,7 +70,7 @@ final class AlfredItems
     List<AlfredItem>? items,
     bool? exactOrder,
     bool? skipKnowledge,
-    AlfredScriptFilterCache? cache,
+    AlfredAutomaticCache? cache,
   }) =>
       AlfredItems(
         items ?? [...this.items],

@@ -3,14 +3,14 @@ import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'alfred_script_filter_cache.g.dart';
+part 'alfred_automatic_cache.g.dart';
 
 /// https://www.alfredapp.com/help/workflows/inputs/script-filter/json/#cache
 @autoequal
 @CopyWith()
 @JsonSerializable()
-class AlfredScriptFilterCache with EquatableMixin {
-  const AlfredScriptFilterCache({
+class AlfredAutomaticCache with EquatableMixin {
+  const AlfredAutomaticCache({
     required this.seconds,
     this.looseReload,
   }) : assert(
@@ -27,10 +27,10 @@ class AlfredScriptFilterCache with EquatableMixin {
   @JsonKey(name: 'loosereload')
   final bool? looseReload;
 
-  factory AlfredScriptFilterCache.fromJson(Map<String, dynamic> json) =>
-      _$AlfredScriptFilterCacheFromJson(json);
+  factory AlfredAutomaticCache.fromJson(Map<String, dynamic> json) =>
+      _$AlfredAutomaticCacheFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AlfredScriptFilterCacheToJson(this);
+  Map<String, dynamic> toJson() => _$AlfredAutomaticCacheToJson(this);
 
   @override
   List<Object?> get props => _$props;
