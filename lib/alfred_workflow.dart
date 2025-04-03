@@ -48,7 +48,6 @@ final class AlfredWorkflow {
           AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
-  @Deprecated('Use automaticCache')
   String? cacheKey;
 
   /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
