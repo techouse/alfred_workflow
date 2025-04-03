@@ -3,7 +3,6 @@
 import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:autoequal/autoequal.dart';
-import 'package:collection/collection.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -174,26 +173,34 @@ final class AlfredItem with EquatableMixin {
 
   static Map<String, Map<String, dynamic>>? _modsToJson(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
-  ) {
-    if (mods == null) return null;
-    return mods.map((keySet, mod) {
-      // Sort the keys to ensure consistent ordering
-      final sortedKeys = keySet.toList()
-        ..sort((a, b) => a.name.compareTo(b.name));
-      final keyString = sortedKeys.map((k) => k.name).join('+');
-      return MapEntry(keyString, mod.toJson());
-    });
-  }
+  ) =>
+      mods?.map((Set<AlfredItemModKey> keys, AlfredItemMod mod) {
+        final List<String> canonicalKey =
+            keys.map((AlfredItemModKey k) => k.name).toList()..sort();
+        return MapEntry(canonicalKey.join('+'), mod.toJson());
+      });
 
-  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? json) {
-    if (json == null) return null;
-    return Map<String, dynamic>.from(json).map((key, value) {
-      final keySet =
-          key.split('+').map((s) => AlfredItemModKey.values.byName(s)).toSet();
-      return MapEntry(
-          keySet, AlfredItemMod.fromJson(Map<String, dynamic>.from(value)));
-    });
-  }
+  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? json) =>
+      json != null
+          ? Map<String, dynamic>.from(json).map(
+              (String key, dynamic value) => MapEntry(
+                key
+                    .split('+')
+                    .map((String s) => AlfredItemModKey.values.byName(s))
+                    .toSet(),
+                AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
+              ),
+            )
+          : null;
+
+  Map<String, AlfredItemMod>? _canonicalMods(
+    Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
+  ) =>
+      mods?.map((Set<AlfredItemModKey> keySet, AlfredItemMod mod) {
+        final List<String> sortedNames =
+            keySet.map((AlfredItemModKey k) => k.name).toList()..sort();
+        return MapEntry(sortedNames.join('+'), mod);
+      });
 
   static dynamic _actionToJson(Object? action) => switch (action) {
         null => null,
@@ -225,29 +232,7 @@ final class AlfredItem with EquatableMixin {
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
 
   @override
-  List<Object?> get props => _$props;
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    if (other is! AlfredItem) return false;
-    return other.title == title &&
-        other.type == type &&
-        other.valid == valid &&
-        other.subtitle == subtitle &&
-        other.arg == arg &&
-        other.autocomplete == autocomplete &&
-        other.uid == uid &&
-        other.icon == icon &&
-        other.text == text &&
-        other.quickLookUrl == quickLookUrl &&
-        other.match == match &&
-        const DeepCollectionEquality().equals(other.mods, mods) &&
-        other.action == action;
-  }
-
-  @override
-  int get hashCode => Object.hash(
+  List<Object?> get props => [
         title,
         type,
         valid,
@@ -259,7 +244,7 @@ final class AlfredItem with EquatableMixin {
         text,
         quickLookUrl,
         match,
-        const DeepCollectionEquality().hash(mods),
+        _canonicalMods(mods),
         action,
-      );
+      ];
 }
