@@ -1,3 +1,9 @@
+## 1.1.0
+
+- Feat: add automatic caching support for Alfred items (Alfred 5.5 only)
+- Refactor: improve code readability and maintainability
+- Chore: update dependencies
+
 ## 1.0.2
 
 - Chore: update dependencies
@@ -46,8 +52,7 @@
 
 - Chore: Update Dart SDK to '>=3.0.5 <4.0.0'
 - Chore: Update dependencies
-- Chore: Remove Dart Code Metrics because it's being
-  deprecated https://dcm.dev/blog/2023/06/06/announcing-dcm-free-version-sunset/
+- Chore: Remove Dart Code Metrics because it's being deprecated https://dcm.dev/blog/2023/06/06/announcing-dcm-free-version-sunset/
 
 ## 0.3.3
 
