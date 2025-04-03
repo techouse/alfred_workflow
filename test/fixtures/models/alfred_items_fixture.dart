@@ -1,3 +1,5 @@
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
+import 'package:alfred_workflow/src/models/alfred_item.dart';
 import 'package:alfred_workflow/src/models/alfred_items.dart';
 import 'package:data_fixture_dart/data_fixture_dart.dart';
 import 'package:meta/meta.dart';
@@ -12,8 +14,19 @@ extension AlfredItemsFixture on AlfredItems {
 final class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
   @override
   FixtureDefinition<AlfredItems> definition() => define(
-        (Faker faker) => AlfredItems(
-          AlfredItemFixture.factory.makeMany(20),
-        ),
+        (Faker faker) => AlfredItems(AlfredItemFixture.factory.makeMany(20)),
       );
+
+  FixtureRedefinitionBuilder<AlfredItems> items(List<AlfredItem> value) =>
+      (AlfredItems items) => items.copyWith(items: value);
+
+  FixtureRedefinitionBuilder<AlfredItems> withExactOrder(bool? value) =>
+      (AlfredItems items) => items.copyWith(exactOrder: value);
+
+  FixtureRedefinitionBuilder<AlfredItems> withSkipKnowledge(bool? value) =>
+      (AlfredItems items) => items.copyWith(skipKnowledge: value);
+
+  FixtureRedefinitionBuilder<AlfredItems> withCache(
+          AlfredAutomaticCache? value) =>
+      (AlfredItems items) => items.copyWith(cache: value);
 }

@@ -1,7 +1,9 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:faker/faker.dart';
 import 'package:test/test.dart';
 
+import '../../fixtures/models/alfred_automatic_cache_fixture.dart';
 import '../../fixtures/models/alfred_item_fixture.dart';
 
 void main() {
@@ -91,6 +93,19 @@ void main() {
         for (final Map<String, dynamic> item in json['items'] as List) {
           expect(item['uid'], isNull);
         }
+      },
+    );
+
+    test(
+      'cache = true includes cache',
+      () {
+        final AlfredAutomaticCache cache =
+            AlfredAutomaticCacheFixture.factory.makeSingle();
+        items = AlfredItems(itemsList, cache: cache);
+        final Map<String, dynamic> json = items.toJson();
+
+        expect(json['cache'], isNotNull);
+        expect(json['cache'], equals(cache.toJson()));
       },
     );
   });

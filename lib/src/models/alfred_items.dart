@@ -1,4 +1,5 @@
 import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
+import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
@@ -13,6 +14,7 @@ final class AlfredItems
     this.items, {
     this.exactOrder,
     this.skipKnowledge,
+    this.cache,
   });
 
   /// A list of zero or more [AlfredItem]s.
@@ -34,6 +36,14 @@ final class AlfredItems
   /// Only available in Alfred 5
   final bool? skipKnowledge;
 
+  /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
+  /// The Script Filter presents the results from the previous run when caching is active and hasn't expired.
+  /// Because the script won't execute when loading cached data, we recommend this option only be used with
+  /// "Alfred filters results".
+  ///
+  /// Only available in Alfred 5.5
+  final AlfredAutomaticCache? cache;
+
   factory AlfredItems.fromJson(Map<String, dynamic> json) => AlfredItems(
         (json['items'] as List)
             .map((e) => AlfredItem.fromJson(Map<String, dynamic>.from(e)))
@@ -41,6 +51,7 @@ final class AlfredItems
       );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
+        if (cache != null) 'cache': cache!.toJson(),
         if (skipKnowledge != null) 'skipknowledge': skipKnowledge,
         'items': <Map<String, dynamic>>[
           for (final AlfredItem item in items)
@@ -54,15 +65,17 @@ final class AlfredItems
   @override
   List<Object?> get props => _$props;
 
-  /// Copy this [AlfredItems] with the given [items], [exactOrder], or [skipKnowledge]
+  /// Copy this [AlfredItems] with the given [items], [exactOrder], [skipKnowledge], of [cache].
   AlfredItems copyWith({
     List<AlfredItem>? items,
     bool? exactOrder,
     bool? skipKnowledge,
+    AlfredAutomaticCache? cache,
   }) =>
       AlfredItems(
         items ?? [...this.items],
         skipKnowledge: skipKnowledge ?? this.skipKnowledge,
         exactOrder: exactOrder ?? this.exactOrder,
+        cache: cache ?? this.cache,
       );
 }
