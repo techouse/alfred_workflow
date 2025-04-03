@@ -49,7 +49,18 @@ final class AlfredWorkflow {
       .cache;
 
   /// The cache key is used to identify the cached data.
-  String? cacheKey;
+  String? _cacheKey;
+
+  String? get cacheKey => _cacheKey;
+
+  set cacheKey(String? value) {
+    if (value != null) {
+      // Prevent double caching
+      _automaticCache = null;
+    }
+
+    _cacheKey = value;
+  }
 
   /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
   /// The Script Filter presents the results from the previous run when caching is active and hasn't expired.
@@ -64,7 +75,7 @@ final class AlfredWorkflow {
   set automaticCache(AlfredAutomaticCache? value) {
     if (value != null) {
       // Prevent double caching
-      cacheKey = null;
+      _cacheKey = null;
     }
 
     _automaticCache = value;
