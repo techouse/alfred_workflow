@@ -1,8 +1,14 @@
+import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
+import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
 import 'alfred_item.dart';
 
-final class AlfredItems with EquatableMixin {
+part 'alfred_items.g.dart';
+
+@autoequal
+final class AlfredItems
+    with EquatableMixin, DelegatingItemsListMixin<AlfredItem> {
   const AlfredItems(
     this.items, {
     this.exactOrder,
@@ -12,6 +18,7 @@ final class AlfredItems with EquatableMixin {
   /// A list of zero or more [AlfredItem]s.
   ///
   /// Each [AlfredItem] describes a result row displayed in Alfred.
+  @override
   final List<AlfredItem> items;
 
   /// Alfred learns to prioritise item results like he learns any other, meaning
@@ -35,15 +42,17 @@ final class AlfredItems with EquatableMixin {
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         if (skipKnowledge != null) 'skipknowledge': skipKnowledge,
-        'items': items
-            .map((AlfredItem item) => exactOrder ?? false
-                ? (item.toJson()..remove('uid'))
-                : item.toJson())
-            .toList(),
+        'items': <Map<String, dynamic>>[
+          for (final AlfredItem item in items)
+            if (exactOrder ?? false)
+              item.toJson()..remove('uid')
+            else
+              item.toJson(),
+        ],
       };
 
   @override
-  List<Object?> get props => [items];
+  List<Object?> get props => _$props;
 
   /// Copy this [AlfredItems] with the given [items], [exactOrder], or [skipKnowledge]
   AlfredItems copyWith({

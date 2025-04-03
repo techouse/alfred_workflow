@@ -8,8 +8,5 @@ part of 'alfred_user_configuration_config.dart';
 
 extension _$AlfredUserConfigurationConfigAutoequal
     on AlfredUserConfigurationConfig {
-  List<Object?> get _$props => [
-        defaultValue,
-        value,
-      ];
+  List<Object?> get _$props => [defaultValue, value];
 }

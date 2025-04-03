@@ -174,62 +174,57 @@ final class AlfredItem with EquatableMixin {
   static Map<String, Map<String, dynamic>>? _modsToJson(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
   ) =>
-      mods?.map(
-        (Set<AlfredItemModKey> key, AlfredItemMod value) => MapEntry(
-          key.map((AlfredItemModKey k) => k.name).join('+'),
-          value.toJson(),
-        ),
-      );
+      mods?.map((Set<AlfredItemModKey> keys, AlfredItemMod mod) {
+        final List<String> canonicalKey =
+            keys.map((AlfredItemModKey k) => k.name).toList()..sort();
+        return MapEntry(canonicalKey.join('+'), mod.toJson());
+      });
 
-  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? mods) {
-    if (mods == null) return null;
+  static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? json) =>
+      json != null
+          ? Map<String, dynamic>.from(json).map(
+              (String key, dynamic value) => MapEntry(
+                key
+                    .split('+')
+                    .map((String s) => AlfredItemModKey.values.byName(s))
+                    .toSet(),
+                AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
+              ),
+            )
+          : null;
 
-    return Map<String, dynamic>.from(mods).map(
-      (String key, dynamic value) => MapEntry(
-        key
-            .split('+')
-            .map((String k) => AlfredItemModKey.values.byName(k))
-            .toSet(),
-        AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
-      ),
-    );
-  }
+  Map<String, AlfredItemMod>? _canonicalMods(
+    Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
+  ) =>
+      mods?.map((Set<AlfredItemModKey> keySet, AlfredItemMod mod) {
+        final List<String> sortedNames =
+            keySet.map((AlfredItemModKey k) => k.name).toList()..sort();
+        return MapEntry(sortedNames.join('+'), mod);
+      });
 
-  static dynamic _actionToJson(Object? action) {
-    if (action == null) {
-      return null;
-    }
-    if (action is String) {
-      return action;
-    }
-    if (action is Iterable) {
-      return action.map(_actionToJson).toList();
-    }
-    if (action is AlfredAction) {
-      return action.toJson();
-    }
-  }
+  static dynamic _actionToJson(Object? action) => switch (action) {
+        null => null,
+        String _ => action,
+        Iterable _ => action.map(_actionToJson).toList(),
+        AlfredAction _ => action.toJson(),
+        _ => throw ArgumentError.value(
+            action,
+            'action',
+            'Invalid action. Must be a String, Iterable, or AlfredAction.',
+          ),
+      };
 
-  static Object? _actionFromJson(dynamic action) {
-    if (action == null) {
-      return null;
-    }
-    if (action is String) {
-      return action;
-    }
-    if (action is Iterable) {
-      return action.map(_actionFromJson).toList();
-    }
-    if (action is Map) {
-      return AlfredAction.fromJson(Map<String, dynamic>.from(action));
-    }
-
-    throw ArgumentError.value(
-      action,
-      'action',
-      'Invalid action. Must be a String, Iterable, or Map.',
-    );
-  }
+  static Object? _actionFromJson(dynamic action) => switch (action) {
+        null => null,
+        String _ => action,
+        Iterable _ => action.map(_actionFromJson).toList(),
+        Map _ => AlfredAction.fromJson(Map<String, dynamic>.from(action)),
+        _ => throw ArgumentError.value(
+            action,
+            'action',
+            'Invalid action. Must be a String, Iterable, or Map.',
+          ),
+      };
 
   factory AlfredItem.fromJson(Map<String, dynamic> json) =>
       _$AlfredItemFromJson(json);
@@ -237,5 +232,19 @@ final class AlfredItem with EquatableMixin {
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
 
   @override
-  List<Object?> get props => _$props;
+  List<Object?> get props => [
+        title,
+        type,
+        valid,
+        subtitle,
+        arg,
+        autocomplete,
+        uid,
+        icon,
+        text,
+        quickLookUrl,
+        match,
+        _canonicalMods(mods),
+        action,
+      ];
 }

@@ -36,19 +36,16 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
               : null,
           match:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
-          mods: faker.randomGenerator.boolean()
-              ? {
-                  {AlfredItemModKey.cmd}:
-                      AlfredItemModFixture.factory.makeSingle(),
-                  {AlfredItemModKey.ctrl, AlfredItemModKey.alt}:
-                      AlfredItemModFixture.factory.makeSingle(),
-                  {
-                    AlfredItemModKey.cmd,
-                    AlfredItemModKey.shift,
-                    AlfredItemModKey.alt,
-                  }: AlfredItemModFixture.factory.makeSingle(),
-                }
-              : null,
+          mods: {
+            {AlfredItemModKey.cmd}: AlfredItemModFixture.factory.makeSingle(),
+            {AlfredItemModKey.ctrl, AlfredItemModKey.alt}:
+                AlfredItemModFixture.factory.makeSingle(),
+            {
+              AlfredItemModKey.cmd,
+              AlfredItemModKey.shift,
+              AlfredItemModKey.alt,
+            }: AlfredItemModFixture.factory.makeSingle(),
+          },
           action: useAction ? _fakeAction() : null,
         ),
       );

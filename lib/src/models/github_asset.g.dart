@@ -62,19 +62,19 @@ abstract class _$GithubAssetCWProxy {
   /// GithubAsset(...).copyWith(id: 12, name: "My name")
   /// ````
   GithubAsset call({
-    Uri? url,
-    int? id,
-    String? nodeId,
-    String? name,
+    Uri url,
+    int id,
+    String nodeId,
+    String name,
     String? label,
-    GithubUser? uploader,
-    String? contentType,
-    String? state,
-    int? size,
-    int? downloadCount,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-    Uri? browserDownloadUrl,
+    GithubUser uploader,
+    String contentType,
+    String state,
+    int size,
+    int downloadCount,
+    DateTime createdAt,
+    DateTime updatedAt,
+    Uri browserDownloadUrl,
   });
 }
 
@@ -149,19 +149,19 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
     Object? browserDownloadUrl = const $CopyWithPlaceholder(),
   }) {
     return GithubAsset(
-      url: url == const $CopyWithPlaceholder() || url == null
+      url: url == const $CopyWithPlaceholder()
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
-      id: id == const $CopyWithPlaceholder() || id == null
+      id: id == const $CopyWithPlaceholder()
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
+      nodeId: nodeId == const $CopyWithPlaceholder()
           ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      name: name == const $CopyWithPlaceholder() || name == null
+      name: name == const $CopyWithPlaceholder()
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
@@ -169,38 +169,35 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
           ? _value.label
           // ignore: cast_nullable_to_non_nullable
           : label as String?,
-      uploader: uploader == const $CopyWithPlaceholder() || uploader == null
+      uploader: uploader == const $CopyWithPlaceholder()
           ? _value.uploader
           // ignore: cast_nullable_to_non_nullable
           : uploader as GithubUser,
-      contentType:
-          contentType == const $CopyWithPlaceholder() || contentType == null
-              ? _value.contentType
-              // ignore: cast_nullable_to_non_nullable
-              : contentType as String,
-      state: state == const $CopyWithPlaceholder() || state == null
+      contentType: contentType == const $CopyWithPlaceholder()
+          ? _value.contentType
+          // ignore: cast_nullable_to_non_nullable
+          : contentType as String,
+      state: state == const $CopyWithPlaceholder()
           ? _value.state
           // ignore: cast_nullable_to_non_nullable
           : state as String,
-      size: size == const $CopyWithPlaceholder() || size == null
+      size: size == const $CopyWithPlaceholder()
           ? _value.size
           // ignore: cast_nullable_to_non_nullable
           : size as int,
-      downloadCount:
-          downloadCount == const $CopyWithPlaceholder() || downloadCount == null
-              ? _value.downloadCount
-              // ignore: cast_nullable_to_non_nullable
-              : downloadCount as int,
-      createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
+      downloadCount: downloadCount == const $CopyWithPlaceholder()
+          ? _value.downloadCount
+          // ignore: cast_nullable_to_non_nullable
+          : downloadCount as int,
+      createdAt: createdAt == const $CopyWithPlaceholder()
           ? _value.createdAt
           // ignore: cast_nullable_to_non_nullable
           : createdAt as DateTime,
-      updatedAt: updatedAt == const $CopyWithPlaceholder() || updatedAt == null
+      updatedAt: updatedAt == const $CopyWithPlaceholder()
           ? _value.updatedAt
           // ignore: cast_nullable_to_non_nullable
           : updatedAt as DateTime,
-      browserDownloadUrl: browserDownloadUrl == const $CopyWithPlaceholder() ||
-              browserDownloadUrl == null
+      browserDownloadUrl: browserDownloadUrl == const $CopyWithPlaceholder()
           ? _value.browserDownloadUrl
           // ignore: cast_nullable_to_non_nullable
           : browserDownloadUrl as Uri,

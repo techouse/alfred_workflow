@@ -62,9 +62,9 @@ abstract class _$AlfredItemCWProxy {
   /// AlfredItem(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredItem call({
-    String? title,
-    AlfredItemType? type,
-    bool? valid,
+    String title,
+    AlfredItemType type,
+    bool valid,
     String? subtitle,
     String? arg,
     String? autocomplete,
@@ -150,15 +150,15 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
     Object? action = const $CopyWithPlaceholder(),
   }) {
     return AlfredItem(
-      title: title == const $CopyWithPlaceholder() || title == null
+      title: title == const $CopyWithPlaceholder()
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
-      type: type == const $CopyWithPlaceholder() || type == null
+      type: type == const $CopyWithPlaceholder()
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredItemType,
-      valid: valid == const $CopyWithPlaceholder() || valid == null
+      valid: valid == const $CopyWithPlaceholder()
           ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
@@ -198,7 +198,7 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
           ? _value.mods
           // ignore: cast_nullable_to_non_nullable
           : mods as Map<Set<AlfredItemModKey>, AlfredItemMod>?,
-      action: action == const $CopyWithPlaceholder() || action == null
+      action: action == const $CopyWithPlaceholder()
           ? _value.action
           // ignore: cast_nullable_to_non_nullable
           : action as dynamic,
@@ -239,31 +239,24 @@ AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) {
-  final val = <String, dynamic>{
-    'title': instance.title,
-    'type': _$AlfredItemTypeEnumMap[instance.type]!,
-    'valid': instance.valid,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('subtitle', instance.subtitle);
-  writeNotNull('arg', instance.arg);
-  writeNotNull('autocomplete', instance.autocomplete);
-  writeNotNull('uid', instance.uid);
-  writeNotNull('icon', instance.icon?.toJson());
-  writeNotNull('text', instance.text?.toJson());
-  writeNotNull('quicklookurl', instance.quickLookUrl);
-  writeNotNull('match', instance.match);
-  writeNotNull('mods', AlfredItem._modsToJson(instance.mods));
-  writeNotNull('action', AlfredItem._actionToJson(instance.action));
-  return val;
-}
+Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) =>
+    <String, dynamic>{
+      'title': instance.title,
+      'type': _$AlfredItemTypeEnumMap[instance.type]!,
+      'valid': instance.valid,
+      if (instance.subtitle case final value?) 'subtitle': value,
+      if (instance.arg case final value?) 'arg': value,
+      if (instance.autocomplete case final value?) 'autocomplete': value,
+      if (instance.uid case final value?) 'uid': value,
+      if (instance.icon?.toJson() case final value?) 'icon': value,
+      if (instance.text?.toJson() case final value?) 'text': value,
+      if (instance.quickLookUrl case final value?) 'quicklookurl': value,
+      if (instance.match case final value?) 'match': value,
+      if (AlfredItem._modsToJson(instance.mods) case final value?)
+        'mods': value,
+      if (AlfredItem._actionToJson(instance.action) case final value?)
+        'action': value,
+    };
 
 const _$AlfredItemTypeEnumMap = {
   AlfredItemType.Default: 'default',

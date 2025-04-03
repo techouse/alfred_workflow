@@ -7,10 +7,7 @@ part of 'alfred_item_text.dart';
 // **************************************************************************
 
 extension _$AlfredItemTextAutoequal on AlfredItemText {
-  List<Object?> get _$props => [
-        copy,
-        largeType,
-      ];
+  List<Object?> get _$props => [copy, largeType];
 }
 
 // **************************************************************************
@@ -29,7 +26,7 @@ abstract class _$AlfredItemTextCWProxy {
   /// AlfredItemText(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredItemText call({
-    String? copy,
+    String copy,
     String? largeType,
   });
 }
@@ -59,7 +56,7 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
     Object? largeType = const $CopyWithPlaceholder(),
   }) {
     return AlfredItemText(
-      copy: copy == const $CopyWithPlaceholder() || copy == null
+      copy: copy == const $CopyWithPlaceholder()
           ? _value.copy
           // ignore: cast_nullable_to_non_nullable
           : copy as String,
@@ -92,17 +89,8 @@ AlfredItemText _$AlfredItemTextFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$AlfredItemTextToJson(AlfredItemText instance) {
-  final val = <String, dynamic>{
-    'copy': instance.copy,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('largetype', instance.largeType);
-  return val;
-}
+Map<String, dynamic> _$AlfredItemTextToJson(AlfredItemText instance) =>
+    <String, dynamic>{
+      'copy': instance.copy,
+      if (instance.largeType case final value?) 'largetype': value,
+    };

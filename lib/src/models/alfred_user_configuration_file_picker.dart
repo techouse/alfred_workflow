@@ -32,7 +32,7 @@ final class AlfredUserConfigurationFilePicker
   @internal
   @override
   AlfredUserConfiguration<AlfredUserConfigurationConfigFilePicker>
-      copyWithConfig(AlfredUserConfigurationConfigFilePicker? config) =>
+      copyWithConfig(AlfredUserConfigurationConfigFilePicker config) =>
           copyWith(config: config);
 
   static AlfredUserConfigurationConfigFilePicker _configFromJson(Map json) =>

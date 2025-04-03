@@ -22,8 +22,8 @@ abstract class _$AlfredUserConfigurationConfigCheckBoxCWProxy {
   /// AlfredUserConfigurationConfigCheckBox(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationConfigCheckBox call({
-    bool? defaultValue,
-    bool? required,
+    bool defaultValue,
+    bool required,
     bool? value,
     String? text,
   });
@@ -66,12 +66,11 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
     Object? text = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigCheckBox(
-      defaultValue:
-          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
-              ? _value.defaultValue
-              // ignore: cast_nullable_to_non_nullable
-              : defaultValue as bool,
-      required: required == const $CopyWithPlaceholder() || required == null
+      defaultValue: defaultValue == const $CopyWithPlaceholder()
+          ? _value.defaultValue
+          // ignore: cast_nullable_to_non_nullable
+          : defaultValue as bool,
+      required: required == const $CopyWithPlaceholder()
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,

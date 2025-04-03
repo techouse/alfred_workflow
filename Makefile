@@ -15,7 +15,7 @@ analyze:
 
 check_format:
 	@# Help: Check the formatting of one or more Dart files.
-	dart format lib test --output=none --set-exit-if-changed .
+	find lib test -name "*.dart" ! -name "*.mocks.dart" ! -name "*.g.dart" -print0 | xargs -0 dart format --output=none --set-exit-if-changed
 
 check_outdated:
 	@# Help: Check which of the project's packages are outdated.

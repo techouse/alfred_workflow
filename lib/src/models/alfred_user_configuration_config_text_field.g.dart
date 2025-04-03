@@ -24,9 +24,9 @@ abstract class _$AlfredUserConfigurationConfigTextFieldCWProxy {
   /// AlfredUserConfigurationConfigTextField(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationConfigTextField call({
-    String? defaultValue,
-    bool? required,
-    bool? trim,
+    String defaultValue,
+    bool required,
+    bool trim,
     String? value,
     String? placeholder,
   });
@@ -74,16 +74,15 @@ class _$AlfredUserConfigurationConfigTextFieldCWProxyImpl
     Object? placeholder = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigTextField(
-      defaultValue:
-          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
-              ? _value.defaultValue
-              // ignore: cast_nullable_to_non_nullable
-              : defaultValue as String,
-      required: required == const $CopyWithPlaceholder() || required == null
+      defaultValue: defaultValue == const $CopyWithPlaceholder()
+          ? _value.defaultValue
+          // ignore: cast_nullable_to_non_nullable
+          : defaultValue as String,
+      required: required == const $CopyWithPlaceholder()
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      trim: trim == const $CopyWithPlaceholder() || trim == null
+      trim: trim == const $CopyWithPlaceholder()
           ? _value.trim
           // ignore: cast_nullable_to_non_nullable
           : trim as bool,

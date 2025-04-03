@@ -38,9 +38,9 @@ abstract class _$AlfredUpdaterCWProxy {
   /// AlfredUpdater(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUpdater call({
-    Uri? githubRepositoryUrl,
-    String? currentVersion,
-    Duration? updateInterval,
+    Uri githubRepositoryUrl,
+    String currentVersion,
+    Duration updateInterval,
     AlfredCache<GithubRelease>? cache,
     Client? client,
   });
@@ -86,19 +86,15 @@ class _$AlfredUpdaterCWProxyImpl implements _$AlfredUpdaterCWProxy {
     Object? client = const $CopyWithPlaceholder(),
   }) {
     return AlfredUpdater(
-      githubRepositoryUrl:
-          githubRepositoryUrl == const $CopyWithPlaceholder() ||
-                  githubRepositoryUrl == null
-              ? _value.githubRepositoryUrl
-              // ignore: cast_nullable_to_non_nullable
-              : githubRepositoryUrl as Uri,
-      currentVersion: currentVersion == const $CopyWithPlaceholder() ||
-              currentVersion == null
+      githubRepositoryUrl: githubRepositoryUrl == const $CopyWithPlaceholder()
+          ? _value.githubRepositoryUrl
+          // ignore: cast_nullable_to_non_nullable
+          : githubRepositoryUrl as Uri,
+      currentVersion: currentVersion == const $CopyWithPlaceholder()
           ? _value.currentVersion
           // ignore: cast_nullable_to_non_nullable
           : currentVersion as String,
-      updateInterval: updateInterval == const $CopyWithPlaceholder() ||
-              updateInterval == null
+      updateInterval: updateInterval == const $CopyWithPlaceholder()
           ? _value.updateInterval
           // ignore: cast_nullable_to_non_nullable
           : updateInterval as Duration,

@@ -30,7 +30,7 @@ final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
               maxEntries: 1,
               name: 'update_cache',
               evictionPolicy: const FifoEvictionPolicy(),
-              expiryPolicy: CreatedExpiryPolicy(Duration.zero),
+              expiryPolicy: const CreatedExpiryPolicy(Duration.zero),
             ),
           );
         },

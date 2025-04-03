@@ -32,15 +32,13 @@ final class AlfredWorkflow {
   /// [disableAlfredSmartResultOrdering] to true.
   bool disableAlfredSmartResultOrdering = false;
 
-  late final AlfredItems _items = AlfredItems([]);
+  // ignore: prefer_const_constructors
+  final AlfredItems _items = AlfredItems([]);
 
   final AlfredCache<AlfredItems>? _alfredCache;
 
   late final Future<Cache<AlfredItems>> _cache = (_alfredCache ??
-          AlfredCache<AlfredItems>(
-            fromEncodable: (Map<String, dynamic> json) =>
-                AlfredItems.fromJson(json),
-          ))
+          AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
   String? cacheKey;
@@ -55,7 +53,7 @@ final class AlfredWorkflow {
   Future<void> addItems(List<AlfredItem> items) async {
     _items.items.addAll(items);
     if (cacheKey != null) {
-      await (await _cache).put(cacheKey!.md5hex, AlfredItems(items));
+      await (await _cache).put(cacheKey!.md5hex, _items);
     }
   }
 
@@ -78,9 +76,10 @@ final class AlfredWorkflow {
       if (cachedItems != null) {
         await cache.put(
           cacheKey!.md5hex,
-          toBeginning
-              ? AlfredItems([item, ...cachedItems.items])
-              : AlfredItems([...cachedItems.items, item]),
+          switch (toBeginning) {
+            true => cachedItems..insert(0, item),
+            false => cachedItems..add(item),
+          },
         );
       } else {
         await cache.put(

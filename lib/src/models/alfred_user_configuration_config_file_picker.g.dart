@@ -24,9 +24,9 @@ abstract class _$AlfredUserConfigurationConfigFilePickerCWProxy {
   /// AlfredUserConfigurationConfigFilePicker(...).copyWith(id: 12, name: "My name")
   /// ````
   AlfredUserConfigurationConfigFilePicker call({
-    String? defaultValue,
-    bool? required,
-    int? filterMode,
+    String defaultValue,
+    bool required,
+    int filterMode,
     String? value,
     String? placeholder,
   });
@@ -75,20 +75,18 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
     Object? placeholder = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigFilePicker(
-      defaultValue:
-          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
-              ? _value.defaultValue
-              // ignore: cast_nullable_to_non_nullable
-              : defaultValue as String,
-      required: required == const $CopyWithPlaceholder() || required == null
+      defaultValue: defaultValue == const $CopyWithPlaceholder()
+          ? _value.defaultValue
+          // ignore: cast_nullable_to_non_nullable
+          : defaultValue as String,
+      required: required == const $CopyWithPlaceholder()
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      filterMode:
-          filterMode == const $CopyWithPlaceholder() || filterMode == null
-              ? _value.filterMode
-              // ignore: cast_nullable_to_non_nullable
-              : filterMode as int,
+      filterMode: filterMode == const $CopyWithPlaceholder()
+          ? _value.filterMode
+          // ignore: cast_nullable_to_non_nullable
+          : filterMode as int,
       value: value == const $CopyWithPlaceholder()
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
