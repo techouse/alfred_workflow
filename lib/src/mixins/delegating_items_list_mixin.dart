@@ -120,4 +120,67 @@ mixin DelegatingItemsListMixin<E> {
   }
 
   List<E> sublist(int start, [int? end]) => items.sublist(start, end);
+
+  bool any(bool Function(E) test) => items.any(test);
+
+  bool contains(Object? element) => items.contains(element);
+
+  E elementAt(int index) => items.elementAt(index);
+
+  bool every(bool Function(E) test) => items.every(test);
+
+  Iterable<T> expand<T>(Iterable<T> Function(E) f) => items.expand(f);
+
+  E get first => items.first;
+
+  E firstWhere(bool Function(E) test, {E Function()? orElse}) =>
+      items.firstWhere(test, orElse: orElse);
+
+  T fold<T>(T initialValue, T Function(T previousValue, E element) combine) =>
+      items.fold(initialValue, combine);
+
+  Iterable<E> followedBy(Iterable<E> other) => items.followedBy(other);
+
+  void forEach(void Function(E) f) => items.forEach(f);
+
+  bool get isEmpty => items.isEmpty;
+
+  bool get isNotEmpty => items.isNotEmpty;
+
+  Iterator<E> get iterator => items.iterator;
+
+  String join([String separator = '']) => items.join(separator);
+
+  E get last => items.last;
+
+  E lastWhere(bool Function(E) test, {E Function()? orElse}) =>
+      items.lastWhere(test, orElse: orElse);
+
+  int get length => items.length;
+
+  Iterable<T> map<T>(T Function(E) f) => items.map(f);
+
+  E reduce(E Function(E value, E element) combine) => items.reduce(combine);
+
+  E get single => items.single;
+
+  E singleWhere(bool Function(E) test, {E Function()? orElse}) {
+    return items.singleWhere(test, orElse: orElse);
+  }
+
+  Iterable<E> skip(int n) => items.skip(n);
+
+  Iterable<E> skipWhile(bool Function(E) test) => items.skipWhile(test);
+
+  Iterable<E> take(int n) => items.take(n);
+
+  Iterable<E> takeWhile(bool Function(E) test) => items.takeWhile(test);
+
+  List<E> toList({bool growable = true}) => items.toList(growable: growable);
+
+  Set<E> toSet() => items.toSet();
+
+  Iterable<E> where(bool Function(E) test) => items.where(test);
+
+  Iterable<T> whereType<T>() => items.whereType<T>();
 }
