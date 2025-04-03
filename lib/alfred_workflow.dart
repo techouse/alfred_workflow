@@ -57,7 +57,18 @@ final class AlfredWorkflow {
   /// "Alfred filters results".
   ///
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
-  AlfredAutomaticCache? automaticCache;
+  AlfredAutomaticCache? _automaticCache;
+
+  AlfredAutomaticCache? get automaticCache => _automaticCache;
+
+  set automaticCache(AlfredAutomaticCache? value) {
+    if (value != null) {
+      // Prevent double caching
+      cacheKey = null;
+    }
+
+    _automaticCache = value;
+  }
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems?> getItems() async =>
