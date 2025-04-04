@@ -1,3 +1,7 @@
+## 1.1.0+1
+
+- Fix: expose Alfred automatic caching
+
 ## 1.1.0
 
 - Feat: add automatic caching support for Alfred items (Alfred 5.5 only)
