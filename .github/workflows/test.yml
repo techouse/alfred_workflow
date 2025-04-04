@@ -46,7 +46,7 @@ jobs:
         run: |
           find lib test -name "*.dart" ! -name "*.mocks.dart" ! -name "*.g.dart" -print0 | xargs -0 dart format --output=none --set-exit-if-changed
       - name: Analyze the project's Dart code
-        run: dart analyze lib test --fatal-warnings
+        run: dart analyze lib test --fatal-infos
       - name: Install coverage dependencies
         run: |
           dart pub global activate coverage
