@@ -256,6 +256,85 @@ void main() async {
     });
   });
 
+  group('AlfredWorkflow with skipKnowledge', () {
+    setUp(() {
+      final skipKnowledge = faker.randomGenerator.boolean();
+      workflow = AlfredWorkflowFixture.factory.makeSingle()
+        ..skipKnowledge = skipKnowledge;
+      items = AlfredItemsFixture.factory
+          .redefine(
+            AlfredItemsFixture.factory.withSkipKnowledge(skipKnowledge),
+          )
+          .makeSingle();
+    });
+
+    test('getItems without adding anything is empty', () async {
+      expect(await workflow.getItems(), const AlfredItems([]));
+    });
+
+    test('addItem adds single item', () async {
+      await workflow.addItem(item);
+      expect(await workflow.getItems(), AlfredItems([item]));
+    });
+
+    test('addItems adds multiple items', () async {
+      await workflow.addItems(itemsList);
+      expect(await workflow.getItems(), AlfredItems(itemsList));
+    });
+
+    test(
+      'addItem with toBeginning=false adds single item to end of items',
+      () async {
+        await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
+        expect((await workflow.getItems())?.items.length, 10);
+
+        await workflow.addItem(item);
+        expect((await workflow.getItems())?.items.length, 11);
+        expect((await workflow.getItems())?.items.last, item);
+      },
+    );
+
+    test(
+      'addItem with toBeginning=true adds single item to beginning of items',
+      () async {
+        await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
+        expect((await workflow.getItems())?.items.length, 10);
+
+        await workflow.addItem(item, toBeginning: true);
+        expect((await workflow.getItems())?.items.length, 11);
+        expect((await workflow.getItems())?.items.first, item);
+        expect((await workflow.getItems())?.items.last == item, false);
+      },
+    );
+
+    test('clearItems removes items', () async {
+      await workflow.addItems(itemsList);
+      expect(await workflow.getItems(), AlfredItems(itemsList));
+
+      await workflow.clearItems();
+      expect(await workflow.getItems(), const AlfredItems([]));
+    });
+
+    test('toJsonString returns a JSON string', () async {
+      await workflow.addItems(items.items);
+      expect(await workflow.toJsonString(), jsonEncode(items.toJson()));
+    });
+
+    test('toJsonString addToBeginning adds item to beginning', () async {
+      await workflow.addItems(items.items);
+      final String json = await workflow.toJsonString(addToBeginning: item);
+      expect(json != jsonEncode(items.toJson()), true);
+      expect(json, containsSubstring(item.title));
+    });
+
+    test('toJsonString addToEnd adds item to end', () async {
+      await workflow.addItems(items.items);
+      final String json = await workflow.toJsonString(addToEnd: item);
+      expect(json != jsonEncode(items.toJson()), true);
+      expect(json, containsSubstring(item.title));
+    });
+  });
+
   group('AlfredWorkflow stdout', () {
     late AlfredItem itemBefore;
     late AlfredItem itemAfter;
