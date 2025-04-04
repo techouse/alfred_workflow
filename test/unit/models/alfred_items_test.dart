@@ -1,5 +1,4 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
-import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
 import 'package:faker/faker.dart';
 import 'package:test/test.dart';
 
