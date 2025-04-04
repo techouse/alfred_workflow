@@ -14,8 +14,8 @@ class AlfredAutomaticCache with EquatableMixin {
     required this.seconds,
     this.looseReload,
   }) : assert(
-          seconds >= 5 && seconds <= 86400,
-          'Time to live for cached data must be between 5 and 86400 seconds (24 hours).',
+          seconds >= minSeconds && seconds <= maxSeconds,
+          'Time to live for cached data must be between $minSeconds and $maxSeconds seconds (24 hours).',
         );
 
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
@@ -26,6 +26,12 @@ class AlfredAutomaticCache with EquatableMixin {
   /// with the new data when it becomes available.
   @JsonKey(name: 'loosereload')
   final bool? looseReload;
+
+  /// The minimum value for the cache duration.
+  static const int minSeconds = 5;
+
+  /// The maximum value for the cache duration.
+  static const int maxSeconds = 86400;
 
   factory AlfredAutomaticCache.fromJson(Map<String, dynamic> json) =>
       _$AlfredAutomaticCacheFromJson(json);

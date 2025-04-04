@@ -1,3 +1,4 @@
+export 'alfred_automatic_cache.dart' show AlfredAutomaticCache;
 export 'alfred_item.dart' show AlfredItem;
 export 'alfred_item_icon.dart' show AlfredItemIcon, AlfredItemIconType;
 export 'alfred_item_mod.dart' show AlfredItemMod, AlfredItemModKey;
