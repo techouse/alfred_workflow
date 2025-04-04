@@ -48,7 +48,7 @@ sure:
 show_test_coverage:
 	@# Help: Run Dart unit tests for the current project and show the coverage.
 	dart pub global activate coverage && dart pub global run coverage:test_with_coverage
-	lcov --remove coverage/lcov.info '**.g.dart' '**.mock.dart' -o coverage/lcov_without_generated_code.info
+	lcov --ignore-errors unused --remove coverage/lcov.info '**.g.dart' '**.mocks.dart' -o coverage/lcov_without_generated_code.info
 	genhtml coverage/lcov_without_generated_code.info -o coverage/html
 	source ./scripts/makefile_scripts.sh && open_link "coverage/html/index.html"
 
