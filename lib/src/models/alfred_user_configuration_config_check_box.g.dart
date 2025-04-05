@@ -102,7 +102,8 @@ AlfredUserConfigurationConfigCheckBox
     _$AlfredUserConfigurationConfigCheckBoxFromJson(
             Map<String, dynamic> json) =>
         AlfredUserConfigurationConfigCheckBox(
-          defaultValue: json['default'] as bool,
+          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
+              json, 'default') as bool,
           required: json['required'] as bool,
           text: json['text'] as String?,
         );

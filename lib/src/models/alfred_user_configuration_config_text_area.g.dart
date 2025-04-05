@@ -114,7 +114,8 @@ AlfredUserConfigurationConfigTextArea
     _$AlfredUserConfigurationConfigTextAreaFromJson(
             Map<String, dynamic> json) =>
         AlfredUserConfigurationConfigTextArea(
-          defaultValue: json['default'] as String,
+          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
+              json, 'default') as String,
           required: json['required'] as bool,
           trim: json['trim'] as bool,
           verticalSize: (json['verticalsize'] as num).toInt(),

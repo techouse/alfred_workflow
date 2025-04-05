@@ -14,5 +14,7 @@
 	<string></string>
 	<key>textarea_variable</key>
 	<string>lorem ipsum dolor sit amet</string>
+	<key>number_slider_variable</key>
+	<integer>69</integer>
 </dict>
 </plist>

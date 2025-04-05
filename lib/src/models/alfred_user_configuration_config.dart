@@ -14,14 +14,17 @@ abstract class AlfredUserConfigurationConfig<T> with EquatableMixin {
   }) : value = value ?? defaultValue;
 
   /// Default value
-  @JsonKey(name: 'default')
+  @JsonKey(name: 'default', readValue: fromJsonDefaultValue)
   final T defaultValue;
+
+  @internal
+  static T fromJsonDefaultValue<T>(Map json, String key) =>
+      json['defaultvalue'] as T? ?? json[key] as T;
 
   /// User set value
   @JsonKey(includeFromJson: false, includeToJson: false)
   final T value;
 
-  @internal
   @internal
   AlfredUserConfigurationConfig<T> copyWithValue(T? value);
 

@@ -14,7 +14,7 @@ part 'alfred_user_configuration_check_box.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationCheckBox
-    extends AlfredUserConfiguration<AlfredUserConfigurationConfigCheckBox>
+    extends AlfredUserConfiguration<bool, AlfredUserConfigurationConfigCheckBox>
     with EquatableMixin {
   const AlfredUserConfigurationCheckBox({
     required super.type,
@@ -31,9 +31,9 @@ final class AlfredUserConfigurationCheckBox
 
   @internal
   @override
-  AlfredUserConfiguration<AlfredUserConfigurationConfigCheckBox> copyWithConfig(
-          AlfredUserConfigurationConfigCheckBox config) =>
-      copyWith(config: config);
+  AlfredUserConfiguration<bool, AlfredUserConfigurationConfigCheckBox>
+      copyWithConfig(AlfredUserConfigurationConfigCheckBox config) =>
+          copyWith(config: config);
 
   static AlfredUserConfigurationConfigCheckBox _configFromJson(Map json) =>
       AlfredUserConfigurationConfigCheckBox.fromJson(

@@ -115,7 +115,8 @@ AlfredUserConfigurationConfigFilePicker
     _$AlfredUserConfigurationConfigFilePickerFromJson(
             Map<String, dynamic> json) =>
         AlfredUserConfigurationConfigFilePicker(
-          defaultValue: json['default'] as String,
+          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
+              json, 'default') as String,
           required: json['required'] as bool,
           filterMode: (json['filtermode'] as num).toInt(),
           placeholder: json['placeholder'] as String?,

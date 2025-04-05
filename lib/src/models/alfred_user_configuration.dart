@@ -8,8 +8,8 @@ part 'alfred_user_configuration.g.dart';
 
 /// Alfred user configuration generic class
 @autoequal
-abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
-    with EquatableMixin {
+abstract class AlfredUserConfiguration<T,
+    Q extends AlfredUserConfigurationConfig<T>> with EquatableMixin {
   const AlfredUserConfiguration({
     required this.type,
     required this.variable,
@@ -30,10 +30,16 @@ abstract class AlfredUserConfiguration<T extends AlfredUserConfigurationConfig>
   final String? label;
 
   /// [AlfredUserConfigurationConfig] configuration
-  abstract final T config;
+  abstract final Q config;
+
+  /// Default value
+  T get defaultValue => config.defaultValue;
+
+  /// User set value
+  T get value => config.value;
 
   @internal
-  AlfredUserConfiguration<T> copyWithConfig(T config);
+  AlfredUserConfiguration<T, Q> copyWithConfig(Q config);
 
   @override
   List<Object?> get props => _$props;

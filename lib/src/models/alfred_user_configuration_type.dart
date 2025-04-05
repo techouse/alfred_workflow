@@ -11,7 +11,9 @@ enum AlfredUserConfigurationType {
   @JsonValue('popupbutton')
   select('popupbutton'),
   @JsonValue('filepicker')
-  filePicker('filepicker');
+  filePicker('filepicker'),
+  @JsonValue('slider')
+  slider('slider');
 
   const AlfredUserConfigurationType(this.jsonValue);
 
