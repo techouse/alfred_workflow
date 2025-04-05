@@ -113,7 +113,7 @@ final class AlfredWorkflow {
     if (cacheKey != null) {
       final Cache<AlfredItems> cache = await _cache;
 
-      AlfredItems? cachedItems = await cache.get(cacheKey!.md5hex);
+      final AlfredItems? cachedItems = await cache.get(cacheKey!.md5hex);
 
       if (cachedItems != null) {
         await cache.put(
