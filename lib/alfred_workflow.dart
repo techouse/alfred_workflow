@@ -163,8 +163,6 @@ final class AlfredWorkflow {
       if (addToEnd != null) {
         items.add(addToEnd);
       }
-
-      return jsonEncode(items.toJson());
     }
 
     return jsonEncode(items.toJson());
