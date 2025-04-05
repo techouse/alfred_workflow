@@ -32,6 +32,8 @@ void main() {
             isA<AlfredUserConfigurationConfigTextArea>(),
           );
           expect(defaultItem.config.defaultValue, equals('textarea default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -48,6 +50,8 @@ void main() {
             isA<AlfredUserConfigurationConfigTextField>(),
           );
           expect(defaultItem.config.defaultValue, equals('textfield default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -69,6 +73,8 @@ void main() {
             isA<AlfredUserConfigurationConfigCheckBox>(),
           );
           expect(defaultItem.config.defaultValue, isFalse);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -86,6 +92,8 @@ void main() {
             isA<AlfredUserConfigurationConfigSelect>(),
           );
           expect(defaultItem.config.defaultValue, equals('baz value'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.pairs,
               isA<List<AlfredUserConfigurationConfigSelectPair>>());
           expect(defaultItem.config.pairs, isNotEmpty);
@@ -114,6 +122,8 @@ void main() {
           expect(defaultItem.config,
               isA<AlfredUserConfigurationConfigFilePicker>());
           expect(defaultItem.config.defaultValue, isEmpty);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -143,6 +153,8 @@ void main() {
             isA<AlfredUserConfigurationConfigTextArea>(),
           );
           expect(defaultItem.config.defaultValue, equals('textarea default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -159,6 +171,8 @@ void main() {
             isA<AlfredUserConfigurationConfigTextField>(),
           );
           expect(defaultItem.config.defaultValue, equals('textfield default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -180,6 +194,8 @@ void main() {
             isA<AlfredUserConfigurationConfigCheckBox>(),
           );
           expect(defaultItem.config.defaultValue, isFalse);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -197,6 +213,8 @@ void main() {
             isA<AlfredUserConfigurationConfigSelect>(),
           );
           expect(defaultItem.config.defaultValue, equals('baz value'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.pairs,
               isA<List<AlfredUserConfigurationConfigSelectPair>>());
           expect(defaultItem.config.pairs, isNotEmpty);
@@ -225,6 +243,8 @@ void main() {
           expect(defaultItem.config,
               isA<AlfredUserConfigurationConfigFilePicker>());
           expect(defaultItem.config.defaultValue, isEmpty);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -243,6 +263,8 @@ void main() {
             isA<AlfredUserConfigurationConfigNumberSlider>(),
           );
           expect(defaultItem.config.defaultValue, equals(50));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.min, equals(0));
           expect(defaultItem.config.max, equals(100));
           expect(defaultItem.config.markerCount, equals(10));
@@ -292,6 +314,8 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor sit amet');
           expect(defaultItem.config.defaultValue, equals('textarea default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -309,6 +333,8 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor');
           expect(defaultItem.config.defaultValue, equals('textfield default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -331,6 +357,8 @@ void main() {
           );
           expect(defaultItem.config.value, isTrue);
           expect(defaultItem.config.defaultValue, isFalse);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -349,6 +377,8 @@ void main() {
           );
           expect(defaultItem.config.value, equals('foo value'));
           expect(defaultItem.config.defaultValue, equals('baz value'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.pairs,
               isA<List<AlfredUserConfigurationConfigSelectPair>>());
           expect(defaultItem.config.pairs, isNotEmpty);
@@ -376,13 +406,40 @@ void main() {
           expect(defaultItem.variable, equals('filepicker_variable'));
           expect(defaultItem.config,
               isA<AlfredUserConfigurationConfigFilePicker>());
-          expect(defaultItem.config.value, '/home/user/Desktop/document.pdf');
+          expect(defaultItem.config.value,
+              equals('/home/user/Desktop/document.pdf'));
           expect(defaultItem.config.defaultValue, isEmpty);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
           expect(defaultItem.description, equals('filepicker description'));
           expect(defaultItem.label, equals('filepicker label'));
+        }
+
+        if (defaultItem is AlfredUserConfigurationNumberSlider) {
+          expect(
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.slider),
+          );
+          expect(defaultItem.variable, equals('number_slider_variable'));
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigNumberSlider>(),
+          );
+          expect(defaultItem.config.value, equals(69));
+          expect(defaultItem.value, equals(defaultItem.config.value));
+          expect(defaultItem.config.defaultValue, equals(50));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
+          expect(defaultItem.config.min, equals(0));
+          expect(defaultItem.config.max, equals(100));
+          expect(defaultItem.config.markerCount, equals(10));
+          expect(defaultItem.config.onlyStopOnMarkers, isTrue);
+          expect(defaultItem.config.showMarkers, isTrue);
+          expect(defaultItem.description, equals('number slider description'));
+          expect(defaultItem.label, equals('number slider label'));
         }
       });
     });
@@ -418,6 +475,8 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor sit amet');
           expect(defaultItem.config.defaultValue, equals('textarea default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -435,6 +494,8 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor');
           expect(defaultItem.config.defaultValue, equals('textfield default'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -457,6 +518,8 @@ void main() {
           );
           expect(defaultItem.config.value, isTrue);
           expect(defaultItem.config.defaultValue, isFalse);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -475,6 +538,8 @@ void main() {
           );
           expect(defaultItem.config.value, equals('foo value'));
           expect(defaultItem.config.defaultValue, equals('baz value'));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.pairs,
               isA<List<AlfredUserConfigurationConfigSelectPair>>());
           expect(defaultItem.config.pairs, isNotEmpty);
@@ -502,13 +567,40 @@ void main() {
           expect(defaultItem.variable, equals('filepicker_variable'));
           expect(defaultItem.config,
               isA<AlfredUserConfigurationConfigFilePicker>());
-          expect(defaultItem.config.value, '/home/user/Desktop/document.pdf');
+          expect(defaultItem.config.value,
+              equals('/home/user/Desktop/document.pdf'));
           expect(defaultItem.config.defaultValue, isEmpty);
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
           expect(defaultItem.description, equals('filepicker description'));
           expect(defaultItem.label, equals('filepicker label'));
+        }
+
+        if (defaultItem is AlfredUserConfigurationNumberSlider) {
+          expect(
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.slider),
+          );
+          expect(defaultItem.variable, equals('number_slider_variable'));
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigNumberSlider>(),
+          );
+          expect(defaultItem.config.value, equals(69));
+          expect(defaultItem.value, equals(defaultItem.config.value));
+          expect(defaultItem.config.defaultValue, equals(50));
+          expect(defaultItem.defaultValue,
+              equals(defaultItem.config.defaultValue));
+          expect(defaultItem.config.min, equals(0));
+          expect(defaultItem.config.max, equals(100));
+          expect(defaultItem.config.markerCount, equals(10));
+          expect(defaultItem.config.onlyStopOnMarkers, isTrue);
+          expect(defaultItem.config.showMarkers, isTrue);
+          expect(defaultItem.description, equals('number slider description'));
+          expect(defaultItem.label, equals('number slider label'));
         }
       });
     });
