@@ -142,7 +142,7 @@ Check out the [caching example here](example/alfred_workflow_caching_example.dar
 This library supports new [Workflow Configuration](https://www.alfredapp.com/help/workflows/workflow-configuration/) added in Alfred 5.
 
 > Workflow Configuration defaults are stored in `info.plist`, but changed values are saved to `prefs.plist`.
-> Add the latter to your `.gitignore` so as to not commit your personal configuration to version control.
+> Add the latter to your `.gitignore` to not commit your personal configuration to version control.
 
 You can access the user defaults like this:
 
@@ -153,14 +153,15 @@ final Map<String, AlfredUserConfiguration>? userDefaults = await workflow.getUse
 This will return a `Map` of `AlfredUserConfiguration` objects keyed by the `key` you defined in your `info.plist`.
 
 ```dart
-final AlfredUserConfiguration? defaultCurrencyConfiguration = userDefaults?['default_currency'];
+// this example uses a select configuration
+final AlfredUserConfigurationSelect? currencyConfiguration = userDefaults?['currency'];
 ```
 
-You can then access the user set (or default) `value` of the `AlfredUserConfigurationConfig` object.
+You can then access the user set (or default) `value` of the `AlfredUserConfiguration` object.
 
 ```dart
-final AlfredUserConfigurationConfig? defaultCurrencyConfigurationConfig = defaultCurrencyConfiguration?.config;
-final String? defaultCurrency = defaultCurrencyConfigurationConfig?.value as String?;
+final String? defaultCurrency = currencyConfiguration?.defaultValue;
+final String? userCurrency = currencyConfiguration?.value;
 ```
 
 ### ⬆️ Auto-Update your workflows via GitHub releases
