@@ -44,7 +44,7 @@ final class AlfredWorkflow {
 
   final AlfredCache<AlfredItems>? _alfredCache;
 
-  late final Future<Cache<AlfredItems>> _cache = (_alfredCache ??
+  Future<Cache<AlfredItems>> get _cache => (_alfredCache ??
           AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
       .cache;
 
