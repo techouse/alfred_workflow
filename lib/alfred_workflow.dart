@@ -155,14 +155,12 @@ final class AlfredWorkflow {
       cache: automaticCache,
     );
 
-    if (addToBeginning != null || addToEnd != null) {
-      if (addToBeginning != null) {
-        items.insert(0, addToBeginning);
-      }
+    if (addToBeginning != null) {
+      items.insert(0, addToBeginning);
+    }
 
-      if (addToEnd != null) {
-        items.add(addToEnd);
-      }
+    if (addToEnd != null) {
+      items.add(addToEnd);
     }
 
     return jsonEncode(items.toJson());
