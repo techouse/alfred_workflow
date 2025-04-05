@@ -4,7 +4,7 @@ import 'package:pub_semver/pub_semver.dart' show Version;
 final class VersionConverter implements JsonConverter<Version, String> {
   const VersionConverter();
 
-  static const instance = VersionConverter();
+  static const VersionConverter instance = VersionConverter();
 
   static final RegExp _versionMatcher = RegExp(r'(\d+\.\d+\.\d+)');
 
