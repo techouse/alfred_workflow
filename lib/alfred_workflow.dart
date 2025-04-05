@@ -115,20 +115,15 @@ final class AlfredWorkflow {
 
       final AlfredItems? cachedItems = await cache.get(cacheKey!.md5hex);
 
-      if (cachedItems != null) {
-        await cache.put(
-          cacheKey!.md5hex,
-          switch (toBeginning) {
-            true => cachedItems..insert(0, item),
-            false => cachedItems..add(item),
-          },
-        );
-      } else {
-        await cache.put(
-          cacheKey!.md5hex,
-          AlfredItems([item]),
-        );
-      }
+      await cache.put(
+        cacheKey!.md5hex,
+        cachedItems != null
+            ? switch (toBeginning) {
+                true => cachedItems..insert(0, item),
+                false => cachedItems..add(item),
+              }
+            : AlfredItems([item]),
+      );
     }
   }
 
