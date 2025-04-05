@@ -1,3 +1,7 @@
+## 1.1.2
+
+- Feat: add number slider configuration support in user settings
+
 ## 1.1.1
 
 - Fix: AlfredWorkflow.getItems is never nullable
