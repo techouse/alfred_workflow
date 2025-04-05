@@ -14,7 +14,7 @@ part 'alfred_user_configuration_select.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationSelect
-    extends AlfredUserConfiguration<AlfredUserConfigurationConfigSelect>
+    extends AlfredUserConfiguration<String, AlfredUserConfigurationConfigSelect>
     with EquatableMixin {
   const AlfredUserConfigurationSelect({
     required super.type,
@@ -31,9 +31,9 @@ final class AlfredUserConfigurationSelect
 
   @internal
   @override
-  AlfredUserConfiguration<AlfredUserConfigurationConfigSelect> copyWithConfig(
-          AlfredUserConfigurationConfigSelect config) =>
-      copyWith(config: config);
+  AlfredUserConfiguration<String, AlfredUserConfigurationConfigSelect>
+      copyWithConfig(AlfredUserConfigurationConfigSelect config) =>
+          copyWith(config: config);
 
   static AlfredUserConfigurationConfigSelect _configFromJson(Map json) =>
       AlfredUserConfigurationConfigSelect.fromJson(

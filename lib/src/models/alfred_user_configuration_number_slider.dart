@@ -13,9 +13,8 @@ part 'alfred_user_configuration_number_slider.g.dart';
 @autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
-final class AlfredUserConfigurationNumberSlider
-    extends AlfredUserConfiguration<AlfredUserConfigurationConfigNumberSlider>
-    with EquatableMixin {
+final class AlfredUserConfigurationNumberSlider extends AlfredUserConfiguration<
+    int, AlfredUserConfigurationConfigNumberSlider> with EquatableMixin {
   const AlfredUserConfigurationNumberSlider({
     required super.type,
     required super.variable,
@@ -31,7 +30,7 @@ final class AlfredUserConfigurationNumberSlider
 
   @internal
   @override
-  AlfredUserConfiguration<AlfredUserConfigurationConfigNumberSlider>
+  AlfredUserConfiguration<int, AlfredUserConfigurationConfigNumberSlider>
       copyWithConfig(AlfredUserConfigurationConfigNumberSlider config) =>
           copyWith(config: config);
 
