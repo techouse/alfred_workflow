@@ -92,7 +92,8 @@ extension $AlfredUserConfigurationConfigSelectCopyWith
 AlfredUserConfigurationConfigSelect
     _$AlfredUserConfigurationConfigSelectFromJson(Map<String, dynamic> json) =>
         AlfredUserConfigurationConfigSelect(
-          defaultValue: json['default'] as String,
+          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
+              json, 'default') as String,
           pairs: AlfredUserConfigurationConfigSelect._pairsFromJson(
               json['pairs'] as List),
         );

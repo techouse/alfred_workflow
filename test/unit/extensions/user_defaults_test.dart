@@ -1,4 +1,5 @@
 import 'package:alfred_workflow/alfred_workflow.dart';
+import 'package:alfred_workflow/src/models/alfred_user_configuration_config_number_slider.dart';
 import 'package:test/test.dart';
 
 import '../../fixtures/alfred_workflow_fixture.dart';
@@ -229,6 +230,26 @@ void main() {
           expect(defaultItem.config.filterMode, equals(0));
           expect(defaultItem.description, equals('filepicker description'));
           expect(defaultItem.label, equals('filepicker label'));
+        }
+
+        if (defaultItem is AlfredUserConfigurationNumberSlider) {
+          expect(
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.slider),
+          );
+          expect(defaultItem.variable, equals('number_slider_variable'));
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigNumberSlider>(),
+          );
+          expect(defaultItem.config.defaultValue, equals(50));
+          expect(defaultItem.config.min, equals(0));
+          expect(defaultItem.config.max, equals(100));
+          expect(defaultItem.config.markerCount, equals(10));
+          expect(defaultItem.config.onlyStopOnMarkers, isTrue);
+          expect(defaultItem.config.showMarkers, isTrue);
+          expect(defaultItem.description, equals('number slider description'));
+          expect(defaultItem.label, equals('number slider label'));
         }
       });
     });

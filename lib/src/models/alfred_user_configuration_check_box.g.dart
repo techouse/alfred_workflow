@@ -129,4 +129,5 @@ const _$AlfredUserConfigurationTypeEnumMap = {
   AlfredUserConfigurationType.checkBox: 'checkbox',
   AlfredUserConfigurationType.select: 'popupbutton',
   AlfredUserConfigurationType.filePicker: 'filepicker',
+  AlfredUserConfigurationType.slider: 'slider',
 };

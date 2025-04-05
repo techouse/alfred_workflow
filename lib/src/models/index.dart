@@ -12,6 +12,7 @@ export 'alfred_user_configuration_config_file_picker.dart';
 export 'alfred_user_configuration_config_select.dart';
 export 'alfred_user_configuration_config_text_area.dart';
 export 'alfred_user_configuration_config_text_field.dart';
+export 'alfred_user_configuration_number_slider.dart';
 export 'alfred_user_configuration_file_picker.dart';
 export 'alfred_user_configuration_select.dart';
 export 'alfred_user_configuration_text_area.dart';

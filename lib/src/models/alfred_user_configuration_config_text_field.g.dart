@@ -114,7 +114,8 @@ AlfredUserConfigurationConfigTextField
     _$AlfredUserConfigurationConfigTextFieldFromJson(
             Map<String, dynamic> json) =>
         AlfredUserConfigurationConfigTextField(
-          defaultValue: json['default'] as String,
+          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
+              json, 'default') as String,
           required: json['required'] as bool,
           trim: json['trim'] as bool,
           placeholder: json['placeholder'] as String?,

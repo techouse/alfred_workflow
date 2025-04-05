@@ -116,6 +116,9 @@ extension UserDefaults on AlfredWorkflow {
             else if (config[_typeKey] ==
                 AlfredUserConfigurationType.filePicker.jsonValue)
               AlfredUserConfigurationFilePicker.fromJson(config)
+            else if (config[_typeKey] ==
+                AlfredUserConfigurationType.slider.jsonValue)
+              AlfredUserConfigurationNumberSlider.fromJson(config)
         ])
           item.variable: item,
       };
