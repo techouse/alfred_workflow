@@ -49,9 +49,9 @@ final class AlfredWorkflow {
       .cache;
 
   /// The cache key is used to identify the cached data.
-  String? _cacheKey;
-
   String? get cacheKey => _cacheKey;
+
+  String? _cacheKey;
 
   set cacheKey(String? value) {
     if (value != null) {
@@ -68,9 +68,9 @@ final class AlfredWorkflow {
   /// "Alfred filters results".
   ///
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
-  AlfredAutomaticCache? _automaticCache;
-
   AlfredAutomaticCache? get automaticCache => _automaticCache;
+
+  AlfredAutomaticCache? _automaticCache;
 
   set automaticCache(AlfredAutomaticCache? value) {
     if (value != null) {
