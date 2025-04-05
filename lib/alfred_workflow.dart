@@ -82,8 +82,12 @@ final class AlfredWorkflow {
   }
 
   /// Always use this to check for any AlfredItems.
-  Future<AlfredItems?> getItems() async =>
-      cacheKey != null ? await (await _cache).get(cacheKey!.md5hex) : _items;
+  Future<AlfredItems> getItems() async {
+    return switch (cacheKey) {
+      null => _items,
+      _ => await (await _cache).get(cacheKey!.md5hex) ?? _items,
+    };
+  }
 
   /// Add multiple [items]
   ///
@@ -145,7 +149,7 @@ final class AlfredWorkflow {
     AlfredItem? addToEnd,
   }) async {
     final AlfredItems items = AlfredItems(
-      [...(await getItems() ?? _items).items],
+      [...(await getItems()).items],
       exactOrder: disableAlfredSmartResultOrdering,
       skipKnowledge: skipKnowledge,
       cache: automaticCache,

@@ -45,11 +45,11 @@ void main() async {
       'addItem with toBeginning=false adds single item to end of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.last, item);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.last, item);
       },
     );
 
@@ -57,12 +57,12 @@ void main() async {
       'addItem with toBeginning=true adds single item to beginning of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item, toBeginning: true);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.first, item);
-        expect((await workflow.getItems())?.items.last == item, false);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.first, item);
+        expect((await workflow.getItems()).items.last == item, false);
       },
     );
 
@@ -132,11 +132,11 @@ void main() async {
       'addItem with toBeginning=false adds single item to end of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.last, item);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.last, item);
       },
     );
 
@@ -144,12 +144,12 @@ void main() async {
       'addItem with toBeginning=true adds single item to beginning of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item, toBeginning: true);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.first, item);
-        expect((await workflow.getItems())?.items.last == item, false);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.first, item);
+        expect((await workflow.getItems()).items.last == item, false);
       },
     );
 
@@ -189,8 +189,8 @@ void main() async {
         ..cacheKey = faker.guid.guid();
     });
 
-    test('getItems without adding anything is null', () async {
-      expect(await workflow.getItems(), null);
+    test('getItems without adding anything is empty', () async {
+      expect(await workflow.getItems(), const AlfredItems([]));
     });
 
     test('addItem adds single item', () async {
@@ -207,11 +207,11 @@ void main() async {
       'addItem with toBeginning=false adds single item to end of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.last, item);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.last, item);
       },
     );
 
@@ -219,12 +219,12 @@ void main() async {
       'addItem with toBeginning=true adds single item to beginning of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item, toBeginning: true);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.first, item);
-        expect((await workflow.getItems())?.items.last == item, false);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.first, item);
+        expect((await workflow.getItems()).items.last == item, false);
       },
     );
 
@@ -233,7 +233,7 @@ void main() async {
       expect(await workflow.getItems(), AlfredItems(itemsList));
 
       await workflow.clearItems();
-      expect(await workflow.getItems(), null);
+      expect(await workflow.getItems(), const AlfredItems([]));
     });
 
     test('toJsonString returns a JSON string', () async {
@@ -286,11 +286,11 @@ void main() async {
       'addItem with toBeginning=false adds single item to end of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.last, item);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.last, item);
       },
     );
 
@@ -298,12 +298,12 @@ void main() async {
       'addItem with toBeginning=true adds single item to beginning of items',
       () async {
         await workflow.addItems(AlfredItemFixture.factory.makeMany(10));
-        expect((await workflow.getItems())?.items.length, 10);
+        expect((await workflow.getItems()).items.length, 10);
 
         await workflow.addItem(item, toBeginning: true);
-        expect((await workflow.getItems())?.items.length, 11);
-        expect((await workflow.getItems())?.items.first, item);
-        expect((await workflow.getItems())?.items.last == item, false);
+        expect((await workflow.getItems()).items.length, 11);
+        expect((await workflow.getItems()).items.first, item);
+        expect((await workflow.getItems()).items.last == item, false);
       },
     );
 
