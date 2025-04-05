@@ -1,3 +1,8 @@
+## 1.1.1
+
+- Fix: AlfredWorkflow.getItems is never nullable
+- Refactor: improve code readability and maintainability
+
 ## 1.1.0+1
 
 - Fix: expose Alfred automatic caching
