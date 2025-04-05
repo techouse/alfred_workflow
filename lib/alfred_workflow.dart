@@ -153,15 +153,9 @@ final class AlfredWorkflow {
       exactOrder: disableAlfredSmartResultOrdering,
       skipKnowledge: skipKnowledge,
       cache: automaticCache,
-    );
-
-    if (addToBeginning != null) {
-      items.insert(0, addToBeginning);
-    }
-
-    if (addToEnd != null) {
-      items.add(addToEnd);
-    }
+    )
+      ..insertAll(0, [if (addToBeginning != null) addToBeginning])
+      ..addAll([if (addToEnd != null) addToEnd]);
 
     return jsonEncode(items.toJson());
   }
