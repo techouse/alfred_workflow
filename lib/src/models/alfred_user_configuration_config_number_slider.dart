@@ -31,20 +31,12 @@ final class AlfredUserConfigurationConfigNumberSlider
           'value must be between min and max',
         ),
         assert(
-          showMarkers == false || markerCount != null,
-          'markerCount must be provided if showMarkers is true',
+          !(showMarkers || onlyStopOnMarkers) || markerCount != null,
+          'markerCount must be provided if showMarkers or onlyStopOnMarkers is true',
         ),
         assert(
-          showMarkers == false || markerCount != 0,
-          'markerCount must be greater than 0 if showMarkers is true',
-        ),
-        assert(
-          onlyStopOnMarkers == false || markerCount != null,
-          'markerCount must be provided if onlyStopOnMarkers is true',
-        ),
-        assert(
-          onlyStopOnMarkers == false || markerCount != 0,
-          'markerCount must be greater than 0 if onlyStopOnMarkers is true',
+          !(showMarkers || onlyStopOnMarkers) || markerCount != 0,
+          'markerCount must be greater than 0 if showMarkers or onlyStopOnMarkers is true',
         ),
         assert(
           markerCount == null || markerCount > 0,

@@ -9,7 +9,7 @@ import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration_number_slider.g.dart';
 
-/// Alfred text area user configuration
+/// Alfred number slider user configuration
 @autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
@@ -24,7 +24,7 @@ final class AlfredUserConfigurationNumberSlider
     super.label,
   });
 
-  /// The configuration for the text area
+  /// The configuration for the number slider
   @override
   @JsonKey(fromJson: _configFromJson)
   final AlfredUserConfigurationConfigNumberSlider config;
