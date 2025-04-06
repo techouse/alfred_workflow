@@ -131,6 +131,7 @@ final class AlfredItem with EquatableMixin {
   /// The [mods] give you control over how the modifier keys react.
   ///
   /// It can alter the looks of a result (e.g. [subtitle], [icon]) and output a different arg or session variables.
+  @ignore
   @JsonKey(includeIfNull: false, toJson: _modsToJson, fromJson: _modsFromJson)
   final Map<Set<AlfredItemModKey>, AlfredItemMod>? mods;
 
@@ -193,7 +194,8 @@ final class AlfredItem with EquatableMixin {
             )
           : null;
 
-  Map<String, AlfredItemMod>? _canonicalMods(
+  /// Canonicalizes the mods by sorting the keys and joining them into a single string.
+  static Map<String, AlfredItemMod>? _canonicalMods(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
   ) =>
       mods?.map((Set<AlfredItemModKey> keySet, AlfredItemMod mod) {
@@ -232,19 +234,5 @@ final class AlfredItem with EquatableMixin {
   Map<String, dynamic> toJson() => _$AlfredItemToJson(this);
 
   @override
-  List<Object?> get props => [
-        title,
-        type,
-        valid,
-        subtitle,
-        arg,
-        autocomplete,
-        uid,
-        icon,
-        text,
-        quickLookUrl,
-        match,
-        _canonicalMods(mods),
-        action,
-      ];
+  List<Object?> get props => _$props..add(_canonicalMods(mods));
 }
