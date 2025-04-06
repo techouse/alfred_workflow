@@ -450,7 +450,7 @@ void main() async {
     });
   });
 
-  group('cache TTL', () {
+  group('cache time to live', () {
     late int cacheTtl;
 
     setUp(() {
@@ -466,47 +466,75 @@ void main() async {
       expect(workflow.cacheTimeToLive, isNull);
     });
 
-    test('automaticCache.seconds is set to 60 seconds by default', () {
-      workflow.useAutomaticCache = true;
-      expect(workflow.automaticCache, isNotNull);
-      expect(workflow.cacheTimeToLive, isNull);
-      expect(workflow.automaticCache?.seconds, equals(60));
-    });
-
-    test('fileCache expiry time is set to 60 seconds by default', () {
-      expect(workflow.cacheTimeToLive, isNull);
-      expect(
-        workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
-        equals(60),
-      );
-    });
+    test(
+      'automaticCache.seconds is set to AlfredWorkflow.defaultCacheTimeToLive seconds by default',
+      () {
+        workflow.useAutomaticCache = true;
+        expect(workflow.automaticCache, isNotNull);
+        expect(workflow.cacheTimeToLive, isNull);
+        expect(workflow.automaticCache?.seconds,
+            equals(AlfredWorkflow.defaultCacheTimeToLive));
+      },
+    );
 
     test(
-        'cacheTimeToLive can be set to a custom value and affect automaticCache',
-        () {
-      workflow.cacheTimeToLive = cacheTtl;
-      expect(workflow.cacheTimeToLive, equals(cacheTtl));
+      'fileCache expiry time is set to AlfredWorkflow.defaultCacheTimeToLive seconds by default',
+      () {
+        expect(workflow.cacheTimeToLive, isNull);
+        expect(
+          workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
+          equals(AlfredWorkflow.defaultCacheTimeToLive),
+        );
+      },
+    );
 
-      workflow.useAutomaticCache = true;
-      expect(workflow.automaticCache, isNotNull);
-      expect(workflow.automaticCache?.seconds, equals(cacheTtl));
-      expect(
-        workflow.automaticCache?.seconds,
-        equals(workflow.cacheTimeToLive),
-      );
-    });
+    test(
+      'cacheTimeToLive can be set to a custom value and affect automaticCache',
+      () {
+        workflow.cacheTimeToLive = cacheTtl;
+        expect(workflow.cacheTimeToLive, equals(cacheTtl));
 
-    test('cacheTimeToLive can be set to a custom value and affect fileCache',
-        () {
-      workflow.cacheTimeToLive = cacheTtl;
-      expect(workflow.cacheTimeToLive, equals(cacheTtl));
-      expect(workflow.automaticCache, isNull);
-      expect(workflow.cacheTimeToLive, isNotNull);
-      expect(workflow.cacheTimeToLive, equals(cacheTtl));
+        workflow.useAutomaticCache = true;
+        expect(workflow.automaticCache, isNotNull);
+        expect(workflow.automaticCache?.seconds, equals(cacheTtl));
+        expect(
+          workflow.automaticCache?.seconds,
+          equals(workflow.cacheTimeToLive),
+        );
+      },
+    );
+
+    test(
+      'cacheTimeToLive can be set to a custom value and affect fileCache',
+      () {
+        workflow.cacheTimeToLive = cacheTtl;
+        expect(workflow.cacheTimeToLive, equals(cacheTtl));
+        expect(workflow.automaticCache, isNull);
+        expect(workflow.cacheTimeToLive, isNotNull);
+        expect(workflow.cacheTimeToLive, equals(cacheTtl));
+        expect(workflow.automaticCache?.seconds, isNull);
+        expect(
+          workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
+          equals(cacheTtl),
+        );
+      },
+    );
+
+    test('cacheTimeToLive has must be in range', () {
+      workflow.cacheTimeToLive = AlfredAutomaticCache.minSeconds - 1;
+      expect(workflow.cacheTimeToLive, isNull);
       expect(workflow.automaticCache?.seconds, isNull);
       expect(
         workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
-        equals(cacheTtl),
+        equals(AlfredWorkflow.defaultCacheTimeToLive),
+      );
+
+      workflow.cacheTimeToLive = AlfredAutomaticCache.maxSeconds + 1;
+      expect(workflow.cacheTimeToLive, isNull);
+      expect(workflow.automaticCache?.seconds, isNull);
+      expect(
+        workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
+        equals(AlfredWorkflow.defaultCacheTimeToLive),
       );
     });
   });
@@ -616,6 +644,10 @@ void main() async {
 
     test('maxCacheEntries is null by default', () {
       expect(workflow.maxCacheEntries, isNull);
+      expect(
+        workflow.fileCache.maxEntries,
+        equals(AlfredWorkflow.defaultMaxCacheEntries),
+      );
     });
 
     test('maxCacheEntries can be set to a custom value', () {
@@ -629,6 +661,26 @@ void main() async {
 
       workflow.maxCacheEntries = maxCacheEntries;
       expect(workflow.useAutomaticCache, isFalse);
+    });
+
+    test('maxCacheEntries must be greater than 0', () {
+      workflow.maxCacheEntries = 1;
+      expect(workflow.maxCacheEntries, isNotNull);
+      expect(workflow.fileCache.maxEntries, equals(1));
+
+      workflow.maxCacheEntries = 0;
+      expect(workflow.maxCacheEntries, isNull);
+      expect(
+        workflow.fileCache.maxEntries,
+        equals(AlfredWorkflow.defaultMaxCacheEntries),
+      );
+
+      workflow.maxCacheEntries = -1;
+      expect(workflow.maxCacheEntries, isNull);
+      expect(
+        workflow.fileCache.maxEntries,
+        equals(AlfredWorkflow.defaultMaxCacheEntries),
+      );
     });
   });
 }
