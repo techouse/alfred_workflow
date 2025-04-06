@@ -84,9 +84,6 @@ extension $AlfredAutomaticCacheCopyWith on AlfredAutomaticCache {
 Map<String, dynamic> _$AlfredAutomaticCacheToJson(
         AlfredAutomaticCache instance) =>
     <String, dynamic>{
-      'stringify': instance.stringify,
-      'hash_code': instance.hashCode,
       'seconds': instance.seconds,
-      'loosereload': instance.looseReload,
-      'props': instance.props,
+      if (instance.looseReload case final value?) 'loosereload': value,
     };
