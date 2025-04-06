@@ -19,7 +19,6 @@ extension _$AlfredItemAutoequal on AlfredItem {
         text,
         quickLookUrl,
         match,
-        mods,
         action,
       ];
 }
