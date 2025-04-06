@@ -8,7 +8,7 @@ part 'alfred_automatic_cache.g.dart';
 /// https://www.alfredapp.com/help/workflows/inputs/script-filter/json/#cache
 @autoequal
 @CopyWith()
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class AlfredAutomaticCache with EquatableMixin {
   const AlfredAutomaticCache({
     required this.seconds,
@@ -32,9 +32,6 @@ class AlfredAutomaticCache with EquatableMixin {
 
   /// The maximum value for the cache duration.
   static const int maxSeconds = 86400;
-
-  factory AlfredAutomaticCache.fromJson(Map<String, dynamic> json) =>
-      _$AlfredAutomaticCacheFromJson(json);
 
   Map<String, dynamic> toJson() => _$AlfredAutomaticCacheToJson(this);
 
