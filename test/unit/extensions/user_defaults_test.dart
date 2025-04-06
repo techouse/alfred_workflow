@@ -605,4 +605,24 @@ void main() {
       });
     });
   });
+
+  group('equatable', () {
+    test('AlfredUserConfigurationTextArea', () {
+      final AlfredUserConfigurationTextArea textArea =
+          const AlfredUserConfigurationTextArea(
+        type: AlfredUserConfigurationType.textArea,
+        variable: 'textarea_variable',
+        config: AlfredUserConfigurationConfigTextArea(
+          defaultValue: 'textarea default',
+          value: 'textarea value',
+          required: true,
+          trim: false,
+          verticalSize: 3,
+        ),
+      );
+
+      final AlfredUserConfigurationTextArea textAreaCopy = textArea.copyWith();
+      expect(textArea, equals(textAreaCopy));
+    });
+  });
 }
