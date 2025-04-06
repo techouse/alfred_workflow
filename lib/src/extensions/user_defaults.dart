@@ -94,22 +94,22 @@ extension UserDefaults on AlfredWorkflow {
         for (AlfredUserConfiguration item in <AlfredUserConfiguration>[
           for (final Map config in info[_userConfigurationConfigKey] as List)
             if (config[_typeKey] ==
-                AlfredUserConfigurationType.textField.jsonValue)
+                AlfredUserConfigurationType.textField.toString())
               AlfredUserConfigurationTextField.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.textArea.jsonValue)
+                AlfredUserConfigurationType.textArea.toString())
               AlfredUserConfigurationTextArea.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.checkBox.jsonValue)
+                AlfredUserConfigurationType.checkBox.toString())
               AlfredUserConfigurationCheckBox.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.select.jsonValue)
+                AlfredUserConfigurationType.select.toString())
               AlfredUserConfigurationSelect.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.filePicker.jsonValue)
+                AlfredUserConfigurationType.filePicker.toString())
               AlfredUserConfigurationFilePicker.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.slider.jsonValue)
+                AlfredUserConfigurationType.slider.toString())
               AlfredUserConfigurationNumberSlider.fromJson(config)
         ])
           item.variable: item,
