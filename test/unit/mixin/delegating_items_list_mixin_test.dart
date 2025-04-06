@@ -433,6 +433,11 @@ void main() {
       final Iterator<int> iterator = nonEmptyList.iterator;
       expect(iterator.moveNext(), isTrue);
       expect(iterator.current, equals(1));
+      expect(iterator.moveNext(), isTrue);
+      expect(iterator.current, equals(2));
+      expect(iterator.moveNext(), isTrue);
+      expect(iterator.current, equals(3));
+      expect(iterator.moveNext(), isFalse);
     });
 
     test('join returns empty string', () {

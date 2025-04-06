@@ -132,100 +132,64 @@ void main() async {
       expect(await updater.updateAvailable(), false);
     });
 
-    test('cached Github release version is equal', () async {
-      final String currentVersion = '2.0.0';
+    test('cached Github release version comparison', () async {
+      final testCases = [
+        {
+          'currentVersion': '2.0.0',
+          'tagName': 'v2.0.0',
+          'expectedResult': false,
+          'description': 'equal'
+        },
+        {
+          'currentVersion': '2.0.0',
+          'tagName': 'v2.0.1',
+          'expectedResult': true,
+          'description': 'higher'
+        },
+        {
+          'currentVersion': '2.0.0',
+          'tagName': 'v1.9.9',
+          'expectedResult': false,
+          'description': 'lower'
+        },
+      ];
 
-      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
-        AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/$login/$repoName'),
-        ),
-        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
-        AlfredUpdaterFixture.factory.client(client),
-      ]).makeSingle();
+      for (final testCase in testCases) {
+        // Set up test using testCase values
+        final String currentVersion = testCase['currentVersion'] as String;
+        final String tagName = testCase['tagName'] as String;
+        final bool expectedResult = testCase['expectedResult'] as bool;
+        final String description = testCase['description'] as String;
 
-      final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v2.0.0',
-          ))
-          .makeSingle();
+        final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
+          AlfredUpdaterFixture.factory.githubRepositoryUrl(
+            Uri.https('github.com', '/$login/$repoName'),
+          ),
+          AlfredUpdaterFixture.factory.currentVersion(currentVersion),
+          AlfredUpdaterFixture.factory.client(client),
+        ]).makeSingle();
 
-      final Cache<GithubRelease> cache = await updater.fileCache;
+        final GithubRelease githubRelease = GithubReleaseFixture.factory
+            .redefine(GithubReleaseFixture.factory.withDetails(
+              repoName: repoName,
+              login: login,
+              tagName: tagName,
+            ))
+            .makeSingle();
 
-      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
+        final Cache<GithubRelease> cache = await updater.fileCache;
 
-      final GithubRelease? cachedRelease =
-          await cache.get(AlfredUpdater.updateKey.md5hex);
+        await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
 
-      expect(cachedRelease, isNotNull);
-      expect(cachedRelease, githubRelease);
+        final GithubRelease? cachedRelease =
+            await cache.get(AlfredUpdater.updateKey.md5hex);
 
-      expect(await updater.updateAvailable(), isFalse);
-    });
+        expect(cachedRelease, isNotNull);
+        expect(cachedRelease, githubRelease);
 
-    test('cached Github release version is higher', () async {
-      final String currentVersion = '2.0.0';
-
-      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
-        AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/$login/$repoName'),
-        ),
-        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
-        AlfredUpdaterFixture.factory.client(client),
-      ]).makeSingle();
-
-      final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v2.0.1',
-          ))
-          .makeSingle();
-
-      final Cache<GithubRelease> cache = await updater.fileCache;
-
-      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
-
-      final GithubRelease? cachedRelease =
-          await cache.get(AlfredUpdater.updateKey.md5hex);
-
-      expect(cachedRelease, isNotNull);
-      expect(cachedRelease, githubRelease);
-
-      expect(await updater.updateAvailable(), isTrue);
-    });
-
-    test('cached Github release version is lower', () async {
-      final String currentVersion = '2.0.0';
-
-      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
-        AlfredUpdaterFixture.factory.githubRepositoryUrl(
-          Uri.https('github.com', '/$login/$repoName'),
-        ),
-        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
-        AlfredUpdaterFixture.factory.client(client),
-      ]).makeSingle();
-
-      final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v1.9.9',
-          ))
-          .makeSingle();
-
-      final Cache<GithubRelease> cache = await updater.fileCache;
-
-      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
-
-      final GithubRelease? cachedRelease =
-          await cache.get(AlfredUpdater.updateKey.md5hex);
-
-      expect(cachedRelease, isNotNull);
-      expect(cachedRelease, githubRelease);
-
-      expect(await updater.updateAvailable(), isFalse);
+        expect(await updater.updateAvailable(), expectedResult,
+            reason: 'When cached version is $description to current version');
+      }
     });
   });
 
