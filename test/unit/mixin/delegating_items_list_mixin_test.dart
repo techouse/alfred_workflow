@@ -423,6 +423,18 @@ void main() {
       expect(emptyList.isNotEmpty, isFalse);
     });
 
+    test('iterator on empty list', () {
+      final Iterator<int> iterator = emptyList.iterator;
+      expect(iterator.moveNext(), isFalse);
+    });
+
+    test('iterator on non-empty list', () {
+      final _TestList<int> nonEmptyList = _TestList<int>([1, 2, 3]);
+      final Iterator<int> iterator = nonEmptyList.iterator;
+      expect(iterator.moveNext(), isTrue);
+      expect(iterator.current, equals(1));
+    });
+
     test('join returns empty string', () {
       expect(emptyList.join(', '), equals(''));
     });
