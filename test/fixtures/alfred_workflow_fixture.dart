@@ -15,17 +15,17 @@ final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
   FixtureDefinition<AlfredWorkflow> definition() =>
       define((Faker faker) => AlfredWorkflow());
 
-  FixtureRedefinitionBuilder<AlfredWorkflow> withAutomaticCache(
+  FixtureRedefinitionBuilder<AlfredWorkflow> withAutomaticCache([
     AlfredAutomaticCache? automaticCache,
-  ) =>
+  ]) =>
       (_) => AlfredWorkflow(
             automaticCache: automaticCache ??
                 AlfredAutomaticCacheFixture.factory.makeSingle(),
           );
 
-  FixtureRedefinitionBuilder<AlfredWorkflow> withFileCache(
+  FixtureRedefinitionBuilder<AlfredWorkflow> withFileCache([
     AlfredCache<AlfredItems>? fileCache,
-  ) =>
+  ]) =>
       (_) => AlfredWorkflow(
             fileCache: fileCache ??
                 MockAlfredCache<AlfredItems>(

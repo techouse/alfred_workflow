@@ -8,6 +8,7 @@ import '../fixtures/alfred_workflow_fixture.dart';
 import '../fixtures/models/alfred_item_fixture.dart';
 import '../fixtures/models/alfred_items_fixture.dart';
 import '../helpers/matchers.dart';
+import '../helpers/mock_alfred_cache.dart';
 
 void main() async {
   final Faker faker = Faker();
@@ -184,11 +185,15 @@ void main() async {
     });
   });
 
-  group('AlfredWorkflow with stash cache', () {
+  group('AlfredWorkflow with file cache', () {
     setUp(() {
       items = AlfredItemsFixture.factory.makeSingle();
 
-      workflow = AlfredWorkflowFixture.factory.makeSingle()
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory.withFileCache(),
+          )
+          .makeSingle()
         ..cacheKey = faker.guid.guid();
     });
 
@@ -442,6 +447,188 @@ void main() async {
       expect(workflow.useAutomaticCache, isFalse);
       expect(workflow.cacheKey, isNotNull);
       expect(workflow.cacheKey, equals(cacheKey));
+    });
+  });
+
+  group('cache TTL', () {
+    late int cacheTtl;
+
+    setUp(() {
+      cacheTtl = faker.randomGenerator.integer(
+        AlfredAutomaticCache.maxSeconds,
+        min: AlfredAutomaticCache.minSeconds,
+      );
+      workflow = AlfredWorkflowFixture.factory.makeSingle();
+    });
+
+    test('automaticCache is null by default', () {
+      expect(workflow.automaticCache, isNull);
+      expect(workflow.cacheTimeToLive, isNull);
+    });
+
+    test('automaticCache.seconds is set to 60 seconds by default', () {
+      workflow.useAutomaticCache = true;
+      expect(workflow.automaticCache, isNotNull);
+      expect(workflow.cacheTimeToLive, isNull);
+      expect(workflow.automaticCache?.seconds, equals(60));
+    });
+
+    test('fileCache expiry time is set to 60 seconds by default', () {
+      expect(workflow.cacheTimeToLive, isNull);
+      expect(
+        workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
+        equals(60),
+      );
+    });
+
+    test(
+        'cacheTimeToLive can be set to a custom value and affect automaticCache',
+        () {
+      workflow.cacheTimeToLive = cacheTtl;
+      expect(workflow.cacheTimeToLive, equals(cacheTtl));
+
+      workflow.useAutomaticCache = true;
+      expect(workflow.automaticCache, isNotNull);
+      expect(workflow.automaticCache?.seconds, equals(cacheTtl));
+      expect(
+        workflow.automaticCache?.seconds,
+        equals(workflow.cacheTimeToLive),
+      );
+    });
+
+    test('cacheTimeToLive can be set to a custom value and affect fileCache',
+        () {
+      workflow.cacheTimeToLive = cacheTtl;
+      expect(workflow.cacheTimeToLive, equals(cacheTtl));
+      expect(workflow.automaticCache, isNull);
+      expect(workflow.cacheTimeToLive, isNotNull);
+      expect(workflow.cacheTimeToLive, equals(cacheTtl));
+      expect(workflow.automaticCache?.seconds, isNull);
+      expect(
+        workflow.fileCache.expiryPolicy.getExpiryForCreation().inSeconds,
+        equals(cacheTtl),
+      );
+    });
+  });
+
+  group('AlfredWorkflow.automaticCache', () {
+    late AlfredAutomaticCache automaticCache;
+
+    setUp(() {
+      automaticCache = AlfredAutomaticCache(
+        seconds: faker.randomGenerator.integer(
+          AlfredAutomaticCache.maxSeconds,
+          min: AlfredAutomaticCache.minSeconds,
+        ),
+        looseReload: faker.randomGenerator.boolean(),
+      );
+    });
+
+    test('automaticCache is null if useAutomaticCache is false', () {
+      workflow = AlfredWorkflowFixture.factory.makeSingle();
+      expect(workflow.useAutomaticCache, isFalse);
+      expect(workflow.automaticCache, isNull);
+    });
+
+    test('automaticCache is not null if useAutomaticCache is true ', () {
+      workflow = AlfredWorkflowFixture.factory.makeSingle()
+        ..useAutomaticCache = true;
+      expect(workflow.useAutomaticCache, isTrue);
+      expect(workflow.automaticCache, isNotNull);
+    });
+
+    test('automaticCache equals the set one provided in the constructor', () {
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory.withAutomaticCache(automaticCache),
+          )
+          .makeSingle();
+
+      expect(workflow.automaticCache, isNotNull);
+      expect(workflow.automaticCache, equals(automaticCache));
+    });
+
+    test('automaticCache can be set to a custom value', () {
+      final AlfredAutomaticCache customAutomaticCache = AlfredAutomaticCache(
+        seconds: faker.randomGenerator.integer(
+          AlfredAutomaticCache.maxSeconds,
+          min: AlfredAutomaticCache.minSeconds,
+        ),
+        looseReload: faker.randomGenerator.boolean(),
+      );
+
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory
+                .withAutomaticCache(customAutomaticCache),
+          )
+          .makeSingle();
+
+      expect(workflow.automaticCache, isNotNull);
+      expect(workflow.automaticCache, equals(customAutomaticCache));
+    });
+  });
+
+  group('AlfredWorkflow.fileCache', () {
+    test('fileCache is not null by default', () {
+      workflow = AlfredWorkflowFixture.factory.makeSingle();
+      expect(workflow.fileCache, isNotNull);
+    });
+
+    test('fileCache equals the set one provided in the constructor', () {
+      final AlfredCache<AlfredItems> fileCache = MockAlfredCache<AlfredItems>(
+        fromEncodable: (Map<String, dynamic> json) =>
+            AlfredItems.fromJson(json),
+      );
+
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(AlfredWorkflowFixture.factory.withFileCache(fileCache))
+          .makeSingle();
+
+      expect(workflow.fileCache, isNotNull);
+      expect(workflow.fileCache, equals(fileCache));
+    });
+
+    test('fileCache can be set to a custom value', () {
+      final MockAlfredCache<AlfredItems> customFileCache =
+          MockAlfredCache<AlfredItems>(
+        fromEncodable: (Map<String, dynamic> json) =>
+            AlfredItems.fromJson(json),
+      );
+
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory.withFileCache(customFileCache),
+          )
+          .makeSingle();
+
+      expect(workflow.fileCache, equals(customFileCache));
+    });
+  });
+
+  group('AlfredWorkflow.maxCacheEntries', () {
+    late int maxCacheEntries;
+
+    setUp(() {
+      maxCacheEntries = faker.randomGenerator.integer(100, min: 1);
+      workflow = AlfredWorkflowFixture.factory.makeSingle();
+    });
+
+    test('maxCacheEntries is null by default', () {
+      expect(workflow.maxCacheEntries, isNull);
+    });
+
+    test('maxCacheEntries can be set to a custom value', () {
+      workflow.maxCacheEntries = maxCacheEntries;
+      expect(workflow.maxCacheEntries, equals(maxCacheEntries));
+    });
+
+    test('maxCacheEntries disables automatic cache', () {
+      workflow.useAutomaticCache = true;
+      expect(workflow.useAutomaticCache, isTrue);
+
+      workflow.maxCacheEntries = maxCacheEntries;
+      expect(workflow.useAutomaticCache, isFalse);
     });
   });
 }
