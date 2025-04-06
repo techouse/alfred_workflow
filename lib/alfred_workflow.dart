@@ -5,7 +5,8 @@ import 'dart:convert' show jsonEncode;
 import 'dart:io' show stdout;
 
 import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
-import 'package:stash/stash_api.dart' show Cache, Store;
+import 'package:meta/meta.dart';
+import 'package:stash/stash_api.dart' show Cache, CreatedExpiryPolicy, Store;
 
 import 'src/extensions/string_helpers.dart' show StringHelpers;
 import 'src/models/alfred_item.dart' show AlfredItem;
@@ -19,10 +20,13 @@ export 'src/services/index.dart';
 final class AlfredWorkflow {
   /// Builds an [AlfredWorkflow]
   ///
-  /// * [cache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
+  /// * [automaticCache] : Optionally customize the [AlfredAutomaticCache] to configure Alfred's automatic caching
+  /// * [fileCache] : Optionally customize the [AlfredCache] providing a [Cache] backed by a [Store]
   AlfredWorkflow({
-    AlfredCache<AlfredItems>? cache,
-  }) : _alfredCache = cache;
+    AlfredAutomaticCache? automaticCache,
+    AlfredCache<AlfredItems>? fileCache,
+  })  : _alfredAutomaticCache = automaticCache,
+        _alfredFileCache = fileCache;
 
   /// Alfred learns to prioritise item results like he learns any other, meaning
   /// the order in which your workflow results are presented will be based on
@@ -42,11 +46,9 @@ final class AlfredWorkflow {
   // ignore: prefer_const_constructors
   final AlfredItems _items = AlfredItems([]);
 
-  final AlfredCache<AlfredItems>? _alfredCache;
+  final AlfredAutomaticCache? _alfredAutomaticCache;
 
-  Future<Cache<AlfredItems>> get _cache => (_alfredCache ??
-          AlfredCache<AlfredItems>(fromEncodable: AlfredItems.fromJson))
-      .cache;
+  final AlfredCache<AlfredItems>? _alfredFileCache;
 
   /// The cache key is used to identify the cached data.
   String? get cacheKey => _cacheKey;
@@ -56,10 +58,50 @@ final class AlfredWorkflow {
   set cacheKey(String? value) {
     if (value != null) {
       // Prevent double caching
-      _automaticCache = null;
+      _useAutomaticCache = false;
     }
 
     _cacheKey = value;
+  }
+
+  /// The time to live for the cache in seconds.
+  int? get cacheTimeToLive =>
+      _cacheTimeToLive ??
+      _alfredAutomaticCache?.seconds ??
+      _alfredFileCache?.expiryPolicy.getExpiryForCreation().inSeconds;
+
+  int? _cacheTimeToLive;
+
+  @visibleForTesting
+  static const int defaultCacheTimeToLive = 60;
+
+  set cacheTimeToLive(int? value) {
+    if (value != null &&
+        value >= AlfredAutomaticCache.minSeconds &&
+        value <= AlfredAutomaticCache.maxSeconds) {
+      _cacheTimeToLive = value;
+    } else {
+      _cacheTimeToLive = null;
+    }
+  }
+
+  /// The maximum number of entries in the cache.
+  int? get maxCacheEntries => _alfredFileCache?.maxEntries ?? _maxCacheEntries;
+
+  int? _maxCacheEntries;
+
+  @visibleForTesting
+  static const int defaultMaxCacheEntries = 10;
+
+  set maxCacheEntries(int? value) {
+    if (value != null && value > 0) {
+      _maxCacheEntries = value;
+
+      // Prevent double caching
+      _useAutomaticCache = false;
+    } else {
+      _maxCacheEntries = null;
+    }
   }
 
   /// Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
@@ -68,24 +110,47 @@ final class AlfredWorkflow {
   /// "Alfred filters results".
   ///
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
-  AlfredAutomaticCache? get automaticCache => _automaticCache;
+  bool get useAutomaticCache =>
+      (_alfredAutomaticCache != null ? true : _useAutomaticCache) ?? false;
 
-  AlfredAutomaticCache? _automaticCache;
+  bool? _useAutomaticCache;
 
-  set automaticCache(AlfredAutomaticCache? value) {
-    if (value != null) {
+  set useAutomaticCache(bool? value) {
+    if (value == true) {
       // Prevent double caching
       _cacheKey = null;
     }
 
-    _automaticCache = value;
+    _useAutomaticCache = value;
   }
+
+  @visibleForTesting
+  AlfredAutomaticCache? get automaticCache => useAutomaticCache
+      ? _alfredAutomaticCache ??
+          AlfredAutomaticCache(
+            seconds: cacheTimeToLive ?? defaultCacheTimeToLive,
+            looseReload: true,
+          )
+      : null;
+
+  @visibleForTesting
+  AlfredCache<AlfredItems> get fileCache =>
+      _alfredFileCache ??
+      AlfredCache<AlfredItems>(
+        fromEncodable: AlfredItems.fromJson,
+        maxEntries: maxCacheEntries ?? defaultMaxCacheEntries,
+        expiryPolicy: CreatedExpiryPolicy(
+          Duration(seconds: cacheTimeToLive ?? defaultCacheTimeToLive),
+        ),
+      );
+
+  Future<Cache<AlfredItems>> get _fileCache => fileCache.cache;
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems> getItems() async {
     return switch (cacheKey) {
       null => _items,
-      _ => await (await _cache).get(cacheKey!.md5hex) ?? _items,
+      _ => await (await _fileCache).get(cacheKey!.md5hex) ?? _items,
     };
   }
 
@@ -95,7 +160,7 @@ final class AlfredWorkflow {
   Future<void> addItems(List<AlfredItem> items) async {
     _items.addAll(items);
     if (cacheKey != null) {
-      await (await _cache).put(cacheKey!.md5hex, _items);
+      await (await _fileCache).put(cacheKey!.md5hex, _items);
     }
   }
 
@@ -111,7 +176,7 @@ final class AlfredWorkflow {
     }
 
     if (cacheKey != null) {
-      final Cache<AlfredItems> cache = await _cache;
+      final Cache<AlfredItems> cache = await _fileCache;
 
       final AlfredItems? cachedItems = await cache.get(cacheKey!.md5hex);
 
@@ -131,7 +196,7 @@ final class AlfredWorkflow {
   Future<void> clearItems() async {
     _items.clear();
     if (cacheKey != null) {
-      await (await _cache).remove(cacheKey!.md5hex);
+      await (await _fileCache).remove(cacheKey!.md5hex);
     }
   }
 

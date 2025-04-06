@@ -29,8 +29,6 @@ final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
                   GithubRelease.fromJson(json),
               maxEntries: 1,
               name: 'update_cache',
-              evictionPolicy: const FifoEvictionPolicy(),
-              expiryPolicy: const CreatedExpiryPolicy(Duration.zero),
             ),
           );
         },

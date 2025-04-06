@@ -81,16 +81,9 @@ extension $AlfredAutomaticCacheCopyWith on AlfredAutomaticCache {
 // JsonSerializableGenerator
 // **************************************************************************
 
-AlfredAutomaticCache _$AlfredAutomaticCacheFromJson(
-        Map<String, dynamic> json) =>
-    AlfredAutomaticCache(
-      seconds: (json['seconds'] as num).toInt(),
-      looseReload: json['loosereload'] as bool?,
-    );
-
 Map<String, dynamic> _$AlfredAutomaticCacheToJson(
         AlfredAutomaticCache instance) =>
     <String, dynamic>{
       'seconds': instance.seconds,
-      'loosereload': instance.looseReload,
+      if (instance.looseReload case final value?) 'loosereload': value,
     };

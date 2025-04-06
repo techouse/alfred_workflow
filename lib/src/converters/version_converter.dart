@@ -11,9 +11,7 @@ final class VersionConverter implements JsonConverter<Version, String> {
   @override
   Version fromJson(String string) => _versionMatcher.hasMatch(string)
       ? Version.parse(_versionMatcher.stringMatch(string).toString())
-      : string.toLowerCase().startsWith('v')
-          ? Version.parse(string.substring(1))
-          : Version.parse(string);
+      : Version.parse(string);
 
   @override
   String toJson(Version version) => version.toString();

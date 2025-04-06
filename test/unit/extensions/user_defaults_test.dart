@@ -605,4 +605,32 @@ void main() {
       });
     });
   });
+
+  group('equatable', () {
+    test('AlfredUserConfiguration', () {
+      final AlfredUserConfigurationTextField textField =
+          const AlfredUserConfigurationTextField(
+        type: AlfredUserConfigurationType.textField,
+        variable: 'text_variable',
+        config: AlfredUserConfigurationConfigTextField(
+          defaultValue: 'default',
+          required: true,
+          trim: false,
+        ),
+      );
+
+      expect(textField.copyWith(), equals(textField));
+    });
+
+    test('AlfredUserConfigurationConfig', () {
+      final AlfredUserConfigurationConfigTextField textField =
+          const AlfredUserConfigurationConfigTextField(
+        defaultValue: 'default',
+        required: true,
+        trim: false,
+      );
+
+      expect(textField.copyWith(), equals(textField));
+    });
+  });
 }

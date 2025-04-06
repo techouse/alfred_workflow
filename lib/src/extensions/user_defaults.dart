@@ -52,24 +52,20 @@ extension UserDefaults on AlfredWorkflow {
     String prefsPath = 'prefs.plist',
     String infoPath = 'info.plist',
   }) async {
-    try {
-      final Map<String, dynamic> userDefaults =
-          await getUserPreferences(prefsPath) ?? {};
-      final Map<String, AlfredUserConfiguration> defaults =
-          await getDefaults(infoPath) ?? {};
+    final Map<String, dynamic> userDefaults =
+        await getUserPreferences(prefsPath) ?? {};
+    final Map<String, AlfredUserConfiguration> defaults =
+        await getDefaults(infoPath) ?? {};
 
-      return <String, AlfredUserConfiguration>{
-        for (final MapEntry<String, AlfredUserConfiguration> defaultItem
-            in defaults.entries)
-          defaultItem.key: defaultItem.value.copyWithConfig(
-            defaultItem.value.config.copyWithValue(
-              userDefaults[defaultItem.key],
-            ),
-          )
-      };
-    } on NotFoundException {
-      return null;
-    }
+    return <String, AlfredUserConfiguration>{
+      for (final MapEntry<String, AlfredUserConfiguration> defaultItem
+          in defaults.entries)
+        defaultItem.key: defaultItem.value.copyWithConfig(
+          defaultItem.value.config.copyWithValue(
+            userDefaults[defaultItem.key],
+          ),
+        )
+    };
   }
 
   /// Synchronously returns a `Map` of user defaults from the workflow's `info.plist` merged with `prefs.plist` file.
@@ -77,24 +73,20 @@ extension UserDefaults on AlfredWorkflow {
     String prefsPath = 'prefs.plist',
     String infoPath = 'info.plist',
   }) {
-    try {
-      final Map<String, dynamic> userDefaults =
-          getUserPreferencesSync(prefsPath) ?? {};
-      final Map<String, AlfredUserConfiguration> defaults =
-          getDefaultsSync(infoPath) ?? {};
+    final Map<String, dynamic> userDefaults =
+        getUserPreferencesSync(prefsPath) ?? {};
+    final Map<String, AlfredUserConfiguration> defaults =
+        getDefaultsSync(infoPath) ?? {};
 
-      return <String, AlfredUserConfiguration>{
-        for (final MapEntry<String, AlfredUserConfiguration> defaultItem
-            in defaults.entries)
-          defaultItem.key: defaultItem.value.copyWithConfig(
-            defaultItem.value.config.copyWithValue(
-              userDefaults[defaultItem.key],
-            ),
-          )
-      };
-    } on NotFoundException {
-      return null;
-    }
+    return <String, AlfredUserConfiguration>{
+      for (final MapEntry<String, AlfredUserConfiguration> defaultItem
+          in defaults.entries)
+        defaultItem.key: defaultItem.value.copyWithConfig(
+          defaultItem.value.config.copyWithValue(
+            userDefaults[defaultItem.key],
+          ),
+        )
+    };
   }
 
   static Map<String, AlfredUserConfiguration> _mapDefaults(Map info) =>
@@ -102,22 +94,22 @@ extension UserDefaults on AlfredWorkflow {
         for (AlfredUserConfiguration item in <AlfredUserConfiguration>[
           for (final Map config in info[_userConfigurationConfigKey] as List)
             if (config[_typeKey] ==
-                AlfredUserConfigurationType.textField.jsonValue)
+                AlfredUserConfigurationType.textField.toString())
               AlfredUserConfigurationTextField.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.textArea.jsonValue)
+                AlfredUserConfigurationType.textArea.toString())
               AlfredUserConfigurationTextArea.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.checkBox.jsonValue)
+                AlfredUserConfigurationType.checkBox.toString())
               AlfredUserConfigurationCheckBox.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.select.jsonValue)
+                AlfredUserConfigurationType.select.toString())
               AlfredUserConfigurationSelect.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.filePicker.jsonValue)
+                AlfredUserConfigurationType.filePicker.toString())
               AlfredUserConfigurationFilePicker.fromJson(config)
             else if (config[_typeKey] ==
-                AlfredUserConfigurationType.slider.jsonValue)
+                AlfredUserConfigurationType.slider.toString())
               AlfredUserConfigurationNumberSlider.fromJson(config)
         ])
           item.variable: item,

@@ -54,17 +54,19 @@ final class AlfredUpdater with EquatableMixin {
   final Client? client;
 
   @ignore
-  late final Future<Cache<GithubRelease>> _cache = (cache ??
-          // coverage:ignore-start
-          AlfredCache<GithubRelease>(
-            fromEncodable: GithubRelease.fromJson,
-            maxEntries: 1,
-            name: 'update_cache',
-            evictionPolicy: const FifoEvictionPolicy(),
-            expiryPolicy: CreatedExpiryPolicy(updateInterval),
-          ) // coverage:ignore-end
-      )
-      .cache;
+  @visibleForTesting
+  late final Future<Cache<GithubRelease>> fileCache = switch (cache) {
+    // coverage:ignore-start
+    null => AlfredCache<GithubRelease>(
+        fromEncodable: GithubRelease.fromJson,
+        maxEntries: 1,
+        name: 'update_cache',
+        evictionPolicy: const FifoEvictionPolicy(),
+        expiryPolicy: CreatedExpiryPolicy(updateInterval),
+      ).cache,
+    // coverage:ignore-end
+    _ => cache!.cache,
+  };
 
   /// The workflow's semver [Version]
   late final Version _currentVersion;
@@ -77,7 +79,7 @@ final class AlfredUpdater with EquatableMixin {
   ///
   /// Checking the workflow's Github repository URL and version.
   Future<bool> updateAvailable() async {
-    final Cache<GithubRelease> cache = await _cache;
+    final Cache<GithubRelease> cache = await fileCache;
 
     final GithubRelease? cachedRelease = await cache.get(updateKey.md5hex);
 
@@ -106,8 +108,9 @@ final class AlfredUpdater with EquatableMixin {
   Future<void> update() async {
     if (!await updateAvailable()) return;
 
-    final GithubRelease? release = await (await _cache).get(updateKey.md5hex) ??
-        await fetchLatestRelease();
+    final GithubRelease? release =
+        await (await fileCache).get(updateKey.md5hex) ??
+            await fetchLatestRelease();
     if (release != null) {
       if (release.tagName > _currentVersion) {
         final GithubAsset? asset = findAlfredWorkflowAsset(release);
