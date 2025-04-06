@@ -1,6 +1,7 @@
 import 'dart:convert' show jsonEncode, utf8;
 import 'dart:typed_data';
 
+import 'package:alfred_workflow/src/extensions/string_helpers.dart';
 import 'package:alfred_workflow/src/models/github_asset.dart';
 import 'package:alfred_workflow/src/models/github_release.dart';
 import 'package:alfred_workflow/src/services/alfred_updater.dart';
@@ -10,6 +11,7 @@ import 'package:file/memory.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:stash/src/api/cache/cache.dart';
 import 'package:test/test.dart';
 
 import '../../fixtures/extensions/fixture_factory_extension.dart';
@@ -128,6 +130,102 @@ void main() async {
       );
 
       expect(await updater.updateAvailable(), false);
+    });
+
+    test('cached Github release version is equal', () async {
+      final String currentVersion = '2.0.0';
+
+      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/$login/$repoName'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      final GithubRelease githubRelease = GithubReleaseFixture.factory
+          .redefine(GithubReleaseFixture.factory.withDetails(
+            repoName: repoName,
+            login: login,
+            tagName: 'v2.0.0',
+          ))
+          .makeSingle();
+
+      final Cache<GithubRelease> cache = await updater.fileCache;
+
+      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
+
+      final GithubRelease? cachedRelease =
+          await cache.get(AlfredUpdater.updateKey.md5hex);
+
+      expect(cachedRelease, isNotNull);
+      expect(cachedRelease, githubRelease);
+
+      expect(await updater.updateAvailable(), isFalse);
+    });
+
+    test('cached Github release version is higher', () async {
+      final String currentVersion = '2.0.0';
+
+      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/$login/$repoName'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      final GithubRelease githubRelease = GithubReleaseFixture.factory
+          .redefine(GithubReleaseFixture.factory.withDetails(
+            repoName: repoName,
+            login: login,
+            tagName: 'v2.0.1',
+          ))
+          .makeSingle();
+
+      final Cache<GithubRelease> cache = await updater.fileCache;
+
+      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
+
+      final GithubRelease? cachedRelease =
+          await cache.get(AlfredUpdater.updateKey.md5hex);
+
+      expect(cachedRelease, isNotNull);
+      expect(cachedRelease, githubRelease);
+
+      expect(await updater.updateAvailable(), isTrue);
+    });
+
+    test('cached Github release version is lower', () async {
+      final String currentVersion = '2.0.0';
+
+      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/$login/$repoName'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion(currentVersion),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      final GithubRelease githubRelease = GithubReleaseFixture.factory
+          .redefine(GithubReleaseFixture.factory.withDetails(
+            repoName: repoName,
+            login: login,
+            tagName: 'v1.9.9',
+          ))
+          .makeSingle();
+
+      final Cache<GithubRelease> cache = await updater.fileCache;
+
+      await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
+
+      final GithubRelease? cachedRelease =
+          await cache.get(AlfredUpdater.updateKey.md5hex);
+
+      expect(cachedRelease, isNotNull);
+      expect(cachedRelease, githubRelease);
+
+      expect(await updater.updateAvailable(), isFalse);
     });
   });
 
