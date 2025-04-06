@@ -72,6 +72,9 @@ final class AlfredWorkflow {
 
   int? _cacheTimeToLive;
 
+  @visibleForTesting
+  static const int defaultCacheTimeToLive = 60;
+
   set cacheTimeToLive(int? value) {
     if (value != null &&
         value >= AlfredAutomaticCache.minSeconds &&
@@ -86,6 +89,9 @@ final class AlfredWorkflow {
   int? get maxCacheEntries => _alfredFileCache?.maxEntries ?? _maxCacheEntries;
 
   int? _maxCacheEntries;
+
+  @visibleForTesting
+  static const int defaultMaxCacheEntries = 10;
 
   set maxCacheEntries(int? value) {
     if (value != null && value > 0) {
@@ -122,7 +128,7 @@ final class AlfredWorkflow {
   AlfredAutomaticCache? get automaticCache => useAutomaticCache
       ? _alfredAutomaticCache ??
           AlfredAutomaticCache(
-            seconds: cacheTimeToLive ?? 60,
+            seconds: cacheTimeToLive ?? defaultCacheTimeToLive,
             looseReload: true,
           )
       : null;
@@ -132,9 +138,9 @@ final class AlfredWorkflow {
       _alfredFileCache ??
       AlfredCache<AlfredItems>(
         fromEncodable: AlfredItems.fromJson,
-        maxEntries: maxCacheEntries ?? 10,
+        maxEntries: maxCacheEntries ?? defaultMaxCacheEntries,
         expiryPolicy: CreatedExpiryPolicy(
-          Duration(seconds: cacheTimeToLive ?? 60),
+          Duration(seconds: cacheTimeToLive ?? defaultCacheTimeToLive),
         ),
       );
 
