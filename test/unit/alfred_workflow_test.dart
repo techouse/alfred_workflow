@@ -110,8 +110,11 @@ void main() async {
           .redefine(AlfredItemsFixture.factory.withCache(automaticCache))
           .makeSingle();
 
-      workflow = AlfredWorkflowFixture.factory.makeSingle()
-        ..automaticCache = automaticCache;
+      workflow = AlfredWorkflowFixture.factory
+          .redefine(
+            AlfredWorkflowFixture.factory.withAutomaticCache(automaticCache),
+          )
+          .makeSingle();
     });
 
     test('getItems without adding anything is empty', () async {
@@ -420,37 +423,23 @@ void main() async {
       expect(workflow.cacheKey, isNotNull);
       expect(workflow.cacheKey, equals(cacheKey));
 
-      final AlfredAutomaticCache automaticCache = AlfredAutomaticCache(
-        seconds: faker.randomGenerator.integer(
-          AlfredAutomaticCache.maxSeconds,
-          min: AlfredAutomaticCache.minSeconds,
-        ),
-        looseReload: faker.randomGenerator.boolean(),
-      );
-      workflow.automaticCache = automaticCache;
+      workflow.useAutomaticCache = true;
 
       expect(workflow.cacheKey, isNull);
-      expect(workflow.automaticCache, isNotNull);
-      expect(workflow.automaticCache, equals(automaticCache));
+      expect(workflow.useAutomaticCache, isNotNull);
+      expect(workflow.useAutomaticCache, isTrue);
     });
 
     test('AlfredCache disables AlfredAutomaticCache', () {
-      final AlfredAutomaticCache automaticCache = AlfredAutomaticCache(
-        seconds: faker.randomGenerator.integer(
-          AlfredAutomaticCache.maxSeconds,
-          min: AlfredAutomaticCache.minSeconds,
-        ),
-        looseReload: faker.randomGenerator.boolean(),
-      );
-      workflow.automaticCache = automaticCache;
+      workflow.useAutomaticCache = true;
 
-      expect(workflow.automaticCache, isNotNull);
-      expect(workflow.automaticCache, equals(automaticCache));
+      expect(workflow.useAutomaticCache, isNotNull);
+      expect(workflow.useAutomaticCache, isTrue);
 
       final String cacheKey = faker.guid.guid();
       workflow.cacheKey = cacheKey;
 
-      expect(workflow.automaticCache, isNull);
+      expect(workflow.useAutomaticCache, isFalse);
       expect(workflow.cacheKey, isNotNull);
       expect(workflow.cacheKey, equals(cacheKey));
     });
