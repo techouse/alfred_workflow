@@ -1,3 +1,8 @@
+## 1.1.3
+
+- Chore: improve caching mechanism
+- Chore: increase test coverage
+
 ## 1.1.2
 
 - Feat: add number slider configuration support in user settings

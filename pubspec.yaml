@@ -1,6 +1,6 @@
 name: alfred_workflow
 description: A helper library in Dart for authors of workflows for Alfred.
-version: 1.1.2
+version: 1.1.3
 repository: https://github.com/techouse/alfred_workflow
 homepage: https://techouse.github.io/alfred_workflow/
 documentation: https://pub.dev/documentation/alfred_workflow/latest/
