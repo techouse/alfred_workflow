@@ -5,6 +5,7 @@ import 'dart:convert' show jsonEncode;
 import 'dart:io' show stdout;
 
 import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
+import 'package:meta/meta.dart';
 import 'package:stash/stash_api.dart' show Cache, CreatedExpiryPolicy, Store;
 
 import 'src/extensions/string_helpers.dart' show StringHelpers;
@@ -65,9 +66,9 @@ final class AlfredWorkflow {
 
   /// The time to live for the cache in seconds.
   int? get cacheTimeToLive =>
-      _alfredFileCache?.expiryPolicy.getExpiryForCreation().inSeconds ??
+      _cacheTimeToLive ??
       _alfredAutomaticCache?.seconds ??
-      _cacheTimeToLive;
+      _alfredFileCache?.expiryPolicy.getExpiryForCreation().inSeconds;
 
   int? _cacheTimeToLive;
 
@@ -117,7 +118,8 @@ final class AlfredWorkflow {
     _useAutomaticCache = value;
   }
 
-  AlfredAutomaticCache? get _automaticCache => useAutomaticCache
+  @visibleForTesting
+  AlfredAutomaticCache? get automaticCache => useAutomaticCache
       ? _alfredAutomaticCache ??
           AlfredAutomaticCache(
             seconds: cacheTimeToLive ?? 60,
@@ -125,16 +127,18 @@ final class AlfredWorkflow {
           )
       : null;
 
-  Future<Cache<AlfredItems>> get _fileCache => switch (_alfredFileCache) {
-        null => AlfredCache<AlfredItems>(
-            fromEncodable: AlfredItems.fromJson,
-            maxEntries: maxCacheEntries ?? 10,
-            expiryPolicy: CreatedExpiryPolicy(
-              Duration(seconds: cacheTimeToLive ?? 60),
-            ),
-          ).cache,
-        _ => _alfredFileCache!.cache,
-      };
+  @visibleForTesting
+  AlfredCache<AlfredItems> get fileCache =>
+      _alfredFileCache ??
+      AlfredCache<AlfredItems>(
+        fromEncodable: AlfredItems.fromJson,
+        maxEntries: maxCacheEntries ?? 10,
+        expiryPolicy: CreatedExpiryPolicy(
+          Duration(seconds: cacheTimeToLive ?? 60),
+        ),
+      );
+
+  Future<Cache<AlfredItems>> get _fileCache => fileCache.cache;
 
   /// Always use this to check for any AlfredItems.
   Future<AlfredItems> getItems() async {
@@ -202,7 +206,7 @@ final class AlfredWorkflow {
       [...(await getItems()).items],
       exactOrder: disableAlfredSmartResultOrdering,
       skipKnowledge: skipKnowledge,
-      cache: _automaticCache,
+      cache: automaticCache,
     )
       ..insertAll(0, [if (addToBeginning != null) addToBeginning])
       ..addAll([if (addToEnd != null) addToEnd]);
