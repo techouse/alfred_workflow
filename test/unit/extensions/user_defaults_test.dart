@@ -607,22 +607,30 @@ void main() {
   });
 
   group('equatable', () {
-    test('AlfredUserConfigurationTextArea', () {
-      final AlfredUserConfigurationTextArea textArea =
-          const AlfredUserConfigurationTextArea(
-        type: AlfredUserConfigurationType.textArea,
-        variable: 'textarea_variable',
-        config: AlfredUserConfigurationConfigTextArea(
-          defaultValue: 'textarea default',
-          value: 'textarea value',
+    test('AlfredUserConfiguration', () {
+      final AlfredUserConfigurationTextField textField =
+          const AlfredUserConfigurationTextField(
+        type: AlfredUserConfigurationType.textField,
+        variable: 'text_variable',
+        config: AlfredUserConfigurationConfigTextField(
+          defaultValue: 'default',
           required: true,
           trim: false,
-          verticalSize: 3,
         ),
       );
 
-      final AlfredUserConfigurationTextArea textAreaCopy = textArea.copyWith();
-      expect(textArea, equals(textAreaCopy));
+      expect(textField.copyWith(), equals(textField));
+    });
+
+    test('AlfredUserConfigurationConfig', () {
+      final AlfredUserConfigurationConfigTextField textField =
+          const AlfredUserConfigurationConfigTextField(
+        defaultValue: 'default',
+        required: true,
+        trim: false,
+      );
+
+      expect(textField.copyWith(), equals(textField));
     });
   });
 }
