@@ -52,24 +52,20 @@ extension UserDefaults on AlfredWorkflow {
     String prefsPath = 'prefs.plist',
     String infoPath = 'info.plist',
   }) async {
-    try {
-      final Map<String, dynamic> userDefaults =
-          await getUserPreferences(prefsPath) ?? {};
-      final Map<String, AlfredUserConfiguration> defaults =
-          await getDefaults(infoPath) ?? {};
+    final Map<String, dynamic> userDefaults =
+        await getUserPreferences(prefsPath) ?? {};
+    final Map<String, AlfredUserConfiguration> defaults =
+        await getDefaults(infoPath) ?? {};
 
-      return <String, AlfredUserConfiguration>{
-        for (final MapEntry<String, AlfredUserConfiguration> defaultItem
-            in defaults.entries)
-          defaultItem.key: defaultItem.value.copyWithConfig(
-            defaultItem.value.config.copyWithValue(
-              userDefaults[defaultItem.key],
-            ),
-          )
-      };
-    } on NotFoundException {
-      return null;
-    }
+    return <String, AlfredUserConfiguration>{
+      for (final MapEntry<String, AlfredUserConfiguration> defaultItem
+          in defaults.entries)
+        defaultItem.key: defaultItem.value.copyWithConfig(
+          defaultItem.value.config.copyWithValue(
+            userDefaults[defaultItem.key],
+          ),
+        )
+    };
   }
 
   /// Synchronously returns a `Map` of user defaults from the workflow's `info.plist` merged with `prefs.plist` file.
@@ -77,24 +73,20 @@ extension UserDefaults on AlfredWorkflow {
     String prefsPath = 'prefs.plist',
     String infoPath = 'info.plist',
   }) {
-    try {
-      final Map<String, dynamic> userDefaults =
-          getUserPreferencesSync(prefsPath) ?? {};
-      final Map<String, AlfredUserConfiguration> defaults =
-          getDefaultsSync(infoPath) ?? {};
+    final Map<String, dynamic> userDefaults =
+        getUserPreferencesSync(prefsPath) ?? {};
+    final Map<String, AlfredUserConfiguration> defaults =
+        getDefaultsSync(infoPath) ?? {};
 
-      return <String, AlfredUserConfiguration>{
-        for (final MapEntry<String, AlfredUserConfiguration> defaultItem
-            in defaults.entries)
-          defaultItem.key: defaultItem.value.copyWithConfig(
-            defaultItem.value.config.copyWithValue(
-              userDefaults[defaultItem.key],
-            ),
-          )
-      };
-    } on NotFoundException {
-      return null;
-    }
+    return <String, AlfredUserConfiguration>{
+      for (final MapEntry<String, AlfredUserConfiguration> defaultItem
+          in defaults.entries)
+        defaultItem.key: defaultItem.value.copyWithConfig(
+          defaultItem.value.config.copyWithValue(
+            userDefaults[defaultItem.key],
+          ),
+        )
+    };
   }
 
   static Map<String, AlfredUserConfiguration> _mapDefaults(Map info) =>
