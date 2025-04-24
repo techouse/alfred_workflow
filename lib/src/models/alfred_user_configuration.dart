@@ -1,13 +1,11 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
 import 'package:alfred_workflow/src/models/alfred_user_configuration_type.dart';
-import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 part 'alfred_user_configuration.g.dart';
 
 /// Alfred user configuration generic class
-@autoequal
 abstract class AlfredUserConfiguration<T,
     Q extends AlfredUserConfigurationConfig<T>> with EquatableMixin {
   const AlfredUserConfiguration({

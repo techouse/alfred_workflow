@@ -3,25 +3,6 @@
 part of 'github_user.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$GithubUserAutoequal on GithubUser {
-  List<Object?> get _$props => [
-        login,
-        id,
-        nodeId,
-        avatarUrl,
-        gravatarId,
-        url,
-        htmlUrl,
-        reposUrl,
-        type,
-        siteAdmin,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -171,6 +152,25 @@ extension $GithubUserCopyWith on GithubUser {
   /// Returns a callable class that can be used as follows: `instanceOfGithubUser.copyWith(...)` or like so:`instanceOfGithubUser.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GithubUserCWProxy get copyWith => _$GithubUserCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$GithubUserequatable_annotations on GithubUser {
+  List<Object?> get _$props => [
+        login,
+        id,
+        nodeId,
+        avatarUrl,
+        gravatarId,
+        url,
+        htmlUrl,
+        reposUrl,
+        type,
+        siteAdmin,
+      ];
 }
 
 // **************************************************************************

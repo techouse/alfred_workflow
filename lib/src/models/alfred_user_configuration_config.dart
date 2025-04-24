@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
@@ -6,7 +5,6 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_config.g.dart';
 
 /// Alfred user configuration config generic class
-@autoequal
 abstract class AlfredUserConfigurationConfig<T> with EquatableMixin {
   const AlfredUserConfigurationConfig({
     required this.defaultValue,

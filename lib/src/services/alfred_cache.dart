@@ -1,9 +1,9 @@
 import 'dart:developer' show log;
 import 'dart:io' show Platform;
 
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
+import 'package:equatable_annotations/equatable_annotations.dart';
 import 'package:path/path.dart' show dirname;
 import 'package:stash/stash_api.dart'
     show
@@ -25,7 +25,6 @@ import 'package:stash_file/stash_file.dart'
 
 part 'alfred_cache.g.dart';
 
-@autoequal
 @CopyWith()
 base class AlfredCache<T> with EquatableMixin {
   /// Builds an [AlfredCache] providing a [Cache] backed by a [Store]

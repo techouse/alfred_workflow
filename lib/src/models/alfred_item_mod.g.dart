@@ -3,14 +3,6 @@
 part of 'alfred_item_mod.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredItemModAutoequal on AlfredItemMod {
-  List<Object?> get _$props => [arg, subtitle, icon, valid];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -94,6 +86,14 @@ extension $AlfredItemModCopyWith on AlfredItemMod {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredItemMod.copyWith(...)` or like so:`instanceOfAlfredItemMod.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemModCWProxy get copyWith => _$AlfredItemModCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredItemModequatable_annotations on AlfredItemMod {
+  List<Object?> get _$props => [arg, subtitle, icon, valid];
 }
 
 // **************************************************************************

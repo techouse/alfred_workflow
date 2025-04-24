@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -8,7 +7,7 @@ import 'github_user.dart';
 part 'github_asset.g.dart';
 
 /// [GithubAsset] implements all the properties of the [Github Release Asset API](https://docs.github.com/en/rest/reference/releases#release-assets)
-@autoequal
+
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 final class GithubAsset with EquatableMixin {

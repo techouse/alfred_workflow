@@ -1,5 +1,4 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -14,7 +13,7 @@ typedef AlfredUserConfigurationConfigSelectPair = ({
 });
 
 /// Alfred user configuration select class
-@autoequal
+
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigSelect

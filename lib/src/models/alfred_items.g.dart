@@ -3,9 +3,9 @@
 part of 'alfred_items.dart';
 
 // **************************************************************************
-// AutoequalGenerator
+// EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemsAutoequal on AlfredItems {
+extension _$AlfredItemsequatable_annotations on AlfredItems {
   List<Object?> get _$props => [items, exactOrder, skipKnowledge, cache];
 }

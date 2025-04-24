@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -11,7 +10,7 @@ import 'github_user.dart';
 part 'github_release.g.dart';
 
 /// [GithubRelease] implements all the properties of the [Github Releases API](https://docs.github.com/en/rest/reference/releases)
-@autoequal
+
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 @VersionConverter.instance

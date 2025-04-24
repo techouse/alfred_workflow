@@ -2,9 +2,9 @@
 
 import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable_annotations/equatable_annotations.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'alfred_item_icon.dart';
@@ -25,7 +25,6 @@ enum AlfredItemType {
 ///
 /// Each [AlfredItem] describes a result row displayed in Alfred.
 /// The three obvious elements are the ones you see in an Alfred result row - [title], [subtitle] and [icon].
-@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 final class AlfredItem with EquatableMixin {

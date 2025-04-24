@@ -3,20 +3,6 @@
 part of 'alfred_updater.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredUpdaterAutoequal on AlfredUpdater {
-  List<Object?> get _$props => [
-        githubRepositoryUrl,
-        updateInterval,
-        cache,
-        client,
-        _currentVersion,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -114,4 +100,18 @@ extension $AlfredUpdaterCopyWith on AlfredUpdater {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredUpdater.copyWith(...)` or like so:`instanceOfAlfredUpdater.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUpdaterCWProxy get copyWith => _$AlfredUpdaterCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredUpdaterequatable_annotations on AlfredUpdater {
+  List<Object?> get _$props => [
+        githubRepositoryUrl,
+        updateInterval,
+        cache,
+        client,
+        _currentVersion,
+      ];
 }

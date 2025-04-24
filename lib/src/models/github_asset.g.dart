@@ -3,28 +3,6 @@
 part of 'github_asset.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$GithubAssetAutoequal on GithubAsset {
-  List<Object?> get _$props => [
-        url,
-        id,
-        nodeId,
-        name,
-        label,
-        uploader,
-        contentType,
-        state,
-        size,
-        downloadCount,
-        createdAt,
-        updatedAt,
-        browserDownloadUrl,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -209,6 +187,28 @@ extension $GithubAssetCopyWith on GithubAsset {
   /// Returns a callable class that can be used as follows: `instanceOfGithubAsset.copyWith(...)` or like so:`instanceOfGithubAsset.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GithubAssetCWProxy get copyWith => _$GithubAssetCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$GithubAssetequatable_annotations on GithubAsset {
+  List<Object?> get _$props => [
+        url,
+        id,
+        nodeId,
+        name,
+        label,
+        uploader,
+        contentType,
+        state,
+        size,
+        downloadCount,
+        createdAt,
+        updatedAt,
+        browserDownloadUrl,
+      ];
 }
 
 // **************************************************************************

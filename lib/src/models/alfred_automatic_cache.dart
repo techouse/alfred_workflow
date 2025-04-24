@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +5,6 @@ import 'package:json_annotation/json_annotation.dart';
 part 'alfred_automatic_cache.g.dart';
 
 /// https://www.alfredapp.com/help/workflows/inputs/script-filter/json/#cache
-@autoequal
 @CopyWith()
 @JsonSerializable(
   createFactory: false,

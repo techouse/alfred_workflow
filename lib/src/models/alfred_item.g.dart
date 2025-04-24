@@ -3,27 +3,6 @@
 part of 'alfred_item.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredItemAutoequal on AlfredItem {
-  List<Object?> get _$props => [
-        title,
-        type,
-        valid,
-        subtitle,
-        arg,
-        autocomplete,
-        uid,
-        icon,
-        text,
-        quickLookUrl,
-        match,
-        action,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -209,6 +188,27 @@ extension $AlfredItemCopyWith on AlfredItem {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredItem.copyWith(...)` or like so:`instanceOfAlfredItem.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemCWProxy get copyWith => _$AlfredItemCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredItemequatable_annotations on AlfredItem {
+  List<Object?> get _$props => [
+        title,
+        type,
+        valid,
+        subtitle,
+        arg,
+        autocomplete,
+        uid,
+        icon,
+        text,
+        quickLookUrl,
+        match,
+        action,
+      ];
 }
 
 // **************************************************************************

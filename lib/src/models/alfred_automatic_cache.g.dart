@@ -3,14 +3,6 @@
 part of 'alfred_automatic_cache.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredAutomaticCacheAutoequal on AlfredAutomaticCache {
-  List<Object?> get _$props => [seconds, looseReload];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -75,6 +67,14 @@ extension $AlfredAutomaticCacheCopyWith on AlfredAutomaticCache {
   // ignore: library_private_types_in_public_api
   _$AlfredAutomaticCacheCWProxy get copyWith =>
       _$AlfredAutomaticCacheCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredAutomaticCacheequatable_annotations on AlfredAutomaticCache {
+  List<Object?> get _$props => [seconds, looseReload];
 }
 
 // **************************************************************************

@@ -3,14 +3,6 @@
 part of 'alfred_item_text.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredItemTextAutoequal on AlfredItemText {
-  List<Object?> get _$props => [copy, largeType];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -72,6 +64,14 @@ extension $AlfredItemTextCopyWith on AlfredItemText {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredItemText.copyWith(...)` or like so:`instanceOfAlfredItemText.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemTextCWProxy get copyWith => _$AlfredItemTextCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredItemTextequatable_annotations on AlfredItemText {
+  List<Object?> get _$props => [copy, largeType];
 }
 
 // **************************************************************************

@@ -1,13 +1,11 @@
 import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
 import 'package:alfred_workflow/src/models/alfred_automatic_cache.dart';
-import 'package:autoequal/autoequal.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 
 import 'alfred_item.dart';
 
 part 'alfred_items.g.dart';
 
-@autoequal
 final class AlfredItems
     with EquatableMixin, DelegatingItemsListMixin<AlfredItem> {
   const AlfredItems(

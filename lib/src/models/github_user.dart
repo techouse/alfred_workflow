@@ -1,4 +1,3 @@
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart' show EquatableMixin;
 import 'package:json_annotation/json_annotation.dart';
@@ -6,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'github_user.g.dart';
 
 /// [GithubUser] implements all the properties of the [Github Users API](https://docs.github.com/en/rest/reference/users)
-@autoequal
+
 @CopyWith()
 @JsonSerializable()
 final class GithubUser with EquatableMixin {

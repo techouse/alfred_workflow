@@ -3,10 +3,10 @@
 part of 'alfred_user_configuration_config.dart';
 
 // **************************************************************************
-// AutoequalGenerator
+// EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredUserConfigurationConfigAutoequal
+extension _$AlfredUserConfigurationConfigequatable_annotations
     on AlfredUserConfigurationConfig {
   List<Object?> get _$props => [defaultValue, value];
 }

@@ -1,5 +1,4 @@
 import 'package:alfred_workflow/src/models/alfred_item_icon.dart';
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -22,7 +21,6 @@ enum AlfredItemModKey {
 /// The [AlfredItemMod] gives you control over how the modifier keys react.
 ///
 /// It can alter the looks of a result (e.g. [subtitle], [icon]) and output a different [arg].
-@autoequal
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 final class AlfredItemMod with EquatableMixin {

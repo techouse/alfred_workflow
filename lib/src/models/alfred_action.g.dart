@@ -3,14 +3,6 @@
 part of 'alfred_action.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredActionAutoequal on AlfredAction {
-  List<Object?> get _$props => [text, url, file, auto];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -94,6 +86,14 @@ extension $AlfredActionCopyWith on AlfredAction {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredAction.copyWith(...)` or like so:`instanceOfAlfredAction.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredActionCWProxy get copyWith => _$AlfredActionCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredActionequatable_annotations on AlfredAction {
+  List<Object?> get _$props => [text, url, file, auto];
 }
 
 // **************************************************************************

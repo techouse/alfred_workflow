@@ -3,33 +3,6 @@
 part of 'github_release.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$GithubReleaseAutoequal on GithubRelease {
-  List<Object?> get _$props => [
-        url,
-        assetsUrl,
-        uploadUrl,
-        htmlUrl,
-        id,
-        author,
-        nodeId,
-        tagName,
-        targetCommitish,
-        name,
-        draft,
-        prerelease,
-        createdAt,
-        publishedAt,
-        assets,
-        tarballUrl,
-        zipballUrl,
-        body,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -269,6 +242,33 @@ extension $GithubReleaseCopyWith on GithubRelease {
   /// Returns a callable class that can be used as follows: `instanceOfGithubRelease.copyWith(...)` or like so:`instanceOfGithubRelease.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GithubReleaseCWProxy get copyWith => _$GithubReleaseCWProxyImpl(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$GithubReleaseequatable_annotations on GithubRelease {
+  List<Object?> get _$props => [
+        url,
+        assetsUrl,
+        uploadUrl,
+        htmlUrl,
+        id,
+        author,
+        nodeId,
+        tagName,
+        targetCommitish,
+        name,
+        draft,
+        prerelease,
+        createdAt,
+        publishedAt,
+        assets,
+        tarballUrl,
+        zipballUrl,
+        body,
+      ];
 }
 
 // **************************************************************************

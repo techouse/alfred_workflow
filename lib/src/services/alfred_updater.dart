@@ -1,9 +1,9 @@
 import 'dart:convert' show jsonDecode;
 import 'dart:io' show Process, stderr, stdout;
 
-import 'package:autoequal/autoequal.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
+import 'package:equatable_annotations/equatable_annotations.dart';
 import 'package:file/file.dart' show Directory, File, FileSystem;
 import 'package:file/local.dart' show LocalFileSystem;
 import 'package:http/http.dart' show Client, Response, get;
@@ -19,7 +19,6 @@ import 'alfred_cache.dart';
 
 part 'alfred_updater.g.dart';
 
-@autoequal
 @CopyWith()
 final class AlfredUpdater with EquatableMixin {
   /// Builds an [AlfredUpdater]

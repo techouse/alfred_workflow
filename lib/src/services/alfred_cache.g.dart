@@ -3,22 +3,6 @@
 part of 'alfred_cache.dart';
 
 // **************************************************************************
-// AutoequalGenerator
-// **************************************************************************
-
-extension _$AlfredCacheAutoequal on AlfredCache {
-  List<Object?> get _$props => [
-        fromEncodable,
-        path,
-        maxEntries,
-        name,
-        evictionPolicy,
-        expiryPolicy,
-        verbose,
-      ];
-}
-
-// **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
@@ -139,4 +123,20 @@ extension $AlfredCacheCopyWith<T> on AlfredCache<T> {
   /// Returns a callable class that can be used as follows: `instanceOfAlfredCache.copyWith(...)` or like so:`instanceOfAlfredCache.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredCacheCWProxy<T> get copyWith => _$AlfredCacheCWProxyImpl<T>(this);
+}
+
+// **************************************************************************
+// EquatableGenerator
+// **************************************************************************
+
+extension _$AlfredCacheequatable_annotations on AlfredCache {
+  List<Object?> get _$props => [
+        fromEncodable,
+        path,
+        maxEntries,
+        name,
+        evictionPolicy,
+        expiryPolicy,
+        verbose,
+      ];
 }
