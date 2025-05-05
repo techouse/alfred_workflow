@@ -70,7 +70,7 @@ extension $AlfredItemIconCopyWith on AlfredItemIcon {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemIconequatable_annotations on AlfredItemIcon {
+extension _$AlfredItemIconEquatableAnnotations on AlfredItemIcon {
   List<Object?> get _$props => [path, type];
 }
 

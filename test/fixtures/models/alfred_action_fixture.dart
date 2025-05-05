@@ -10,7 +10,7 @@ extension AlfredActionFixture on AlfredAction {
 final class AlfredActionFactory extends FixtureFactory<AlfredAction> {
   @override
   FixtureDefinition<AlfredAction> definition() => define(
-        (Faker faker) => AlfredAction(
+        (Faker faker, [int index = 0]) => AlfredAction(
           text: faker.lorem.words(3),
           url: Uri.parse(faker.internet.httpsUrl()),
           file: '/${faker.lorem.words(3).join('/')}.txt',
@@ -19,14 +19,14 @@ final class AlfredActionFactory extends FixtureFactory<AlfredAction> {
       );
 
   FixtureRedefinitionBuilder<AlfredAction> text(Object? value) =>
-      (AlfredAction action) => action.copyWith(text: value);
+      (AlfredAction action, [int index = 0]) => action.copyWith(text: value);
 
   FixtureRedefinitionBuilder<AlfredAction> url(Uri? value) =>
-      (AlfredAction action) => action.copyWith(url: value);
+      (AlfredAction action, [int index = 0]) => action.copyWith(url: value);
 
   FixtureRedefinitionBuilder<AlfredAction> file(String? value) =>
-      (AlfredAction action) => action.copyWith(file: value);
+      (AlfredAction action, [int index = 0]) => action.copyWith(file: value);
 
   FixtureRedefinitionBuilder<AlfredAction> auto(String? value) =>
-      (AlfredAction action) => action.copyWith(auto: value);
+      (AlfredAction action, [int index = 0]) => action.copyWith(auto: value);
 }

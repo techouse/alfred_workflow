@@ -6,6 +6,6 @@ part of 'alfred_items.dart';
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemsequatable_annotations on AlfredItems {
+extension _$AlfredItemsEquatableAnnotations on AlfredItems {
   List<Object?> get _$props => [items, exactOrder, skipKnowledge, cache];
 }

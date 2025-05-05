@@ -248,7 +248,7 @@ extension $GithubReleaseCopyWith on GithubRelease {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$GithubReleaseequatable_annotations on GithubRelease {
+extension _$GithubReleaseEquatableAnnotations on GithubRelease {
   List<Object?> get _$props => [
         url,
         assetsUrl,

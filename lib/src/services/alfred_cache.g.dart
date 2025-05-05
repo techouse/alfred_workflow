@@ -129,7 +129,7 @@ extension $AlfredCacheCopyWith<T> on AlfredCache<T> {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredCacheequatable_annotations on AlfredCache {
+extension _$AlfredCacheEquatableAnnotations on AlfredCache {
   List<Object?> get _$props => [
         fromEncodable,
         path,

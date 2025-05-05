@@ -92,7 +92,7 @@ extension $AlfredActionCopyWith on AlfredAction {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredActionequatable_annotations on AlfredAction {
+extension _$AlfredActionEquatableAnnotations on AlfredAction {
   List<Object?> get _$props => [text, url, file, auto];
 }
 

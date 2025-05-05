@@ -194,7 +194,7 @@ extension $AlfredItemCopyWith on AlfredItem {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemequatable_annotations on AlfredItem {
+extension _$AlfredItemEquatableAnnotations on AlfredItem {
   List<Object?> get _$props => [
         title,
         type,

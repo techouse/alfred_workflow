@@ -6,7 +6,7 @@ part of 'alfred_user_configuration_config.dart';
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredUserConfigurationConfigequatable_annotations
+extension _$AlfredUserConfigurationConfigEquatableAnnotations
     on AlfredUserConfigurationConfig {
   List<Object?> get _$props => [defaultValue, value];
 }

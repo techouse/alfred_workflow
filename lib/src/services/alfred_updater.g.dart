@@ -106,7 +106,7 @@ extension $AlfredUpdaterCopyWith on AlfredUpdater {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredUpdaterequatable_annotations on AlfredUpdater {
+extension _$AlfredUpdaterEquatableAnnotations on AlfredUpdater {
   List<Object?> get _$props => [
         githubRepositoryUrl,
         updateInterval,

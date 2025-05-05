@@ -92,7 +92,7 @@ extension $AlfredItemModCopyWith on AlfredItemMod {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemModequatable_annotations on AlfredItemMod {
+extension _$AlfredItemModEquatableAnnotations on AlfredItemMod {
   List<Object?> get _$props => [arg, subtitle, icon, valid];
 }
 

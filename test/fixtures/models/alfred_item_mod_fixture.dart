@@ -13,7 +13,7 @@ extension AlfredItemModFixture on AlfredItemMod {
 final class AlfredItemModFactory extends FixtureFactory<AlfredItemMod> {
   @override
   FixtureDefinition<AlfredItemMod> definition() => define(
-        (Faker faker) => AlfredItemMod(
+        (Faker faker, [int index = 0]) => AlfredItemMod(
           arg: faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
           subtitle:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
@@ -25,14 +25,14 @@ final class AlfredItemModFactory extends FixtureFactory<AlfredItemMod> {
       );
 
   FixtureRedefinitionBuilder<AlfredItemMod> arg(String value) =>
-      (AlfredItemMod item) => item.copyWith(arg: value);
+      (AlfredItemMod item, [int index = 0]) => item.copyWith(arg: value);
 
   FixtureRedefinitionBuilder<AlfredItemMod> subtitle(String value) =>
-      (AlfredItemMod item) => item.copyWith(subtitle: value);
+      (AlfredItemMod item, [int index = 0]) => item.copyWith(subtitle: value);
 
   FixtureRedefinitionBuilder<AlfredItemMod> icon(AlfredItemIcon value) =>
-      (AlfredItemMod item) => item.copyWith(icon: value);
+      (AlfredItemMod item, [int index = 0]) => item.copyWith(icon: value);
 
   FixtureRedefinitionBuilder<AlfredItemMod> valid(bool value) =>
-      (AlfredItemMod item) => item.copyWith(valid: value);
+      (AlfredItemMod item, [int index = 0]) => item.copyWith(valid: value);
 }

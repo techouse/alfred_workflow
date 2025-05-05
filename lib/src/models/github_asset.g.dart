@@ -193,7 +193,7 @@ extension $GithubAssetCopyWith on GithubAsset {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$GithubAssetequatable_annotations on GithubAsset {
+extension _$GithubAssetEquatableAnnotations on GithubAsset {
   List<Object?> get _$props => [
         url,
         id,

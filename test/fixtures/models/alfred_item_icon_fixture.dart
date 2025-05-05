@@ -10,7 +10,7 @@ extension AlfredItemIconFixture on AlfredItemIcon {
 final class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
   @override
   FixtureDefinition<AlfredItemIcon> definition() => define(
-        (Faker faker) => AlfredItemIcon(
+        (Faker faker, [int index = 0]) => AlfredItemIcon(
           path: <String>[
             '/${faker.randomGenerator.string(16)}',
             faker.randomGenerator.string(16),
@@ -23,8 +23,10 @@ final class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
       );
 
   FixtureRedefinitionBuilder<AlfredItemIcon> path(String value) =>
-      (AlfredItemIcon alfredItemIcon) => alfredItemIcon.copyWith(path: value);
+      (AlfredItemIcon alfredItemIcon, [int index = 0]) =>
+          alfredItemIcon.copyWith(path: value);
 
   FixtureRedefinitionBuilder<AlfredItemIcon> type(AlfredItemIconType? value) =>
-      (AlfredItemIcon alfredItemIcon) => alfredItemIcon.copyWith(type: value);
+      (AlfredItemIcon alfredItemIcon, [int index = 0]) =>
+          alfredItemIcon.copyWith(type: value);
 }

@@ -19,7 +19,7 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
 
   @override
   FixtureDefinition<AlfredItem> definition() => define(
-        (Faker faker) => AlfredItem(
+        (Faker faker, [int index = 0]) => AlfredItem(
           title: faker.lorem.sentence(),
           type: AlfredItemType.Default,
           valid: faker.randomGenerator.boolean(),
@@ -69,45 +69,46 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
   }
 
   FixtureRedefinitionBuilder<AlfredItem> title(String value) =>
-      (AlfredItem item) => item.copyWith(title: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(title: value);
 
   FixtureRedefinitionBuilder<AlfredItem> type(AlfredItemType value) =>
-      (AlfredItem item) => item.copyWith(type: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(type: value);
 
   FixtureRedefinitionBuilder<AlfredItem> valid(bool value) =>
-      (AlfredItem item) => item.copyWith(valid: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(valid: value);
 
   FixtureRedefinitionBuilder<AlfredItem> subtitle(String? value) =>
-      (AlfredItem item) => item.copyWith(subtitle: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(subtitle: value);
 
   FixtureRedefinitionBuilder<AlfredItem> arg(String? value) =>
-      (AlfredItem item) => item.copyWith(arg: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(arg: value);
 
   FixtureRedefinitionBuilder<AlfredItem> autocomplete(String? value) =>
-      (AlfredItem item) => item.copyWith(autocomplete: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(autocomplete: value);
 
   FixtureRedefinitionBuilder<AlfredItem> uid(String? value) =>
-      (AlfredItem item) => item.copyWith(uid: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(uid: value);
 
   FixtureRedefinitionBuilder<AlfredItem> icon(AlfredItemIcon? value) =>
-      (AlfredItem item) => item.copyWith(icon: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(icon: value);
 
   FixtureRedefinitionBuilder<AlfredItem> text(AlfredItemText? value) =>
-      (AlfredItem item) => item.copyWith(text: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(text: value);
 
   FixtureRedefinitionBuilder<AlfredItem> quickLookUrl(String? value) =>
-      (AlfredItem item) => item.copyWith(quickLookUrl: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(quickLookUrl: value);
 
   FixtureRedefinitionBuilder<AlfredItem> match(String? value) =>
-      (AlfredItem item) => item.copyWith(match: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(match: value);
 
   FixtureRedefinitionBuilder<AlfredItem> mods(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? value,
   ) =>
-      (AlfredItem item) => item.copyWith(mods: value);
+      (AlfredItem item, [int index = 0]) => item.copyWith(mods: value);
 
   FixtureRedefinitionBuilder<AlfredItem> action(Object? value) =>
-      (AlfredItem item) => value is String || value is Iterable || value is Map
-          ? item.copyWith(action: value)
-          : item;
+      (AlfredItem item, [int index = 0]) =>
+          value is String || value is Iterable || value is Map
+              ? item.copyWith(action: value)
+              : item;
 }

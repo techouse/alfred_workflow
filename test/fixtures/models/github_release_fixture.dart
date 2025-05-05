@@ -17,7 +17,7 @@ final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
 
   @override
   FixtureDefinition<GithubRelease> definition() => define(
-        (Faker faker) {
+        (Faker faker, [int index = 0]) {
           final String repoName = faker.lorem.words(3).join('-').toLowerCase();
           final String login = faker.lorem.word().toLowerCase();
           final int userId =
@@ -100,7 +100,8 @@ final class GithubReleaseFactory extends FixtureFactory<GithubRelease> {
         )
         .toUtc();
 
-    return (GithubRelease githubRelease) => githubRelease.copyWith(
+    return (GithubRelease githubRelease, [int index = 0]) =>
+        githubRelease.copyWith(
           url: Uri.parse(
             'https://api.github.com/repos/$login/$repoName/releases/$releaseId',
           ),

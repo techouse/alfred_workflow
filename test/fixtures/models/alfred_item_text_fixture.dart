@@ -10,7 +10,7 @@ extension AlfredItemTextFixture on AlfredItemText {
 final class AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
   @override
   FixtureDefinition<AlfredItemText> definition() => define(
-        (Faker faker) => AlfredItemText(
+        (Faker faker, [int index = 0]) => AlfredItemText(
           copy: faker.lorem.sentence(),
           largeType:
               faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
@@ -18,9 +18,10 @@ final class AlfredItemTextFactory extends FixtureFactory<AlfredItemText> {
       );
 
   FixtureRedefinitionBuilder<AlfredItemText> copy(String value) =>
-      (AlfredItemText alfredItemText) => alfredItemText.copyWith(copy: value);
+      (AlfredItemText alfredItemText, [int index = 0]) =>
+          alfredItemText.copyWith(copy: value);
 
   FixtureRedefinitionBuilder<AlfredItemText> largeType(String value) =>
-      (AlfredItemText alfredItemText) =>
+      (AlfredItemText alfredItemText, [int index = 0]) =>
           alfredItemText.copyWith(largeType: value);
 }
