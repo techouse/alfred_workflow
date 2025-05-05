@@ -158,7 +158,7 @@ extension $GithubUserCopyWith on GithubUser {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$GithubUserequatable_annotations on GithubUser {
+extension _$GithubUserEquatableAnnotations on GithubUser {
   List<Object?> get _$props => [
         login,
         id,

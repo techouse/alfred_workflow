@@ -70,7 +70,7 @@ extension $AlfredItemTextCopyWith on AlfredItemText {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredItemTextequatable_annotations on AlfredItemText {
+extension _$AlfredItemTextEquatableAnnotations on AlfredItemText {
   List<Object?> get _$props => [copy, largeType];
 }
 

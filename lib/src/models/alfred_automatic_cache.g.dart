@@ -73,7 +73,7 @@ extension $AlfredAutomaticCacheCopyWith on AlfredAutomaticCache {
 // EquatableGenerator
 // **************************************************************************
 
-extension _$AlfredAutomaticCacheequatable_annotations on AlfredAutomaticCache {
+extension _$AlfredAutomaticCacheEquatableAnnotations on AlfredAutomaticCache {
   List<Object?> get _$props => [seconds, looseReload];
 }
 
