@@ -5,7 +5,7 @@ extension FixtureFactoryExtension<Model> on FixtureFactory<Model> {
     Iterable<FixtureRedefinitionBuilder<Model>> definitions,
   ) =>
       redefine(
-        (Model model) => definitions.fold(
+        (Model model, [int index = 0]) => definitions.fold(
           model,
           (Model previousState, redefinitionBuilder) =>
               redefinitionBuilder(previousState),

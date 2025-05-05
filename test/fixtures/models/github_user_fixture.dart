@@ -12,7 +12,7 @@ extension GithubUserFixture on GithubUser {
 final class GithubUserFactory extends FixtureFactory<GithubUser> {
   @override
   FixtureDefinition<GithubUser> definition() => define(
-        (Faker faker) {
+        (Faker faker, [int index = 0]) {
           final String login = faker.lorem.word().toLowerCase();
           final int id = faker.randomGenerator.integer(9999999, min: 1000000);
 
@@ -37,7 +37,7 @@ final class GithubUserFactory extends FixtureFactory<GithubUser> {
       );
 
   FixtureRedefinitionBuilder<GithubUser> id(int id) =>
-      (GithubUser githubUser) => githubUser.copyWith(
+      (GithubUser githubUser, [int index = 0]) => githubUser.copyWith(
             id: id,
             nodeId: base64.encode(
               utf8.encode(
@@ -49,7 +49,7 @@ final class GithubUserFactory extends FixtureFactory<GithubUser> {
           );
 
   FixtureRedefinitionBuilder<GithubUser> login(String login) =>
-      (GithubUser githubUser) => githubUser.copyWith(
+      (GithubUser githubUser, [int index = 0]) => githubUser.copyWith(
             login: login,
             url: Uri.parse('https://api.github.com/users/$login'),
             htmlUrl: Uri.parse('https://github.com/$login'),

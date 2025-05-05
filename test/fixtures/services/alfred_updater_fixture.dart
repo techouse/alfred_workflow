@@ -15,7 +15,7 @@ extension AlfredUpdaterFixture on AlfredUpdater {
 final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
   @override
   FixtureDefinition<AlfredUpdater> definition() => define(
-        (Faker faker) {
+        (Faker faker, [int index = 0]) {
           final String repoName = faker.lorem.words(3).join('-').toLowerCase();
           final String login = faker.lorem.word().toLowerCase();
           final String currentVersion =
@@ -37,20 +37,20 @@ final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
   FixtureRedefinitionBuilder<AlfredUpdater> githubRepositoryUrl(
     Uri githubRepositoryUrl,
   ) =>
-      (AlfredUpdater alfredUpdater) => alfredUpdater.copyWith(
+      (AlfredUpdater alfredUpdater, [int index = 0]) => alfredUpdater.copyWith(
             githubRepositoryUrl: githubRepositoryUrl,
           );
 
   FixtureRedefinitionBuilder<AlfredUpdater> currentVersion(
     String currentVersion,
   ) =>
-      (AlfredUpdater alfredUpdater) =>
+      (AlfredUpdater alfredUpdater, [int index = 0]) =>
           alfredUpdater.copyWith(currentVersion: currentVersion);
 
   FixtureRedefinitionBuilder<AlfredUpdater> updateInterval(
     Duration updateInterval,
   ) =>
-      (AlfredUpdater alfredUpdater) => alfredUpdater.copyWith(
+      (AlfredUpdater alfredUpdater, [int index = 0]) => alfredUpdater.copyWith(
             cache: MockAlfredCache<GithubRelease>(
               fromEncodable: (Map<String, dynamic> json) =>
                   GithubRelease.fromJson(json),
@@ -62,5 +62,6 @@ final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
           );
 
   FixtureRedefinitionBuilder<AlfredUpdater> client(Client client) =>
-      (AlfredUpdater alfredUpdater) => alfredUpdater.copyWith(client: client);
+      (AlfredUpdater alfredUpdater, [int index = 0]) =>
+          alfredUpdater.copyWith(client: client);
 }

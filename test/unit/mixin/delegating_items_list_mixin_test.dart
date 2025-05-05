@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:alfred_workflow/src/mixins/delegating_items_list_mixin.dart';
 import 'package:test/test.dart';
 

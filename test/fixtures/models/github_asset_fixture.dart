@@ -15,7 +15,7 @@ final class GithubAssetFactory extends FixtureFactory<GithubAsset> {
 
   @override
   FixtureDefinition<GithubAsset> definition() => define(
-        (Faker faker) {
+        (Faker faker, [int index = 0]) {
           final String repoName = faker.lorem.words(3).join('-').toLowerCase();
           final String login = faker.lorem.word().toLowerCase();
           final int userId =
@@ -69,7 +69,7 @@ final class GithubAssetFactory extends FixtureFactory<GithubAsset> {
     final String assetName =
         '${faker.lorem.words(3).join('-').toLowerCase()}-$assetTag.alfredworkflow';
 
-    return (GithubAsset asset) => asset.copyWith(
+    return (GithubAsset asset, [int index = 0]) => asset.copyWith(
           url: Uri.parse(
             'https://api.github.com/repos/$login/$repoName/releases/assets/$assetId',
           ),

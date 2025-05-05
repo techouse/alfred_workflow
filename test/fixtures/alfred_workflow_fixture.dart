@@ -13,12 +13,12 @@ extension AlfredWorkflowFixture on AlfredWorkflow {
 final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
   @override
   FixtureDefinition<AlfredWorkflow> definition() =>
-      define((Faker faker) => AlfredWorkflow());
+      define((Faker faker, [int index = 0]) => AlfredWorkflow());
 
   FixtureRedefinitionBuilder<AlfredWorkflow> withAutomaticCache([
     AlfredAutomaticCache? automaticCache,
   ]) =>
-      (_) => AlfredWorkflow(
+      (_, [int index = 0]) => AlfredWorkflow(
             automaticCache: automaticCache ??
                 AlfredAutomaticCacheFixture.factory.makeSingle(),
           );
@@ -26,7 +26,7 @@ final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
   FixtureRedefinitionBuilder<AlfredWorkflow> withFileCache([
     AlfredCache<AlfredItems>? fileCache,
   ]) =>
-      (_) => AlfredWorkflow(
+      (_, [int index = 0]) => AlfredWorkflow(
             fileCache: fileCache ??
                 MockAlfredCache<AlfredItems>(
                   fromEncodable: (Map<String, dynamic> json) =>
@@ -35,6 +35,7 @@ final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
           );
 
   FixtureRedefinitionBuilder<AlfredWorkflow>
-      withoutAlfredSmartResultOrdering() => (AlfredWorkflow workflow) =>
-          workflow..disableAlfredSmartResultOrdering = true;
+      withoutAlfredSmartResultOrdering() =>
+          (AlfredWorkflow workflow, [int index = 0]) =>
+              workflow..disableAlfredSmartResultOrdering = true;
 }
