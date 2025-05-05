@@ -1,3 +1,7 @@
+## 1.1.5
+
+- Chore: update dependencies
+
 ## 1.1.4
 
 - Chore: migrate from autoequal to equatable_gen
