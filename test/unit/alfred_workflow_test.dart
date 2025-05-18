@@ -1,4 +1,5 @@
 import 'dart:convert' show jsonEncode;
+import 'dart:io' show IOOverrides;
 
 import 'package:alfred_workflow/alfred_workflow.dart';
 import 'package:faker/faker.dart';
@@ -9,6 +10,7 @@ import '../fixtures/models/alfred_item_fixture.dart';
 import '../fixtures/models/alfred_items_fixture.dart';
 import '../helpers/matchers.dart';
 import '../helpers/mock_alfred_cache.dart';
+import '../helpers/mock_stdout.dart';
 
 void main() async {
   final Faker faker = Faker();
@@ -364,6 +366,20 @@ void main() async {
       expect(
         () async => await workflow.run(toStdout: false),
         prints('$json\n'),
+      );
+    });
+
+    test('single item gets written to stdout with toStdout: true', () async {
+      final MockStdout mockStdout = MockStdout();
+
+      await IOOverrides.runZoned(
+        () async {
+          await workflow.addItem(item);
+          final String json = await workflow.toJsonString();
+          await workflow.run(toStdout: true);
+          expect(mockStdout.output, equals(json));
+        },
+        stdout: () => mockStdout,
       );
     });
 

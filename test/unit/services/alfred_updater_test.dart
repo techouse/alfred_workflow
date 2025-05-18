@@ -5,12 +5,14 @@ import 'package:alfred_workflow/src/extensions/string_helpers.dart';
 import 'package:alfred_workflow/src/models/github_asset.dart';
 import 'package:alfred_workflow/src/models/github_release.dart';
 import 'package:alfred_workflow/src/services/alfred_updater.dart';
+import 'package:collection/collection.dart';
 import 'package:faker/faker.dart';
 import 'package:file/file.dart';
 import 'package:file/memory.dart';
 import 'package:http/http.dart' as http;
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
+import 'package:pub_semver/pub_semver.dart' show Version;
 import 'package:stash/src/api/cache/cache.dart';
 import 'package:test/test.dart';
 
@@ -262,6 +264,70 @@ void main() async {
       expect(file != null, true);
       expect(file, isA<File>());
       expect(await file!.readAsBytes(), Uint8List.fromList(bytes));
+    });
+  });
+
+  group('Equatable', () {
+    test('props contains expected properties', () {
+      final AlfredUpdater updater = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/user/repo'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion('1.0.0'),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      // Test that props contains all the expected properties
+      expect(updater.props, isNotEmpty);
+      expect(updater.props, contains(updater.githubRepositoryUrl));
+
+      // Check for Version object
+      final Object? versionInProps = updater.props.firstWhere(
+        (prop) => prop is Version,
+        orElse: () => null,
+      );
+      expect(versionInProps, isNotNull);
+      expect(versionInProps, isA<Version>());
+      expect((versionInProps as Version).toString(), equals('1.0.0'));
+
+      expect(updater.props, contains(updater.updateInterval));
+    });
+
+    test('instances with different properties are not equal', () {
+      final AlfredUpdater updater1 = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/user/repo'),
+        ),
+        AlfredUpdaterFixture.factory.currentVersion('1.0.0'),
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      final AlfredUpdater updater2 = AlfredUpdaterFixture.factory.states([
+        AlfredUpdaterFixture.factory.githubRepositoryUrl(
+          Uri.https('github.com', '/user/repo'),
+        ),
+        AlfredUpdaterFixture.factory
+            .currentVersion('2.0.0'), // Different version
+        AlfredUpdaterFixture.factory.client(client),
+      ]).makeSingle();
+
+      // They should not be equal because currentVersion is different
+      expect(updater1.currentVersion, isNot(equals(updater2.currentVersion)));
+
+      // Get Version objects from props
+      final Version? version1 = updater1.props
+          .firstWhereOrNull((Object? prop) => prop is Version) as Version?;
+
+      final Version? version2 = updater2.props
+          .firstWhereOrNull((Object? prop) => prop is Version) as Version?;
+
+      expect(version1, isNotNull);
+      expect(version2, isNotNull);
+      expect(version1.toString(), equals('1.0.0'));
+      expect(version2.toString(), equals('2.0.0'));
+      expect(version1, isNot(equals(version2)));
+
+      expect(updater1.props, isNot(equals(updater2.props)));
     });
   });
 }
