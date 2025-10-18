@@ -43,22 +43,22 @@ final class AlfredItems
   final AlfredAutomaticCache? cache;
 
   factory AlfredItems.fromJson(Map<String, dynamic> json) => AlfredItems(
-        (json['items'] as List)
-            .map((e) => AlfredItem.fromJson(Map<String, dynamic>.from(e)))
-            .toList(),
-      );
+    (json['items'] as List)
+        .map((e) => AlfredItem.fromJson(Map<String, dynamic>.from(e)))
+        .toList(),
+  );
 
   Map<String, dynamic> toJson() => <String, dynamic>{
-        if (cache != null) 'cache': cache!.toJson(),
-        if (skipKnowledge != null) 'skipknowledge': skipKnowledge,
-        'items': <Map<String, dynamic>>[
-          for (final AlfredItem item in items)
-            if (exactOrder ?? false)
-              item.toJson()..remove('uid')
-            else
-              item.toJson(),
-        ],
-      };
+    if (cache != null) 'cache': cache!.toJson(),
+    if (skipKnowledge != null) 'skipknowledge': skipKnowledge,
+    'items': <Map<String, dynamic>>[
+      for (final AlfredItem item in items)
+        if (exactOrder ?? false)
+          item.toJson()..remove('uid')
+        else
+          item.toJson(),
+    ],
+  };
 
   @override
   List<Object?> get props => _$props;
@@ -69,11 +69,10 @@ final class AlfredItems
     bool? exactOrder,
     bool? skipKnowledge,
     AlfredAutomaticCache? cache,
-  }) =>
-      AlfredItems(
-        items ?? [...this.items],
-        skipKnowledge: skipKnowledge ?? this.skipKnowledge,
-        exactOrder: exactOrder ?? this.exactOrder,
-        cache: cache ?? this.cache,
-      );
+  }) => AlfredItems(
+    items ?? [...this.items],
+    skipKnowledge: skipKnowledge ?? this.skipKnowledge,
+    exactOrder: exactOrder ?? this.exactOrder,
+    cache: cache ?? this.cache,
+  );
 }

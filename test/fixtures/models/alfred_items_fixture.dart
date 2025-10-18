@@ -14,9 +14,9 @@ extension AlfredItemsFixture on AlfredItems {
 final class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
   @override
   FixtureDefinition<AlfredItems> definition() => define(
-        (Faker faker, [int index = 0]) =>
-            AlfredItems(AlfredItemFixture.factory.makeMany(20)),
-      );
+    (Faker faker, [int index = 0]) =>
+        AlfredItems(AlfredItemFixture.factory.makeMany(20)),
+  );
 
   FixtureRedefinitionBuilder<AlfredItems> items(List<AlfredItem> value) =>
       (AlfredItems items, [int index = 0]) => items.copyWith(items: value);
@@ -29,6 +29,7 @@ final class AlfredItemsFactory extends FixtureFactory<AlfredItems> {
           items.copyWith(skipKnowledge: value);
 
   FixtureRedefinitionBuilder<AlfredItems> withCache(
-          AlfredAutomaticCache? value) =>
+    AlfredAutomaticCache? value,
+  ) =>
       (AlfredItems items, [int index = 0]) => items.copyWith(cache: value);
 }

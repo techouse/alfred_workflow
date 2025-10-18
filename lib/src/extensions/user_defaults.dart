@@ -61,10 +61,8 @@ extension UserDefaults on AlfredWorkflow {
       for (final MapEntry<String, AlfredUserConfiguration> defaultItem
           in defaults.entries)
         defaultItem.key: defaultItem.value.copyWithConfig(
-          defaultItem.value.config.copyWithValue(
-            userDefaults[defaultItem.key],
-          ),
-        )
+          defaultItem.value.config.copyWithValue(userDefaults[defaultItem.key]),
+        ),
     };
   }
 
@@ -82,10 +80,8 @@ extension UserDefaults on AlfredWorkflow {
       for (final MapEntry<String, AlfredUserConfiguration> defaultItem
           in defaults.entries)
         defaultItem.key: defaultItem.value.copyWithConfig(
-          defaultItem.value.config.copyWithValue(
-            userDefaults[defaultItem.key],
-          ),
-        )
+          defaultItem.value.config.copyWithValue(userDefaults[defaultItem.key]),
+        ),
     };
   }
 
@@ -110,13 +106,12 @@ extension UserDefaults on AlfredWorkflow {
               AlfredUserConfigurationFilePicker.fromJson(config)
             else if (config[_typeKey] ==
                 AlfredUserConfigurationType.slider.toString())
-              AlfredUserConfigurationNumberSlider.fromJson(config)
+              AlfredUserConfigurationNumberSlider.fromJson(config),
         ])
           item.variable: item,
       };
 
   static Map<String, dynamic> _mapUserDefaults(Map prefs) => <String, dynamic>{
-        for (final MapEntry pref in prefs.entries)
-          pref.key.toString(): pref.value,
-      };
+    for (final MapEntry pref in prefs.entries) pref.key.toString(): pref.value,
+  };
 }

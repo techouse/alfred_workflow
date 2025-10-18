@@ -6,10 +6,8 @@ part 'alfred_user_configuration_config.g.dart';
 
 /// Alfred user configuration config generic class
 abstract class AlfredUserConfigurationConfig<T> with EquatableMixin {
-  const AlfredUserConfigurationConfig({
-    required this.defaultValue,
-    T? value,
-  }) : value = value ?? defaultValue;
+  const AlfredUserConfigurationConfig({required this.defaultValue, T? value})
+    : value = value ?? defaultValue;
 
   /// Default value
   @JsonKey(name: 'default', readValue: fromJsonDefaultValue)

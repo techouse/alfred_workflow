@@ -191,12 +191,11 @@ void main() async {
     setUp(() {
       items = AlfredItemsFixture.factory.makeSingle();
 
-      workflow = AlfredWorkflowFixture.factory
-          .redefine(
-            AlfredWorkflowFixture.factory.withFileCache(),
-          )
-          .makeSingle()
-        ..cacheKey = faker.guid.guid();
+      workflow =
+          AlfredWorkflowFixture.factory
+              .redefine(AlfredWorkflowFixture.factory.withFileCache())
+              .makeSingle()
+            ..cacheKey = faker.guid.guid();
     });
 
     test('getItems without adding anything is empty', () async {
@@ -272,9 +271,7 @@ void main() async {
       workflow = AlfredWorkflowFixture.factory.makeSingle()
         ..skipKnowledge = skipKnowledge;
       items = AlfredItemsFixture.factory
-          .redefine(
-            AlfredItemsFixture.factory.withSkipKnowledge(skipKnowledge),
-          )
+          .redefine(AlfredItemsFixture.factory.withSkipKnowledge(skipKnowledge))
           .makeSingle();
     });
 
@@ -372,15 +369,12 @@ void main() async {
     test('single item gets written to stdout with toStdout: true', () async {
       final MockStdout mockStdout = MockStdout();
 
-      await IOOverrides.runZoned(
-        () async {
-          await workflow.addItem(item);
-          final String json = await workflow.toJsonString();
-          await workflow.run(toStdout: true);
-          expect(mockStdout.output, equals(json));
-        },
-        stdout: () => mockStdout,
-      );
+      await IOOverrides.runZoned(() async {
+        await workflow.addItem(item);
+        final String json = await workflow.toJsonString();
+        await workflow.run(toStdout: true);
+        expect(mockStdout.output, equals(json));
+      }, stdout: () => mockStdout);
     });
 
     test(
@@ -391,10 +385,8 @@ void main() async {
           addToBeginning: itemBefore,
         );
         expect(
-          () async => await workflow.run(
-            addToBeginning: itemBefore,
-            toStdout: false,
-          ),
+          () async =>
+              await workflow.run(addToBeginning: itemBefore, toStdout: false),
           prints('$json\n'),
         );
       },
@@ -402,14 +394,9 @@ void main() async {
 
     test('run with addToEnd adds single item to end of items', () async {
       await workflow.addItem(item);
-      final String json = await workflow.toJsonString(
-        addToEnd: itemAfter,
-      );
+      final String json = await workflow.toJsonString(addToEnd: itemAfter);
       expect(
-        () async => await workflow.run(
-          addToEnd: itemAfter,
-          toStdout: false,
-        ),
+        () async => await workflow.run(addToEnd: itemAfter, toStdout: false),
         prints('$json\n'),
       );
     });
@@ -488,8 +475,10 @@ void main() async {
         workflow.useAutomaticCache = true;
         expect(workflow.automaticCache, isNotNull);
         expect(workflow.cacheTimeToLive, isNull);
-        expect(workflow.automaticCache?.seconds,
-            equals(AlfredWorkflow.defaultCacheTimeToLive));
+        expect(
+          workflow.automaticCache?.seconds,
+          equals(AlfredWorkflow.defaultCacheTimeToLive),
+        );
       },
     );
 
@@ -603,8 +592,9 @@ void main() async {
 
       workflow = AlfredWorkflowFixture.factory
           .redefine(
-            AlfredWorkflowFixture.factory
-                .withAutomaticCache(customAutomaticCache),
+            AlfredWorkflowFixture.factory.withAutomaticCache(
+              customAutomaticCache,
+            ),
           )
           .makeSingle();
 
@@ -636,9 +626,9 @@ void main() async {
     test('fileCache can be set to a custom value', () {
       final MockAlfredCache<AlfredItems> customFileCache =
           MockAlfredCache<AlfredItems>(
-        fromEncodable: (Map<String, dynamic> json) =>
-            AlfredItems.fromJson(json),
-      );
+            fromEncodable: (Map<String, dynamic> json) =>
+                AlfredItems.fromJson(json),
+          );
 
       workflow = AlfredWorkflowFixture.factory
           .redefine(

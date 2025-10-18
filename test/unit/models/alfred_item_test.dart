@@ -9,11 +9,8 @@ void main() {
 
       // Call the constructor with an invalid action type
       expect(
-        () => AlfredItem(
-          title: 'Test Item',
-          action: invalidAction,
-          valid: true,
-        ),
+        () =>
+            AlfredItem(title: 'Test Item', action: invalidAction, valid: true),
         throwsA(isA<AssertionError>()),
       );
     });
@@ -49,10 +46,7 @@ void main() {
 
       // Now try to create a new AlfredItem from this modified JSON
       // This should throw an ArgumentError when _actionFromJson tries to process the invalid action
-      expect(
-        () => AlfredItem.fromJson(json),
-        throwsA(isA<ArgumentError>()),
-      );
+      expect(() => AlfredItem.fromJson(json), throwsA(isA<ArgumentError>()));
     });
   });
 }

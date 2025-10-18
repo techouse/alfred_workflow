@@ -34,8 +34,8 @@ final class AlfredUpdater with EquatableMixin {
     this.updateInterval = Duration.zero,
     this.cache,
     this.client,
-  })  : assert(githubRepositoryUrl.host == 'github.com'),
-        _currentVersion = Version.parse(currentVersion);
+  }) : assert(githubRepositoryUrl.host == 'github.com'),
+       _currentVersion = Version.parse(currentVersion);
 
   /// The cache key under which the cached [GithubRelease] is stored
   static const String updateKey = 'update';
@@ -57,12 +57,12 @@ final class AlfredUpdater with EquatableMixin {
   late final Future<Cache<GithubRelease>> fileCache = switch (cache) {
     // coverage:ignore-start
     null => AlfredCache<GithubRelease>(
-        fromEncodable: GithubRelease.fromJson,
-        maxEntries: 1,
-        name: 'update_cache',
-        evictionPolicy: const FifoEvictionPolicy(),
-        expiryPolicy: CreatedExpiryPolicy(updateInterval),
-      ).cache,
+      fromEncodable: GithubRelease.fromJson,
+      maxEntries: 1,
+      name: 'update_cache',
+      evictionPolicy: const FifoEvictionPolicy(),
+      expiryPolicy: CreatedExpiryPolicy(updateInterval),
+    ).cache,
     // coverage:ignore-end
     _ => cache!.cache,
   };
@@ -109,7 +109,7 @@ final class AlfredUpdater with EquatableMixin {
 
     final GithubRelease? release =
         await (await fileCache).get(updateKey.md5hex) ??
-            await fetchLatestRelease();
+        await fetchLatestRelease();
     if (release != null) {
       if (release.tagName > _currentVersion) {
         final GithubAsset? asset = findAlfredWorkflowAsset(release);
@@ -130,8 +130,9 @@ final class AlfredUpdater with EquatableMixin {
       'api.github.com',
       '/repos/${githubRepositoryUrl.path.substring(1)}/releases/latest',
     );
-    final Response response =
-        client != null ? await client!.get(url) : await get(url);
+    final Response response = client != null
+        ? await client!.get(url)
+        : await get(url);
 
     if (response.statusCode < 400) {
       return GithubRelease.fromJson(jsonDecode(response.body));
@@ -170,8 +171,9 @@ final class AlfredUpdater with EquatableMixin {
         'alfred_workflow_update',
       );
       // coverage:ignore-end
-      final File file =
-          await fileSystem.file('${directory.path}/${asset.name}').create();
+      final File file = await fileSystem
+          .file('${directory.path}/${asset.name}')
+          .create();
       file.writeAsBytes(response.bodyBytes);
 
       return file;

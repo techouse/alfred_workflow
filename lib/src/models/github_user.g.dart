@@ -27,12 +27,13 @@ abstract class _$GithubUserCWProxy {
 
   GithubUser siteAdmin(bool siteAdmin);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubUser(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubUser(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// GithubUser(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   GithubUser call({
     String login,
     int id,
@@ -47,50 +48,51 @@ abstract class _$GithubUserCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGithubUser.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGithubUser.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfGithubUser.copyWith(...)` or call `instanceOfGithubUser.copyWith.fieldName(value)` for a single field.
 class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   const _$GithubUserCWProxyImpl(this._value);
 
   final GithubUser _value;
 
   @override
-  GithubUser login(String login) => this(login: login);
+  GithubUser login(String login) => call(login: login);
 
   @override
-  GithubUser id(int id) => this(id: id);
+  GithubUser id(int id) => call(id: id);
 
   @override
-  GithubUser nodeId(String nodeId) => this(nodeId: nodeId);
+  GithubUser nodeId(String nodeId) => call(nodeId: nodeId);
 
   @override
-  GithubUser avatarUrl(Uri avatarUrl) => this(avatarUrl: avatarUrl);
+  GithubUser avatarUrl(Uri avatarUrl) => call(avatarUrl: avatarUrl);
 
   @override
-  GithubUser gravatarId(String gravatarId) => this(gravatarId: gravatarId);
+  GithubUser gravatarId(String gravatarId) => call(gravatarId: gravatarId);
 
   @override
-  GithubUser url(Uri url) => this(url: url);
+  GithubUser url(Uri url) => call(url: url);
 
   @override
-  GithubUser htmlUrl(Uri htmlUrl) => this(htmlUrl: htmlUrl);
+  GithubUser htmlUrl(Uri htmlUrl) => call(htmlUrl: htmlUrl);
 
   @override
-  GithubUser reposUrl(Uri reposUrl) => this(reposUrl: reposUrl);
+  GithubUser reposUrl(Uri reposUrl) => call(reposUrl: reposUrl);
 
   @override
-  GithubUser type(String type) => this(type: type);
+  GithubUser type(String type) => call(type: type);
 
   @override
-  GithubUser siteAdmin(bool siteAdmin) => this(siteAdmin: siteAdmin);
+  GithubUser siteAdmin(bool siteAdmin) => call(siteAdmin: siteAdmin);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubUser(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubUser(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// GithubUser(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   GithubUser call({
     Object? login = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),
@@ -104,43 +106,44 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
     Object? siteAdmin = const $CopyWithPlaceholder(),
   }) {
     return GithubUser(
-      login: login == const $CopyWithPlaceholder()
+      login: login == const $CopyWithPlaceholder() || login == null
           ? _value.login
           // ignore: cast_nullable_to_non_nullable
           : login as String,
-      id: id == const $CopyWithPlaceholder()
+      id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      nodeId: nodeId == const $CopyWithPlaceholder()
+      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
           ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      avatarUrl: avatarUrl == const $CopyWithPlaceholder()
+      avatarUrl: avatarUrl == const $CopyWithPlaceholder() || avatarUrl == null
           ? _value.avatarUrl
           // ignore: cast_nullable_to_non_nullable
           : avatarUrl as Uri,
-      gravatarId: gravatarId == const $CopyWithPlaceholder()
+      gravatarId:
+          gravatarId == const $CopyWithPlaceholder() || gravatarId == null
           ? _value.gravatarId
           // ignore: cast_nullable_to_non_nullable
           : gravatarId as String,
-      url: url == const $CopyWithPlaceholder()
+      url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
-      htmlUrl: htmlUrl == const $CopyWithPlaceholder()
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
           ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
-      reposUrl: reposUrl == const $CopyWithPlaceholder()
+      reposUrl: reposUrl == const $CopyWithPlaceholder() || reposUrl == null
           ? _value.reposUrl
           // ignore: cast_nullable_to_non_nullable
           : reposUrl as Uri,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as String,
-      siteAdmin: siteAdmin == const $CopyWithPlaceholder()
+      siteAdmin: siteAdmin == const $CopyWithPlaceholder() || siteAdmin == null
           ? _value.siteAdmin
           // ignore: cast_nullable_to_non_nullable
           : siteAdmin as bool,
@@ -149,7 +152,8 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
 }
 
 extension $GithubUserCopyWith on GithubUser {
-  /// Returns a callable class that can be used as follows: `instanceOfGithubUser.copyWith(...)` or like so:`instanceOfGithubUser.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfGithubUser.copyWith(...)` or `instanceOfGithubUser.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GithubUserCWProxy get copyWith => _$GithubUserCWProxyImpl(this);
 }
@@ -160,17 +164,17 @@ extension $GithubUserCopyWith on GithubUser {
 
 extension _$GithubUserEquatableAnnotations on GithubUser {
   List<Object?> get _$props => [
-        login,
-        id,
-        nodeId,
-        avatarUrl,
-        gravatarId,
-        url,
-        htmlUrl,
-        reposUrl,
-        type,
-        siteAdmin,
-      ];
+    login,
+    id,
+    nodeId,
+    avatarUrl,
+    gravatarId,
+    url,
+    htmlUrl,
+    reposUrl,
+    type,
+    siteAdmin,
+  ];
 }
 
 // **************************************************************************
@@ -178,17 +182,17 @@ extension _$GithubUserEquatableAnnotations on GithubUser {
 // **************************************************************************
 
 GithubUser _$GithubUserFromJson(Map<String, dynamic> json) => GithubUser(
-      login: json['login'] as String,
-      id: (json['id'] as num).toInt(),
-      nodeId: json['node_id'] as String,
-      avatarUrl: Uri.parse(json['avatar_url'] as String),
-      gravatarId: json['gravatar_id'] as String,
-      url: Uri.parse(json['url'] as String),
-      htmlUrl: Uri.parse(json['html_url'] as String),
-      reposUrl: Uri.parse(json['repos_url'] as String),
-      type: json['type'] as String,
-      siteAdmin: json['site_admin'] as bool,
-    );
+  login: json['login'] as String,
+  id: (json['id'] as num).toInt(),
+  nodeId: json['node_id'] as String,
+  avatarUrl: Uri.parse(json['avatar_url'] as String),
+  gravatarId: json['gravatar_id'] as String,
+  url: Uri.parse(json['url'] as String),
+  htmlUrl: Uri.parse(json['html_url'] as String),
+  reposUrl: Uri.parse(json['repos_url'] as String),
+  type: json['type'] as String,
+  siteAdmin: json['site_admin'] as bool,
+);
 
 Map<String, dynamic> _$GithubUserToJson(GithubUser instance) =>
     <String, dynamic>{

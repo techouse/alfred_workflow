@@ -14,32 +14,32 @@ extension AlfredUpdaterFixture on AlfredUpdater {
 @internal
 final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
   @override
-  FixtureDefinition<AlfredUpdater> definition() => define(
-        (Faker faker, [int index = 0]) {
-          final String repoName = faker.lorem.words(3).join('-').toLowerCase();
-          final String login = faker.lorem.word().toLowerCase();
-          final String currentVersion =
-              '${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9, min: 1)}';
+  FixtureDefinition<AlfredUpdater> definition() => define((
+    Faker faker, [
+    int index = 0,
+  ]) {
+    final String repoName = faker.lorem.words(3).join('-').toLowerCase();
+    final String login = faker.lorem.word().toLowerCase();
+    final String currentVersion =
+        '${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9)}.${faker.randomGenerator.integer(9, min: 1)}';
 
-          return AlfredUpdater(
-            githubRepositoryUrl: Uri.https('github.com', '/$login/$repoName'),
-            currentVersion: currentVersion,
-            cache: MockAlfredCache<GithubRelease>(
-              fromEncodable: (Map<String, dynamic> json) =>
-                  GithubRelease.fromJson(json),
-              maxEntries: 1,
-              name: 'update_cache',
-            ),
-          );
-        },
-      );
+    return AlfredUpdater(
+      githubRepositoryUrl: Uri.https('github.com', '/$login/$repoName'),
+      currentVersion: currentVersion,
+      cache: MockAlfredCache<GithubRelease>(
+        fromEncodable: (Map<String, dynamic> json) =>
+            GithubRelease.fromJson(json),
+        maxEntries: 1,
+        name: 'update_cache',
+      ),
+    );
+  });
 
   FixtureRedefinitionBuilder<AlfredUpdater> githubRepositoryUrl(
     Uri githubRepositoryUrl,
   ) =>
-      (AlfredUpdater alfredUpdater, [int index = 0]) => alfredUpdater.copyWith(
-            githubRepositoryUrl: githubRepositoryUrl,
-          );
+      (AlfredUpdater alfredUpdater, [int index = 0]) =>
+          alfredUpdater.copyWith(githubRepositoryUrl: githubRepositoryUrl);
 
   FixtureRedefinitionBuilder<AlfredUpdater> currentVersion(
     String currentVersion,
@@ -51,15 +51,15 @@ final class AlfredUpdaterFactory extends FixtureFactory<AlfredUpdater> {
     Duration updateInterval,
   ) =>
       (AlfredUpdater alfredUpdater, [int index = 0]) => alfredUpdater.copyWith(
-            cache: MockAlfredCache<GithubRelease>(
-              fromEncodable: (Map<String, dynamic> json) =>
-                  GithubRelease.fromJson(json),
-              maxEntries: 1,
-              name: 'update_cache',
-              evictionPolicy: const FifoEvictionPolicy(),
-              expiryPolicy: CreatedExpiryPolicy(updateInterval),
-            ),
-          );
+        cache: MockAlfredCache<GithubRelease>(
+          fromEncodable: (Map<String, dynamic> json) =>
+              GithubRelease.fromJson(json),
+          maxEntries: 1,
+          name: 'update_cache',
+          evictionPolicy: const FifoEvictionPolicy(),
+          expiryPolicy: CreatedExpiryPolicy(updateInterval),
+        ),
+      );
 
   FixtureRedefinitionBuilder<AlfredUpdater> client(Client client) =>
       (AlfredUpdater alfredUpdater, [int index = 0]) =>

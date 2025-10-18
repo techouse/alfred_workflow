@@ -12,8 +12,10 @@ part 'alfred_user_configuration_text_field.g.dart';
 
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
-final class AlfredUserConfigurationTextField extends AlfredUserConfiguration<
-    String, AlfredUserConfigurationConfigTextField> with EquatableMixin {
+final class AlfredUserConfigurationTextField
+    extends
+        AlfredUserConfiguration<String, AlfredUserConfigurationConfigTextField>
+    with EquatableMixin {
   const AlfredUserConfigurationTextField({
     required super.type,
     required super.variable,
@@ -30,8 +32,8 @@ final class AlfredUserConfigurationTextField extends AlfredUserConfiguration<
   @internal
   @override
   AlfredUserConfiguration<String, AlfredUserConfigurationConfigTextField>
-      copyWithConfig(AlfredUserConfigurationConfigTextField config) =>
-          copyWith(config: config);
+  copyWithConfig(AlfredUserConfigurationConfigTextField config) =>
+      copyWith(config: config);
 
   static AlfredUserConfigurationConfigTextField _configFromJson(Map json) =>
       AlfredUserConfigurationConfigTextField.fromJson(

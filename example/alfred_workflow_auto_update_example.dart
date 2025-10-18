@@ -28,7 +28,6 @@ void main(List<String> arguments) {
 
       final ArgParser parser = ArgParser()
         ..addOption('query', abbr: 'q', defaultsTo: '')
-
         /// Add another option to the arg parser
         ..addFlag('update', abbr: 'u', defaultsTo: false);
 
@@ -68,9 +67,7 @@ void main(List<String> arguments) {
               title: 'Sorry I can\'t help you with that query.',
               subtitle: 'Shall I try and search Google?',
               arg: url.toString(),
-              text: AlfredItemText(
-                copy: url.toString(),
-              ),
+              text: AlfredItemText(copy: url.toString()),
               quickLookUrl: url.toString(),
               icon: AlfredItemIcon(path: 'google.png'),
               valid: true,
@@ -80,9 +77,7 @@ void main(List<String> arguments) {
       }
     } catch (err) {
       exitCode = 1;
-      workflow.addItem(
-        AlfredItem(title: err.toString()),
-      );
+      workflow.addItem(AlfredItem(title: err.toString()));
     } finally {
       /// Check if the workflow is not in the middle of an update.
       if (!update) {

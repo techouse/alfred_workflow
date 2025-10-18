@@ -10,10 +10,7 @@ part 'alfred_item_text.g.dart';
 @CopyWith()
 @JsonSerializable()
 final class AlfredItemText with EquatableMixin {
-  const AlfredItemText({
-    required this.copy,
-    this.largeType,
-  });
+  const AlfredItemText({required this.copy, this.largeType});
 
   /// The text to copy
   @JsonKey(required: true)

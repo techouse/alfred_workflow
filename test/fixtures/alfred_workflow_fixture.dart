@@ -19,23 +19,24 @@ final class AlfredWorkflowFactory extends FixtureFactory<AlfredWorkflow> {
     AlfredAutomaticCache? automaticCache,
   ]) =>
       (_, [int index = 0]) => AlfredWorkflow(
-            automaticCache: automaticCache ??
-                AlfredAutomaticCacheFixture.factory.makeSingle(),
-          );
+        automaticCache:
+            automaticCache ?? AlfredAutomaticCacheFixture.factory.makeSingle(),
+      );
 
   FixtureRedefinitionBuilder<AlfredWorkflow> withFileCache([
     AlfredCache<AlfredItems>? fileCache,
   ]) =>
       (_, [int index = 0]) => AlfredWorkflow(
-            fileCache: fileCache ??
-                MockAlfredCache<AlfredItems>(
-                  fromEncodable: (Map<String, dynamic> json) =>
-                      AlfredItems.fromJson(json),
-                ),
-          );
+        fileCache:
+            fileCache ??
+            MockAlfredCache<AlfredItems>(
+              fromEncodable: (Map<String, dynamic> json) =>
+                  AlfredItems.fromJson(json),
+            ),
+      );
 
   FixtureRedefinitionBuilder<AlfredWorkflow>
-      withoutAlfredSmartResultOrdering() =>
-          (AlfredWorkflow workflow, [int index = 0]) =>
-              workflow..disableAlfredSmartResultOrdering = true;
+  withoutAlfredSmartResultOrdering() =>
+      (AlfredWorkflow workflow, [int index = 0]) =>
+          workflow..disableAlfredSmartResultOrdering = true;
 }

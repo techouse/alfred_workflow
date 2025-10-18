@@ -11,7 +11,8 @@ part 'alfred_user_configuration_config_text_area.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextArea
-    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigTextArea({
     required super.defaultValue,
     required this.required,

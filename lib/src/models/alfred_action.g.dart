@@ -15,46 +15,43 @@ abstract class _$AlfredActionCWProxy {
 
   AlfredAction auto(String? auto);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredAction(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAction(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredAction(...).copyWith(id: 12, name: "My name")
-  /// ````
-  AlfredAction call({
-    dynamic text,
-    Uri? url,
-    String? file,
-    String? auto,
-  });
+  /// ```
+  AlfredAction call({dynamic text, Uri? url, String? file, String? auto});
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredAction.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredAction.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredAction.copyWith(...)` or call `instanceOfAlfredAction.copyWith.fieldName(value)` for a single field.
 class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
   const _$AlfredActionCWProxyImpl(this._value);
 
   final AlfredAction _value;
 
   @override
-  AlfredAction text(dynamic text) => this(text: text);
+  AlfredAction text(dynamic text) => call(text: text);
 
   @override
-  AlfredAction url(Uri? url) => this(url: url);
+  AlfredAction url(Uri? url) => call(url: url);
 
   @override
-  AlfredAction file(String? file) => this(file: file);
+  AlfredAction file(String? file) => call(file: file);
 
   @override
-  AlfredAction auto(String? auto) => this(auto: auto);
+  AlfredAction auto(String? auto) => call(auto: auto);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredAction(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAction(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredAction(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredAction call({
     Object? text = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),
@@ -83,7 +80,8 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
 }
 
 extension $AlfredActionCopyWith on AlfredAction {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredAction.copyWith(...)` or like so:`instanceOfAlfredAction.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredAction.copyWith(...)` or `instanceOfAlfredAction.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredActionCWProxy get copyWith => _$AlfredActionCWProxyImpl(this);
 }
@@ -101,11 +99,11 @@ extension _$AlfredActionEquatableAnnotations on AlfredAction {
 // **************************************************************************
 
 AlfredAction _$AlfredActionFromJson(Map<String, dynamic> json) => AlfredAction(
-      text: json['text'],
-      url: json['url'] == null ? null : Uri.parse(json['url'] as String),
-      file: json['file'] as String?,
-      auto: json['auto'] as String?,
-    );
+  text: json['text'],
+  url: json['url'] == null ? null : Uri.parse(json['url'] as String),
+  file: json['file'] as String?,
+  auto: json['auto'] as String?,
+);
 
 Map<String, dynamic> _$AlfredActionToJson(AlfredAction instance) =>
     <String, dynamic>{

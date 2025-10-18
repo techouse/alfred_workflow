@@ -42,17 +42,15 @@ final class AlfredItem with EquatableMixin {
     this.match,
     this.mods,
     this.action,
-  })  : assert(
-          (arg == null && action == null) || ((arg != null) ^ (action != null)),
-          'Either arg or action must be provided, but not both.',
-        ),
-        assert(
-          action == null ||
-              (action is String ||
-                  action is Iterable ||
-                  action is AlfredAction),
-          'Action must be a String, Iterable or AlfredAction.',
-        );
+  }) : assert(
+         (arg == null && action == null) || ((arg != null) ^ (action != null)),
+         'Either arg or action must be provided, but not both.',
+       ),
+       assert(
+         action == null ||
+             (action is String || action is Iterable || action is AlfredAction),
+         'Action must be a String, Iterable or AlfredAction.',
+       );
 
   /// The [title] displayed in the result row. There are no options for this element and it is essential that this element is populated.
   @JsonKey(required: true)
@@ -173,59 +171,57 @@ final class AlfredItem with EquatableMixin {
 
   static Map<String, Map<String, dynamic>>? _modsToJson(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
-  ) =>
-      mods?.map((Set<AlfredItemModKey> keys, AlfredItemMod mod) {
-        final List<String> canonicalKey =
-            keys.map((AlfredItemModKey k) => k.name).toList()..sort();
-        return MapEntry(canonicalKey.join('+'), mod.toJson());
-      });
+  ) => mods?.map((Set<AlfredItemModKey> keys, AlfredItemMod mod) {
+    final List<String> canonicalKey =
+        keys.map((AlfredItemModKey k) => k.name).toList()..sort();
+    return MapEntry(canonicalKey.join('+'), mod.toJson());
+  });
 
   static Map<Set<AlfredItemModKey>, AlfredItemMod>? _modsFromJson(Map? json) =>
       json != null
-          ? Map<String, dynamic>.from(json).map(
-              (String key, dynamic value) => MapEntry(
-                key
-                    .split('+')
-                    .map((String s) => AlfredItemModKey.values.byName(s))
-                    .toSet(),
-                AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
-              ),
-            )
-          : null;
+      ? Map<String, dynamic>.from(json).map(
+          (String key, dynamic value) => MapEntry(
+            key
+                .split('+')
+                .map((String s) => AlfredItemModKey.values.byName(s))
+                .toSet(),
+            AlfredItemMod.fromJson(Map<String, dynamic>.from(value)),
+          ),
+        )
+      : null;
 
   /// Canonicalizes the mods by sorting the keys and joining them into a single string.
   static Map<String, AlfredItemMod>? _canonicalMods(
     Map<Set<AlfredItemModKey>, AlfredItemMod>? mods,
-  ) =>
-      mods?.map((Set<AlfredItemModKey> keySet, AlfredItemMod mod) {
-        final List<String> sortedNames =
-            keySet.map((AlfredItemModKey k) => k.name).toList()..sort();
-        return MapEntry(sortedNames.join('+'), mod);
-      });
+  ) => mods?.map((Set<AlfredItemModKey> keySet, AlfredItemMod mod) {
+    final List<String> sortedNames =
+        keySet.map((AlfredItemModKey k) => k.name).toList()..sort();
+    return MapEntry(sortedNames.join('+'), mod);
+  });
 
   static dynamic _actionToJson(Object? action) => switch (action) {
-        null => null,
-        String _ => action,
-        Iterable _ => action.map(_actionToJson).toList(),
-        AlfredAction _ => action.toJson(),
-        _ => throw ArgumentError.value(
-            action,
-            'action',
-            'Invalid action. Must be a String, Iterable, or AlfredAction.',
-          ),
-      };
+    null => null,
+    String _ => action,
+    Iterable _ => action.map(_actionToJson).toList(),
+    AlfredAction _ => action.toJson(),
+    _ => throw ArgumentError.value(
+      action,
+      'action',
+      'Invalid action. Must be a String, Iterable, or AlfredAction.',
+    ),
+  };
 
   static Object? _actionFromJson(dynamic action) => switch (action) {
-        null => null,
-        String _ => action,
-        Iterable _ => action.map(_actionFromJson).toList(),
-        Map _ => AlfredAction.fromJson(Map<String, dynamic>.from(action)),
-        _ => throw ArgumentError.value(
-            action,
-            'action',
-            'Invalid action. Must be a String, Iterable, or Map.',
-          ),
-      };
+    null => null,
+    String _ => action,
+    Iterable _ => action.map(_actionFromJson).toList(),
+    Map _ => AlfredAction.fromJson(Map<String, dynamic>.from(action)),
+    _ => throw ArgumentError.value(
+      action,
+      'action',
+      'Invalid action. Must be a String, Iterable, or Map.',
+    ),
+  };
 
   factory AlfredItem.fromJson(Map<String, dynamic> json) =>
       _$AlfredItemFromJson(json);

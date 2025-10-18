@@ -12,18 +12,20 @@ abstract class _$AlfredUserConfigurationCheckBoxCWProxy {
   AlfredUserConfigurationCheckBox variable(String variable);
 
   AlfredUserConfigurationCheckBox config(
-      AlfredUserConfigurationConfigCheckBox config);
+    AlfredUserConfigurationConfigCheckBox config,
+  );
 
   AlfredUserConfigurationCheckBox description(String? description);
 
   AlfredUserConfigurationCheckBox label(String? label);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationCheckBox(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationCheckBox(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationCheckBox(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationCheckBox call({
     AlfredUserConfigurationType type,
     String variable,
@@ -33,7 +35,8 @@ abstract class _$AlfredUserConfigurationCheckBoxCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationCheckBox.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationCheckBox.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationCheckBox.copyWith(...)` or call `instanceOfAlfredUserConfigurationCheckBox.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationCheckBoxCWProxyImpl
     implements _$AlfredUserConfigurationCheckBoxCWProxy {
   const _$AlfredUserConfigurationCheckBoxCWProxyImpl(this._value);
@@ -42,32 +45,32 @@ class _$AlfredUserConfigurationCheckBoxCWProxyImpl
 
   @override
   AlfredUserConfigurationCheckBox type(AlfredUserConfigurationType type) =>
-      this(type: type);
+      call(type: type);
 
   @override
   AlfredUserConfigurationCheckBox variable(String variable) =>
-      this(variable: variable);
+      call(variable: variable);
 
   @override
   AlfredUserConfigurationCheckBox config(
-          AlfredUserConfigurationConfigCheckBox config) =>
-      this(config: config);
+    AlfredUserConfigurationConfigCheckBox config,
+  ) => call(config: config);
 
   @override
   AlfredUserConfigurationCheckBox description(String? description) =>
-      this(description: description);
+      call(description: description);
 
   @override
-  AlfredUserConfigurationCheckBox label(String? label) => this(label: label);
+  AlfredUserConfigurationCheckBox label(String? label) => call(label: label);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationCheckBox(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationCheckBox(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationCheckBox(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationCheckBox call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),
@@ -76,15 +79,15 @@ class _$AlfredUserConfigurationCheckBoxCWProxyImpl
     Object? label = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationCheckBox(
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredUserConfigurationType,
-      variable: variable == const $CopyWithPlaceholder()
+      variable: variable == const $CopyWithPlaceholder() || variable == null
           ? _value.variable
           // ignore: cast_nullable_to_non_nullable
           : variable as String,
-      config: config == const $CopyWithPlaceholder()
+      config: config == const $CopyWithPlaceholder() || config == null
           ? _value.config
           // ignore: cast_nullable_to_non_nullable
           : config as AlfredUserConfigurationConfigCheckBox,
@@ -102,7 +105,8 @@ class _$AlfredUserConfigurationCheckBoxCWProxyImpl
 
 extension $AlfredUserConfigurationCheckBoxCopyWith
     on AlfredUserConfigurationCheckBox {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationCheckBox.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationCheckBox.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationCheckBox.copyWith(...)` or `instanceOfAlfredUserConfigurationCheckBox.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationCheckBoxCWProxy get copyWith =>
       _$AlfredUserConfigurationCheckBoxCWProxyImpl(this);
@@ -113,15 +117,16 @@ extension $AlfredUserConfigurationCheckBoxCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationCheckBox _$AlfredUserConfigurationCheckBoxFromJson(
-        Map<String, dynamic> json) =>
-    AlfredUserConfigurationCheckBox(
-      type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
-      variable: json['variable'] as String,
-      config: AlfredUserConfigurationCheckBox._configFromJson(
-          json['config'] as Map),
-      description: json['description'] as String?,
-      label: json['label'] as String?,
-    );
+  Map<String, dynamic> json,
+) => AlfredUserConfigurationCheckBox(
+  type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
+  variable: json['variable'] as String,
+  config: AlfredUserConfigurationCheckBox._configFromJson(
+    json['config'] as Map,
+  ),
+  description: json['description'] as String?,
+  label: json['label'] as String?,
+);
 
 const _$AlfredUserConfigurationTypeEnumMap = {
   AlfredUserConfigurationType.textField: 'textfield',

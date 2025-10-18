@@ -11,7 +11,8 @@ part 'alfred_user_configuration_config_number_slider.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigNumberSlider
-    extends AlfredUserConfigurationConfig<int> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<int>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigNumberSlider({
     required super.defaultValue,
     super.value,
@@ -20,27 +21,27 @@ final class AlfredUserConfigurationConfigNumberSlider
     this.onlyStopOnMarkers = false,
     this.showMarkers = false,
     this.markerCount,
-  })  : assert(min < max, 'min must be less than max'),
-        assert(
-          defaultValue >= min && defaultValue <= max,
-          'defaultValue must be between min and max',
-        ),
-        assert(
-          value == null || (value >= min && value <= max),
-          'value must be between min and max',
-        ),
-        assert(
-          !(showMarkers || onlyStopOnMarkers) || markerCount != null,
-          'markerCount must be provided if showMarkers or onlyStopOnMarkers is true',
-        ),
-        assert(
-          !(showMarkers || onlyStopOnMarkers) || markerCount != 0,
-          'markerCount must be greater than 0 if showMarkers or onlyStopOnMarkers is true',
-        ),
-        assert(
-          markerCount == null || markerCount > 0,
-          'markerCount must be greater than 0 if provided',
-        );
+  }) : assert(min < max, 'min must be less than max'),
+       assert(
+         defaultValue >= min && defaultValue <= max,
+         'defaultValue must be between min and max',
+       ),
+       assert(
+         value == null || (value >= min && value <= max),
+         'value must be between min and max',
+       ),
+       assert(
+         !(showMarkers || onlyStopOnMarkers) || markerCount != null,
+         'markerCount must be provided if showMarkers or onlyStopOnMarkers is true',
+       ),
+       assert(
+         !(showMarkers || onlyStopOnMarkers) || markerCount != 0,
+         'markerCount must be greater than 0 if showMarkers or onlyStopOnMarkers is true',
+       ),
+       assert(
+         markerCount == null || markerCount > 0,
+         'markerCount must be greater than 0 if provided',
+       );
 
   @JsonKey(name: 'minvalue')
   final int min;

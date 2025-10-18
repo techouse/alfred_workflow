@@ -24,12 +24,7 @@ enum AlfredItemModKey {
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 final class AlfredItemMod with EquatableMixin {
-  const AlfredItemMod({
-    this.arg,
-    this.subtitle,
-    this.icon,
-    this.valid = true,
-  });
+  const AlfredItemMod({this.arg, this.subtitle, this.icon, this.valid = true});
 
   /// The argument which is passed through the workflow to the connected output action.
   @JsonKey(includeIfNull: false)

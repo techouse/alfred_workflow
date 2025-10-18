@@ -10,17 +10,17 @@ extension AlfredItemIconFixture on AlfredItemIcon {
 final class AlfredItemIconFactory extends FixtureFactory<AlfredItemIcon> {
   @override
   FixtureDefinition<AlfredItemIcon> definition() => define(
-        (Faker faker, [int index = 0]) => AlfredItemIcon(
-          path: <String>[
-            '/${faker.randomGenerator.string(16)}',
-            faker.randomGenerator.string(16),
-            '${faker.randomGenerator.string(16)}.png',
-          ].join('/'),
-          type: faker.randomGenerator.boolean()
-              ? faker.randomGenerator.element(AlfredItemIconType.values)
-              : null,
-        ),
-      );
+    (Faker faker, [int index = 0]) => AlfredItemIcon(
+      path: <String>[
+        '/${faker.randomGenerator.string(16)}',
+        faker.randomGenerator.string(16),
+        '${faker.randomGenerator.string(16)}.png',
+      ].join('/'),
+      type: faker.randomGenerator.boolean()
+          ? faker.randomGenerator.element(AlfredItemIconType.values)
+          : null,
+    ),
+  );
 
   FixtureRedefinitionBuilder<AlfredItemIcon> path(String value) =>
       (AlfredItemIcon alfredItemIcon, [int index = 0]) =>

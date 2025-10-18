@@ -30,8 +30,8 @@ final class AlfredUserConfigurationCheckBox
   @internal
   @override
   AlfredUserConfiguration<bool, AlfredUserConfigurationConfigCheckBox>
-      copyWithConfig(AlfredUserConfigurationConfigCheckBox config) =>
-          copyWith(config: config);
+  copyWithConfig(AlfredUserConfigurationConfigCheckBox config) =>
+      copyWith(config: config);
 
   static AlfredUserConfigurationConfigCheckBox _configFromJson(Map json) =>
       AlfredUserConfigurationConfigCheckBox.fromJson(

@@ -11,19 +11,18 @@ abstract class _$AlfredAutomaticCacheCWProxy {
 
   AlfredAutomaticCache looseReload(bool? looseReload);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredAutomaticCache(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAutomaticCache(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredAutomaticCache(...).copyWith(id: 12, name: "My name")
-  /// ````
-  AlfredAutomaticCache call({
-    int seconds,
-    bool? looseReload,
-  });
+  /// ```
+  AlfredAutomaticCache call({int seconds, bool? looseReload});
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredAutomaticCache.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredAutomaticCache.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredAutomaticCache.copyWith(...)` or call `instanceOfAlfredAutomaticCache.copyWith.fieldName(value)` for a single field.
 class _$AlfredAutomaticCacheCWProxyImpl
     implements _$AlfredAutomaticCacheCWProxy {
   const _$AlfredAutomaticCacheCWProxyImpl(this._value);
@@ -31,26 +30,26 @@ class _$AlfredAutomaticCacheCWProxyImpl
   final AlfredAutomaticCache _value;
 
   @override
-  AlfredAutomaticCache seconds(int seconds) => this(seconds: seconds);
+  AlfredAutomaticCache seconds(int seconds) => call(seconds: seconds);
 
   @override
   AlfredAutomaticCache looseReload(bool? looseReload) =>
-      this(looseReload: looseReload);
+      call(looseReload: looseReload);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredAutomaticCache(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAutomaticCache(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredAutomaticCache(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredAutomaticCache call({
     Object? seconds = const $CopyWithPlaceholder(),
     Object? looseReload = const $CopyWithPlaceholder(),
   }) {
     return AlfredAutomaticCache(
-      seconds: seconds == const $CopyWithPlaceholder()
+      seconds: seconds == const $CopyWithPlaceholder() || seconds == null
           ? _value.seconds
           // ignore: cast_nullable_to_non_nullable
           : seconds as int,
@@ -63,7 +62,8 @@ class _$AlfredAutomaticCacheCWProxyImpl
 }
 
 extension $AlfredAutomaticCacheCopyWith on AlfredAutomaticCache {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredAutomaticCache.copyWith(...)` or like so:`instanceOfAlfredAutomaticCache.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredAutomaticCache.copyWith(...)` or `instanceOfAlfredAutomaticCache.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredAutomaticCacheCWProxy get copyWith =>
       _$AlfredAutomaticCacheCWProxyImpl(this);
@@ -82,8 +82,8 @@ extension _$AlfredAutomaticCacheEquatableAnnotations on AlfredAutomaticCache {
 // **************************************************************************
 
 Map<String, dynamic> _$AlfredAutomaticCacheToJson(
-        AlfredAutomaticCache instance) =>
-    <String, dynamic>{
-      'seconds': instance.seconds,
-      if (instance.looseReload case final value?) 'loosereload': value,
-    };
+  AlfredAutomaticCache instance,
+) => <String, dynamic>{
+  'seconds': instance.seconds,
+  'loosereload': ?instance.looseReload,
+};

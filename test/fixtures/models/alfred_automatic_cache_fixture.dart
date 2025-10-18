@@ -12,19 +12,17 @@ final class AlfredAutomaticCacheFactory
     extends FixtureFactory<AlfredAutomaticCache> {
   @override
   FixtureDefinition<AlfredAutomaticCache> definition() => define(
-        (Faker faker, [int index = 0]) => AlfredAutomaticCache(
-          seconds: faker.randomGenerator.integer(86400, min: 5),
-          looseReload: faker.randomGenerator.boolean(),
-        ),
-      );
+    (Faker faker, [int index = 0]) => AlfredAutomaticCache(
+      seconds: faker.randomGenerator.integer(86400, min: 5),
+      looseReload: faker.randomGenerator.boolean(),
+    ),
+  );
 
   FixtureRedefinitionBuilder<AlfredAutomaticCache> seconds(int value) =>
       (AlfredAutomaticCache cache, [int index = 0]) =>
           cache.copyWith(seconds: value);
 
-  FixtureRedefinitionBuilder<AlfredAutomaticCache> looseReload(
-    bool? value,
-  ) =>
+  FixtureRedefinitionBuilder<AlfredAutomaticCache> looseReload(bool? value) =>
       (AlfredAutomaticCache cache, [int index = 0]) =>
           cache.copyWith(looseReload: value);
 }

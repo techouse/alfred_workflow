@@ -43,12 +43,13 @@ abstract class _$GithubReleaseCWProxy {
 
   GithubRelease body(String body);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubRelease(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubRelease(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   GithubRelease call({
     Uri url,
     Uri assetsUrl,
@@ -71,76 +72,77 @@ abstract class _$GithubReleaseCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfGithubRelease.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfGithubRelease.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfGithubRelease.copyWith(...)` or call `instanceOfGithubRelease.copyWith.fieldName(value)` for a single field.
 class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   const _$GithubReleaseCWProxyImpl(this._value);
 
   final GithubRelease _value;
 
   @override
-  GithubRelease url(Uri url) => this(url: url);
+  GithubRelease url(Uri url) => call(url: url);
 
   @override
-  GithubRelease assetsUrl(Uri assetsUrl) => this(assetsUrl: assetsUrl);
+  GithubRelease assetsUrl(Uri assetsUrl) => call(assetsUrl: assetsUrl);
 
   @override
-  GithubRelease uploadUrl(Uri uploadUrl) => this(uploadUrl: uploadUrl);
+  GithubRelease uploadUrl(Uri uploadUrl) => call(uploadUrl: uploadUrl);
 
   @override
-  GithubRelease htmlUrl(Uri htmlUrl) => this(htmlUrl: htmlUrl);
+  GithubRelease htmlUrl(Uri htmlUrl) => call(htmlUrl: htmlUrl);
 
   @override
-  GithubRelease id(int id) => this(id: id);
+  GithubRelease id(int id) => call(id: id);
 
   @override
-  GithubRelease author(GithubUser author) => this(author: author);
+  GithubRelease author(GithubUser author) => call(author: author);
 
   @override
-  GithubRelease nodeId(String nodeId) => this(nodeId: nodeId);
+  GithubRelease nodeId(String nodeId) => call(nodeId: nodeId);
 
   @override
-  GithubRelease tagName(Version tagName) => this(tagName: tagName);
+  GithubRelease tagName(Version tagName) => call(tagName: tagName);
 
   @override
   GithubRelease targetCommitish(String targetCommitish) =>
-      this(targetCommitish: targetCommitish);
+      call(targetCommitish: targetCommitish);
 
   @override
-  GithubRelease name(String name) => this(name: name);
+  GithubRelease name(String name) => call(name: name);
 
   @override
-  GithubRelease draft(bool draft) => this(draft: draft);
+  GithubRelease draft(bool draft) => call(draft: draft);
 
   @override
-  GithubRelease prerelease(bool prerelease) => this(prerelease: prerelease);
+  GithubRelease prerelease(bool prerelease) => call(prerelease: prerelease);
 
   @override
-  GithubRelease createdAt(DateTime createdAt) => this(createdAt: createdAt);
+  GithubRelease createdAt(DateTime createdAt) => call(createdAt: createdAt);
 
   @override
   GithubRelease publishedAt(DateTime publishedAt) =>
-      this(publishedAt: publishedAt);
+      call(publishedAt: publishedAt);
 
   @override
-  GithubRelease assets(List<GithubAsset> assets) => this(assets: assets);
+  GithubRelease assets(List<GithubAsset> assets) => call(assets: assets);
 
   @override
-  GithubRelease tarballUrl(Uri tarballUrl) => this(tarballUrl: tarballUrl);
+  GithubRelease tarballUrl(Uri tarballUrl) => call(tarballUrl: tarballUrl);
 
   @override
-  GithubRelease zipballUrl(Uri zipballUrl) => this(zipballUrl: zipballUrl);
+  GithubRelease zipballUrl(Uri zipballUrl) => call(zipballUrl: zipballUrl);
 
   @override
-  GithubRelease body(String body) => this(body: body);
+  GithubRelease body(String body) => call(body: body);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `GithubRelease(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubRelease(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   GithubRelease call({
     Object? url = const $CopyWithPlaceholder(),
     Object? assetsUrl = const $CopyWithPlaceholder(),
@@ -162,75 +164,81 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
     Object? body = const $CopyWithPlaceholder(),
   }) {
     return GithubRelease(
-      url: url == const $CopyWithPlaceholder()
+      url: url == const $CopyWithPlaceholder() || url == null
           ? _value.url
           // ignore: cast_nullable_to_non_nullable
           : url as Uri,
-      assetsUrl: assetsUrl == const $CopyWithPlaceholder()
+      assetsUrl: assetsUrl == const $CopyWithPlaceholder() || assetsUrl == null
           ? _value.assetsUrl
           // ignore: cast_nullable_to_non_nullable
           : assetsUrl as Uri,
-      uploadUrl: uploadUrl == const $CopyWithPlaceholder()
+      uploadUrl: uploadUrl == const $CopyWithPlaceholder() || uploadUrl == null
           ? _value.uploadUrl
           // ignore: cast_nullable_to_non_nullable
           : uploadUrl as Uri,
-      htmlUrl: htmlUrl == const $CopyWithPlaceholder()
+      htmlUrl: htmlUrl == const $CopyWithPlaceholder() || htmlUrl == null
           ? _value.htmlUrl
           // ignore: cast_nullable_to_non_nullable
           : htmlUrl as Uri,
-      id: id == const $CopyWithPlaceholder()
+      id: id == const $CopyWithPlaceholder() || id == null
           ? _value.id
           // ignore: cast_nullable_to_non_nullable
           : id as int,
-      author: author == const $CopyWithPlaceholder()
+      author: author == const $CopyWithPlaceholder() || author == null
           ? _value.author
           // ignore: cast_nullable_to_non_nullable
           : author as GithubUser,
-      nodeId: nodeId == const $CopyWithPlaceholder()
+      nodeId: nodeId == const $CopyWithPlaceholder() || nodeId == null
           ? _value.nodeId
           // ignore: cast_nullable_to_non_nullable
           : nodeId as String,
-      tagName: tagName == const $CopyWithPlaceholder()
+      tagName: tagName == const $CopyWithPlaceholder() || tagName == null
           ? _value.tagName
           // ignore: cast_nullable_to_non_nullable
           : tagName as Version,
-      targetCommitish: targetCommitish == const $CopyWithPlaceholder()
+      targetCommitish:
+          targetCommitish == const $CopyWithPlaceholder() ||
+              targetCommitish == null
           ? _value.targetCommitish
           // ignore: cast_nullable_to_non_nullable
           : targetCommitish as String,
-      name: name == const $CopyWithPlaceholder()
+      name: name == const $CopyWithPlaceholder() || name == null
           ? _value.name
           // ignore: cast_nullable_to_non_nullable
           : name as String,
-      draft: draft == const $CopyWithPlaceholder()
+      draft: draft == const $CopyWithPlaceholder() || draft == null
           ? _value.draft
           // ignore: cast_nullable_to_non_nullable
           : draft as bool,
-      prerelease: prerelease == const $CopyWithPlaceholder()
+      prerelease:
+          prerelease == const $CopyWithPlaceholder() || prerelease == null
           ? _value.prerelease
           // ignore: cast_nullable_to_non_nullable
           : prerelease as bool,
-      createdAt: createdAt == const $CopyWithPlaceholder()
+      createdAt: createdAt == const $CopyWithPlaceholder() || createdAt == null
           ? _value.createdAt
           // ignore: cast_nullable_to_non_nullable
           : createdAt as DateTime,
-      publishedAt: publishedAt == const $CopyWithPlaceholder()
+      publishedAt:
+          publishedAt == const $CopyWithPlaceholder() || publishedAt == null
           ? _value.publishedAt
           // ignore: cast_nullable_to_non_nullable
           : publishedAt as DateTime,
-      assets: assets == const $CopyWithPlaceholder()
+      assets: assets == const $CopyWithPlaceholder() || assets == null
           ? _value.assets
           // ignore: cast_nullable_to_non_nullable
           : assets as List<GithubAsset>,
-      tarballUrl: tarballUrl == const $CopyWithPlaceholder()
+      tarballUrl:
+          tarballUrl == const $CopyWithPlaceholder() || tarballUrl == null
           ? _value.tarballUrl
           // ignore: cast_nullable_to_non_nullable
           : tarballUrl as Uri,
-      zipballUrl: zipballUrl == const $CopyWithPlaceholder()
+      zipballUrl:
+          zipballUrl == const $CopyWithPlaceholder() || zipballUrl == null
           ? _value.zipballUrl
           // ignore: cast_nullable_to_non_nullable
           : zipballUrl as Uri,
-      body: body == const $CopyWithPlaceholder()
+      body: body == const $CopyWithPlaceholder() || body == null
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
           : body as String,
@@ -239,7 +247,8 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
 }
 
 extension $GithubReleaseCopyWith on GithubRelease {
-  /// Returns a callable class that can be used as follows: `instanceOfGithubRelease.copyWith(...)` or like so:`instanceOfGithubRelease.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfGithubRelease.copyWith(...)` or `instanceOfGithubRelease.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$GithubReleaseCWProxy get copyWith => _$GithubReleaseCWProxyImpl(this);
 }
@@ -250,25 +259,25 @@ extension $GithubReleaseCopyWith on GithubRelease {
 
 extension _$GithubReleaseEquatableAnnotations on GithubRelease {
   List<Object?> get _$props => [
-        url,
-        assetsUrl,
-        uploadUrl,
-        htmlUrl,
-        id,
-        author,
-        nodeId,
-        tagName,
-        targetCommitish,
-        name,
-        draft,
-        prerelease,
-        createdAt,
-        publishedAt,
-        assets,
-        tarballUrl,
-        zipballUrl,
-        body,
-      ];
+    url,
+    assetsUrl,
+    uploadUrl,
+    htmlUrl,
+    id,
+    author,
+    nodeId,
+    tagName,
+    targetCommitish,
+    name,
+    draft,
+    prerelease,
+    createdAt,
+    publishedAt,
+    assets,
+    tarballUrl,
+    zipballUrl,
+    body,
+  ];
 }
 
 // **************************************************************************

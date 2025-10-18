@@ -8,19 +8,15 @@ part 'alfred_action.g.dart';
 @CopyWith()
 @JsonSerializable()
 final class AlfredAction with EquatableMixin {
-  const AlfredAction({
-    this.text,
-    this.url,
-    this.file,
-    this.auto,
-  })  : assert(
-          !(text == null && url == null && file == null && auto == null),
-          'At least one of text, url, file or auto must be provided.',
-        ),
-        assert(
-          text == null || (text is String || text is Iterable),
-          'Text must be a String or Iterable.',
-        );
+  const AlfredAction({this.text, this.url, this.file, this.auto})
+    : assert(
+        !(text == null && url == null && file == null && auto == null),
+        'At least one of text, url, file or auto must be provided.',
+      ),
+      assert(
+        text == null || (text is String || text is Iterable),
+        'Text must be a String or Iterable.',
+      );
 
   final dynamic text;
   final Uri? url;

@@ -42,9 +42,7 @@ base class AlfredCache<T> with EquatableMixin {
     this.maxEntries = 10,
     this.name = 'query_cache',
     this.evictionPolicy = const LruEvictionPolicy(),
-    this.expiryPolicy = const CreatedExpiryPolicy(
-      Duration(minutes: 1),
-    ),
+    this.expiryPolicy = const CreatedExpiryPolicy(Duration(minutes: 1)),
     this.verbose = false,
   }) : assert(maxEntries > 0, 'maxEntries must be positive number');
 
@@ -82,29 +80,32 @@ base class AlfredCache<T> with EquatableMixin {
   /// The [Cache] backed by a [Store]
   @ignore
   late final Future<Cache<T>> cache = store.then(
-    (FileCacheStore cacheStore) async => await cacheStore.cache<T>(
-      name: name,
-      fromEncodable: fromEncodable,
-      maxEntries: maxEntries,
-      eventListenerMode: EventListenerMode.synchronous,
-      evictionPolicy: evictionPolicy,
-      expiryPolicy: expiryPolicy,
-    )
-      ..on<CacheEntryCreatedEvent<T>>().listen(
-        verbose ? (event) => log('Key "${event.entry.key}" added') : null,
-      )
-      ..on<CacheEntryUpdatedEvent<T>>().listen(
-        verbose ? (event) => log('Key "${event.newEntry.key}" updated') : null,
-      )
-      ..on<CacheEntryRemovedEvent<T>>().listen(
-        verbose ? (event) => log('Key "${event.entry.key}" removed') : null,
-      )
-      ..on<CacheEntryExpiredEvent<T>>().listen(
-        verbose ? (event) => log('Key "${event.entry.key}" expired') : null,
-      )
-      ..on<CacheEntryEvictedEvent<T>>().listen(
-        verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
-      ),
+    (FileCacheStore cacheStore) async =>
+        await cacheStore.cache<T>(
+            name: name,
+            fromEncodable: fromEncodable,
+            maxEntries: maxEntries,
+            eventListenerMode: EventListenerMode.synchronous,
+            evictionPolicy: evictionPolicy,
+            expiryPolicy: expiryPolicy,
+          )
+          ..on<CacheEntryCreatedEvent<T>>().listen(
+            verbose ? (event) => log('Key "${event.entry.key}" added') : null,
+          )
+          ..on<CacheEntryUpdatedEvent<T>>().listen(
+            verbose
+                ? (event) => log('Key "${event.newEntry.key}" updated')
+                : null,
+          )
+          ..on<CacheEntryRemovedEvent<T>>().listen(
+            verbose ? (event) => log('Key "${event.entry.key}" removed') : null,
+          )
+          ..on<CacheEntryExpiredEvent<T>>().listen(
+            verbose ? (event) => log('Key "${event.entry.key}" expired') : null,
+          )
+          ..on<CacheEntryEvictedEvent<T>>().listen(
+            verbose ? (event) => log('Key "${event.entry.key}" evicted') : null,
+          ),
   );
 
   @override

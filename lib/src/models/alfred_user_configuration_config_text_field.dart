@@ -9,7 +9,8 @@ part 'alfred_user_configuration_config_text_field.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextField
-    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigTextField({
     required super.defaultValue,
     required this.required,

@@ -15,12 +15,13 @@ abstract class _$AlfredUserConfigurationConfigCheckBoxCWProxy {
 
   AlfredUserConfigurationConfigCheckBox text(String? text);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigCheckBox(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigCheckBox(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigCheckBox(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigCheckBox call({
     bool defaultValue,
     bool required,
@@ -29,7 +30,8 @@ abstract class _$AlfredUserConfigurationConfigCheckBoxCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith(...)` or call `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
     implements _$AlfredUserConfigurationConfigCheckBoxCWProxy {
   const _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl(this._value);
@@ -38,27 +40,27 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
 
   @override
   AlfredUserConfigurationConfigCheckBox defaultValue(bool defaultValue) =>
-      this(defaultValue: defaultValue);
+      call(defaultValue: defaultValue);
 
   @override
   AlfredUserConfigurationConfigCheckBox required(bool required) =>
-      this(required: required);
+      call(required: required);
 
   @override
   AlfredUserConfigurationConfigCheckBox value(bool? value) =>
-      this(value: value);
+      call(value: value);
 
   @override
-  AlfredUserConfigurationConfigCheckBox text(String? text) => this(text: text);
+  AlfredUserConfigurationConfigCheckBox text(String? text) => call(text: text);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigCheckBox(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigCheckBox(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigCheckBox(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigCheckBox call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -66,11 +68,12 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
     Object? text = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigCheckBox(
-      defaultValue: defaultValue == const $CopyWithPlaceholder()
+      defaultValue:
+          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as bool,
-      required: required == const $CopyWithPlaceholder()
+      required: required == const $CopyWithPlaceholder() || required == null
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
@@ -88,7 +91,8 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
 
 extension $AlfredUserConfigurationConfigCheckBoxCopyWith
     on AlfredUserConfigurationConfigCheckBox {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationConfigCheckBox.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith(...)` or `instanceOfAlfredUserConfigurationConfigCheckBox.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationConfigCheckBoxCWProxy get copyWith =>
       _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl(this);
@@ -99,11 +103,11 @@ extension $AlfredUserConfigurationConfigCheckBoxCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationConfigCheckBox
-    _$AlfredUserConfigurationConfigCheckBoxFromJson(
-            Map<String, dynamic> json) =>
-        AlfredUserConfigurationConfigCheckBox(
-          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
-              json, 'default') as bool,
-          required: json['required'] as bool,
-          text: json['text'] as String?,
-        );
+_$AlfredUserConfigurationConfigCheckBoxFromJson(Map<String, dynamic> json) =>
+    AlfredUserConfigurationConfigCheckBox(
+      defaultValue:
+          AlfredUserConfigurationConfig.fromJsonDefaultValue(json, 'default')
+              as bool,
+      required: json['required'] as bool,
+      text: json['text'] as String?,
+    );

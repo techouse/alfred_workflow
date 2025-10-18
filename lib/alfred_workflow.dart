@@ -25,8 +25,8 @@ final class AlfredWorkflow {
   AlfredWorkflow({
     AlfredAutomaticCache? automaticCache,
     AlfredCache<AlfredItems>? fileCache,
-  })  : _alfredAutomaticCache = automaticCache,
-        _alfredFileCache = fileCache;
+  }) : _alfredAutomaticCache = automaticCache,
+       _alfredFileCache = fileCache;
 
   /// Alfred learns to prioritise item results like he learns any other, meaning
   /// the order in which your workflow results are presented will be based on
@@ -127,10 +127,10 @@ final class AlfredWorkflow {
   @visibleForTesting
   AlfredAutomaticCache? get automaticCache => useAutomaticCache
       ? _alfredAutomaticCache ??
-          AlfredAutomaticCache(
-            seconds: cacheTimeToLive ?? defaultCacheTimeToLive,
-            looseReload: true,
-          )
+            AlfredAutomaticCache(
+              seconds: cacheTimeToLive ?? defaultCacheTimeToLive,
+              looseReload: true,
+            )
       : null;
 
   @visibleForTesting
@@ -208,14 +208,15 @@ final class AlfredWorkflow {
     AlfredItem? addToBeginning,
     AlfredItem? addToEnd,
   }) async {
-    final AlfredItems items = AlfredItems(
-      [...(await getItems()).items],
-      exactOrder: disableAlfredSmartResultOrdering,
-      skipKnowledge: skipKnowledge,
-      cache: automaticCache,
-    )
-      ..insertAll(0, [if (addToBeginning != null) addToBeginning])
-      ..addAll([if (addToEnd != null) addToEnd]);
+    final AlfredItems items =
+        AlfredItems(
+            [...(await getItems()).items],
+            exactOrder: disableAlfredSmartResultOrdering,
+            skipKnowledge: skipKnowledge,
+            cache: automaticCache,
+          )
+          ..insertAll(0, [if (addToBeginning != null) addToBeginning])
+          ..addAll([if (addToEnd != null) addToEnd]);
 
     return jsonEncode(items.toJson());
   }
