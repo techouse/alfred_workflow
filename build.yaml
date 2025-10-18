@@ -8,3 +8,5 @@ targets:
       json_serializable:
         options:
           field_rename: snake
+      copy_with_extension_gen:
+        enabled: true
