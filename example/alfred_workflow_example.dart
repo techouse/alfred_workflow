@@ -42,9 +42,7 @@ void main(List<String> arguments) {
             title: 'Sorry I can\'t help you with that query.',
             subtitle: 'Shall I try and search Google?',
             arg: url.toString(),
-            text: AlfredItemText(
-              copy: url.toString(),
-            ),
+            text: AlfredItemText(copy: url.toString()),
             quickLookUrl: url.toString(),
             icon: AlfredItemIcon(path: 'google.png'),
             valid: true,
@@ -56,9 +54,7 @@ void main(List<String> arguments) {
       exitCode = 1;
 
       /// In case of errors you can simply output the message in the Alfred feedback
-      workflow.addItem(
-        AlfredItem(title: err.toString()),
-      );
+      workflow.addItem(AlfredItem(title: err.toString()));
     } finally {
       /// This will always print JSON to the stdout and send that to Alfred.
       workflow.run();

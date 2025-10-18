@@ -16,18 +16,20 @@ abstract class _$AlfredUserConfigurationConfigNumberSliderCWProxy {
   AlfredUserConfigurationConfigNumberSlider max(int max);
 
   AlfredUserConfigurationConfigNumberSlider onlyStopOnMarkers(
-      bool onlyStopOnMarkers);
+    bool onlyStopOnMarkers,
+  );
 
   AlfredUserConfigurationConfigNumberSlider showMarkers(bool showMarkers);
 
   AlfredUserConfigurationConfigNumberSlider markerCount(int? markerCount);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigNumberSlider(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigNumberSlider(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigNumberSlider(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigNumberSlider call({
     int defaultValue,
     int? value,
@@ -39,7 +41,8 @@ abstract class _$AlfredUserConfigurationConfigNumberSliderCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith(...)` or call `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
     implements _$AlfredUserConfigurationConfigNumberSliderCWProxy {
   const _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl(this._value);
@@ -48,39 +51,39 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
 
   @override
   AlfredUserConfigurationConfigNumberSlider defaultValue(int defaultValue) =>
-      this(defaultValue: defaultValue);
+      call(defaultValue: defaultValue);
 
   @override
   AlfredUserConfigurationConfigNumberSlider value(int? value) =>
-      this(value: value);
+      call(value: value);
 
   @override
-  AlfredUserConfigurationConfigNumberSlider min(int min) => this(min: min);
+  AlfredUserConfigurationConfigNumberSlider min(int min) => call(min: min);
 
   @override
-  AlfredUserConfigurationConfigNumberSlider max(int max) => this(max: max);
+  AlfredUserConfigurationConfigNumberSlider max(int max) => call(max: max);
 
   @override
   AlfredUserConfigurationConfigNumberSlider onlyStopOnMarkers(
-          bool onlyStopOnMarkers) =>
-      this(onlyStopOnMarkers: onlyStopOnMarkers);
+    bool onlyStopOnMarkers,
+  ) => call(onlyStopOnMarkers: onlyStopOnMarkers);
 
   @override
   AlfredUserConfigurationConfigNumberSlider showMarkers(bool showMarkers) =>
-      this(showMarkers: showMarkers);
+      call(showMarkers: showMarkers);
 
   @override
   AlfredUserConfigurationConfigNumberSlider markerCount(int? markerCount) =>
-      this(markerCount: markerCount);
+      call(markerCount: markerCount);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigNumberSlider(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigNumberSlider(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigNumberSlider(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigNumberSlider call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
@@ -91,7 +94,8 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
     Object? markerCount = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigNumberSlider(
-      defaultValue: defaultValue == const $CopyWithPlaceholder()
+      defaultValue:
+          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as int,
@@ -99,19 +103,22 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
           : value as int?,
-      min: min == const $CopyWithPlaceholder()
+      min: min == const $CopyWithPlaceholder() || min == null
           ? _value.min
           // ignore: cast_nullable_to_non_nullable
           : min as int,
-      max: max == const $CopyWithPlaceholder()
+      max: max == const $CopyWithPlaceholder() || max == null
           ? _value.max
           // ignore: cast_nullable_to_non_nullable
           : max as int,
-      onlyStopOnMarkers: onlyStopOnMarkers == const $CopyWithPlaceholder()
+      onlyStopOnMarkers:
+          onlyStopOnMarkers == const $CopyWithPlaceholder() ||
+              onlyStopOnMarkers == null
           ? _value.onlyStopOnMarkers
           // ignore: cast_nullable_to_non_nullable
           : onlyStopOnMarkers as bool,
-      showMarkers: showMarkers == const $CopyWithPlaceholder()
+      showMarkers:
+          showMarkers == const $CopyWithPlaceholder() || showMarkers == null
           ? _value.showMarkers
           // ignore: cast_nullable_to_non_nullable
           : showMarkers as bool,
@@ -125,7 +132,8 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
 
 extension $AlfredUserConfigurationConfigNumberSliderCopyWith
     on AlfredUserConfigurationConfigNumberSlider {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith(...)` or `instanceOfAlfredUserConfigurationConfigNumberSlider.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationConfigNumberSliderCWProxy get copyWith =>
       _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl(this);
@@ -136,15 +144,16 @@ extension $AlfredUserConfigurationConfigNumberSliderCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationConfigNumberSlider
-    _$AlfredUserConfigurationConfigNumberSliderFromJson(
-            Map<String, dynamic> json) =>
-        AlfredUserConfigurationConfigNumberSlider(
-          defaultValue: (AlfredUserConfigurationConfig.fromJsonDefaultValue(
-                  json, 'default') as num)
-              .toInt(),
-          min: (json['minvalue'] as num).toInt(),
-          max: (json['maxvalue'] as num).toInt(),
-          onlyStopOnMarkers: json['onlystoponmarkers'] as bool? ?? false,
-          showMarkers: json['showmarkers'] as bool? ?? false,
-          markerCount: (json['markercount'] as num?)?.toInt(),
-        );
+_$AlfredUserConfigurationConfigNumberSliderFromJson(
+  Map<String, dynamic> json,
+) => AlfredUserConfigurationConfigNumberSlider(
+  defaultValue:
+      (AlfredUserConfigurationConfig.fromJsonDefaultValue(json, 'default')
+              as num)
+          .toInt(),
+  min: (json['minvalue'] as num).toInt(),
+  max: (json['maxvalue'] as num).toInt(),
+  onlyStopOnMarkers: json['onlystoponmarkers'] as bool? ?? false,
+  showMarkers: json['showmarkers'] as bool? ?? false,
+  markerCount: (json['markercount'] as num?)?.toInt(),
+);

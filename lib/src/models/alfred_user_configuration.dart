@@ -6,8 +6,11 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration.g.dart';
 
 /// Alfred user configuration generic class
-abstract class AlfredUserConfiguration<T,
-    Q extends AlfredUserConfigurationConfig<T>> with EquatableMixin {
+abstract class AlfredUserConfiguration<
+  T,
+  Q extends AlfredUserConfigurationConfig<T>
+>
+    with EquatableMixin {
   const AlfredUserConfiguration({
     required this.type,
     required this.variable,

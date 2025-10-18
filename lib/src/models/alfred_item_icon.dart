@@ -17,10 +17,7 @@ enum AlfredItemIconType {
 @CopyWith()
 @JsonSerializable()
 final class AlfredItemIcon with EquatableMixin {
-  const AlfredItemIcon({
-    required this.path,
-    this.type,
-  });
+  const AlfredItemIcon({required this.path, this.type});
 
   /// The local file path of the icon file.
   ///

@@ -9,7 +9,8 @@ part 'alfred_user_configuration_config_text_field.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextField
-    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigTextField({
     required super.defaultValue,
     required this.required,
@@ -18,13 +19,13 @@ final class AlfredUserConfigurationConfigTextField
     this.placeholder,
   });
 
-  /// Whether the text field is required
+  /// Placeholder text shown in the field
   final String? placeholder;
 
-  /// Whether to trim the text
+  /// Whether the text field is required
   final bool required;
 
-  /// Whether to trim the text
+  /// Whether to trim leading/trailing whitespace
   final bool trim;
 
   @internal

@@ -47,11 +47,13 @@ void main() async {
       ]).makeSingle();
 
       final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v2.0.0',
-          ))
+          .redefine(
+            GithubReleaseFixture.factory.withDetails(
+              repoName: repoName,
+              login: login,
+              tagName: 'v2.0.0',
+            ),
+          )
           .makeSingle();
 
       when(
@@ -80,11 +82,13 @@ void main() async {
       ]).makeSingle();
 
       final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v1.0.0',
-          ))
+          .redefine(
+            GithubReleaseFixture.factory.withDetails(
+              repoName: repoName,
+              login: login,
+              tagName: 'v1.0.0',
+            ),
+          )
           .makeSingle();
 
       when(
@@ -113,11 +117,13 @@ void main() async {
       ]).makeSingle();
 
       final GithubRelease githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v1.0.0',
-          ))
+          .redefine(
+            GithubReleaseFixture.factory.withDetails(
+              repoName: repoName,
+              login: login,
+              tagName: 'v1.0.0',
+            ),
+          )
           .makeSingle();
 
       when(
@@ -140,19 +146,19 @@ void main() async {
           'currentVersion': '2.0.0',
           'tagName': 'v2.0.0',
           'expectedResult': false,
-          'description': 'equal'
+          'description': 'equal',
         },
         {
           'currentVersion': '2.0.0',
           'tagName': 'v2.0.1',
           'expectedResult': true,
-          'description': 'higher'
+          'description': 'higher',
         },
         {
           'currentVersion': '2.0.0',
           'tagName': 'v1.9.9',
           'expectedResult': false,
-          'description': 'lower'
+          'description': 'lower',
         },
       ];
 
@@ -172,25 +178,31 @@ void main() async {
         ]).makeSingle();
 
         final GithubRelease githubRelease = GithubReleaseFixture.factory
-            .redefine(GithubReleaseFixture.factory.withDetails(
-              repoName: repoName,
-              login: login,
-              tagName: tagName,
-            ))
+            .redefine(
+              GithubReleaseFixture.factory.withDetails(
+                repoName: repoName,
+                login: login,
+                tagName: tagName,
+              ),
+            )
             .makeSingle();
 
         final Cache<GithubRelease> cache = await updater.fileCache;
 
         await cache.put(AlfredUpdater.updateKey.md5hex, githubRelease);
 
-        final GithubRelease? cachedRelease =
-            await cache.get(AlfredUpdater.updateKey.md5hex);
+        final GithubRelease? cachedRelease = await cache.get(
+          AlfredUpdater.updateKey.md5hex,
+        );
 
         expect(cachedRelease, isNotNull);
         expect(cachedRelease, githubRelease);
 
-        expect(await updater.updateAvailable(), expectedResult,
-            reason: 'When cached version is $description to current version');
+        expect(
+          await updater.updateAvailable(),
+          expectedResult,
+          reason: 'When cached version is $description to current version',
+        );
       }
     });
   });
@@ -213,11 +225,13 @@ void main() async {
       ]).makeSingle();
 
       githubRelease = GithubReleaseFixture.factory
-          .redefine(GithubReleaseFixture.factory.withDetails(
-            repoName: repoName,
-            login: login,
-            tagName: 'v2.0.0',
-          ))
+          .redefine(
+            GithubReleaseFixture.factory.withDetails(
+              repoName: repoName,
+              login: login,
+              tagName: 'v2.0.0',
+            ),
+          )
           .makeSingle();
 
       asset = githubRelease.assets.first;
@@ -243,13 +257,13 @@ void main() async {
     });
 
     test('download', () async {
-      final List<int> bytes =
-          utf8.encode(faker.randomGenerator.string(1024 * 10));
-
-      when(client.get(githubRelease.assets.first.browserDownloadUrl))
-          .thenAnswer(
-        (_) async => http.Response.bytes(bytes, 200),
+      final List<int> bytes = utf8.encode(
+        faker.randomGenerator.string(1024 * 10),
       );
+
+      when(
+        client.get(githubRelease.assets.first.browserDownloadUrl),
+      ).thenAnswer((_) async => http.Response.bytes(bytes, 200));
 
       final FileSystem fileSystem = MemoryFileSystem();
       final Directory directory = await fileSystem.systemTempDirectory
@@ -306,8 +320,9 @@ void main() async {
         AlfredUpdaterFixture.factory.githubRepositoryUrl(
           Uri.https('github.com', '/user/repo'),
         ),
-        AlfredUpdaterFixture.factory
-            .currentVersion('2.0.0'), // Different version
+        AlfredUpdaterFixture.factory.currentVersion(
+          '2.0.0',
+        ), // Different version
         AlfredUpdaterFixture.factory.client(client),
       ]).makeSingle();
 
@@ -315,11 +330,13 @@ void main() async {
       expect(updater1.currentVersion, isNot(equals(updater2.currentVersion)));
 
       // Get Version objects from props
-      final Version? version1 = updater1.props
-          .firstWhereOrNull((Object? prop) => prop is Version) as Version?;
+      final Version? version1 =
+          updater1.props.firstWhereOrNull((Object? prop) => prop is Version)
+              as Version?;
 
-      final Version? version2 = updater2.props
-          .firstWhereOrNull((Object? prop) => prop is Version) as Version?;
+      final Version? version2 =
+          updater2.props.firstWhereOrNull((Object? prop) => prop is Version)
+              as Version?;
 
       expect(version1, isNotNull);
       expect(version2, isNotNull);

@@ -33,12 +33,13 @@ abstract class _$AlfredItemCWProxy {
 
   AlfredItem action(dynamic action);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItem(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItem(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredItem call({
     String title,
     AlfredItemType type,
@@ -56,62 +57,63 @@ abstract class _$AlfredItemCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItem.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItem.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredItem.copyWith(...)` or call `instanceOfAlfredItem.copyWith.fieldName(value)` for a single field.
 class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
   const _$AlfredItemCWProxyImpl(this._value);
 
   final AlfredItem _value;
 
   @override
-  AlfredItem title(String title) => this(title: title);
+  AlfredItem title(String title) => call(title: title);
 
   @override
-  AlfredItem type(AlfredItemType type) => this(type: type);
+  AlfredItem type(AlfredItemType type) => call(type: type);
 
   @override
-  AlfredItem valid(bool valid) => this(valid: valid);
+  AlfredItem valid(bool valid) => call(valid: valid);
 
   @override
-  AlfredItem subtitle(String? subtitle) => this(subtitle: subtitle);
+  AlfredItem subtitle(String? subtitle) => call(subtitle: subtitle);
 
   @override
-  AlfredItem arg(String? arg) => this(arg: arg);
+  AlfredItem arg(String? arg) => call(arg: arg);
 
   @override
   AlfredItem autocomplete(String? autocomplete) =>
-      this(autocomplete: autocomplete);
+      call(autocomplete: autocomplete);
 
   @override
-  AlfredItem uid(String? uid) => this(uid: uid);
+  AlfredItem uid(String? uid) => call(uid: uid);
 
   @override
-  AlfredItem icon(AlfredItemIcon? icon) => this(icon: icon);
+  AlfredItem icon(AlfredItemIcon? icon) => call(icon: icon);
 
   @override
-  AlfredItem text(AlfredItemText? text) => this(text: text);
+  AlfredItem text(AlfredItemText? text) => call(text: text);
 
   @override
   AlfredItem quickLookUrl(String? quickLookUrl) =>
-      this(quickLookUrl: quickLookUrl);
+      call(quickLookUrl: quickLookUrl);
 
   @override
-  AlfredItem match(String? match) => this(match: match);
+  AlfredItem match(String? match) => call(match: match);
 
   @override
   AlfredItem mods(Map<Set<AlfredItemModKey>, AlfredItemMod>? mods) =>
-      this(mods: mods);
+      call(mods: mods);
 
   @override
-  AlfredItem action(dynamic action) => this(action: action);
+  AlfredItem action(dynamic action) => call(action: action);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItem(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItem(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItem(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredItem call({
     Object? title = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),
@@ -128,15 +130,15 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
     Object? action = const $CopyWithPlaceholder(),
   }) {
     return AlfredItem(
-      title: title == const $CopyWithPlaceholder()
+      title: title == const $CopyWithPlaceholder() || title == null
           ? _value.title
           // ignore: cast_nullable_to_non_nullable
           : title as String,
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredItemType,
-      valid: valid == const $CopyWithPlaceholder()
+      valid: valid == const $CopyWithPlaceholder() || valid == null
           ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
@@ -185,7 +187,8 @@ class _$AlfredItemCWProxyImpl implements _$AlfredItemCWProxy {
 }
 
 extension $AlfredItemCopyWith on AlfredItem {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredItem.copyWith(...)` or like so:`instanceOfAlfredItem.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredItem.copyWith(...)` or `instanceOfAlfredItem.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemCWProxy get copyWith => _$AlfredItemCWProxyImpl(this);
 }
@@ -196,19 +199,19 @@ extension $AlfredItemCopyWith on AlfredItem {
 
 extension _$AlfredItemEquatableAnnotations on AlfredItem {
   List<Object?> get _$props => [
-        title,
-        type,
-        valid,
-        subtitle,
-        arg,
-        autocomplete,
-        uid,
-        icon,
-        text,
-        quickLookUrl,
-        match,
-        action,
-      ];
+    title,
+    type,
+    valid,
+    subtitle,
+    arg,
+    autocomplete,
+    uid,
+    icon,
+    text,
+    quickLookUrl,
+    match,
+    action,
+  ];
 }
 
 // **************************************************************************
@@ -216,13 +219,11 @@ extension _$AlfredItemEquatableAnnotations on AlfredItem {
 // **************************************************************************
 
 AlfredItem _$AlfredItemFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['title'],
-  );
+  $checkKeys(json, requiredKeys: const ['title']);
   return AlfredItem(
     title: json['title'] as String,
-    type: $enumDecodeNullable(_$AlfredItemTypeEnumMap, json['type']) ??
+    type:
+        $enumDecodeNullable(_$AlfredItemTypeEnumMap, json['type']) ??
         AlfredItemType.Default,
     valid: json['valid'] as bool? ?? false,
     subtitle: json['subtitle'] as String?,
@@ -243,18 +244,16 @@ Map<String, dynamic> _$AlfredItemToJson(AlfredItem instance) =>
       'title': instance.title,
       'type': _$AlfredItemTypeEnumMap[instance.type]!,
       'valid': instance.valid,
-      if (instance.subtitle case final value?) 'subtitle': value,
-      if (instance.arg case final value?) 'arg': value,
-      if (instance.autocomplete case final value?) 'autocomplete': value,
-      if (instance.uid case final value?) 'uid': value,
-      if (instance.icon?.toJson() case final value?) 'icon': value,
-      if (instance.text?.toJson() case final value?) 'text': value,
-      if (instance.quickLookUrl case final value?) 'quicklookurl': value,
-      if (instance.match case final value?) 'match': value,
-      if (AlfredItem._modsToJson(instance.mods) case final value?)
-        'mods': value,
-      if (AlfredItem._actionToJson(instance.action) case final value?)
-        'action': value,
+      'subtitle': ?instance.subtitle,
+      'arg': ?instance.arg,
+      'autocomplete': ?instance.autocomplete,
+      'uid': ?instance.uid,
+      'icon': ?instance.icon?.toJson(),
+      'text': ?instance.text?.toJson(),
+      'quicklookurl': ?instance.quickLookUrl,
+      'match': ?instance.match,
+      'mods': ?AlfredItem._modsToJson(instance.mods),
+      'action': ?AlfredItem._actionToJson(instance.action),
     };
 
 const _$AlfredItemTypeEnumMap = {

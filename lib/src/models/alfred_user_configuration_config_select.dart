@@ -9,7 +9,7 @@ part 'alfred_user_configuration_config_select.g.dart';
 /// Alfred user configuration select pair record
 typedef AlfredUserConfigurationConfigSelectPair = ({
   String label,
-  String value
+  String value,
 });
 
 /// Alfred user configuration select class
@@ -17,7 +17,8 @@ typedef AlfredUserConfigurationConfigSelectPair = ({
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigSelect
-    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigSelect({
     required super.defaultValue,
     required this.pairs,
@@ -34,13 +35,11 @@ final class AlfredUserConfigurationConfigSelect
       copyWith(value: value);
 
   static List<AlfredUserConfigurationConfigSelectPair> _pairsFromJson(
-      List json) {
+    List json,
+  ) {
     return [
       for (final List pair in json)
-        (
-          label: pair.first.toString(),
-          value: pair.last.toString(),
-        ),
+        (label: pair.first.toString(), value: pair.last.toString()),
     ];
   }
 

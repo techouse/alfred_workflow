@@ -10,7 +10,8 @@ part 'alfred_user_configuration_config_check_box.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigCheckBox
-    extends AlfredUserConfigurationConfig<bool> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<bool>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigCheckBox({
     required super.defaultValue,
     required this.required,

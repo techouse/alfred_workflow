@@ -11,44 +11,43 @@ abstract class _$AlfredItemTextCWProxy {
 
   AlfredItemText largeType(String? largeType);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemText(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemText(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItemText(...).copyWith(id: 12, name: "My name")
-  /// ````
-  AlfredItemText call({
-    String copy,
-    String? largeType,
-  });
+  /// ```
+  AlfredItemText call({String copy, String? largeType});
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemText.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemText.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredItemText.copyWith(...)` or call `instanceOfAlfredItemText.copyWith.fieldName(value)` for a single field.
 class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
   const _$AlfredItemTextCWProxyImpl(this._value);
 
   final AlfredItemText _value;
 
   @override
-  AlfredItemText copy(String copy) => this(copy: copy);
+  AlfredItemText copy(String copy) => call(copy: copy);
 
   @override
-  AlfredItemText largeType(String? largeType) => this(largeType: largeType);
+  AlfredItemText largeType(String? largeType) => call(largeType: largeType);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemText(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemText(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItemText(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredItemText call({
     Object? copy = const $CopyWithPlaceholder(),
     Object? largeType = const $CopyWithPlaceholder(),
   }) {
     return AlfredItemText(
-      copy: copy == const $CopyWithPlaceholder()
+      copy: copy == const $CopyWithPlaceholder() || copy == null
           ? _value.copy
           // ignore: cast_nullable_to_non_nullable
           : copy as String,
@@ -61,7 +60,8 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
 }
 
 extension $AlfredItemTextCopyWith on AlfredItemText {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredItemText.copyWith(...)` or like so:`instanceOfAlfredItemText.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredItemText.copyWith(...)` or `instanceOfAlfredItemText.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemTextCWProxy get copyWith => _$AlfredItemTextCWProxyImpl(this);
 }
@@ -79,10 +79,7 @@ extension _$AlfredItemTextEquatableAnnotations on AlfredItemText {
 // **************************************************************************
 
 AlfredItemText _$AlfredItemTextFromJson(Map<String, dynamic> json) {
-  $checkKeys(
-    json,
-    requiredKeys: const ['copy'],
-  );
+  $checkKeys(json, requiredKeys: const ['copy']);
   return AlfredItemText(
     copy: json['copy'] as String,
     largeType: json['largetype'] as String?,
@@ -90,7 +87,4 @@ AlfredItemText _$AlfredItemTextFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AlfredItemTextToJson(AlfredItemText instance) =>
-    <String, dynamic>{
-      'copy': instance.copy,
-      if (instance.largeType case final value?) 'largetype': value,
-    };
+    <String, dynamic>{'copy': instance.copy, 'largetype': ?instance.largeType};

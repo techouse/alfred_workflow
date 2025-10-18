@@ -15,12 +15,13 @@ abstract class _$AlfredItemModCWProxy {
 
   AlfredItemMod valid(bool valid);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemMod(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemMod(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItemMod(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredItemMod call({
     String? arg,
     String? subtitle,
@@ -29,32 +30,33 @@ abstract class _$AlfredItemModCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredItemMod.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredItemMod.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredItemMod.copyWith(...)` or call `instanceOfAlfredItemMod.copyWith.fieldName(value)` for a single field.
 class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
   const _$AlfredItemModCWProxyImpl(this._value);
 
   final AlfredItemMod _value;
 
   @override
-  AlfredItemMod arg(String? arg) => this(arg: arg);
+  AlfredItemMod arg(String? arg) => call(arg: arg);
 
   @override
-  AlfredItemMod subtitle(String? subtitle) => this(subtitle: subtitle);
+  AlfredItemMod subtitle(String? subtitle) => call(subtitle: subtitle);
 
   @override
-  AlfredItemMod icon(AlfredItemIcon? icon) => this(icon: icon);
+  AlfredItemMod icon(AlfredItemIcon? icon) => call(icon: icon);
 
   @override
-  AlfredItemMod valid(bool valid) => this(valid: valid);
+  AlfredItemMod valid(bool valid) => call(valid: valid);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredItemMod(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemMod(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredItemMod(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredItemMod call({
     Object? arg = const $CopyWithPlaceholder(),
     Object? subtitle = const $CopyWithPlaceholder(),
@@ -74,7 +76,7 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
           ? _value.icon
           // ignore: cast_nullable_to_non_nullable
           : icon as AlfredItemIcon?,
-      valid: valid == const $CopyWithPlaceholder()
+      valid: valid == const $CopyWithPlaceholder() || valid == null
           ? _value.valid
           // ignore: cast_nullable_to_non_nullable
           : valid as bool,
@@ -83,7 +85,8 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
 }
 
 extension $AlfredItemModCopyWith on AlfredItemMod {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredItemMod.copyWith(...)` or like so:`instanceOfAlfredItemMod.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredItemMod.copyWith(...)` or `instanceOfAlfredItemMod.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredItemModCWProxy get copyWith => _$AlfredItemModCWProxyImpl(this);
 }
@@ -110,8 +113,8 @@ AlfredItemMod _$AlfredItemModFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$AlfredItemModToJson(AlfredItemMod instance) =>
     <String, dynamic>{
-      if (instance.arg case final value?) 'arg': value,
-      if (instance.subtitle case final value?) 'subtitle': value,
-      if (instance.icon?.toJson() case final value?) 'icon': value,
+      'arg': ?instance.arg,
+      'subtitle': ?instance.subtitle,
+      'icon': ?instance.icon?.toJson(),
       'valid': instance.valid,
     };

@@ -12,13 +12,11 @@ part 'alfred_automatic_cache.g.dart';
   ignoreUnannotated: true,
 )
 class AlfredAutomaticCache with EquatableMixin {
-  const AlfredAutomaticCache({
-    required this.seconds,
-    this.looseReload,
-  }) : assert(
-          seconds >= minSeconds && seconds <= maxSeconds,
-          'Time to live for cached data must be between $minSeconds and $maxSeconds seconds (24 hours).',
-        );
+  const AlfredAutomaticCache({required this.seconds, this.looseReload})
+    : assert(
+        seconds >= minSeconds && seconds <= maxSeconds,
+        'Time to live for cached data must be between $minSeconds and $maxSeconds seconds (24 hours).',
+      );
 
   /// Time to live for cached data is defined as a number of seconds between 5 and 86400 (i.e. 24 hours).
   @JsonKey(name: 'seconds')

@@ -10,24 +10,27 @@ abstract class _$AlfredUserConfigurationConfigSelectCWProxy {
   AlfredUserConfigurationConfigSelect defaultValue(String defaultValue);
 
   AlfredUserConfigurationConfigSelect pairs(
-      List<({String label, String value})> pairs);
+    List<AlfredUserConfigurationConfigSelectPair> pairs,
+  );
 
   AlfredUserConfigurationConfigSelect value(String? value);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigSelect(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigSelect call({
     String defaultValue,
-    List<({String label, String value})> pairs,
+    List<AlfredUserConfigurationConfigSelectPair> pairs,
     String? value,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationConfigSelect.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationConfigSelect.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationConfigSelect.copyWith(...)` or call `instanceOfAlfredUserConfigurationConfigSelect.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationConfigSelectCWProxyImpl
     implements _$AlfredUserConfigurationConfigSelectCWProxy {
   const _$AlfredUserConfigurationConfigSelectCWProxyImpl(this._value);
@@ -36,39 +39,40 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
 
   @override
   AlfredUserConfigurationConfigSelect defaultValue(String defaultValue) =>
-      this(defaultValue: defaultValue);
+      call(defaultValue: defaultValue);
 
   @override
   AlfredUserConfigurationConfigSelect pairs(
-          List<({String label, String value})> pairs) =>
-      this(pairs: pairs);
+    List<AlfredUserConfigurationConfigSelectPair> pairs,
+  ) => call(pairs: pairs);
 
   @override
   AlfredUserConfigurationConfigSelect value(String? value) =>
-      this(value: value);
+      call(value: value);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigSelect(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigSelect call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? pairs = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigSelect(
-      defaultValue: defaultValue == const $CopyWithPlaceholder()
+      defaultValue:
+          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as String,
-      pairs: pairs == const $CopyWithPlaceholder()
+      pairs: pairs == const $CopyWithPlaceholder() || pairs == null
           ? _value.pairs
           // ignore: cast_nullable_to_non_nullable
-          : pairs as List<({String label, String value})>,
+          : pairs as List<AlfredUserConfigurationConfigSelectPair>,
       value: value == const $CopyWithPlaceholder()
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
@@ -79,7 +83,8 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
 
 extension $AlfredUserConfigurationConfigSelectCopyWith
     on AlfredUserConfigurationConfigSelect {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationConfigSelect.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationConfigSelect.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationConfigSelect.copyWith(...)` or `instanceOfAlfredUserConfigurationConfigSelect.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationConfigSelectCWProxy get copyWith =>
       _$AlfredUserConfigurationConfigSelectCWProxyImpl(this);
@@ -90,10 +95,12 @@ extension $AlfredUserConfigurationConfigSelectCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationConfigSelect
-    _$AlfredUserConfigurationConfigSelectFromJson(Map<String, dynamic> json) =>
-        AlfredUserConfigurationConfigSelect(
-          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
-              json, 'default') as String,
-          pairs: AlfredUserConfigurationConfigSelect._pairsFromJson(
-              json['pairs'] as List),
-        );
+_$AlfredUserConfigurationConfigSelectFromJson(Map<String, dynamic> json) =>
+    AlfredUserConfigurationConfigSelect(
+      defaultValue:
+          AlfredUserConfigurationConfig.fromJsonDefaultValue(json, 'default')
+              as String,
+      pairs: AlfredUserConfigurationConfigSelect._pairsFromJson(
+        json['pairs'] as List,
+      ),
+    );

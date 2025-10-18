@@ -12,8 +12,10 @@ part 'alfred_user_configuration_file_picker.g.dart';
 
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
-final class AlfredUserConfigurationFilePicker extends AlfredUserConfiguration<
-    String, AlfredUserConfigurationConfigFilePicker> with EquatableMixin {
+final class AlfredUserConfigurationFilePicker
+    extends
+        AlfredUserConfiguration<String, AlfredUserConfigurationConfigFilePicker>
+    with EquatableMixin {
   const AlfredUserConfigurationFilePicker({
     required super.type,
     required super.variable,
@@ -30,8 +32,8 @@ final class AlfredUserConfigurationFilePicker extends AlfredUserConfiguration<
   @internal
   @override
   AlfredUserConfiguration<String, AlfredUserConfigurationConfigFilePicker>
-      copyWithConfig(AlfredUserConfigurationConfigFilePicker config) =>
-          copyWith(config: config);
+  copyWithConfig(AlfredUserConfigurationConfigFilePicker config) =>
+      copyWith(config: config);
 
   static AlfredUserConfigurationConfigFilePicker _configFromJson(Map json) =>
       AlfredUserConfigurationConfigFilePicker.fromJson(

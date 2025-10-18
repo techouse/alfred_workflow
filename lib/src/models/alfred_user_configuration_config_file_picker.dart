@@ -11,7 +11,8 @@ part 'alfred_user_configuration_config_file_picker.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigFilePicker
-    extends AlfredUserConfigurationConfig<String> with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String>
+    with EquatableMixin {
   const AlfredUserConfigurationConfigFilePicker({
     required super.defaultValue,
     required this.required,

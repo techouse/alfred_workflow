@@ -288,11 +288,19 @@ void main() {
     });
 
     test('singleWhere returns element matching condition', () {
-      final int singleResult =
-          _TestList<int>([1, 2, 3, 4, 5, 3]).singleWhere((e) => e == 4);
+      final int singleResult = _TestList<int>([
+        1,
+        2,
+        3,
+        4,
+        5,
+        3,
+      ]).singleWhere((e) => e == 4);
       expect(singleResult, equals(4));
-      expect(() => testList.singleWhere((e) => e % 2 == 0),
-          throwsA(isA<StateError>()));
+      expect(
+        () => testList.singleWhere((e) => e % 2 == 0),
+        throwsA(isA<StateError>()),
+      );
     });
 
     test('skip returns iterable without first n elements', () {

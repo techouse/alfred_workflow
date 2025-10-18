@@ -10,13 +10,13 @@ extension AlfredActionFixture on AlfredAction {
 final class AlfredActionFactory extends FixtureFactory<AlfredAction> {
   @override
   FixtureDefinition<AlfredAction> definition() => define(
-        (Faker faker, [int index = 0]) => AlfredAction(
-          text: faker.lorem.words(3),
-          url: Uri.parse(faker.internet.httpsUrl()),
-          file: '/${faker.lorem.words(3).join('/')}.txt',
-          auto: '/${faker.lorem.words(3).join('/')}.txt',
-        ),
-      );
+    (Faker faker, [int index = 0]) => AlfredAction(
+      text: faker.lorem.words(3),
+      url: Uri.parse(faker.internet.httpsUrl()),
+      file: '/${faker.lorem.words(3).join('/')}.txt',
+      auto: '/${faker.lorem.words(3).join('/')}.txt',
+    ),
+  );
 
   FixtureRedefinitionBuilder<AlfredAction> text(Object? value) =>
       (AlfredAction action, [int index = 0]) => action.copyWith(text: value);

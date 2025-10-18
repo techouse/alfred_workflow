@@ -17,12 +17,13 @@ abstract class _$AlfredUserConfigurationConfigTextAreaCWProxy {
 
   AlfredUserConfigurationConfigTextArea value(String? value);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigTextArea(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigTextArea call({
     String defaultValue,
     bool required,
@@ -32,7 +33,8 @@ abstract class _$AlfredUserConfigurationConfigTextAreaCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationConfigTextArea.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationConfigTextArea.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationConfigTextArea.copyWith(...)` or call `instanceOfAlfredUserConfigurationConfigTextArea.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
     implements _$AlfredUserConfigurationConfigTextAreaCWProxy {
   const _$AlfredUserConfigurationConfigTextAreaCWProxyImpl(this._value);
@@ -41,31 +43,31 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
 
   @override
   AlfredUserConfigurationConfigTextArea defaultValue(String defaultValue) =>
-      this(defaultValue: defaultValue);
+      call(defaultValue: defaultValue);
 
   @override
   AlfredUserConfigurationConfigTextArea required(bool required) =>
-      this(required: required);
+      call(required: required);
 
   @override
-  AlfredUserConfigurationConfigTextArea trim(bool trim) => this(trim: trim);
+  AlfredUserConfigurationConfigTextArea trim(bool trim) => call(trim: trim);
 
   @override
   AlfredUserConfigurationConfigTextArea verticalSize(int verticalSize) =>
-      this(verticalSize: verticalSize);
+      call(verticalSize: verticalSize);
 
   @override
   AlfredUserConfigurationConfigTextArea value(String? value) =>
-      this(value: value);
+      call(value: value);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigTextArea(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigTextArea call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -74,19 +76,21 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
     Object? value = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigTextArea(
-      defaultValue: defaultValue == const $CopyWithPlaceholder()
+      defaultValue:
+          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as String,
-      required: required == const $CopyWithPlaceholder()
+      required: required == const $CopyWithPlaceholder() || required == null
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      trim: trim == const $CopyWithPlaceholder()
+      trim: trim == const $CopyWithPlaceholder() || trim == null
           ? _value.trim
           // ignore: cast_nullable_to_non_nullable
           : trim as bool,
-      verticalSize: verticalSize == const $CopyWithPlaceholder()
+      verticalSize:
+          verticalSize == const $CopyWithPlaceholder() || verticalSize == null
           ? _value.verticalSize
           // ignore: cast_nullable_to_non_nullable
           : verticalSize as int,
@@ -100,7 +104,8 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
 
 extension $AlfredUserConfigurationConfigTextAreaCopyWith
     on AlfredUserConfigurationConfigTextArea {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationConfigTextArea.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationConfigTextArea.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationConfigTextArea.copyWith(...)` or `instanceOfAlfredUserConfigurationConfigTextArea.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationConfigTextAreaCWProxy get copyWith =>
       _$AlfredUserConfigurationConfigTextAreaCWProxyImpl(this);
@@ -111,12 +116,12 @@ extension $AlfredUserConfigurationConfigTextAreaCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationConfigTextArea
-    _$AlfredUserConfigurationConfigTextAreaFromJson(
-            Map<String, dynamic> json) =>
-        AlfredUserConfigurationConfigTextArea(
-          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
-              json, 'default') as String,
-          required: json['required'] as bool,
-          trim: json['trim'] as bool,
-          verticalSize: (json['verticalsize'] as num).toInt(),
-        );
+_$AlfredUserConfigurationConfigTextAreaFromJson(Map<String, dynamic> json) =>
+    AlfredUserConfigurationConfigTextArea(
+      defaultValue:
+          AlfredUserConfigurationConfig.fromJsonDefaultValue(json, 'default')
+              as String,
+      required: json['required'] as bool,
+      trim: json['trim'] as bool,
+      verticalSize: (json['verticalsize'] as num).toInt(),
+    );

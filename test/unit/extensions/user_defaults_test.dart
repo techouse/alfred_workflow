@@ -13,10 +13,8 @@ void main() {
     });
 
     test('getDefaults', () async {
-      final Map<String, AlfredUserConfiguration>? defaults =
-          await workflow.getDefaults(
-        'test/fixtures/data/info.plist',
-      );
+      final Map<String, AlfredUserConfiguration>? defaults = await workflow
+          .getDefaults('test/fixtures/data/info.plist');
       expect(defaults, isA<Map<String, AlfredUserConfiguration>>());
       expect(defaults, isNotEmpty);
 
@@ -32,8 +30,10 @@ void main() {
             isA<AlfredUserConfigurationConfigTextArea>(),
           );
           expect(defaultItem.config.defaultValue, equals('textarea default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -43,15 +43,19 @@ void main() {
 
         if (defaultItem is AlfredUserConfigurationTextField) {
           expect(
-              defaultItem.type, equals(AlfredUserConfigurationType.textField));
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.textField),
+          );
           expect(defaultItem.variable, equals('textfield_variable'));
           expect(
             defaultItem.config,
             isA<AlfredUserConfigurationConfigTextField>(),
           );
           expect(defaultItem.config.defaultValue, equals('textfield default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -73,8 +77,10 @@ void main() {
             isA<AlfredUserConfigurationConfigCheckBox>(),
           );
           expect(defaultItem.config.defaultValue, isFalse);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -82,32 +88,31 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationSelect) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.select),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.select));
           expect(defaultItem.variable, equals('popupbutton_variable'));
           expect(
             defaultItem.config,
             isA<AlfredUserConfigurationConfigSelect>(),
           );
           expect(defaultItem.config.defaultValue, equals('baz value'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
-          expect(defaultItem.config.pairs,
-              isA<List<AlfredUserConfigurationConfigSelectPair>>());
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
+          expect(
+            defaultItem.config.pairs,
+            isA<List<AlfredUserConfigurationConfigSelectPair>>(),
+          );
           expect(defaultItem.config.pairs, isNotEmpty);
           expect(defaultItem.config.pairs, hasLength(4));
           expect(
             defaultItem.config.pairs,
-            equals(
-              <AlfredUserConfigurationConfigSelectPair>[
-                (label: 'foo label', value: 'foo value'),
-                (label: 'bar label', value: 'bar value'),
-                (label: 'baz label', value: 'baz value'),
-                (label: 'qux label', value: 'qux value'),
-              ],
-            ),
+            equals(<AlfredUserConfigurationConfigSelectPair>[
+              (label: 'foo label', value: 'foo value'),
+              (label: 'bar label', value: 'bar value'),
+              (label: 'baz label', value: 'baz value'),
+              (label: 'qux label', value: 'qux value'),
+            ]),
           );
           expect(defaultItem.description, equals('popupbutton description'));
           expect(defaultItem.label, equals('popupbutton label'));
@@ -119,11 +124,15 @@ void main() {
             equals(AlfredUserConfigurationType.filePicker),
           );
           expect(defaultItem.variable, equals('filepicker_variable'));
-          expect(defaultItem.config,
-              isA<AlfredUserConfigurationConfigFilePicker>());
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigFilePicker>(),
+          );
           expect(defaultItem.config.defaultValue, isEmpty);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -134,10 +143,8 @@ void main() {
     });
 
     test('getDefaultsSync', () {
-      final Map<String, AlfredUserConfiguration>? defaults =
-          workflow.getDefaultsSync(
-        'test/fixtures/data/info.plist',
-      );
+      final Map<String, AlfredUserConfiguration>? defaults = workflow
+          .getDefaultsSync('test/fixtures/data/info.plist');
       expect(defaults, isA<Map<String, AlfredUserConfiguration>>());
       expect(defaults, isNotEmpty);
 
@@ -153,8 +160,10 @@ void main() {
             isA<AlfredUserConfigurationConfigTextArea>(),
           );
           expect(defaultItem.config.defaultValue, equals('textarea default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -164,15 +173,19 @@ void main() {
 
         if (defaultItem is AlfredUserConfigurationTextField) {
           expect(
-              defaultItem.type, equals(AlfredUserConfigurationType.textField));
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.textField),
+          );
           expect(defaultItem.variable, equals('textfield_variable'));
           expect(
             defaultItem.config,
             isA<AlfredUserConfigurationConfigTextField>(),
           );
           expect(defaultItem.config.defaultValue, equals('textfield default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -194,8 +207,10 @@ void main() {
             isA<AlfredUserConfigurationConfigCheckBox>(),
           );
           expect(defaultItem.config.defaultValue, isFalse);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -203,32 +218,31 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationSelect) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.select),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.select));
           expect(defaultItem.variable, equals('popupbutton_variable'));
           expect(
             defaultItem.config,
             isA<AlfredUserConfigurationConfigSelect>(),
           );
           expect(defaultItem.config.defaultValue, equals('baz value'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
-          expect(defaultItem.config.pairs,
-              isA<List<AlfredUserConfigurationConfigSelectPair>>());
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
+          expect(
+            defaultItem.config.pairs,
+            isA<List<AlfredUserConfigurationConfigSelectPair>>(),
+          );
           expect(defaultItem.config.pairs, isNotEmpty);
           expect(defaultItem.config.pairs, hasLength(4));
           expect(
             defaultItem.config.pairs,
-            equals(
-              <AlfredUserConfigurationConfigSelectPair>[
-                (label: 'foo label', value: 'foo value'),
-                (label: 'bar label', value: 'bar value'),
-                (label: 'baz label', value: 'baz value'),
-                (label: 'qux label', value: 'qux value'),
-              ],
-            ),
+            equals(<AlfredUserConfigurationConfigSelectPair>[
+              (label: 'foo label', value: 'foo value'),
+              (label: 'bar label', value: 'bar value'),
+              (label: 'baz label', value: 'baz value'),
+              (label: 'qux label', value: 'qux value'),
+            ]),
           );
           expect(defaultItem.description, equals('popupbutton description'));
           expect(defaultItem.label, equals('popupbutton label'));
@@ -240,11 +254,15 @@ void main() {
             equals(AlfredUserConfigurationType.filePicker),
           );
           expect(defaultItem.variable, equals('filepicker_variable'));
-          expect(defaultItem.config,
-              isA<AlfredUserConfigurationConfigFilePicker>());
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigFilePicker>(),
+          );
           expect(defaultItem.config.defaultValue, isEmpty);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -253,18 +271,17 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationNumberSlider) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.slider),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.slider));
           expect(defaultItem.variable, equals('number_slider_variable'));
           expect(
             defaultItem.config,
             isA<AlfredUserConfigurationConfigNumberSlider>(),
           );
           expect(defaultItem.config.defaultValue, equals(50));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.min, equals(0));
           expect(defaultItem.config.max, equals(100));
           expect(defaultItem.config.markerCount, equals(10));
@@ -287,17 +304,19 @@ void main() {
 
     test('not existing getDefaultsSync', () {
       final Map<String, dynamic>? userDefaults = workflow.getUserDefaultsSync(
-          infoPath: 'foo.plist', prefsPath: 'bar.plist');
+        infoPath: 'foo.plist',
+        prefsPath: 'bar.plist',
+      );
       expect(userDefaults, isA<Map<String, AlfredUserConfiguration>>());
       expect(userDefaults, isEmpty);
     });
 
     test('getUserDefaults', () async {
-      final Map<String, AlfredUserConfiguration>? userDefaults =
-          await workflow.getUserDefaults(
-        prefsPath: 'test/fixtures/data/prefs.plist',
-        infoPath: 'test/fixtures/data/info.plist',
-      );
+      final Map<String, AlfredUserConfiguration>? userDefaults = await workflow
+          .getUserDefaults(
+            prefsPath: 'test/fixtures/data/prefs.plist',
+            infoPath: 'test/fixtures/data/info.plist',
+          );
       expect(userDefaults, isA<Map<String, AlfredUserConfiguration>>());
       expect(userDefaults, isNotEmpty);
 
@@ -314,8 +333,10 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor sit amet');
           expect(defaultItem.config.defaultValue, equals('textarea default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -325,7 +346,9 @@ void main() {
 
         if (defaultItem is AlfredUserConfigurationTextField) {
           expect(
-              defaultItem.type, equals(AlfredUserConfigurationType.textField));
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.textField),
+          );
           expect(defaultItem.variable, equals('textfield_variable'));
           expect(
             defaultItem.config,
@@ -333,8 +356,10 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor');
           expect(defaultItem.config.defaultValue, equals('textfield default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -357,8 +382,10 @@ void main() {
           );
           expect(defaultItem.config.value, isTrue);
           expect(defaultItem.config.defaultValue, isFalse);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -366,10 +393,7 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationSelect) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.select),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.select));
           expect(defaultItem.variable, equals('popupbutton_variable'));
           expect(
             defaultItem.config,
@@ -377,22 +401,24 @@ void main() {
           );
           expect(defaultItem.config.value, equals('foo value'));
           expect(defaultItem.config.defaultValue, equals('baz value'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
-          expect(defaultItem.config.pairs,
-              isA<List<AlfredUserConfigurationConfigSelectPair>>());
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
+          expect(
+            defaultItem.config.pairs,
+            isA<List<AlfredUserConfigurationConfigSelectPair>>(),
+          );
           expect(defaultItem.config.pairs, isNotEmpty);
           expect(defaultItem.config.pairs, hasLength(4));
           expect(
             defaultItem.config.pairs,
-            equals(
-              <AlfredUserConfigurationConfigSelectPair>[
-                (label: 'foo label', value: 'foo value'),
-                (label: 'bar label', value: 'bar value'),
-                (label: 'baz label', value: 'baz value'),
-                (label: 'qux label', value: 'qux value'),
-              ],
-            ),
+            equals(<AlfredUserConfigurationConfigSelectPair>[
+              (label: 'foo label', value: 'foo value'),
+              (label: 'bar label', value: 'bar value'),
+              (label: 'baz label', value: 'baz value'),
+              (label: 'qux label', value: 'qux value'),
+            ]),
           );
           expect(defaultItem.description, equals('popupbutton description'));
           expect(defaultItem.label, equals('popupbutton label'));
@@ -404,13 +430,19 @@ void main() {
             equals(AlfredUserConfigurationType.filePicker),
           );
           expect(defaultItem.variable, equals('filepicker_variable'));
-          expect(defaultItem.config,
-              isA<AlfredUserConfigurationConfigFilePicker>());
-          expect(defaultItem.config.value,
-              equals('/home/user/Desktop/document.pdf'));
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigFilePicker>(),
+          );
+          expect(
+            defaultItem.config.value,
+            equals('/home/user/Desktop/document.pdf'),
+          );
           expect(defaultItem.config.defaultValue, isEmpty);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -419,10 +451,7 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationNumberSlider) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.slider),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.slider));
           expect(defaultItem.variable, equals('number_slider_variable'));
           expect(
             defaultItem.config,
@@ -431,8 +460,10 @@ void main() {
           expect(defaultItem.config.value, equals(69));
           expect(defaultItem.value, equals(defaultItem.config.value));
           expect(defaultItem.config.defaultValue, equals(50));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.min, equals(0));
           expect(defaultItem.config.max, equals(100));
           expect(defaultItem.config.markerCount, equals(10));
@@ -454,11 +485,11 @@ void main() {
     });
 
     test('getUserDefaultsSync', () {
-      final Map<String, AlfredUserConfiguration>? userDefaults =
-          workflow.getUserDefaultsSync(
-        prefsPath: 'test/fixtures/data/prefs.plist',
-        infoPath: 'test/fixtures/data/info.plist',
-      );
+      final Map<String, AlfredUserConfiguration>? userDefaults = workflow
+          .getUserDefaultsSync(
+            prefsPath: 'test/fixtures/data/prefs.plist',
+            infoPath: 'test/fixtures/data/info.plist',
+          );
       expect(userDefaults, isA<Map<String, AlfredUserConfiguration>>());
       expect(userDefaults, isNotEmpty);
 
@@ -475,8 +506,10 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor sit amet');
           expect(defaultItem.config.defaultValue, equals('textarea default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.trim, isFalse);
           expect(defaultItem.config.verticalSize, equals(3));
@@ -486,7 +519,9 @@ void main() {
 
         if (defaultItem is AlfredUserConfigurationTextField) {
           expect(
-              defaultItem.type, equals(AlfredUserConfigurationType.textField));
+            defaultItem.type,
+            equals(AlfredUserConfigurationType.textField),
+          );
           expect(defaultItem.variable, equals('textfield_variable'));
           expect(
             defaultItem.config,
@@ -494,8 +529,10 @@ void main() {
           );
           expect(defaultItem.config.value, 'lorem ipsum dolor');
           expect(defaultItem.config.defaultValue, equals('textfield default'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(
             defaultItem.config.placeholder,
             equals('textfield placeholder'),
@@ -518,8 +555,10 @@ void main() {
           );
           expect(defaultItem.config.value, isTrue);
           expect(defaultItem.config.defaultValue, isFalse);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.text, equals('checkbox text'));
           expect(defaultItem.description, equals('checkbox description'));
@@ -527,10 +566,7 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationSelect) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.select),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.select));
           expect(defaultItem.variable, equals('popupbutton_variable'));
           expect(
             defaultItem.config,
@@ -538,22 +574,24 @@ void main() {
           );
           expect(defaultItem.config.value, equals('foo value'));
           expect(defaultItem.config.defaultValue, equals('baz value'));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
-          expect(defaultItem.config.pairs,
-              isA<List<AlfredUserConfigurationConfigSelectPair>>());
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
+          expect(
+            defaultItem.config.pairs,
+            isA<List<AlfredUserConfigurationConfigSelectPair>>(),
+          );
           expect(defaultItem.config.pairs, isNotEmpty);
           expect(defaultItem.config.pairs, hasLength(4));
           expect(
             defaultItem.config.pairs,
-            equals(
-              <AlfredUserConfigurationConfigSelectPair>[
-                (label: 'foo label', value: 'foo value'),
-                (label: 'bar label', value: 'bar value'),
-                (label: 'baz label', value: 'baz value'),
-                (label: 'qux label', value: 'qux value'),
-              ],
-            ),
+            equals(<AlfredUserConfigurationConfigSelectPair>[
+              (label: 'foo label', value: 'foo value'),
+              (label: 'bar label', value: 'bar value'),
+              (label: 'baz label', value: 'baz value'),
+              (label: 'qux label', value: 'qux value'),
+            ]),
           );
           expect(defaultItem.description, equals('popupbutton description'));
           expect(defaultItem.label, equals('popupbutton label'));
@@ -565,13 +603,19 @@ void main() {
             equals(AlfredUserConfigurationType.filePicker),
           );
           expect(defaultItem.variable, equals('filepicker_variable'));
-          expect(defaultItem.config,
-              isA<AlfredUserConfigurationConfigFilePicker>());
-          expect(defaultItem.config.value,
-              equals('/home/user/Desktop/document.pdf'));
+          expect(
+            defaultItem.config,
+            isA<AlfredUserConfigurationConfigFilePicker>(),
+          );
+          expect(
+            defaultItem.config.value,
+            equals('/home/user/Desktop/document.pdf'),
+          );
           expect(defaultItem.config.defaultValue, isEmpty);
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.required, isTrue);
           expect(defaultItem.config.placeholder, isEmpty);
           expect(defaultItem.config.filterMode, equals(0));
@@ -580,10 +624,7 @@ void main() {
         }
 
         if (defaultItem is AlfredUserConfigurationNumberSlider) {
-          expect(
-            defaultItem.type,
-            equals(AlfredUserConfigurationType.slider),
-          );
+          expect(defaultItem.type, equals(AlfredUserConfigurationType.slider));
           expect(defaultItem.variable, equals('number_slider_variable'));
           expect(
             defaultItem.config,
@@ -592,8 +633,10 @@ void main() {
           expect(defaultItem.config.value, equals(69));
           expect(defaultItem.value, equals(defaultItem.config.value));
           expect(defaultItem.config.defaultValue, equals(50));
-          expect(defaultItem.defaultValue,
-              equals(defaultItem.config.defaultValue));
+          expect(
+            defaultItem.defaultValue,
+            equals(defaultItem.config.defaultValue),
+          );
           expect(defaultItem.config.min, equals(0));
           expect(defaultItem.config.max, equals(100));
           expect(defaultItem.config.markerCount, equals(10));
@@ -610,14 +653,14 @@ void main() {
     test('AlfredUserConfiguration', () {
       final AlfredUserConfigurationTextField textField =
           const AlfredUserConfigurationTextField(
-        type: AlfredUserConfigurationType.textField,
-        variable: 'text_variable',
-        config: AlfredUserConfigurationConfigTextField(
-          defaultValue: 'default',
-          required: true,
-          trim: false,
-        ),
-      );
+            type: AlfredUserConfigurationType.textField,
+            variable: 'text_variable',
+            config: AlfredUserConfigurationConfigTextField(
+              defaultValue: 'default',
+              required: true,
+              trim: false,
+            ),
+          );
 
       expect(textField.copyWith(), equals(textField));
     });
@@ -625,10 +668,10 @@ void main() {
     test('AlfredUserConfigurationConfig', () {
       final AlfredUserConfigurationConfigTextField textField =
           const AlfredUserConfigurationConfigTextField(
-        defaultValue: 'default',
-        required: true,
-        trim: false,
-      );
+            defaultValue: 'default',
+            required: true,
+            trim: false,
+          );
 
       expect(textField.copyWith(), equals(textField));
     });

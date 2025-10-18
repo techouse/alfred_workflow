@@ -43,9 +43,7 @@ void main(List<String> arguments) {
               title: 'Sorry I can\'t help you with that query.',
               subtitle: 'Shall I try and search Google?',
               arg: url.toString(),
-              text: AlfredItemText(
-                copy: url.toString(),
-              ),
+              text: AlfredItemText(copy: url.toString()),
               quickLookUrl: url.toString(),
               icon: AlfredItemIcon(path: 'google.png'),
               valid: true,
@@ -55,9 +53,7 @@ void main(List<String> arguments) {
       }
     } catch (err) {
       exitCode = 1;
-      workflow.addItem(
-        AlfredItem(title: err.toString()),
-      );
+      workflow.addItem(AlfredItem(title: err.toString()));
     } finally {
       workflow.run();
     }

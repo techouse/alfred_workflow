@@ -17,12 +17,13 @@ abstract class _$AlfredUserConfigurationConfigFilePickerCWProxy {
 
   AlfredUserConfigurationConfigFilePicker placeholder(String? placeholder);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigFilePicker(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigFilePicker(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigFilePicker(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigFilePicker call({
     String defaultValue,
     bool required,
@@ -32,7 +33,8 @@ abstract class _$AlfredUserConfigurationConfigFilePickerCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith(...)` or call `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
     implements _$AlfredUserConfigurationConfigFilePickerCWProxy {
   const _$AlfredUserConfigurationConfigFilePickerCWProxyImpl(this._value);
@@ -41,32 +43,32 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
 
   @override
   AlfredUserConfigurationConfigFilePicker defaultValue(String defaultValue) =>
-      this(defaultValue: defaultValue);
+      call(defaultValue: defaultValue);
 
   @override
   AlfredUserConfigurationConfigFilePicker required(bool required) =>
-      this(required: required);
+      call(required: required);
 
   @override
   AlfredUserConfigurationConfigFilePicker filterMode(int filterMode) =>
-      this(filterMode: filterMode);
+      call(filterMode: filterMode);
 
   @override
   AlfredUserConfigurationConfigFilePicker value(String? value) =>
-      this(value: value);
+      call(value: value);
 
   @override
   AlfredUserConfigurationConfigFilePicker placeholder(String? placeholder) =>
-      this(placeholder: placeholder);
+      call(placeholder: placeholder);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationConfigFilePicker(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigFilePicker(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationConfigFilePicker(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationConfigFilePicker call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -75,15 +77,17 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
     Object? placeholder = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationConfigFilePicker(
-      defaultValue: defaultValue == const $CopyWithPlaceholder()
+      defaultValue:
+          defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as String,
-      required: required == const $CopyWithPlaceholder()
+      required: required == const $CopyWithPlaceholder() || required == null
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      filterMode: filterMode == const $CopyWithPlaceholder()
+      filterMode:
+          filterMode == const $CopyWithPlaceholder() || filterMode == null
           ? _value.filterMode
           // ignore: cast_nullable_to_non_nullable
           : filterMode as int,
@@ -101,7 +105,8 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
 
 extension $AlfredUserConfigurationConfigFilePickerCopyWith
     on AlfredUserConfigurationConfigFilePicker {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationConfigFilePicker.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith(...)` or `instanceOfAlfredUserConfigurationConfigFilePicker.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationConfigFilePickerCWProxy get copyWith =>
       _$AlfredUserConfigurationConfigFilePickerCWProxyImpl(this);
@@ -112,12 +117,12 @@ extension $AlfredUserConfigurationConfigFilePickerCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationConfigFilePicker
-    _$AlfredUserConfigurationConfigFilePickerFromJson(
-            Map<String, dynamic> json) =>
-        AlfredUserConfigurationConfigFilePicker(
-          defaultValue: AlfredUserConfigurationConfig.fromJsonDefaultValue(
-              json, 'default') as String,
-          required: json['required'] as bool,
-          filterMode: (json['filtermode'] as num).toInt(),
-          placeholder: json['placeholder'] as String?,
-        );
+_$AlfredUserConfigurationConfigFilePickerFromJson(Map<String, dynamic> json) =>
+    AlfredUserConfigurationConfigFilePicker(
+      defaultValue:
+          AlfredUserConfigurationConfig.fromJsonDefaultValue(json, 'default')
+              as String,
+      required: json['required'] as bool,
+      filterMode: (json['filtermode'] as num).toInt(),
+      placeholder: json['placeholder'] as String?,
+    );

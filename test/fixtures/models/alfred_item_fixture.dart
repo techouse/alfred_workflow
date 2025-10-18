@@ -19,36 +19,33 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
 
   @override
   FixtureDefinition<AlfredItem> definition() => define(
-        (Faker faker, [int index = 0]) => AlfredItem(
-          title: faker.lorem.sentence(),
-          type: AlfredItemType.Default,
-          valid: faker.randomGenerator.boolean(),
-          subtitle:
-              faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
-          arg: !useAction ? faker.lorem.sentence() : null,
-          autocomplete:
-              faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
-          uid: faker.randomGenerator.boolean() ? faker.guid.guid() : null,
-          icon: AlfredItemIconFixture.factory.makeSingle(),
-          text: AlfredItemTextFixture.factory.makeSingle(),
-          quickLookUrl: faker.randomGenerator.boolean()
-              ? faker.internet.httpsUrl()
-              : null,
-          match:
-              faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
-          mods: {
-            {AlfredItemModKey.cmd}: AlfredItemModFixture.factory.makeSingle(),
-            {AlfredItemModKey.ctrl, AlfredItemModKey.alt}:
-                AlfredItemModFixture.factory.makeSingle(),
-            {
-              AlfredItemModKey.cmd,
-              AlfredItemModKey.shift,
-              AlfredItemModKey.alt,
-            }: AlfredItemModFixture.factory.makeSingle(),
-          },
-          action: useAction ? _fakeAction() : null,
-        ),
-      );
+    (Faker faker, [int index = 0]) => AlfredItem(
+      title: faker.lorem.sentence(),
+      type: AlfredItemType.Default,
+      valid: faker.randomGenerator.boolean(),
+      subtitle: faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
+      arg: !useAction ? faker.lorem.sentence() : null,
+      autocomplete: faker.randomGenerator.boolean()
+          ? faker.lorem.sentence()
+          : null,
+      uid: faker.randomGenerator.boolean() ? faker.guid.guid() : null,
+      icon: AlfredItemIconFixture.factory.makeSingle(),
+      text: AlfredItemTextFixture.factory.makeSingle(),
+      quickLookUrl: faker.randomGenerator.boolean()
+          ? faker.internet.httpsUrl()
+          : null,
+      match: faker.randomGenerator.boolean() ? faker.lorem.sentence() : null,
+      mods: {
+        {AlfredItemModKey.cmd}: AlfredItemModFixture.factory.makeSingle(),
+        {AlfredItemModKey.ctrl, AlfredItemModKey.alt}: AlfredItemModFixture
+            .factory
+            .makeSingle(),
+        {AlfredItemModKey.cmd, AlfredItemModKey.shift, AlfredItemModKey.alt}:
+            AlfredItemModFixture.factory.makeSingle(),
+      },
+      action: useAction ? _fakeAction() : null,
+    ),
+  );
 
   Object _fakeAction() {
     final Type type = faker.randomGenerator.element([
@@ -109,6 +106,6 @@ final class AlfredItemFactory extends FixtureFactory<AlfredItem> {
   FixtureRedefinitionBuilder<AlfredItem> action(Object? value) =>
       (AlfredItem item, [int index = 0]) =>
           value is String || value is Iterable || value is Map
-              ? item.copyWith(action: value)
-              : item;
+          ? item.copyWith(action: value)
+          : item;
 }

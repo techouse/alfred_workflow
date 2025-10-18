@@ -12,18 +12,20 @@ abstract class _$AlfredUserConfigurationFilePickerCWProxy {
   AlfredUserConfigurationFilePicker variable(String variable);
 
   AlfredUserConfigurationFilePicker config(
-      AlfredUserConfigurationConfigFilePicker config);
+    AlfredUserConfigurationConfigFilePicker config,
+  );
 
   AlfredUserConfigurationFilePicker description(String? description);
 
   AlfredUserConfigurationFilePicker label(String? label);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationFilePicker(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationFilePicker(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationFilePicker(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationFilePicker call({
     AlfredUserConfigurationType type,
     String variable,
@@ -33,7 +35,8 @@ abstract class _$AlfredUserConfigurationFilePickerCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationFilePicker.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationFilePicker.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationFilePicker.copyWith(...)` or call `instanceOfAlfredUserConfigurationFilePicker.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationFilePickerCWProxyImpl
     implements _$AlfredUserConfigurationFilePickerCWProxy {
   const _$AlfredUserConfigurationFilePickerCWProxyImpl(this._value);
@@ -42,32 +45,32 @@ class _$AlfredUserConfigurationFilePickerCWProxyImpl
 
   @override
   AlfredUserConfigurationFilePicker type(AlfredUserConfigurationType type) =>
-      this(type: type);
+      call(type: type);
 
   @override
   AlfredUserConfigurationFilePicker variable(String variable) =>
-      this(variable: variable);
+      call(variable: variable);
 
   @override
   AlfredUserConfigurationFilePicker config(
-          AlfredUserConfigurationConfigFilePicker config) =>
-      this(config: config);
+    AlfredUserConfigurationConfigFilePicker config,
+  ) => call(config: config);
 
   @override
   AlfredUserConfigurationFilePicker description(String? description) =>
-      this(description: description);
+      call(description: description);
 
   @override
-  AlfredUserConfigurationFilePicker label(String? label) => this(label: label);
+  AlfredUserConfigurationFilePicker label(String? label) => call(label: label);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationFilePicker(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationFilePicker(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationFilePicker(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationFilePicker call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),
@@ -76,15 +79,15 @@ class _$AlfredUserConfigurationFilePickerCWProxyImpl
     Object? label = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationFilePicker(
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredUserConfigurationType,
-      variable: variable == const $CopyWithPlaceholder()
+      variable: variable == const $CopyWithPlaceholder() || variable == null
           ? _value.variable
           // ignore: cast_nullable_to_non_nullable
           : variable as String,
-      config: config == const $CopyWithPlaceholder()
+      config: config == const $CopyWithPlaceholder() || config == null
           ? _value.config
           // ignore: cast_nullable_to_non_nullable
           : config as AlfredUserConfigurationConfigFilePicker,
@@ -102,7 +105,8 @@ class _$AlfredUserConfigurationFilePickerCWProxyImpl
 
 extension $AlfredUserConfigurationFilePickerCopyWith
     on AlfredUserConfigurationFilePicker {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationFilePicker.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationFilePicker.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationFilePicker.copyWith(...)` or `instanceOfAlfredUserConfigurationFilePicker.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationFilePickerCWProxy get copyWith =>
       _$AlfredUserConfigurationFilePickerCWProxyImpl(this);
@@ -113,15 +117,16 @@ extension $AlfredUserConfigurationFilePickerCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationFilePicker _$AlfredUserConfigurationFilePickerFromJson(
-        Map<String, dynamic> json) =>
-    AlfredUserConfigurationFilePicker(
-      type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
-      variable: json['variable'] as String,
-      config: AlfredUserConfigurationFilePicker._configFromJson(
-          json['config'] as Map),
-      description: json['description'] as String?,
-      label: json['label'] as String?,
-    );
+  Map<String, dynamic> json,
+) => AlfredUserConfigurationFilePicker(
+  type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
+  variable: json['variable'] as String,
+  config: AlfredUserConfigurationFilePicker._configFromJson(
+    json['config'] as Map,
+  ),
+  description: json['description'] as String?,
+  label: json['label'] as String?,
+);
 
 const _$AlfredUserConfigurationTypeEnumMap = {
   AlfredUserConfigurationType.textField: 'textfield',

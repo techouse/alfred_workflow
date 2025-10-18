@@ -12,18 +12,20 @@ abstract class _$AlfredUserConfigurationNumberSliderCWProxy {
   AlfredUserConfigurationNumberSlider variable(String variable);
 
   AlfredUserConfigurationNumberSlider config(
-      AlfredUserConfigurationConfigNumberSlider config);
+    AlfredUserConfigurationConfigNumberSlider config,
+  );
 
   AlfredUserConfigurationNumberSlider description(String? description);
 
   AlfredUserConfigurationNumberSlider label(String? label);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationNumberSlider(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationNumberSlider(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationNumberSlider(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationNumberSlider call({
     AlfredUserConfigurationType type,
     String variable,
@@ -33,7 +35,8 @@ abstract class _$AlfredUserConfigurationNumberSliderCWProxy {
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfAlfredUserConfigurationNumberSlider.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfAlfredUserConfigurationNumberSlider.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfAlfredUserConfigurationNumberSlider.copyWith(...)` or call `instanceOfAlfredUserConfigurationNumberSlider.copyWith.fieldName(value)` for a single field.
 class _$AlfredUserConfigurationNumberSliderCWProxyImpl
     implements _$AlfredUserConfigurationNumberSliderCWProxy {
   const _$AlfredUserConfigurationNumberSliderCWProxyImpl(this._value);
@@ -42,33 +45,33 @@ class _$AlfredUserConfigurationNumberSliderCWProxyImpl
 
   @override
   AlfredUserConfigurationNumberSlider type(AlfredUserConfigurationType type) =>
-      this(type: type);
+      call(type: type);
 
   @override
   AlfredUserConfigurationNumberSlider variable(String variable) =>
-      this(variable: variable);
+      call(variable: variable);
 
   @override
   AlfredUserConfigurationNumberSlider config(
-          AlfredUserConfigurationConfigNumberSlider config) =>
-      this(config: config);
+    AlfredUserConfigurationConfigNumberSlider config,
+  ) => call(config: config);
 
   @override
   AlfredUserConfigurationNumberSlider description(String? description) =>
-      this(description: description);
+      call(description: description);
 
   @override
   AlfredUserConfigurationNumberSlider label(String? label) =>
-      this(label: label);
+      call(label: label);
 
   @override
-
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `AlfredUserConfigurationNumberSlider(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationNumberSlider(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// AlfredUserConfigurationNumberSlider(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   AlfredUserConfigurationNumberSlider call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),
@@ -77,15 +80,15 @@ class _$AlfredUserConfigurationNumberSliderCWProxyImpl
     Object? label = const $CopyWithPlaceholder(),
   }) {
     return AlfredUserConfigurationNumberSlider(
-      type: type == const $CopyWithPlaceholder()
+      type: type == const $CopyWithPlaceholder() || type == null
           ? _value.type
           // ignore: cast_nullable_to_non_nullable
           : type as AlfredUserConfigurationType,
-      variable: variable == const $CopyWithPlaceholder()
+      variable: variable == const $CopyWithPlaceholder() || variable == null
           ? _value.variable
           // ignore: cast_nullable_to_non_nullable
           : variable as String,
-      config: config == const $CopyWithPlaceholder()
+      config: config == const $CopyWithPlaceholder() || config == null
           ? _value.config
           // ignore: cast_nullable_to_non_nullable
           : config as AlfredUserConfigurationConfigNumberSlider,
@@ -103,7 +106,8 @@ class _$AlfredUserConfigurationNumberSliderCWProxyImpl
 
 extension $AlfredUserConfigurationNumberSliderCopyWith
     on AlfredUserConfigurationNumberSlider {
-  /// Returns a callable class that can be used as follows: `instanceOfAlfredUserConfigurationNumberSlider.copyWith(...)` or like so:`instanceOfAlfredUserConfigurationNumberSlider.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfAlfredUserConfigurationNumberSlider.copyWith(...)` or `instanceOfAlfredUserConfigurationNumberSlider.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$AlfredUserConfigurationNumberSliderCWProxy get copyWith =>
       _$AlfredUserConfigurationNumberSliderCWProxyImpl(this);
@@ -114,15 +118,16 @@ extension $AlfredUserConfigurationNumberSliderCopyWith
 // **************************************************************************
 
 AlfredUserConfigurationNumberSlider
-    _$AlfredUserConfigurationNumberSliderFromJson(Map<String, dynamic> json) =>
-        AlfredUserConfigurationNumberSlider(
-          type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
-          variable: json['variable'] as String,
-          config: AlfredUserConfigurationNumberSlider._configFromJson(
-              json['config'] as Map),
-          description: json['description'] as String?,
-          label: json['label'] as String?,
-        );
+_$AlfredUserConfigurationNumberSliderFromJson(Map<String, dynamic> json) =>
+    AlfredUserConfigurationNumberSlider(
+      type: $enumDecode(_$AlfredUserConfigurationTypeEnumMap, json['type']),
+      variable: json['variable'] as String,
+      config: AlfredUserConfigurationNumberSlider._configFromJson(
+        json['config'] as Map,
+      ),
+      description: json['description'] as String?,
+      label: json['label'] as String?,
+    );
 
 const _$AlfredUserConfigurationTypeEnumMap = {
   AlfredUserConfigurationType.textField: 'textfield',
