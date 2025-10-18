@@ -174,7 +174,7 @@ final class AlfredUpdater with EquatableMixin {
       final File file = await fileSystem
           .file('${directory.path}/${asset.name}')
           .create();
-      file.writeAsBytes(response.bodyBytes);
+      await file.writeAsBytes(response.bodyBytes);
 
       return file;
     }
