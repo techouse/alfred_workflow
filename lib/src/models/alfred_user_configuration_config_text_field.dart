@@ -19,13 +19,13 @@ final class AlfredUserConfigurationConfigTextField
     this.placeholder,
   });
 
-  /// Whether the text field is required
+  /// Placeholder text shown in the field
   final String? placeholder;
 
-  /// Whether to trim the text
+  /// Whether the text field is required
   final bool required;
 
-  /// Whether to trim the text
+  /// Whether to trim leading/trailing whitespace
   final bool trim;
 
   @internal
