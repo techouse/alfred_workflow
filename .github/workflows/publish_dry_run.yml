@@ -31,7 +31,7 @@ jobs:
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.pull_request.base.ref }}
       - name: Load base version
@@ -57,7 +57,7 @@ jobs:
         with:
           sdk: stable
       - id: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Load this version
         id: load_this_version
         run: |
