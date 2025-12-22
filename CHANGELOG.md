@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Chore: update dependencies
+
 ## 1.2.0
 
 - Chore: raise minimum Dart SDK to 3.9.0
