@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="alfred_workflow API docs, for the Dart programming language.">
+  <title>alfred_workflow - Dart API docs</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="static-assets/github.css?v1">
+  <link rel="stylesheet" href="static-assets/styles.css?v1">
+  <link rel="icon" href="static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://techouse.github.io/alfred_workflow/">alfred_workflow package</a></li>
+  </ol>
+  <div class="self-name">alfred_workflow</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div id="dartdoc-main-content" class="main-content">
+      
+<section class="desc markdown">
+  <h1 id="alfred-workflow">Alfred Workflow</h1>
+<p>A helper library in Dart for authors of workflows for <a href="https://www.alfredapp.com">Alfred</a>.</p>
+<p><a href="https://pub.dev/packages/alfred_workflow"><img src="https://img.shields.io/pub/v/alfred_workflow" alt="Pub Version"></a>
+<a href="https://pub.dev/publishers/tusar.dev/packages"><img src="https://img.shields.io/pub/publisher/alfred_workflow" alt="Pub Publisher"></a>
+<a href="https://pub.dev/packages/alfred_workflow/score"><img src="https://img.shields.io/pub/likes/alfred_workflow" alt="Pub Likes"></a>
+<a href="https://pub.dev/packages/alfred_workflow/score"><img src="https://img.shields.io/pub/points/alfred_workflow" alt="Pub Points"></a>
+<a href="https://pub.dev/packages/alfred_workflow/score"><img src="https://img.shields.io/pub/popularity/alfred_workflow" alt="Pub Popularity"></a>
+<a href="https://github.com/techouse/alfred_workflow/actions/workflows/test.yml"><img src="https://github.com/techouse/alfred_workflow/actions/workflows/test.yml/badge.svg" alt="Dart CI"></a>
+<a href="https://codecov.io/gh/techouse/alfred_workflow"><img src="https://codecov.io/gh/techouse/alfred_workflow/branch/master/graph/badge.svg?token=SkypLLzvM3" alt="codecov"></a>
+<a href="https://www.codacy.com/gh/techouse/alfred_workflow/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=techouse/alfred_workflow&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/8f4453a193c94f6eb4239f95718d1cea" alt="Codacy Badge"></a>
+<a href="LICENSE"><img src="https://img.shields.io/github/license/techouse/alfred_workflow" alt="GitHub"></a>
+<a href="https://github.com/sponsors/techouse"><img src="https://img.shields.io/github/sponsors/techouse" alt="GitHub Sponsors"></a>
+<a href="https://github.com/techouse/alfred_workflow/stargazers"><img src="https://img.shields.io/github/stars/techouse/alfred_workflow" alt="GitHub Repo stars"></a></p>
+<p>This library is heavily inspired by the excellent Python library <a href="https://github.com/deanishe/alfred-workflow">deanishe/alfred-workflow</a>.</p>
+<h2 id="-usage">🚸 Usage</h2>
+<h3 id="-basic-example">🎉 Basic example</h3>
+<pre class="language-dart"><code class="language-dart">import 'dart:io' show exitCode;
+
+import 'package:alfred_workflow/alfred_workflow.dart';
+import 'package:args/args.dart';
+import 'package:cli_script/cli_script.dart';
+
+void main(List&lt;String&gt; arguments) {
+  /// It's recommended that all scripts wrap their main() methods in wrapMain.
+  /// It gracefully exits when an error is unhandled, and (if chainStackTraces is true) 
+  /// tracks stack traces across asynchronous calls to produce better error stacks.
+  wrapMain(() async {
+    /// Instantiate an AlfredWorkflow
+    final workflow = AlfredWorkflow();
+
+    try {
+      exitCode = 0;
+
+      /// Define an ArgParser that uses -q/--query to listen to search queries
+      final ArgParser parser = ArgParser()
+        ..addOption('query', abbr: 'q', defaultsTo: '');
+
+      /// Parse the args
+      final ArgResults args = parser.parse(arguments);
+
+      /// Sanitize the query string obtained from the args
+      final String query = args['query'].replaceAll(RegExp(r'\s+'), ' ').trim();
+
+      if (query.isEmpty) {
+        /// In case of an empty query display a placeholder in the Alfred feedback
+        workflow.addItem(
+          const AlfredItem(
+            title: 'Search for some particular stuff ...',
+            icon: AlfredItemIcon(path: 'icon.png'),
+          ),
+        );
+      } else {
+        /// When there is a query do something fancy
+
+        /// In this case we'll search Google with our query.
+        final Uri url = Uri.https('www.google.com', '/search', {'q': query});
+
+        /// Add an item to the Alfred feedback
+        workflow.addItem(
+          AlfredItem(
+            title: 'Sorry I can\'t help you with that query.',
+            subtitle: 'Shall I try and search Google?',
+            arg: url.toString(),
+            text: AlfredItemText(
+              copy: url.toString(),
+            ),
+            quickLookUrl: url.toString(),
+            icon: AlfredItemIcon(path: 'google.png'),
+            valid: true,
+          ),
+        );
+      }
+    } catch (err) {
+      /// Set exit code to a non-zero number
+      exitCode = 1;
+
+      /// In case of errors you can simply output the message in the Alfred feedback
+      workflow.addItem(
+        AlfredItem(title: err.toString()),
+      );
+    } finally {
+      /// This will always print JSON to the stdout and send that to Alfred.
+      workflow.run();
+    }
+  });
+}
+</code></pre>
+<p>To search for the string "hello" simply execute this on the commandline:</p>
+<pre class="language-bash"><code class="language-bash">dart run example.dart --query 'hello'
+</code></pre>
+<p>Check out the <a href="example/alfred_workflow_example.dart">basic example here</a>.</p>
+<h3 id="-speed-it-up-using-caching">⚡️ Speed it up using caching</h3>
+<p>The library uses <a href="https://pub.dev/packages/stash_file">stash_file</a> to cache results in the form of <code>AlfredItems</code>.
+All you need to do to enable it is to define a <code>cacheKey</code>.</p>
+<pre class="language-dart"><code class="language-dart">/// Define a cacheKey. In this case you can just use the query.
+workflow.cacheKey = query;
+
+/// Check if anything using that cacheKey is already in the cache.
+/// This will automatically add the cached items to the Alfred feedback.
+final AlfredItems? cachedItems = await workflow.getItems();
+
+/// If noting was cached simply do as before
+if (cachedItems == null) {
+  final Uri url = Uri.https('www.google.com', '/search', {'q': query});
+
+  /// This will now automatically add the AlfredItem to the cache.
+  workflow.addItem(
+    AlfredItem(
+      title: 'Sorry I can\'t help you with that query.',
+      subtitle: 'Shall I try and search Google?',
+      arg: url.toString(),
+      text: AlfredItemText(
+        copy: url.toString(),
+      ),
+      quickLookUrl: url.toString(),
+      icon: AlfredItemIcon(path: 'google.png'),
+      valid: true,
+    ),
+  );
+}
+</code></pre>
+<p>Check out the <a href="example/alfred_workflow_caching_example.dart">caching example here</a>.</p>
+<h3 id="-workflow-configuration">🔧 Workflow Configuration</h3>
+<p>This library supports new <a href="https://www.alfredapp.com/help/workflows/workflow-configuration/">Workflow Configuration</a> added in Alfred 5.</p>
+<blockquote>
+<p>Workflow Configuration defaults are stored in <code>info.plist</code>, but changed values are saved to <code>prefs.plist</code>.
+Add the latter to your <code>.gitignore</code> to not commit your personal configuration to version control.</p>
+</blockquote>
+<p>You can access the user defaults like this:</p>
+<pre class="language-dart"><code class="language-dart">final Map&lt;String, AlfredUserConfiguration&gt;? userDefaults = await workflow.getUserDefaults();
+</code></pre>
+<p>This will return a <code>Map</code> of <code>AlfredUserConfiguration</code> objects keyed by the <code>key</code> you defined in your <code>info.plist</code>.</p>
+<pre class="language-dart"><code class="language-dart">// this example uses a select configuration
+final AlfredUserConfigurationSelect? currencyConfiguration = userDefaults?['currency'];
+</code></pre>
+<p>You can then access the user set (or default) <code>value</code> of the <code>AlfredUserConfiguration</code> object.</p>
+<pre class="language-dart"><code class="language-dart">final String? defaultCurrency = currencyConfiguration?.defaultValue;
+final String? userCurrency = currencyConfiguration?.value;
+</code></pre>
+<h3 id="-auto-update-your-workflows-via-github-releases">⬆️ Auto-Update your workflows via GitHub releases</h3>
+<p>Setting up Auto-Updating will require that you provide your workflow's Github repository URL and version.
+Optionally you can set an interval how frequently the workflow should check for updates.</p>
+<p>Once an update is found it's downloaded to the temp and opened.</p>
+<pre class="language-dart"><code class="language-dart">final AlfredUpdater updater = AlfredUpdater(
+  /// Declare your workflow's Github repository URL
+  githubRepositoryUrl: Uri.parse('https://github.com/your/repo'),
+  /// Declare your workflow's current working version
+  currentVersion: '1.0.0',
+  /// Optionally set an interval how frequently it should check for updates
+  updateInterval: Duration(days: 7),
+);
+
+/// Check for updates
+if (await updater.updateAvailable()) {
+  /// Run the update
+  await updater.update();
+}
+</code></pre>
+<p>To update the workflow simply run this from the commandline:</p>
+<pre class="language-bash"><code class="language-bash">dart run example.dart --update
+</code></pre>
+<p>Check out the <a href="example/alfred_workflow_auto_update_example.dart">auto-update example here</a>.</p>
+<h2 id="-building-the-workflow-for-production">🚀 Building the workflow for production</h2>
+<p>Dart scripts can be <a href="https://dart.dev/tools/dart-compile">easily compiled to standalone executables</a> eliminating the need for any external prerequisites.</p>
+<p>To compile the script above simply run this from the commandline:</p>
+<pre class="language-bash"><code class="language-bash">dart compile exe example.dart --output example
+</code></pre>
+<p>You can then invoke the executable from the commandline:</p>
+<pre class="language-bash"><code class="language-bash">./example --query 'hello'
+</code></pre>
+<h3 id="-signing-and-notarizing-the-compiled-binary-before-distribution">📄 Signing and notarizing the compiled binary before distribution</h3>
+<p><a href="https://dart.dev/tools/dart-compile#signing">Signing on macOS</a> became available with <a href="https://dart.dev/guides/whats-new#may-11-2022-217-release">Dart 2.17</a>.</p>
+<p>If you want to distribute your compiled Mach-O binary you should <strong>sign</strong> and <strong>notarize</strong> it with Apple.</p>
+<p>Use the bash script below as a template to help you with this process.</p>
+<pre class="language-bash"><code class="language-bash">#!/usr/bin/env bash
+
+# This script should be a starting point to help you sign and notarise a Mach-O binary app.
+# Read it carefully and replace any placeholders with actual data.
+
+# Sign the compiled binary
+codesign \
+  --sign="XXXX" \                        # replace with hash of "Developer ID Application: Your name (Your Team)"
+  --identifier="com.example.test" \      # replace with app's bundle id
+  --deep \
+  --force \
+  --options=runtime \
+  --entitlement="./entitlements.plist" \ # must allow com.apple.security.cs.allow-unsigned-executable-memory
+  --timestamp \
+  --verbose=4 \
+  ./path/to/compiled/exe
+
+# Verify the signed binary
+codesign -dv --verbose=4 ./path/to/compiled/exe
+
+# ZIP the binary because altool won't accept a raw Mach-O binary
+zip -j ./path/to/compiled/exe.zip ./path/to/compiled/exe
+
+# Notarize the binary in ZIP form
+# For more info refer to https://developer.apple.com/documentation/security/notarizing_macos_software_before_distribution/customizing_the_notarization_workflow#3087734
+xcrun notarytool \
+  submit path/to/compiled/exe.zip \
+  --keychain-profile "notarytool-password" \  # replace with an app specific password https://support.apple.com/en-us/HT204397
+  --wait
+
+# Delete zip file as it's no longer needed at this point
+# Apple will notarize the Mach-O binary inside the ZIP
+rm ./path/to/compiled/exe.zip
+
+# Wait a while then verify your Mach-O binary
+spctl -a -vvv -t install ./path/to/compiled/exe
+
+# In case you encountered an error run and check the output
+xcrun altool \
+  --notarization-info "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" \  # the UUID altool gave you
+  --username "john.appleseed@apple.com" \                       # Apple ID username
+  --password "@keychain:Developer-altool"                       # same app-specific password
+</code></pre>
+<p>Fore more info please refer to <a href="https://developer.apple.com/support/code-signing/">the Apple Code Signing guide</a> as well
+as to <a href="https://stackoverflow.com/questions/64652704/how-to-notarize-an-macos-command-line-tool-created-outside-of-xcode#answer-64733472">this exhaustive StackOverflow answer</a>.</p>
+<h2 id="-a-couple-of-my-alfred-workflows-built-using-this-library">🌱 A couple of my Alfred Workflows built using this library</h2>
+<ul>
+<li><a href="https://github.com/techouse/alfred-flutter-docs">alfred-flutter-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-dart-docs">alfred-dart-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-react-docs">alfred-react-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-vue-docs">alfred-vue-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-tailwindcss-docs">alfred-tailwindcss-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-django-docs">alfred-django-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-flask-docs">alfred-flask-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-laravel-docs">alfred-laravel-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-nova-docs">alfred-nova-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-cakephp-docs">alfred-cakephp-docs</a></li>
+<li><a href="https://github.com/techouse/alfred-gitmoji">alfred-gitmoji</a></li>
+<li><a href="https://github.com/techouse/alfred-stackoverflow">alfred-stackoverflow</a></li>
+<li><a href="https://github.com/techouse/alfred-convert">alfred-convert</a></li>
+</ul>
+</section>
+
+
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="alfred_workflow">
+  <span class="name"><a href="alfred_workflow/">alfred_workflow</a></span> 
+
+</dt>
+<dd>Alfred Workflow library for Dart.
+</dd>
+
+        </dl>
+      </section>
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="https://techouse.github.io/alfred_workflow/">alfred_workflow package</a></li>
+</ol>
+
+    <h5 class="hidden-xs"><span class="package-name">alfred_workflow</span> <span class="package-kind">package</span></h5>
+    <ol>
+      <li class="section-title">Libraries</li>
+      <li><a href="alfred_workflow/">alfred_workflow</a></li>
+</ol>
+
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+</main>
+<footer>
+  <span class="no-break">
+    alfred_workflow
+      1.2.1
+  </span>
+  
+</footer>
+
+
+<script src="static-assets/highlight.pack.js?v1"></script>
+<script src="static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

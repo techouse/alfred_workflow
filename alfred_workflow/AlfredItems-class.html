@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the AlfredItems class from the alfred_workflow library, for the Dart programming language.">
+  <title>AlfredItems class - alfred_workflow library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../static-assets/styles.css?v1">
+  <link rel="icon" href="../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../index.html">alfred_workflow</a></li>
+    <li><a href="../alfred_workflow/">alfred_workflow.dart</a></li>
+    <li class="self-crumb">AlfredItems class</li>
+  </ol>
+  <div class="self-name">AlfredItems</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+<div
+    id="dartdoc-main-content"
+    class="main-content"
+    data-above-sidebar="alfred_workflow&#47;alfred_workflow-library-sidebar.html"
+    data-below-sidebar="alfred_workflow&#47;AlfredItems-class-sidebar.html">
+    <div>
+<h1><span class="kind-class">AlfredItems</span> class 
+    <a href="https://dart.dev/language/class-modifiers#final" class="feature feature-final" title="This class can neither be extended, implemented, nor mixed in.">final</a>
+ 
+</h1></div>
+
+    
+
+
+    <section>
+      <dl class="dl-horizontal">
+        
+
+        
+        
+  <dt>Mixed-in types</dt>
+  <dd>
+    <ul class="comma-separated clazz-relationships">
+        <li><a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin-mixin.html">EquatableMixin</a></li>
+    </ul>
+  </dd>
+
+
+        
+        
+
+
+      </dl>
+    </section>
+
+    
+  <section class="summary offset-anchor" id="constructors">
+    <h2>Constructors</h2>
+    <dl class="constructor-summary-list">
+        <dt id="AlfredItems.new" class="callable">
+          <span class="name"><a href="../alfred_workflow/AlfredItems/AlfredItems.html">AlfredItems</a></span><span class="signature">(<span class="parameter" id="-param-items"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">items</span>, {</span><span class="parameter" id="-param-exactOrder"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">exactOrder</span>, </span><span class="parameter" id="-param-skipKnowledge"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">skipKnowledge</span>, </span><span class="parameter" id="-param-cache"><span class="type-annotation"><a href="../alfred_workflow/AlfredAutomaticCache-class.html">AlfredAutomaticCache</a>?</span> <span class="parameter-name">cache</span></span>})</span>
+        </dt>
+        <dd>
+          
+            <div class="constructor-modifier features">const</div>
+        </dd>
+        <dt id="AlfredItems.fromJson" class="callable">
+          <span class="name"><a href="../alfred_workflow/AlfredItems/AlfredItems.fromJson.html">AlfredItems.fromJson</a></span><span class="signature">(<span class="parameter" id="fromJson-param-json"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span> <span class="parameter-name">json</span></span>)</span>
+        </dt>
+        <dd>
+          
+            <div class="constructor-modifier features">factory</div>
+        </dd>
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-properties">
+    <h2>Properties</h2>
+    <dl class="properties">
+        <dt id="cache" class="property">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/cache.html">cache</a></span>
+  <span class="signature">&#8594; <a href="../alfred_workflow/AlfredAutomaticCache-class.html">AlfredAutomaticCache</a>?</span>
+  
+
+</dt>
+<dd>
+  Scripts which take a while to return can cache results so users see data sooner on subsequent runs.
+The Script Filter presents the results from the previous run when caching is active and hasn't expired.
+Because the script won't execute when loading cached data, we recommend this option only be used with
+"Alfred filters results".
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="exactOrder" class="property">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/exactOrder.html">exactOrder</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span>
+  
+
+</dt>
+<dd>
+  Alfred learns to prioritise item results like he learns any other, meaning
+the order in which your workflow results are presented will be based on Alfred's
+knowledge (using the item UID) and not the order your script returns the items.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="first" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/first.html">first</a></span>
+  <span class="signature">&#8596; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">getter/setter pair</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="hashCode" class="property inherited">
+  <span class="name"><a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin/hashCode.html">hashCode</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  The hash code for this object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="isEmpty" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/isEmpty.html">isEmpty</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="isNotEmpty" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/isNotEmpty.html">isNotEmpty</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="items" class="property">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/items.html">items</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  A list of zero or more <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a>s.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="iterator" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/iterator.html">iterator</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterator-class.html">Iterator</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="last" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/last.html">last</a></span>
+  <span class="signature">&#8596; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">getter/setter pair</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="length" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/length.html">length</a></span>
+  <span class="signature">&#8596; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">getter/setter pair</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="props" class="property">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/props.html">props</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object-class.html">Object</a>?</span>&gt;</span></span>
+  
+
+</dt>
+<dd>
+  The list of properties that will be used to determine whether
+two instances are equal.
+  <div class="features"><span class="feature">no setter</span><span class="feature">override</span></div>
+
+</dd>
+
+        <dt id="reversed" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/reversed.html">reversed</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="runtimeType" class="property inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object/runtimeType.html">runtimeType</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Type-class.html">Type</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  A representation of the runtime type of the object.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="single" class="property inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/single.html">single</a></span>
+  <span class="signature">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="skipKnowledge" class="property">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/skipKnowledge.html">skipKnowledge</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span>
+  
+
+</dt>
+<dd>
+  This preserves the given item order while allowing Alfred to retain
+knowledge of your items, like your current selection during a re-run.
+  <div class="features"><span class="feature">final</span></div>
+
+</dd>
+
+        <dt id="stringify" class="property inherited">
+  <span class="name"><a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin/stringify.html">stringify</a></span>
+  <span class="signature">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span>
+  
+
+</dt>
+<dd class="inherited">
+  If set to <code>true</code>, the <a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin/toString.html">toString</a> method will be overridden to output
+this instance's <a href="../alfred_workflow/AlfredItems/props.html">props</a>.
+  <div class="features"><span class="feature">no setter</span><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+
+    
+  <section
+      class="summary offset-anchor"
+      id="instance-methods">
+    <h2>Methods</h2>
+    <dl class="callables">
+        <dt id="add" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/add.html">add</a></span><span class="signature">(<wbr><span class="parameter" id="add-param-value"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="addAll" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/addAll.html">addAll</a></span><span class="signature">(<wbr><span class="parameter" id="addAll-param-iterable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">iterable</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="any" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/any.html">any</a></span><span class="signature">(<wbr><span class="parameter" id="any-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="asMap" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/asMap.html">asMap</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>, <span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="cast" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/cast.html">cast</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="clear" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/clear.html">clear</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="contains" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/contains.html">contains</a></span><span class="signature">(<wbr><span class="parameter" id="contains-param-element"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">element</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="copyWith" class="callable">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/copyWith.html">copyWith</a></span><span class="signature">(<wbr>{<span class="parameter" id="copyWith-param-items"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span>?</span> <span class="parameter-name">items</span>, </span><span class="parameter" id="copyWith-param-exactOrder"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">exactOrder</span>, </span><span class="parameter" id="copyWith-param-skipKnowledge"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a>?</span> <span class="parameter-name">skipKnowledge</span>, </span><span class="parameter" id="copyWith-param-cache"><span class="type-annotation"><a href="../alfred_workflow/AlfredAutomaticCache-class.html">AlfredAutomaticCache</a>?</span> <span class="parameter-name">cache</span></span>})
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItems-class.html">AlfredItems</a></span>
+  </span>
+  
+
+</dt>
+<dd>
+  Copy this <a href="../alfred_workflow/AlfredItems-class.html">AlfredItems</a> with the given <code>items</code>, <code>exactOrder</code>, <code>skipKnowledge</code>, of <code>cache</code>.
+  
+
+</dd>
+
+        <dt id="elementAt" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/elementAt.html">elementAt</a></span><span class="signature">(<wbr><span class="parameter" id="elementAt-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="every" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/every.html">every</a></span><span class="signature">(<wbr><span class="parameter" id="every-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="expand" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/expand.html">expand</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="expand-param-f"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span> <span class="parameter-name">f</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="fillRange" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/fillRange.html">fillRange</a></span><span class="signature">(<wbr><span class="parameter" id="fillRange-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="fillRange-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span>, [</span><span class="parameter" id="fillRange-param-fillValue"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a>?</span> <span class="parameter-name">fillValue</span></span>])
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="firstWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/firstWhere.html">firstWhere</a></span><span class="signature">(<wbr><span class="parameter" id="firstWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>), {</span><span class="parameter" id="firstWhere-param-orElse"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">orElse</span>()?</span>})
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="fold" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/fold.html">fold</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="fold-param-initialValue"><span class="type-annotation">T</span> <span class="parameter-name">initialValue</span>, </span><span class="parameter" id="fold-param-combine"><span class="type-annotation">T</span> <span class="parameter-name">combine</span>(<span class="parameter" id="param-previousValue"><span class="type-annotation">T</span> <span class="parameter-name">previousValue</span>, </span><span class="parameter" id="param-element"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">element</span></span>)</span>)
+    <span class="returntype parameter">&#8594; T</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="followedBy" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/followedBy.html">followedBy</a></span><span class="signature">(<wbr><span class="parameter" id="followedBy-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="forEach" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/forEach.html">forEach</a></span><span class="signature">(<wbr><span class="parameter" id="forEach-param-f"><span class="type-annotation">void</span> <span class="parameter-name">f</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="getRange" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/getRange.html">getRange</a></span><span class="signature">(<wbr><span class="parameter" id="getRange-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="getRange-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="indexOf" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/indexOf.html">indexOf</a></span><span class="signature">(<wbr><span class="parameter" id="indexOf-param-element"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">element</span>, [</span><span class="parameter" id="indexOf-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="indexWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/indexWhere.html">indexWhere</a></span><span class="signature">(<wbr><span class="parameter" id="indexWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>), [</span><span class="parameter" id="indexWhere-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="insert" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/insert.html">insert</a></span><span class="signature">(<wbr><span class="parameter" id="insert-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span>, </span><span class="parameter" id="insert-param-element"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">element</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="insertAll" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/insertAll.html">insertAll</a></span><span class="signature">(<wbr><span class="parameter" id="insertAll-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span>, </span><span class="parameter" id="insertAll-param-iterable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">iterable</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="join" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/join.html">join</a></span><span class="signature">(<wbr>[<span class="parameter" id="join-param-separator"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span> <span class="parameter-name">separator</span> = <span class="default-value">&#39;&#39;</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="lastIndexOf" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/lastIndexOf.html">lastIndexOf</a></span><span class="signature">(<wbr><span class="parameter" id="lastIndexOf-param-element"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">element</span>, [</span><span class="parameter" id="lastIndexOf-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">start</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="lastIndexWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/lastIndexWhere.html">lastIndexWhere</a></span><span class="signature">(<wbr><span class="parameter" id="lastIndexWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>), [</span><span class="parameter" id="lastIndexWhere-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">start</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="lastWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/lastWhere.html">lastWhere</a></span><span class="signature">(<wbr><span class="parameter" id="lastWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>), {</span><span class="parameter" id="lastWhere-param-orElse"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">orElse</span>()?</span>})
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="map" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/map.html">map</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr><span class="parameter" id="map-param-f"><span class="type-annotation">T</span> <span class="parameter-name">f</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="noSuchMethod" class="callable inherited">
+  <span class="name"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object/noSuchMethod.html">noSuchMethod</a></span><span class="signature">(<wbr><span class="parameter" id="noSuchMethod-param-invocation"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Invocation-class.html">Invocation</a></span> <span class="parameter-name">invocation</span></span>)
+    <span class="returntype parameter">&#8594; dynamic</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  Invoked when a nonexistent method or property is accessed.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="reduce" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/reduce.html">reduce</a></span><span class="signature">(<wbr><span class="parameter" id="reduce-param-combine"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">combine</span>(<span class="parameter" id="param-value"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">value</span>, </span><span class="parameter" id="param-element"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">element</span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="remove" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/remove.html">remove</a></span><span class="signature">(<wbr><span class="parameter" id="remove-param-value"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object-class.html">Object</a>?</span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="removeAt" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/removeAt.html">removeAt</a></span><span class="signature">(<wbr><span class="parameter" id="removeAt-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="removeLast" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/removeLast.html">removeLast</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="removeRange" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/removeRange.html">removeRange</a></span><span class="signature">(<wbr><span class="parameter" id="removeRange-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="removeRange-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="removeWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/removeWhere.html">removeWhere</a></span><span class="signature">(<wbr><span class="parameter" id="removeWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="replaceRange" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/replaceRange.html">replaceRange</a></span><span class="signature">(<wbr><span class="parameter" id="replaceRange-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="replaceRange-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span>, </span><span class="parameter" id="replaceRange-param-iterable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">iterable</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="retainWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/retainWhere.html">retainWhere</a></span><span class="signature">(<wbr><span class="parameter" id="retainWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="setAll" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/setAll.html">setAll</a></span><span class="signature">(<wbr><span class="parameter" id="setAll-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span>, </span><span class="parameter" id="setAll-param-iterable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">iterable</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="setRange" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/setRange.html">setRange</a></span><span class="signature">(<wbr><span class="parameter" id="setRange-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, </span><span class="parameter" id="setRange-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">end</span>, </span><span class="parameter" id="setRange-param-iterable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">iterable</span>, [</span><span class="parameter" id="setRange-param-skipCount"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">skipCount</span> = <span class="default-value">0</span></span>])
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="shuffle" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/shuffle.html">shuffle</a></span><span class="signature">(<wbr>[<span class="parameter" id="shuffle-param-random"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-math/Random-class.html">Random</a>?</span> <span class="parameter-name">random</span></span>])
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="singleWhere" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/singleWhere.html">singleWhere</a></span><span class="signature">(<wbr><span class="parameter" id="singleWhere-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>), {</span><span class="parameter" id="singleWhere-param-orElse"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">orElse</span>()?</span>})
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="skip" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/skip.html">skip</a></span><span class="signature">(<wbr><span class="parameter" id="skip-param-n"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">n</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="skipWhile" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/skipWhile.html">skipWhile</a></span><span class="signature">(<wbr><span class="parameter" id="skipWhile-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="sort" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/sort.html">sort</a></span><span class="signature">(<wbr>[<span class="parameter" id="sort-param-compare"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">compare</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>, </span><span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)?</span>])
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="sublist" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/sublist.html">sublist</a></span><span class="signature">(<wbr><span class="parameter" id="sublist-param-start"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">start</span>, [</span><span class="parameter" id="sublist-param-end"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a>?</span> <span class="parameter-name">end</span></span>])
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="take" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/take.html">take</a></span><span class="signature">(<wbr><span class="parameter" id="take-param-n"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">n</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="takeWhile" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/takeWhile.html">takeWhile</a></span><span class="signature">(<wbr><span class="parameter" id="takeWhile-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toJson" class="callable">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/toJson.html">toJson</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd>
+  
+  
+
+</dd>
+
+        <dt id="toList" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/toList.html">toList</a></span><span class="signature">(<wbr>{<span class="parameter" id="toList-param-growable"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">growable</span> = <span class="default-value">true</span></span>})
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toSet" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/toSet.html">toSet</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Set-class.html">Set</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="toString" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin/toString.html">toString</a></span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  A string representation of this object.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="where" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/where.html">where</a></span><span class="signature">(<wbr><span class="parameter" id="where-param-test"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">test</span>(<span class="parameter" id="param-"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span></span>)</span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="whereType" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/whereType.html">whereType</a></span><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span><span class="signature">(<wbr>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/Iterable-class.html">Iterable</a><span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+  <section
+      class="summary offset-anchor inherited"
+      id="operators">
+    <h2>Operators</h2>
+    <dl class="callables">
+        <dt id="operator +" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/operator_plus.html">operator +</a></span><span class="signature">(<wbr><span class="parameter" id="+-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/List-class.html">List</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>&gt;</span></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="operator ==" class="callable inherited">
+  <span class="name"><a href="https://pub.dev/documentation/equatable/2.0.7/equatable/EquatableMixin/operator_equals.html">operator ==</a></span><span class="signature">(<wbr><span class="parameter" id="==-param-other"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Object-class.html">Object</a></span> <span class="parameter-name">other</span></span>)
+    <span class="returntype parameter">&#8594; <a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  The equality operator.
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="operator []" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/operator_get.html">operator []</a></span><span class="signature">(<wbr><span class="parameter" id="[]-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span></span>)
+    <span class="returntype parameter">&#8594; <a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+        <dt id="operator []=" class="callable inherited">
+  <span class="name"><a href="../alfred_workflow/AlfredItems/operator_put.html">operator []=</a></span><span class="signature">(<wbr><span class="parameter" id="[]=-param-index"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">index</span>, </span><span class="parameter" id="[]=-param-value"><span class="type-annotation"><a href="../alfred_workflow/AlfredItem-class.html">AlfredItem</a></span> <span class="parameter-name">value</span></span>)
+    <span class="returntype parameter">&#8594; void</span>
+  </span>
+  
+
+</dt>
+<dd class="inherited">
+  
+  <div class="features"><span class="feature">inherited</span></div>
+
+</dd>
+
+    </dl>
+  </section>
+    
+    
+    
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../index.html">alfred_workflow</a></li>
+    <li><a href="../alfred_workflow/">alfred_workflow</a></li>
+    <li class="self-crumb">AlfredItems class</li>
+</ol>
+
+    <h5>alfred_workflow library</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div>
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    alfred_workflow
+      1.2.1
+  </span>
+  
+</footer>
+
+
+<script src="../static-assets/highlight.pack.js?v1"></script>
+<script src="../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+

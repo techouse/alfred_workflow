@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="description" content="API docs for the AlfredCache.new constructor from Class AlfredCache from the alfred_workflow library, for the Dart programming language.">
+  <title>AlfredCache.new constructor - AlfredCache - alfred_workflow library - Dart API</title>
+
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../static-assets/github.css?v1">
+  <link rel="stylesheet" href="../../static-assets/styles.css?v1">
+  <link rel="icon" href="../../static-assets/favicon.png?v1">
+  
+</head>
+
+<body data-base-href="../../" data-using-base-href="false" class="light-theme">
+<div id="overlay-under-drawer"></div>
+<header id="title">
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="../../index.html">alfred_workflow</a></li>
+    <li><a href="../../alfred_workflow/">alfred_workflow.dart</a></li>
+    <li><a href="../../alfred_workflow/AlfredCache-class.html">AlfredCache<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">AlfredCache.new constructor</li>
+  </ol>
+  <div class="self-name">AlfredCache.new</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+  <button class="toggle" id="theme-button" title="Toggle between light and dark mode" aria-label="Light and dark mode toggle">
+    <span id="dark-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      dark_mode
+    </span>
+    <span id="light-theme-button" class="material-symbols-outlined" aria-hidden="true">
+      light_mode
+    </span>
+  </button>
+</header>
+<main>
+  <div
+      id="dartdoc-main-content"
+      class="main-content"
+      data-above-sidebar="alfred_workflow&#47;AlfredCache-class-sidebar.html"
+      data-below-sidebar="">
+      <div>
+<h1><span class="kind-constructor">AlfredCache&lt;<wbr><span class="type-parameter">T</span>&gt;</span> constructor 
+</h1></div>
+
+    <section class="multi-line-signature">
+      
+      <span class="name ">AlfredCache&lt;<wbr><span class="type-parameter">T</span>&gt;</span>(<wbr>{<ol class="parameter-list"> <li><span class="parameter" id="-param-fromEncodable"><span>required</span> <span class="type-annotation">T</span> <span class="parameter-name">fromEncodable</span>(<ol class="parameter-list single-line"> <li><span class="parameter" id="param-"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/Map-class.html">Map</a><span class="signature">&lt;<wbr><span class="type-parameter"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span>, <span class="type-parameter">dynamic</span>&gt;</span></span></span></li>
+</ol>), </span></li>
+<li><span class="parameter" id="-param-path"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a>?</span> <span class="parameter-name">path</span>, </span></li>
+<li><span class="parameter" id="-param-maxEntries"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/int-class.html">int</a></span> <span class="parameter-name">maxEntries</span> = <span class="default-value">10</span>, </span></li>
+<li><span class="parameter" id="-param-name"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/String-class.html">String</a></span> <span class="parameter-name">name</span> = <span class="default-value">&#39;query_cache&#39;</span>, </span></li>
+<li><span class="parameter" id="-param-evictionPolicy"><span class="type-annotation"><a href="https://pub.dev/documentation/stash/5.2.0/stash_api/EvictionPolicy-class.html">EvictionPolicy</a></span> <span class="parameter-name">evictionPolicy</span> = <span class="default-value">const LruEvictionPolicy()</span>, </span></li>
+<li><span class="parameter" id="-param-expiryPolicy"><span class="type-annotation"><a href="https://pub.dev/documentation/stash/5.2.0/stash_api/ExpiryPolicy-class.html">ExpiryPolicy</a></span> <span class="parameter-name">expiryPolicy</span> = <span class="default-value">const CreatedExpiryPolicy(Duration(minutes: 1))</span>, </span></li>
+<li><span class="parameter" id="-param-verbose"><span class="type-annotation"><a href="https://api.dart.dev/stable/3.10.6/dart-core/bool-class.html">bool</a></span> <span class="parameter-name">verbose</span> = <span class="default-value">false</span>, </span></li>
+</ol>})
+    </section>
+    
+<section class="desc markdown">
+  <p>Builds an <a href="../../alfred_workflow/AlfredCache-class.html">AlfredCache</a> providing a <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/Cache-class.html">Cache</a> backed by a <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/Store-class.html">Store</a></p>
+<ul>
+<li><code>fromEncodable</code> : A custom function the converts to the object from a <code>Map&lt;String, dynamic&gt;</code> representation</li>
+<li><code>path</code> : Optionally customize the base storage location for this store</li>
+<li><code>maxEntries</code> : The max number of entries this cache can hold if provided. Defaults to 10.</li>
+<li><code>name</code> : The name of the cache. Defaults to "query_cache".</li>
+<li><code>evictionPolicy</code> : Optionally customize the <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/EvictionPolicy-class.html">EvictionPolicy</a>. Defaults to <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/LruEvictionPolicy-class.html">LruEvictionPolicy</a></li>
+<li><code>expiryPolicy</code> : Optionally customize the <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/ExpiryPolicy-class.html">ExpiryPolicy</a>. Defaults to <a href="https://pub.dev/documentation/stash/5.2.0/stash_api/CreatedExpiryPolicy-class.html">CreatedExpiryPolicy</a> with a <a href="https://api.dart.dev/stable/3.10.6/dart-core/Duration-class.html">Duration</a> of 1 minute.</li>
+<li><code>verbose</code> : If set to true then listeners will print events to the developer log. Defaults to false.</li>
+</ul>
+</section>
+
+
+    
+<section class="summary source-code" id="source">
+  <h2><span>Implementation</span></h2>
+  <pre class="language-dart"><code class="language-dart">AlfredCache({
+  required this.fromEncodable,
+  this.path,
+  this.maxEntries = 10,
+  this.name = &#39;query_cache&#39;,
+  this.evictionPolicy = const LruEvictionPolicy(),
+  this.expiryPolicy = const CreatedExpiryPolicy(Duration(minutes: 1)),
+  this.verbose = false,
+}) : assert(maxEntries &gt; 0, &#39;maxEntries must be positive number&#39;);</code></pre>
+</section>
+
+
+  </div> <!-- /.main-content -->
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <!-- The search input and breadcrumbs below are only responsively visible at low resolutions. -->
+<header id="header-search-sidebar" class="hidden-l">
+  <form class="search-sidebar" role="search">
+    <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+<ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+    <li><a href="../../index.html">alfred_workflow</a></li>
+    <li><a href="../../alfred_workflow/">alfred_workflow</a></li>
+    <li><a href="../../alfred_workflow/AlfredCache-class.html">AlfredCache<span class="signature">&lt;<wbr><span class="type-parameter">T</span>&gt;</span></a></li>
+    <li class="self-crumb">AlfredCache.new constructor</li>
+</ol>
+
+    <h5>AlfredCache class</h5>
+    <div id="dartdoc-sidebar-left-content"></div>
+  </div><!--/.sidebar-offcanvas-left-->
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div><!--/.sidebar-offcanvas-->
+</main>
+<footer>
+  <span class="no-break">
+    alfred_workflow
+      1.2.1
+  </span>
+  
+</footer>
+
+
+<script src="../../static-assets/highlight.pack.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
+
+</body>
+</html>
+
