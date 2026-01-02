@@ -33,7 +33,7 @@ final class GithubRelease with EquatableMixin {
     required this.assets,
     required this.tarballUrl,
     required this.zipballUrl,
-    required this.body,
+    this.body,
   });
 
   final Uri url;
@@ -55,7 +55,7 @@ final class GithubRelease with EquatableMixin {
   final List<GithubAsset> assets;
   final Uri tarballUrl;
   final Uri zipballUrl;
-  final String body;
+  final String? body;
 
   static GithubUser _githubUserFromJson(dynamic json) =>
       GithubUser.fromJson((Map<String, dynamic>.from(json)));

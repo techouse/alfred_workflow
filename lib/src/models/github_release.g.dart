@@ -41,7 +41,7 @@ abstract class _$GithubReleaseCWProxy {
 
   GithubRelease zipballUrl(Uri zipballUrl);
 
-  GithubRelease body(String body);
+  GithubRelease body(String? body);
 
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubRelease(...).copyWith.fieldName(value)`.
@@ -68,7 +68,7 @@ abstract class _$GithubReleaseCWProxy {
     List<GithubAsset> assets,
     Uri tarballUrl,
     Uri zipballUrl,
-    String body,
+    String? body,
   });
 }
 
@@ -133,7 +133,7 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   GithubRelease zipballUrl(Uri zipballUrl) => call(zipballUrl: zipballUrl);
 
   @override
-  GithubRelease body(String body) => call(body: body);
+  GithubRelease body(String? body) => call(body: body);
 
   @override
   /// Creates a new instance with the provided field values.
@@ -238,10 +238,10 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
           ? _value.zipballUrl
           // ignore: cast_nullable_to_non_nullable
           : zipballUrl as Uri,
-      body: body == const $CopyWithPlaceholder() || body == null
+      body: body == const $CopyWithPlaceholder()
           ? _value.body
           // ignore: cast_nullable_to_non_nullable
-          : body as String,
+          : body as String?,
     );
   }
 }
@@ -303,7 +303,7 @@ GithubRelease _$GithubReleaseFromJson(Map<String, dynamic> json) =>
       assets: GithubRelease._githubAssetsFromJson(json['assets'] as List),
       tarballUrl: Uri.parse(json['tarball_url'] as String),
       zipballUrl: Uri.parse(json['zipball_url'] as String),
-      body: json['body'] as String,
+      body: json['body'] as String?,
     );
 
 Map<String, dynamic> _$GithubReleaseToJson(GithubRelease instance) =>
