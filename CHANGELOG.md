@@ -1,3 +1,7 @@
+## 1.2.3
+
+- Chore: update dependencies
+
 ## 1.2.2
 
 - [FIX] fix Github release model
