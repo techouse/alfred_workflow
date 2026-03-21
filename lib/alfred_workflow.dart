@@ -215,8 +215,8 @@ final class AlfredWorkflow {
             skipKnowledge: skipKnowledge,
             cache: automaticCache,
           )
-          ..insertAll(0, [if (addToBeginning != null) addToBeginning])
-          ..addAll([if (addToEnd != null) addToEnd]);
+          ..insertAll(0, [?addToBeginning])
+          ..addAll([?addToEnd]);
 
     return jsonEncode(items.toJson());
   }
