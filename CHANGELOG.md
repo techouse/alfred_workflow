@@ -1,3 +1,7 @@
+## 1.2.4
+
+- Chore: update dependencies
+
 ## 1.2.3
 
 - Chore: update dependencies
