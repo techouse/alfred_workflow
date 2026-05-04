@@ -61,7 +61,7 @@ jobs:
           path: coverage/lcov.info
           min_coverage: 90
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: techouse/alfred_workflow
