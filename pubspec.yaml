@@ -22,7 +22,7 @@ dependencies:
   json_annotation: ^4.11.0
   meta: ^1.18.2
   path: ^1.9.1
-  plist_parser: ^0.2.7
+  plist_parser: ">=0.2.7 <0.4.0"
   pub_semver: ^2.2.0
   stash: ^5.2.0
   stash_file: ^5.2.0
