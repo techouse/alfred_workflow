@@ -1,5 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_text.g.dart';
@@ -9,7 +9,7 @@ part 'alfred_item_text.g.dart';
 /// If these are not defined, you will inherit Alfred's standard behaviour where the arg is copied to the Clipboard or used for Large Type.
 @CopyWith()
 @JsonSerializable()
-final class AlfredItemText with EquatableMixin {
+final class AlfredItemText extends Equatable {
   const AlfredItemText({required this.copy, this.largeType});
 
   /// The text to copy

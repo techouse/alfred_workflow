@@ -71,7 +71,6 @@ class _$AlfredCacheCWProxyImpl<T> implements _$AlfredCacheCWProxy<T> {
   @override
   AlfredCache<T> verbose(bool verbose) => call(verbose: verbose);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredCache<T>(...).copyWith.fieldName(value)`.
   ///
@@ -79,6 +78,7 @@ class _$AlfredCacheCWProxyImpl<T> implements _$AlfredCacheCWProxy<T> {
   /// ```dart
   /// AlfredCache<T>(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredCache<T> call({
     Object? fromEncodable = const $CopyWithPlaceholder(),
     Object? path = const $CopyWithPlaceholder(),

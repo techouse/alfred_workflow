@@ -13,7 +13,7 @@ abstract class _$AlfredUserConfigurationConfigFilePickerCWProxy {
 
   AlfredUserConfigurationConfigFilePicker filterMode(int filterMode);
 
-  AlfredUserConfigurationConfigFilePicker value(String? value);
+  AlfredUserConfigurationConfigFilePicker value(String value);
 
   AlfredUserConfigurationConfigFilePicker placeholder(String? placeholder);
 
@@ -28,7 +28,7 @@ abstract class _$AlfredUserConfigurationConfigFilePickerCWProxy {
     String defaultValue,
     bool required,
     int filterMode,
-    String? value,
+    String value,
     String? placeholder,
   });
 }
@@ -54,14 +54,13 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
       call(filterMode: filterMode);
 
   @override
-  AlfredUserConfigurationConfigFilePicker value(String? value) =>
+  AlfredUserConfigurationConfigFilePicker value(String value) =>
       call(value: value);
 
   @override
   AlfredUserConfigurationConfigFilePicker placeholder(String? placeholder) =>
       call(placeholder: placeholder);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigFilePicker(...).copyWith.fieldName(value)`.
   ///
@@ -69,6 +68,7 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigFilePicker(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigFilePicker call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -76,7 +76,7 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
     Object? value = const $CopyWithPlaceholder(),
     Object? placeholder = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigFilePicker(
+    return AlfredUserConfigurationConfigFilePicker._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
@@ -91,10 +91,10 @@ class _$AlfredUserConfigurationConfigFilePickerCWProxyImpl
           ? _value.filterMode
           // ignore: cast_nullable_to_non_nullable
           : filterMode as int,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as String?,
+          : value as String,
       placeholder: placeholder == const $CopyWithPlaceholder()
           ? _value.placeholder
           // ignore: cast_nullable_to_non_nullable

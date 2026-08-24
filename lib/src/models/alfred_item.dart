@@ -3,7 +3,7 @@
 import 'package:alfred_workflow/src/models/alfred_action.dart';
 import 'package:alfred_workflow/src/models/alfred_item_mod.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:equatable_annotations/equatable_annotations.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -27,7 +27,7 @@ enum AlfredItemType {
 /// The three obvious elements are the ones you see in an Alfred result row - [title], [subtitle] and [icon].
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class AlfredItem with EquatableMixin {
+final class AlfredItem extends Equatable {
   const AlfredItem({
     required this.title,
     this.type = AlfredItemType.Default,

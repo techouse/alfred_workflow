@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -8,11 +7,10 @@ part 'alfred_user_configuration_config_text_area.g.dart';
 
 /// A configuration for a text area
 
-@CopyWith()
+@CopyWith(constructor: '_copyWith')
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigTextArea
-    extends AlfredUserConfigurationConfig<String>
-    with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String> {
   const AlfredUserConfigurationConfigTextArea({
     required super.defaultValue,
     required this.required,
@@ -20,6 +18,14 @@ final class AlfredUserConfigurationConfigTextArea
     required this.verticalSize,
     super.value,
   });
+
+  const AlfredUserConfigurationConfigTextArea._copyWith({
+    required super.defaultValue,
+    required this.required,
+    required this.trim,
+    required this.verticalSize,
+    required super.value,
+  }) : super.copyWith();
 
   /// Whether the text area is required
   final bool required;
@@ -34,7 +40,7 @@ final class AlfredUserConfigurationConfigTextArea
   @internal
   @override
   AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
-      copyWith(value: value);
+      copyWith(value: value ?? defaultValue);
 
   factory AlfredUserConfigurationConfigTextArea.fromJson(Map json) =>
       _$AlfredUserConfigurationConfigTextAreaFromJson(

@@ -11,7 +11,7 @@ abstract class _$AlfredUserConfigurationConfigCheckBoxCWProxy {
 
   AlfredUserConfigurationConfigCheckBox required(bool required);
 
-  AlfredUserConfigurationConfigCheckBox value(bool? value);
+  AlfredUserConfigurationConfigCheckBox value(bool value);
 
   AlfredUserConfigurationConfigCheckBox text(String? text);
 
@@ -25,7 +25,7 @@ abstract class _$AlfredUserConfigurationConfigCheckBoxCWProxy {
   AlfredUserConfigurationConfigCheckBox call({
     bool defaultValue,
     bool required,
-    bool? value,
+    bool value,
     String? text,
   });
 }
@@ -47,13 +47,11 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
       call(required: required);
 
   @override
-  AlfredUserConfigurationConfigCheckBox value(bool? value) =>
-      call(value: value);
+  AlfredUserConfigurationConfigCheckBox value(bool value) => call(value: value);
 
   @override
   AlfredUserConfigurationConfigCheckBox text(String? text) => call(text: text);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigCheckBox(...).copyWith.fieldName(value)`.
   ///
@@ -61,13 +59,14 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigCheckBox(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigCheckBox call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
     Object? text = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigCheckBox(
+    return AlfredUserConfigurationConfigCheckBox._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
@@ -77,10 +76,10 @@ class _$AlfredUserConfigurationConfigCheckBoxCWProxyImpl
           ? _value.required
           // ignore: cast_nullable_to_non_nullable
           : required as bool,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as bool?,
+          : value as bool,
       text: text == const $CopyWithPlaceholder()
           ? _value.text
           // ignore: cast_nullable_to_non_nullable

@@ -49,7 +49,6 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
   @override
   AlfredItemMod valid(bool valid) => call(valid: valid);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemMod(...).copyWith.fieldName(value)`.
   ///
@@ -57,6 +56,7 @@ class _$AlfredItemModCWProxyImpl implements _$AlfredItemModCWProxy {
   /// ```dart
   /// AlfredItemMod(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredItemMod call({
     Object? arg = const $CopyWithPlaceholder(),
     Object? subtitle = const $CopyWithPlaceholder(),

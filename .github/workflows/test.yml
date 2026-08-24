@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: "~/.pub-cache/hosted"
           key: "os:ubuntu-latest;pub-cache-hosted;sdk:stable;packages:alfred_workflow;commands:codegen-test"
@@ -36,12 +36,12 @@ jobs:
           sdk: stable
       - id: checkout
         name: Checkout repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - id: install
         name: Install dependencies
         run: dart pub get
       - name: Run the build system for Dart code generation and modular compilation
-        run: dart run build_runner build --delete-conflicting-outputs
+        run: dart run build_runner build
       - name: Check the formatting of one or more Dart files
         run: |
           find lib test -name "*.dart" ! -name "*.mocks.dart" ! -name "*.g.dart" -print0 | xargs -0 dart format --output=none --set-exit-if-changed
@@ -61,7 +61,7 @@ jobs:
           path: coverage/lcov.info
           min_coverage: 90
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: techouse/alfred_workflow

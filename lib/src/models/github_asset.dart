@@ -1,5 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:json_annotation/json_annotation.dart';
 
 import 'github_user.dart';
@@ -10,7 +10,7 @@ part 'github_asset.g.dart';
 
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class GithubAsset with EquatableMixin {
+final class GithubAsset extends Equatable {
   const GithubAsset({
     required this.url,
     required this.id,

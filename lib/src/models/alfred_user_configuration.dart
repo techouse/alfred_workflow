@@ -10,7 +10,7 @@ abstract class AlfredUserConfiguration<
   T,
   Q extends AlfredUserConfigurationConfig<T>
 >
-    with EquatableMixin {
+    extends Equatable {
   const AlfredUserConfiguration({
     required this.type,
     required this.variable,

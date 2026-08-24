@@ -34,7 +34,6 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
   @override
   AlfredItemText largeType(String? largeType) => call(largeType: largeType);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemText(...).copyWith.fieldName(value)`.
   ///
@@ -42,6 +41,7 @@ class _$AlfredItemTextCWProxyImpl implements _$AlfredItemTextCWProxy {
   /// ```dart
   /// AlfredItemText(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredItemText call({
     Object? copy = const $CopyWithPlaceholder(),
     Object? largeType = const $CopyWithPlaceholder(),

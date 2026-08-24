@@ -1,5 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:pub_semver/pub_semver.dart' show Version;
 
@@ -14,7 +14,7 @@ part 'github_release.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
 @VersionConverter.instance
-final class GithubRelease with EquatableMixin {
+final class GithubRelease extends Equatable {
   const GithubRelease({
     required this.url,
     required this.assetsUrl,

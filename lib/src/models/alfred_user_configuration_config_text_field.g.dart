@@ -13,7 +13,7 @@ abstract class _$AlfredUserConfigurationConfigTextFieldCWProxy {
 
   AlfredUserConfigurationConfigTextField trim(bool trim);
 
-  AlfredUserConfigurationConfigTextField value(String? value);
+  AlfredUserConfigurationConfigTextField value(String value);
 
   AlfredUserConfigurationConfigTextField placeholder(String? placeholder);
 
@@ -28,7 +28,7 @@ abstract class _$AlfredUserConfigurationConfigTextFieldCWProxy {
     String defaultValue,
     bool required,
     bool trim,
-    String? value,
+    String value,
     String? placeholder,
   });
 }
@@ -53,14 +53,13 @@ class _$AlfredUserConfigurationConfigTextFieldCWProxyImpl
   AlfredUserConfigurationConfigTextField trim(bool trim) => call(trim: trim);
 
   @override
-  AlfredUserConfigurationConfigTextField value(String? value) =>
+  AlfredUserConfigurationConfigTextField value(String value) =>
       call(value: value);
 
   @override
   AlfredUserConfigurationConfigTextField placeholder(String? placeholder) =>
       call(placeholder: placeholder);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigTextField(...).copyWith.fieldName(value)`.
   ///
@@ -68,6 +67,7 @@ class _$AlfredUserConfigurationConfigTextFieldCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigTextField(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigTextField call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -75,7 +75,7 @@ class _$AlfredUserConfigurationConfigTextFieldCWProxyImpl
     Object? value = const $CopyWithPlaceholder(),
     Object? placeholder = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigTextField(
+    return AlfredUserConfigurationConfigTextField._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
@@ -89,10 +89,10 @@ class _$AlfredUserConfigurationConfigTextFieldCWProxyImpl
           ? _value.trim
           // ignore: cast_nullable_to_non_nullable
           : trim as bool,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as String?,
+          : value as String,
       placeholder: placeholder == const $CopyWithPlaceholder()
           ? _value.placeholder
           // ignore: cast_nullable_to_non_nullable

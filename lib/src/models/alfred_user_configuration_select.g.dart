@@ -63,7 +63,6 @@ class _$AlfredUserConfigurationSelectCWProxyImpl
   @override
   AlfredUserConfigurationSelect label(String? label) => call(label: label);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationSelect(...).copyWith.fieldName(value)`.
   ///
@@ -71,6 +70,7 @@ class _$AlfredUserConfigurationSelectCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationSelect(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationSelect call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),

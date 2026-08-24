@@ -13,7 +13,7 @@ abstract class _$AlfredUserConfigurationConfigSelectCWProxy {
     List<AlfredUserConfigurationConfigSelectPair> pairs,
   );
 
-  AlfredUserConfigurationConfigSelect value(String? value);
+  AlfredUserConfigurationConfigSelect value(String value);
 
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(value)`.
@@ -25,7 +25,7 @@ abstract class _$AlfredUserConfigurationConfigSelectCWProxy {
   AlfredUserConfigurationConfigSelect call({
     String defaultValue,
     List<AlfredUserConfigurationConfigSelectPair> pairs,
-    String? value,
+    String value,
   });
 }
 
@@ -47,10 +47,8 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
   ) => call(pairs: pairs);
 
   @override
-  AlfredUserConfigurationConfigSelect value(String? value) =>
-      call(value: value);
+  AlfredUserConfigurationConfigSelect value(String value) => call(value: value);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigSelect(...).copyWith.fieldName(value)`.
   ///
@@ -58,12 +56,13 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigSelect(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigSelect call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? pairs = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigSelect(
+    return AlfredUserConfigurationConfigSelect._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
@@ -73,10 +72,10 @@ class _$AlfredUserConfigurationConfigSelectCWProxyImpl
           ? _value.pairs
           // ignore: cast_nullable_to_non_nullable
           : pairs as List<AlfredUserConfigurationConfigSelectPair>,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as String?,
+          : value as String,
     );
   }
 }

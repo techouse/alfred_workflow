@@ -11,7 +11,7 @@ part 'alfred_automatic_cache.g.dart';
   includeIfNull: false,
   ignoreUnannotated: true,
 )
-class AlfredAutomaticCache with EquatableMixin {
+class AlfredAutomaticCache extends Equatable {
   const AlfredAutomaticCache({required this.seconds, this.looseReload})
     : assert(
         seconds >= minSeconds && seconds <= maxSeconds,

@@ -15,7 +15,7 @@ abstract class _$AlfredUserConfigurationConfigTextAreaCWProxy {
 
   AlfredUserConfigurationConfigTextArea verticalSize(int verticalSize);
 
-  AlfredUserConfigurationConfigTextArea value(String? value);
+  AlfredUserConfigurationConfigTextArea value(String value);
 
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(value)`.
@@ -29,7 +29,7 @@ abstract class _$AlfredUserConfigurationConfigTextAreaCWProxy {
     bool required,
     bool trim,
     int verticalSize,
-    String? value,
+    String value,
   });
 }
 
@@ -57,10 +57,9 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
       call(verticalSize: verticalSize);
 
   @override
-  AlfredUserConfigurationConfigTextArea value(String? value) =>
+  AlfredUserConfigurationConfigTextArea value(String value) =>
       call(value: value);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigTextArea(...).copyWith.fieldName(value)`.
   ///
@@ -68,6 +67,7 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigTextArea(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigTextArea call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? required = const $CopyWithPlaceholder(),
@@ -75,7 +75,7 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
     Object? verticalSize = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigTextArea(
+    return AlfredUserConfigurationConfigTextArea._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
@@ -94,10 +94,10 @@ class _$AlfredUserConfigurationConfigTextAreaCWProxyImpl
           ? _value.verticalSize
           // ignore: cast_nullable_to_non_nullable
           : verticalSize as int,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as String?,
+          : value as String,
     );
   }
 }

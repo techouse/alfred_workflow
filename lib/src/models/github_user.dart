@@ -1,5 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'github_user.g.dart';
@@ -8,7 +8,7 @@ part 'github_user.g.dart';
 
 @CopyWith()
 @JsonSerializable()
-final class GithubUser with EquatableMixin {
+final class GithubUser extends Equatable {
   const GithubUser({
     required this.login,
     required this.id,

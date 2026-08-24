@@ -7,7 +7,7 @@ part 'alfred_action.g.dart';
 /// https://www.alfredapp.com/help/features/universal-actions/
 @CopyWith()
 @JsonSerializable()
-final class AlfredAction with EquatableMixin {
+final class AlfredAction extends Equatable {
   const AlfredAction({this.text, this.url, this.file, this.auto})
     : assert(
         !(text == null && url == null && file == null && auto == null),
