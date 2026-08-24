@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -14,16 +13,21 @@ typedef AlfredUserConfigurationConfigSelectPair = ({
 
 /// Alfred user configuration select class
 
-@CopyWith()
+@CopyWith(constructor: '_copyWith')
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigSelect
-    extends AlfredUserConfigurationConfig<String>
-    with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String> {
   const AlfredUserConfigurationConfigSelect({
     required super.defaultValue,
     required this.pairs,
     super.value,
   });
+
+  const AlfredUserConfigurationConfigSelect._copyWith({
+    required super.defaultValue,
+    required this.pairs,
+    required super.value,
+  }) : super.copyWith();
 
   /// The pairs of labels and values
   @JsonKey(fromJson: _pairsFromJson)
@@ -32,7 +36,7 @@ final class AlfredUserConfigurationConfigSelect
   @internal
   @override
   AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
-      copyWith(value: value);
+      copyWith(value: value ?? defaultValue);
 
   static List<AlfredUserConfigurationConfigSelectPair> _pairsFromJson(
     List json,

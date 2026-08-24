@@ -23,7 +23,7 @@ enum AlfredItemModKey {
 /// It can alter the looks of a result (e.g. [subtitle], [icon]) and output a different [arg].
 @CopyWith()
 @JsonSerializable(explicitToJson: true)
-final class AlfredItemMod with EquatableMixin {
+final class AlfredItemMod extends Equatable {
   const AlfredItemMod({this.arg, this.subtitle, this.icon, this.valid = true});
 
   /// The argument which is passed through the workflow to the connected output action.

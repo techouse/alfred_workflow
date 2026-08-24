@@ -18,9 +18,9 @@ import '../models/github_release.dart';
 import 'alfred_cache.dart';
 
 part 'alfred_updater.g.dart';
+part 'alfred_updater_copy_with.dart';
 
-@CopyWith()
-final class AlfredUpdater with EquatableMixin {
+final class AlfredUpdater extends Equatable {
   /// Builds an [AlfredUpdater]
   ///
   /// * [githubRepositoryUrl] : The [Uri] of the workflow's Github repository

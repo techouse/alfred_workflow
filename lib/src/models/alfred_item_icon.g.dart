@@ -34,7 +34,6 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
   @override
   AlfredItemIcon type(AlfredItemIconType? type) => call(type: type);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredItemIcon(...).copyWith.fieldName(value)`.
   ///
@@ -42,6 +41,7 @@ class _$AlfredItemIconCWProxyImpl implements _$AlfredItemIconCWProxy {
   /// ```dart
   /// AlfredItemIcon(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredItemIcon call({
     Object? path = const $CopyWithPlaceholder(),
     Object? type = const $CopyWithPlaceholder(),

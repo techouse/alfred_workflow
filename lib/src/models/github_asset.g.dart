@@ -105,7 +105,6 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
   GithubAsset browserDownloadUrl(Uri browserDownloadUrl) =>
       call(browserDownloadUrl: browserDownloadUrl);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubAsset(...).copyWith.fieldName(value)`.
   ///
@@ -113,6 +112,7 @@ class _$GithubAssetCWProxyImpl implements _$GithubAssetCWProxy {
   /// ```dart
   /// GithubAsset(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   GithubAsset call({
     Object? url = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),

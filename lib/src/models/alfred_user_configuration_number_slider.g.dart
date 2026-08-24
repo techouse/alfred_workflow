@@ -64,7 +64,6 @@ class _$AlfredUserConfigurationNumberSliderCWProxyImpl
   AlfredUserConfigurationNumberSlider label(String? label) =>
       call(label: label);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationNumberSlider(...).copyWith.fieldName(value)`.
   ///
@@ -72,6 +71,7 @@ class _$AlfredUserConfigurationNumberSliderCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationNumberSlider(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationNumberSlider call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),

@@ -2,7 +2,6 @@ import 'package:alfred_workflow/src/models/alfred_user_configuration.dart';
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config_select.dart';
 import 'package:alfred_workflow/src/models/alfred_user_configuration_type.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -13,8 +12,8 @@ part 'alfred_user_configuration_select.g.dart';
 @CopyWith()
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationSelect
-    extends AlfredUserConfiguration<String, AlfredUserConfigurationConfigSelect>
-    with EquatableMixin {
+    extends
+        AlfredUserConfiguration<String, AlfredUserConfigurationConfigSelect> {
   const AlfredUserConfigurationSelect({
     required super.type,
     required super.variable,

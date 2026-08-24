@@ -44,7 +44,6 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
   @override
   AlfredAction auto(String? auto) => call(auto: auto);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAction(...).copyWith.fieldName(value)`.
   ///
@@ -52,6 +51,7 @@ class _$AlfredActionCWProxyImpl implements _$AlfredActionCWProxy {
   /// ```dart
   /// AlfredAction(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredAction call({
     Object? text = const $CopyWithPlaceholder(),
     Object? url = const $CopyWithPlaceholder(),

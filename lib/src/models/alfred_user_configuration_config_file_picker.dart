@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -8,11 +7,10 @@ part 'alfred_user_configuration_config_file_picker.g.dart';
 
 /// Alfred file picker user configuration config
 
-@CopyWith()
+@CopyWith(constructor: '_copyWith')
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigFilePicker
-    extends AlfredUserConfigurationConfig<String>
-    with EquatableMixin {
+    extends AlfredUserConfigurationConfig<String> {
   const AlfredUserConfigurationConfigFilePicker({
     required super.defaultValue,
     required this.required,
@@ -20,6 +18,14 @@ final class AlfredUserConfigurationConfigFilePicker
     super.value,
     this.placeholder,
   });
+
+  const AlfredUserConfigurationConfigFilePicker._copyWith({
+    required super.defaultValue,
+    required this.required,
+    required this.filterMode,
+    required super.value,
+    this.placeholder,
+  }) : super.copyWith();
 
   /// Whether the file picker is required
   final bool required;
@@ -34,7 +40,7 @@ final class AlfredUserConfigurationConfigFilePicker
   @internal
   @override
   AlfredUserConfigurationConfig<String> copyWithValue(String? value) =>
-      copyWith(value: value);
+      copyWith(value: value ?? defaultValue);
 
   factory AlfredUserConfigurationConfigFilePicker.fromJson(Map json) =>
       _$AlfredUserConfigurationConfigFilePickerFromJson(

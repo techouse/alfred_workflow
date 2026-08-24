@@ -1,5 +1,5 @@
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart' show EquatableMixin;
+import 'package:equatable/equatable.dart' show Equatable;
 import 'package:json_annotation/json_annotation.dart';
 
 part 'alfred_item_icon.g.dart';
@@ -16,7 +16,7 @@ enum AlfredItemIconType {
 /// Workflows are run from their workflow folder, so you can reference icons stored in your workflow relatively.
 @CopyWith()
 @JsonSerializable()
-final class AlfredItemIcon with EquatableMixin {
+final class AlfredItemIcon extends Equatable {
   const AlfredItemIcon({required this.path, this.type});
 
   /// The local file path of the icon file.

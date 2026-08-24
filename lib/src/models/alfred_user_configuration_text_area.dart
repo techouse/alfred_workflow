@@ -2,7 +2,6 @@ import 'package:alfred_workflow/src/models/alfred_user_configuration.dart';
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config_text_area.dart';
 import 'package:alfred_workflow/src/models/alfred_user_configuration_type.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -14,8 +13,7 @@ part 'alfred_user_configuration_text_area.g.dart';
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationTextArea
     extends
-        AlfredUserConfiguration<String, AlfredUserConfigurationConfigTextArea>
-    with EquatableMixin {
+        AlfredUserConfiguration<String, AlfredUserConfigurationConfigTextArea> {
   const AlfredUserConfigurationTextArea({
     required super.type,
     required super.variable,

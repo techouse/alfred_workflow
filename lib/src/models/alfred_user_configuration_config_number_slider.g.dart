@@ -9,7 +9,7 @@ part of 'alfred_user_configuration_config_number_slider.dart';
 abstract class _$AlfredUserConfigurationConfigNumberSliderCWProxy {
   AlfredUserConfigurationConfigNumberSlider defaultValue(int defaultValue);
 
-  AlfredUserConfigurationConfigNumberSlider value(int? value);
+  AlfredUserConfigurationConfigNumberSlider value(int value);
 
   AlfredUserConfigurationConfigNumberSlider min(int min);
 
@@ -32,7 +32,7 @@ abstract class _$AlfredUserConfigurationConfigNumberSliderCWProxy {
   /// ```
   AlfredUserConfigurationConfigNumberSlider call({
     int defaultValue,
-    int? value,
+    int value,
     int min,
     int max,
     bool onlyStopOnMarkers,
@@ -54,7 +54,7 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
       call(defaultValue: defaultValue);
 
   @override
-  AlfredUserConfigurationConfigNumberSlider value(int? value) =>
+  AlfredUserConfigurationConfigNumberSlider value(int value) =>
       call(value: value);
 
   @override
@@ -76,7 +76,6 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
   AlfredUserConfigurationConfigNumberSlider markerCount(int? markerCount) =>
       call(markerCount: markerCount);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationConfigNumberSlider(...).copyWith.fieldName(value)`.
   ///
@@ -84,6 +83,7 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationConfigNumberSlider(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationConfigNumberSlider call({
     Object? defaultValue = const $CopyWithPlaceholder(),
     Object? value = const $CopyWithPlaceholder(),
@@ -93,16 +93,16 @@ class _$AlfredUserConfigurationConfigNumberSliderCWProxyImpl
     Object? showMarkers = const $CopyWithPlaceholder(),
     Object? markerCount = const $CopyWithPlaceholder(),
   }) {
-    return AlfredUserConfigurationConfigNumberSlider(
+    return AlfredUserConfigurationConfigNumberSlider._copyWith(
       defaultValue:
           defaultValue == const $CopyWithPlaceholder() || defaultValue == null
           ? _value.defaultValue
           // ignore: cast_nullable_to_non_nullable
           : defaultValue as int,
-      value: value == const $CopyWithPlaceholder()
+      value: value == const $CopyWithPlaceholder() || value == null
           ? _value.value
           // ignore: cast_nullable_to_non_nullable
-          : value as int?,
+          : value as int,
       min: min == const $CopyWithPlaceholder() || min == null
           ? _value.min
           // ignore: cast_nullable_to_non_nullable

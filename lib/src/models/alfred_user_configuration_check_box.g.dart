@@ -63,7 +63,6 @@ class _$AlfredUserConfigurationCheckBoxCWProxyImpl
   @override
   AlfredUserConfigurationCheckBox label(String? label) => call(label: label);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredUserConfigurationCheckBox(...).copyWith.fieldName(value)`.
   ///
@@ -71,6 +70,7 @@ class _$AlfredUserConfigurationCheckBoxCWProxyImpl
   /// ```dart
   /// AlfredUserConfigurationCheckBox(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredUserConfigurationCheckBox call({
     Object? type = const $CopyWithPlaceholder(),
     Object? variable = const $CopyWithPlaceholder(),

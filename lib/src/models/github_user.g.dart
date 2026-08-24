@@ -85,7 +85,6 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   @override
   GithubUser siteAdmin(bool siteAdmin) => call(siteAdmin: siteAdmin);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubUser(...).copyWith.fieldName(value)`.
   ///
@@ -93,6 +92,7 @@ class _$GithubUserCWProxyImpl implements _$GithubUserCWProxy {
   /// ```dart
   /// GithubUser(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   GithubUser call({
     Object? login = const $CopyWithPlaceholder(),
     Object? id = const $CopyWithPlaceholder(),

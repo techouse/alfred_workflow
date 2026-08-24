@@ -1,6 +1,5 @@
 import 'package:alfred_workflow/src/models/alfred_user_configuration_config.dart';
 import 'package:copy_with_extension/copy_with_extension.dart';
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:meta/meta.dart';
 
@@ -8,11 +7,10 @@ part 'alfred_user_configuration_config_number_slider.g.dart';
 
 /// Alfred integer slider user configuration config
 
-@CopyWith()
+@CopyWith(constructor: '_copyWith')
 @JsonSerializable(explicitToJson: true, createToJson: false)
 final class AlfredUserConfigurationConfigNumberSlider
-    extends AlfredUserConfigurationConfig<int>
-    with EquatableMixin {
+    extends AlfredUserConfigurationConfig<int> {
   const AlfredUserConfigurationConfigNumberSlider({
     required super.defaultValue,
     super.value,
@@ -43,6 +41,16 @@ final class AlfredUserConfigurationConfigNumberSlider
          'markerCount must be greater than 0 if provided',
        );
 
+  const AlfredUserConfigurationConfigNumberSlider._copyWith({
+    required super.defaultValue,
+    required super.value,
+    required this.min,
+    required this.max,
+    required this.onlyStopOnMarkers,
+    required this.showMarkers,
+    this.markerCount,
+  }) : super.copyWith();
+
   @JsonKey(name: 'minvalue')
   final int min;
   @JsonKey(name: 'maxvalue')
@@ -57,7 +65,7 @@ final class AlfredUserConfigurationConfigNumberSlider
   @internal
   @override
   AlfredUserConfigurationConfig<int> copyWithValue(int? value) =>
-      copyWith(value: value);
+      copyWith(value: value ?? defaultValue);
 
   factory AlfredUserConfigurationConfigNumberSlider.fromJson(Map json) =>
       _$AlfredUserConfigurationConfigNumberSliderFromJson(

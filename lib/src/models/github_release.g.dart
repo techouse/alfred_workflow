@@ -135,7 +135,6 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   @override
   GithubRelease body(String? body) => call(body: body);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `GithubRelease(...).copyWith.fieldName(value)`.
   ///
@@ -143,6 +142,7 @@ class _$GithubReleaseCWProxyImpl implements _$GithubReleaseCWProxy {
   /// ```dart
   /// GithubRelease(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   GithubRelease call({
     Object? url = const $CopyWithPlaceholder(),
     Object? assetsUrl = const $CopyWithPlaceholder(),

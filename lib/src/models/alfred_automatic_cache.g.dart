@@ -36,7 +36,6 @@ class _$AlfredAutomaticCacheCWProxyImpl
   AlfredAutomaticCache looseReload(bool? looseReload) =>
       call(looseReload: looseReload);
 
-  @override
   /// Creates a new instance with the provided field values.
   /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `AlfredAutomaticCache(...).copyWith.fieldName(value)`.
   ///
@@ -44,6 +43,7 @@ class _$AlfredAutomaticCacheCWProxyImpl
   /// ```dart
   /// AlfredAutomaticCache(...).copyWith(id: 12, name: "My name")
   /// ```
+  @override
   AlfredAutomaticCache call({
     Object? seconds = const $CopyWithPlaceholder(),
     Object? looseReload = const $CopyWithPlaceholder(),

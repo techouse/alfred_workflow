@@ -5,9 +5,15 @@ import 'package:meta/meta.dart';
 part 'alfred_user_configuration_config.g.dart';
 
 /// Alfred user configuration config generic class
-abstract class AlfredUserConfigurationConfig<T> with EquatableMixin {
+abstract class AlfredUserConfigurationConfig<T> extends Equatable {
   const AlfredUserConfigurationConfig({required this.defaultValue, T? value})
     : value = value ?? defaultValue;
+
+  @internal
+  const AlfredUserConfigurationConfig.copyWith({
+    required this.defaultValue,
+    required this.value,
+  });
 
   /// Default value
   @JsonKey(name: 'default', readValue: fromJsonDefaultValue)
