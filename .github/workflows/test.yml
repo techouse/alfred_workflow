@@ -41,7 +41,7 @@ jobs:
         name: Install dependencies
         run: dart pub get
       - name: Run the build system for Dart code generation and modular compilation
-        run: dart run build_runner build --delete-conflicting-outputs
+        run: dart run build_runner build
       - name: Check the formatting of one or more Dart files
         run: |
           find lib test -name "*.dart" ! -name "*.mocks.dart" ! -name "*.g.dart" -print0 | xargs -0 dart format --output=none --set-exit-if-changed
