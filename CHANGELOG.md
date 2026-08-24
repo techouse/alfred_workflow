@@ -1,3 +1,11 @@
+## 1.2.5
+
+- Fix: preserve copyWith support for user configuration values and AlfredUpdater with copy_with_extension 17
+- Refactor: migrate models from EquatableMixin to Equatable inheritance
+- Chore: update Dart dependencies and regenerate generated code
+- Chore: remove obsolete build_runner delete-conflicting-outputs options
+- Chore: update GitHub Actions dependencies
+
 ## 1.2.4
 
 - Chore: update dependencies
